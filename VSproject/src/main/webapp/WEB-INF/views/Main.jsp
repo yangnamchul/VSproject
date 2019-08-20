@@ -9,5 +9,6 @@
 <body>
 	<h1> 메인페이지 </h1>
 	<a href="Board"> 게시판 </a>
+	<a href="UserAllData">유저정보 전부보기</a>
 </body>
 </html>

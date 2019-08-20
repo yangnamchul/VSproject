@@ -1,5 +1,7 @@
 package com.vs.my;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -7,11 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vs.my.UserDAOVO.UserDAO;
+import com.vs.my.UserDAOVO.UserVO;
+
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+	
+	UserDAO ud = new UserDAO();
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -71,6 +78,17 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/UserAllData", method=RequestMethod.GET) //유저정보 전부보기
+	public ModelAndView UserAllData(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("UserAllData");
+		
+		List<UserVO> userlist = ud.UserAllData();
+		
+		mv.addObject("userlist", userlist);
+		
+		return mv;
+	}
 	//////////////////////////// 게시판 관련 /////////////////////////////////
 	
 	@RequestMapping(value="/Board", method=RequestMethod.GET) //게시판
