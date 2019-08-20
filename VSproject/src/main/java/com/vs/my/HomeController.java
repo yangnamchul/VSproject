@@ -20,7 +20,7 @@ public class HomeController {
 	
 	UserDAO ud = new UserDAO();
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET) //ë©”ì¸í˜ì´ì§€
+	@RequestMapping(value = "/", method = RequestMethod.GET) //ë©¸ŞÀÎÆäÀÌÁö
 	public ModelAndView Main(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Main");
@@ -28,9 +28,9 @@ public class HomeController {
 		return mv;
 	}
 	
-	///////////////////////////// íšŒì› ê´€ë ¨ ///////////////////////////////////
+	///////////////////////////// È¸¿ø °ü·Ã ///////////////////////////////////
 	
-	@RequestMapping(value="/SignUp", method=RequestMethod.GET) //íšŒì›ê°€ì…
+	@RequestMapping(value="/SignUp", method=RequestMethod.GET) //È¸¿ø°¡ÀÔ
 	public ModelAndView SignUp(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SingUp");
@@ -38,7 +38,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Terms", method=RequestMethod.GET) //ì•½ê´€ ë™ì˜
+	@RequestMapping(value="/Terms", method=RequestMethod.GET) //¾à°ü µ¿ÀÇ
 	public ModelAndView Terms(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Terms");
@@ -46,7 +46,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Login", method=RequestMethod.POST) //ë¡œê·¸ì¸
+	@RequestMapping(value="/Login", method=RequestMethod.POST) //·Î±×ÀÎ
 	public ModelAndView Login(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Login");
@@ -54,7 +54,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/FindID", method=RequestMethod.POST) //ì•„ì´ë”” ì°¾ê¸°
+	@RequestMapping(value="/FindID", method=RequestMethod.POST) //¾ÆÀÌµğÃ£±â
 	public ModelAndView FindID(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindID");
@@ -62,7 +62,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/FindPW", method=RequestMethod.POST) //ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
+	@RequestMapping(value="/FindPW", method=RequestMethod.POST) //ºñ¹øÃ£±â
 	public ModelAndView FindPW(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindPW");
@@ -70,7 +70,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/MyPage", method=RequestMethod.GET) //ë§ˆì´í˜ì´ì§€
+	@RequestMapping(value="/MyPage", method=RequestMethod.GET) //¸¶ÀÌÆäÀÌÁö
 	public ModelAndView MyPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
@@ -78,7 +78,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/UserAllData", method=RequestMethod.GET) //ìœ ì €ì •ë³´ ì „ë¶€ë³´ê¸°
+	@RequestMapping(value="/UserAllData", method=RequestMethod.GET) //À¯Àú ÀüºÎ º¸±â
 	public ModelAndView UserAllData(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserAllData");
@@ -89,9 +89,9 @@ public class HomeController {
 		
 		return mv;
 	}
-	//////////////////////////// ê²Œì‹œíŒ ê´€ë ¨ /////////////////////////////////
+	//////////////////////////// ê²°Ô½ÃÆÇ °ü·Ã  /////////////////////////////////
 	
-	@RequestMapping(value="/Board", method=RequestMethod.GET) //ê²Œì‹œíŒ
+	@RequestMapping(value="/Board", method=RequestMethod.GET) //°Ô½ÃÆÇº¸±â
 	public ModelAndView Board(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Board");
@@ -100,7 +100,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Category",method=RequestMethod.GET) // ì¹´í…Œê³ ë¦¬
+	@RequestMapping(value="/Category",method=RequestMethod.GET) //Ä«Å×°í¸® º¸±â
 	public ModelAndView Category(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Category");
@@ -109,7 +109,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value="/OneView", method=RequestMethod.GET) //ê¸€ í•˜ë‚˜ ë³´ê¸°
+	@RequestMapping(value="/OneView", method=RequestMethod.GET) //°Ô½Ã±Û º¸±â
 	public ModelAndView OneView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("OneView");
@@ -117,7 +117,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/WritePost", method=RequestMethod.POST) //ê¸€ ì‘ì„± í™”ë©´
+	@RequestMapping(value="/WritePost", method=RequestMethod.POST) //°Ô½Ã±Û ¾²±â
 	public ModelAndView WritePost(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WritePost");
@@ -125,7 +125,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/EditPost", method=RequestMethod.POST) //ê¸€ ìˆ˜ì • í™”ë©´
+	@RequestMapping(value="/EditPost", method=RequestMethod.POST) //°Ô½Ã±Û ¼öÁ¤
 	public ModelAndView EditPost(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("EditPost");
@@ -133,7 +133,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Search", method=RequestMethod.POST) //ê²€ìƒ‰ ê²°ê³¼
+	@RequestMapping(value="/Search", method=RequestMethod.POST) //°Ë»ö
 	public ModelAndView Search(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Search");
