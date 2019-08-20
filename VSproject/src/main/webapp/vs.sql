@@ -110,5 +110,9 @@ ALTER TABLE Board
 	REFERENCES Users (U_seq)
 ;
 
+select *
+from USERS;
 
+insert into USERS
+values(1,'admin','admin','admin','admin','2019-08-20');
 
