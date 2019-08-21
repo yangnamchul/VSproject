@@ -30,7 +30,7 @@ public class UserController {
 	
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
-	@RequestMapping(value="/SignUp", method=RequestMethod.GET) //회원가입
+	@RequestMapping(value="SignUp.do", method=RequestMethod.GET) //회원가입
 	public ModelAndView SignUp(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("SingUp");
@@ -38,7 +38,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Terms", method=RequestMethod.GET) //약관 동의
+	@RequestMapping(value="Terms.do", method=RequestMethod.GET) //약관 동의
 	public ModelAndView Terms(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Terms");
@@ -46,7 +46,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Login", method=RequestMethod.POST) //로그인
+	@RequestMapping(value="Login.do", method=RequestMethod.POST) //로그인
 	public ModelAndView Login(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Login");
@@ -54,7 +54,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/FindID", method=RequestMethod.POST) //아이디 찾기
+	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
 	public ModelAndView FindID(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindID");
@@ -62,7 +62,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/FindPW", method=RequestMethod.POST) //비밀번호 찾기
+	@RequestMapping(value="FindPW.do", method=RequestMethod.POST) //비밀번호 찾기
 	public ModelAndView FindPW(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindPW");
@@ -70,7 +70,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/MyPage", method=RequestMethod.GET) //마이페이지
+	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
 	public ModelAndView MyPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
@@ -78,7 +78,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/UserAllData", method=RequestMethod.GET) //유저정보 전부보기
+	@RequestMapping(value="UserAllData.do", method=RequestMethod.GET) //유저정보 전부보기
 	public ModelAndView UserAllData(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserAllData");

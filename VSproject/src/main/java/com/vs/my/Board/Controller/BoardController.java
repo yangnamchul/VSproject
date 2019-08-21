@@ -14,7 +14,7 @@ public class BoardController {
 	UserDAO ud = new UserDAO();
 ////////////////////////////게시판 관련 /////////////////////////////////
 	
-@RequestMapping(value="/Board", method=RequestMethod.GET) //게시판
+@RequestMapping(value="/Board.do", method=RequestMethod.GET) //게시판
 public ModelAndView Board(HttpServletRequest req) {
 ModelAndView mv = new ModelAndView();
 mv.setViewName("Board");
@@ -23,7 +23,7 @@ mv.setViewName("Board");
 return mv;
 }
 
-@RequestMapping(value="/Category",method=RequestMethod.GET) // 카테고리
+@RequestMapping(value="/Category.do",method=RequestMethod.GET) // 카테고리
 public ModelAndView Category(HttpServletRequest req) {
 ModelAndView mv = new ModelAndView();
 mv.setViewName("Category");
@@ -32,7 +32,7 @@ return mv;
 }
 
 
-@RequestMapping(value="/OneView", method=RequestMethod.GET) //글 하나 보기
+@RequestMapping(value="/OneView.do", method=RequestMethod.GET) //글 하나 보기
 public ModelAndView OneView(HttpServletRequest req) {
 ModelAndView mv = new ModelAndView();
 mv.setViewName("OneView");
@@ -40,7 +40,7 @@ mv.setViewName("OneView");
 return mv;
 }
 
-@RequestMapping(value="/WritePost", method=RequestMethod.POST) //글 작성 화면
+@RequestMapping(value="/WritePost.do", method=RequestMethod.POST) //글 작성 화면
 public ModelAndView WritePost(HttpServletRequest req) {
 ModelAndView mv = new ModelAndView();
 mv.setViewName("WritePost");
@@ -48,7 +48,7 @@ mv.setViewName("WritePost");
 return mv;
 }
 
-@RequestMapping(value="/EditPost", method=RequestMethod.POST) //글 수정 화면
+@RequestMapping(value="/EditPost.do", method=RequestMethod.POST) //글 수정 화면
 public ModelAndView EditPost(HttpServletRequest req) {
 ModelAndView mv = new ModelAndView();
 mv.setViewName("EditPost");
@@ -56,7 +56,7 @@ mv.setViewName("EditPost");
 return mv;
 }
 
-@RequestMapping(value="/Search", method=RequestMethod.POST) //검색 결과
+@RequestMapping(value="/Search.do", method=RequestMethod.POST) //검색 결과
 public ModelAndView Search(HttpServletRequest req) {
 ModelAndView mv = new ModelAndView();
 mv.setViewName("Search");
