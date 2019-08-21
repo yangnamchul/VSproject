@@ -11,5 +11,6 @@
 	<a href="Board"> 게시판 </a>
 	<a href="UserAllData.do">유저정보 전부보기</a>
 	<a href="SignUp.do">회원가입</a>
+	<a href="Login.do">로그인</a>
 </body>
 </html>

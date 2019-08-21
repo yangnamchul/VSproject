@@ -49,7 +49,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="Login.do", method=RequestMethod.POST) //로그인
+	@RequestMapping(value="Login.do", method=RequestMethod.GET) //로그인
 	public ModelAndView Login(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Login");

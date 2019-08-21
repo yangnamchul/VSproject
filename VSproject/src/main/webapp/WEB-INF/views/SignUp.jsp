@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="resources/js/jquery-3.4.1.js"></script>
 </head>
 <body>
 <form action="UserInsertData.do" method="post">
