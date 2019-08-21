@@ -1,4 +1,4 @@
-package com.vs.my;
+package com.vs.my.User.Controller;
 
 import java.util.List;
 
@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.vs.my.UserDAOVO.UserDAO;
-import com.vs.my.UserDAOVO.UserVO;
+import com.vs.my.User.DAOVO.UserDAO;
+import com.vs.my.User.DAOVO.UserVO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class UserController {
 	
 	UserDAO ud = new UserDAO();
 	
