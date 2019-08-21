@@ -33,7 +33,7 @@ public class UserController {
 	@RequestMapping(value="SignUp.do", method=RequestMethod.GET) //회원가입
 	public ModelAndView SignUp(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("SingUp");
+		mv.setViewName("SignUp");
 		
 		return mv;
 	}
