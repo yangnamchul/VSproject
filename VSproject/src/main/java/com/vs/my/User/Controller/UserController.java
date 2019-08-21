@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.vs.my.User.DAOVO.UserDAO;
 import com.vs.my.User.DAOVO.UserVO;
+import com.vs.my.User.Service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -18,7 +19,9 @@ import com.vs.my.User.DAOVO.UserVO;
 @Controller
 public class UserController {
 	
-	UserDAO ud = new UserDAO();
+	@Autowired
+
+	UserService us;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -83,7 +86,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserAllData");
 		
-		List<UserVO> userlist = ud.UserAllData();
+		List<UserVO> userlist = us.UserAllData();
 		
 		mv.addObject("userlist", userlist);
 		
