@@ -1,4 +1,4 @@
-package com.vs.my.BoardDAOVO;
+package com.vs.my.User.DAOVO;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,8 +8,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-public class BoardDAO {
+public class UserDAO {
 	private static SqlSessionFactory sqlSessionFactory1;
 	static {
 		String myxml = "mybatis-config.xml";
@@ -22,7 +21,7 @@ public class BoardDAO {
 		sqlSessionFactory1 = new SqlSessionFactoryBuilder().build(istream);
 	}
 	
-	public List<BoardVO> BoardAllData() {
-		return sqlSessionFactory1.openSession().selectList("BoardAllData");
+	public List<UserVO> UserAllData() {
+		return sqlSessionFactory1.openSession().selectList("UserAllData");
 	}
 }

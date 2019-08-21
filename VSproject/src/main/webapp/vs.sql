@@ -116,6 +116,3 @@ from USERS;
 insert into USERS
 values(1,'admin','admin','admin','admin','2019-08-20');
 
-SELECT *
-FROM Board;
-

@@ -1,4 +1,4 @@
-package com.vs.my.UserDAOVO;
+package com.vs.my.User.DAOVO;
 
 import java.util.Date;
 
