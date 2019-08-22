@@ -20,7 +20,6 @@ import com.vs.my.User.Service.UserService;
 public class UserController {
 	
 	@Autowired
-
 	UserService us;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
@@ -33,15 +32,16 @@ public class UserController {
 	
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
-	@RequestMapping(value="/SignUp", method=RequestMethod.GET) //회원가입
+	@RequestMapping(value="SignUp.do", method=RequestMethod.GET) //회원가입
 	public ModelAndView SignUp(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("SingUp");
+		mv.setViewName("SignUp");
 		
+	
 		return mv;
 	}
 	
-	@RequestMapping(value="/Terms", method=RequestMethod.GET) //약관 동의
+	@RequestMapping(value="Terms.do", method=RequestMethod.GET) //약관 동의
 	public ModelAndView Terms(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Terms");
@@ -49,7 +49,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/Login", method=RequestMethod.POST) //로그인
+	@RequestMapping(value="Login.do", method=RequestMethod.POST) //로그인
 	public ModelAndView Login(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Login");
@@ -57,7 +57,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/FindID", method=RequestMethod.POST) //아이디 찾기
+	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
 	public ModelAndView FindID(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindID");
@@ -65,7 +65,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/FindPW", method=RequestMethod.POST) //비밀번호 찾기
+	@RequestMapping(value="FindPW.do", method=RequestMethod.POST) //비밀번호 찾기
 	public ModelAndView FindPW(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindPW");
@@ -73,7 +73,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/MyPage", method=RequestMethod.GET) //마이페이지
+	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
 	public ModelAndView MyPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
@@ -81,7 +81,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/UserAllData", method=RequestMethod.GET) //유저정보 전부보기
+	@RequestMapping(value="UserAllData.do", method=RequestMethod.GET) //유저정보 전부보기
 	public ModelAndView UserAllData(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserAllData");
@@ -92,56 +92,28 @@ public class UserController {
 		
 		return mv;
 	}
-	//////////////////////////// 게시판 관련 /////////////////////////////////
-	
-	@RequestMapping(value="/Board", method=RequestMethod.GET) //게시판
-	public ModelAndView Board(HttpServletRequest req) {
+	@RequestMapping(value="UserInsertData.do", method=RequestMethod.GET) //유저정보 입력하기
+	public ModelAndView UserInsertData(UserVO vo,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Board");
+		mv.setViewName("UserAllData");
+/*		String u_name=req.getParameter("u_name");
+		String u_id=req.getParameter("u_id");
+		String u_pw=req.getParameter("u_pw");
+		String u_email=req.getParameter("u_email");*/
+		us.UserInsertData(vo);
 		
+		List<UserVO> userlist = us.UserAllData();
+		
+		mv.addObject("userlist", userlist);
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="/Category",method=RequestMethod.GET) // 카테고리
-	public ModelAndView Category(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Category");
+/*	@RequestMapping("/insertUser.do")
+	public String kajaInsertUser(UserVO vo, UserDAO userDAO) throws ClassNotFoundException, SQLException {
+		userDAO.insertUser(vo);
 		
-		return mv;
-	}
-	
-	
-	@RequestMapping(value="/OneView", method=RequestMethod.GET) //글 하나 보기
-	public ModelAndView OneView(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("OneView");
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="/WritePost", method=RequestMethod.POST) //글 작성 화면
-	public ModelAndView WritePost(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WritePost");
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="/EditPost", method=RequestMethod.POST) //글 수정 화면
-	public ModelAndView EditPost(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("EditPost");
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="/Search", method=RequestMethod.POST) //검색 결과
-	public ModelAndView Search(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Search");
-		
-		return mv;
-	}
+		return "login.html";
+	}*/
 	
 }

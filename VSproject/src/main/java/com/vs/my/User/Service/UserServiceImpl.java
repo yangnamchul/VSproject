@@ -21,4 +21,21 @@ public class UserServiceImpl implements UserService{
 		return dao.UserAllData();
 	}
 
+
+
+/*
+	@Override
+	public void UserInsertData(String u_name, String u_id, String u_pw, String u_email) {
+		// TODO Auto-generated method stub
+		
+	}
+
+*/
+
+	@Override
+	public void UserInsertData(UserVO vo) {
+		// TODO Auto-generated method stub
+		dao.UserInsertData(vo);
+	}
+
 }
