@@ -116,3 +116,13 @@ from USERS;
 insert into USERS
 values(1,'admin','admin','admin','admin','2019-08-20');
 
+insert into USERS
+values(2,'asd','asd','asd','asd','2019-08-20');
+
+create sequence user_sequence1;
+
+user_sequence1.NEXTVAL
+
+SELECT u_id, u_pw
+FROM USERS 
+WHERE u_id='admin' and u_pw='admin' ;

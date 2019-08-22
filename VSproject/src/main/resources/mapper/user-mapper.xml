@@ -5,4 +5,15 @@
 		SELECT u_seq,u_id,u_pw,u_name,u_email,u_date
 		FROM USERS
 	</select>
+	
+	<select id="UserInsertData"> <!-- resultType="user" user객체로 쿼리 실행 결과값을 받고자 할 때 -->
+	insert into users
+	values(user_sequence1.NEXTVAL, #{u_id},#{u_pw},#{u_name},#{u_email},sysdate)
+	</select>
+	
+	<select id="LoginAction"  resultType="user" parameterType="String">
+		SELECT u_id, u_pw
+		FROM USERS
+		WHERE u_id=#{u_id} and u_pw=#{u_pw}
+	</select>
 </mapper>
