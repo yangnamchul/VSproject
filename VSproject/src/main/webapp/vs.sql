@@ -111,7 +111,7 @@ ALTER TABLE Board
 ;
 
 select *
-from USERS;
+from board;
 
 insert into USERS
 values(1,'admin','admin','admin','admin','2019-08-20');
@@ -126,3 +126,9 @@ user_sequence1.NEXTVAL
 SELECT u_id, u_pw
 FROM USERS 
 WHERE u_id='admin' and u_pw='admin' ;
+
+insert into CATEGORY
+values(3,'인물');
+
+insert into BOARD
+values(1,1,1,0,'hello','hello11',1,sysdate,'tag11');

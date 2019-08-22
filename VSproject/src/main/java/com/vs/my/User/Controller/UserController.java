@@ -71,11 +71,7 @@ public class UserController {
 	public int LoginAction(HttpServletRequest req , UserVO uv) {
 		int data = 0;
 		
-		System.out.println(uv.getU_id() + "controller");
 		data = us.LoginAction(uv);
-		
-		System.out.println(data);
-		
 		
 		return data;
 	}

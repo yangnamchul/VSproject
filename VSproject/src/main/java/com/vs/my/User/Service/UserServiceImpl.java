@@ -27,13 +27,10 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public int LoginAction(UserVO uv) {
-	System.out.println(uv.getU_id() + "service");
-	
-	try {
-		dao.LoginAction(uv);
+		
+	if (dao.LoginAction(uv) != null) {
 		return 1;
-	} catch (Exception e) {
-		e.printStackTrace();
+	} else {
 		return 0;
 	}
 	
