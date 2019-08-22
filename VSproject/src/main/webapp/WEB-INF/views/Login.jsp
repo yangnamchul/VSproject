@@ -33,7 +33,7 @@
 		};
 		jQuery.ajax({
 			type:"POST",
-			url:"Loginaction.do",
+			url:"LoginAction.do",
 			data:$("#form1").serialize(),
 			async : false,
 			dataType : "json",

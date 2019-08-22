@@ -10,5 +10,5 @@ public interface UserService {
 
 	public List<UserVO> UserAllData();
 	public void UserInsertData(UserVO vo);
-	public int Loginaction(UserVO uv);
+	public int LoginAction(UserVO uv);
 }

@@ -20,7 +20,7 @@ public interface UserDAO {
 	}*/
 	public List<UserVO> UserAllData();
 	
-	public void UserInsertData(UserVO vo);
+	public void UserInsertData(UserVO uv);
 	
-	public UserVO Loginaction(UserVO uv);
+	public UserVO LoginAction(UserVO uv);
 }

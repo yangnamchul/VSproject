@@ -66,21 +66,18 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="Loginaction.do", method=RequestMethod.POST) //로그인
+	@RequestMapping(value="LoginAction.do", method=RequestMethod.POST) //로그인
 	@ResponseBody
-	public ModelAndView Loginaction(HttpServletRequest req , UserVO uv) {
-		ModelAndView mv = new ModelAndView();
+	public int LoginAction(HttpServletRequest req , UserVO uv) {
 		int data = 0;
 		
-		mv.setViewName("Login");
-		
-		data = us.Loginaction(uv);
+		System.out.println(uv.getU_id() + "controller");
+		data = us.LoginAction(uv);
 		
 		System.out.println(data);
 		
-		mv.addObject("data", data);
 		
-		return mv;
+		return data;
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기

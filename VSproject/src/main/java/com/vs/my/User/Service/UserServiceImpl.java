@@ -1,6 +1,5 @@
 package com.vs.my.User.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +26,17 @@ public class UserServiceImpl implements UserService{
 		dao.UserInsertData(vo);
 	}
 	@Override
-	public int Loginaction(UserVO uv) {
-		
-		try {
-			dao.Loginaction(uv);
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
+	public int LoginAction(UserVO uv) {
+	System.out.println(uv.getU_id() + "service");
+	
+	try {
+		dao.LoginAction(uv);
+		return 1;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return 0;
 	}
 	
-	
+	}
 
 }
