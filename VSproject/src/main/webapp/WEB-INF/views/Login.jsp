@@ -43,15 +43,7 @@
 					$("#u_id").val("");
 					$("#u_pw").val("");
 				} else  {
-					alertify.confirm("This is a confirm dialog.",
-							  function(){
-							    alertify.success('Ok');
-							    location.href="Main";
-							  },
-							  function(){
-							    alertify.error('Cancel');
-							    location.href="Login.do";
-							  });
+					location.href="Main";
 				}
 			},
 			error: function (req, status, error) {

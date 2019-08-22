@@ -3,6 +3,7 @@ package com.vs.my.User.Controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class UserController {
 	@Autowired
 
 	UserService us;
+	HttpSession hs;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -71,7 +73,9 @@ public class UserController {
 	public int LoginAction(HttpServletRequest req , UserVO uv) {
 		int data = 0;
 		
+		
 		data = us.LoginAction(uv);
+		
 		
 		return data;
 	}

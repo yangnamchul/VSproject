@@ -111,14 +111,6 @@ ALTER TABLE Board
 	REFERENCES Users (U_seq)
 ;
 
-ALTER TABLE Board
-	ALTER B_boolean SET DEFAULT '0'
-;
-
-ALTER TABLE Reply
-	ALTER Re_boolean SET DEFAULT '0'
-;
-
 select *
 from users;
 
