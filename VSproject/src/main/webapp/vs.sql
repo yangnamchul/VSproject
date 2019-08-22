@@ -1,13 +1,11 @@
-select * from tabs ;
-
 
 /* Drop Tables */
 
 DROP TABLE Admin_Board CASCADE CONSTRAINTS;
+DROP TABLE Reply CASCADE CONSTRAINTS;
 DROP TABLE Vote CASCADE CONSTRAINTS;
 DROP TABLE Board CASCADE CONSTRAINTS;
 DROP TABLE Category CASCADE CONSTRAINTS;
-DROP TABLE Reply CASCADE CONSTRAINTS;
 DROP TABLE Users CASCADE CONSTRAINTS;
 
 
@@ -28,12 +26,12 @@ CREATE TABLE Board
 	B_seq number NOT NULL,
 	U_seq number NOT NULL,
 	C_seq number NOT NULL,
-	Re_seq number NOT NULL,
 	B_title varchar2(20) NOT NULL,
 	B_content varchar2(500),
 	B_cnt number NOT NULL,
 	B_date date NOT NULL,
 	B_tag varchar2(50) NOT NULL,
+	B_boolean number NOT NULL,
 	PRIMARY KEY (B_seq)
 );
 
@@ -49,9 +47,11 @@ CREATE TABLE Category
 CREATE TABLE Reply
 (
 	Re_seq number NOT NULL,
+	B_seq number NOT NULL,
 	Re_content varchar2(100) NOT NULL,
 	Re_date date NOT NULL,
 	Re_parent number,
+	Re_boolean number,
 	PRIMARY KEY (Re_seq)
 );
 
@@ -87,6 +87,12 @@ ALTER TABLE Admin_Board
 ;
 
 
+ALTER TABLE Reply
+	ADD FOREIGN KEY (B_seq)
+	REFERENCES Board (B_seq)
+;
+
+
 ALTER TABLE Vote
 	ADD FOREIGN KEY (B_seq)
 	REFERENCES Board (B_seq)
@@ -100,24 +106,18 @@ ALTER TABLE Board
 
 
 ALTER TABLE Board
-	ADD FOREIGN KEY (Re_seq)
-	REFERENCES Reply (Re_seq)
-;
-
-
-ALTER TABLE Board
 	ADD FOREIGN KEY (U_seq)
 	REFERENCES Users (U_seq)
 ;
 
 select *
-from board;
+from users;
 
 insert into USERS
-values(1,'admin','admin','admin','admin','2019-08-20');
+values(1,'admin','admin','admin','admin',sysdate);
 
 insert into USERS
-values(2,'asd','asd','asd','asd','2019-08-20');
+values(2,'123','456','asd','asd',sysdate);
 
 create sequence user_sequence1;
 
@@ -132,3 +132,4 @@ values(3,'인물');
 
 insert into BOARD
 values(1,1,1,0,'hello','hello11',1,sysdate,'tag11');
+
