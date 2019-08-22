@@ -50,7 +50,7 @@
 							  },
 							  function(){
 							    alertify.error('Cancel');
-							    return;
+							    location.href="Login.do";
 							  });
 				}
 			},

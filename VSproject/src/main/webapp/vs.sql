@@ -31,7 +31,7 @@ CREATE TABLE Board
 	B_cnt number NOT NULL,
 	B_date date NOT NULL,
 	B_tag varchar2(50) NOT NULL,
-	B_boolean number NOT NULL,
+	B_boolean number ,
 	PRIMARY KEY (B_seq)
 );
 
@@ -84,6 +84,7 @@ CREATE TABLE Vote
 ALTER TABLE Admin_Board
 	ADD FOREIGN KEY (B_seq)
 	REFERENCES Board (B_seq)
+	
 ;
 
 
@@ -110,6 +111,14 @@ ALTER TABLE Board
 	REFERENCES Users (U_seq)
 ;
 
+ALTER TABLE Board
+	ALTER B_boolean SET DEFAULT '0'
+;
+
+ALTER TABLE Reply
+	ALTER Re_boolean SET DEFAULT '0'
+;
+
 select *
 from users;
 
@@ -119,17 +128,25 @@ values(1,'admin','admin','admin','admin',sysdate);
 insert into USERS
 values(2,'123','456','asd','asd',sysdate);
 
-create sequence user_sequence1;
-
-user_sequence1.NEXTVAL
-
 SELECT u_id, u_pw
 FROM USERS 
 WHERE u_id='admin' and u_pw='admin' ;
 
 insert into CATEGORY
+values(1,'테크');
+insert into CATEGORY
+values(2,'스포츠');
+insert into CATEGORY
 values(3,'인물');
 
 insert into BOARD
-values(1,1,1,0,'hello','hello11',1,sysdate,'tag11');
+values(1,1,1,'hello','hello11',1,sysdate,'tag11',0);
 
+SELECT * FROM tabs;
+SELECT * FROM Board;
+SELECT * FROM Category;
+
+create sequence board_sequence1;
+create sequence user_sequence1;
+
+user_sequence1.NEXTVAL
