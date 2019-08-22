@@ -31,7 +31,27 @@
 			alertify.alert("비밀번호를 입력해주세요");
 			return;
 		};
-		document.form1.submit();
+		jQuery.ajax({
+			type:"POST",
+			url:"/ajax/Loginaction.do",
+			data:$("#form1").serialize(),
+			async : false,
+			dataType : "json",
+			success : function (data) {
+				if (data == 0) {
+					alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");
+					$("#u_id").val("");
+					$("#u_pw").val("");
+				} else if (data == 1) {
+					alertify.alert("로그인 성공")
+					location.href = "/";
+				}
+			},
+			error: function (req, status, error) {
+				alertify.alert(req.status+ "\nmessege"+ req.responseTest );
+			}
+		});
 	}
+	
 </script>
 </html>

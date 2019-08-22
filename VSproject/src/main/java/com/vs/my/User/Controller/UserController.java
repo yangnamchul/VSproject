@@ -57,6 +57,15 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(value="Loginaction.do", method=RequestMethod.POST) //로그인
+	public int Loginaction(HttpServletRequest req) {
+		int data = 0;
+		
+		
+		
+		return data;
+	}
+	
 	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
 	public ModelAndView FindID(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
