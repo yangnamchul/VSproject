@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.User.DAOVO.UserVO;
@@ -25,6 +26,14 @@ public class UserController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/Main", method = RequestMethod.GET) //메인페이지
+	public ModelAndView Main1(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Main");
 		
@@ -58,12 +67,20 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="Loginaction.do", method=RequestMethod.POST) //로그인
-	public int Loginaction(HttpServletRequest req) {
+	@ResponseBody
+	public ModelAndView Loginaction(HttpServletRequest req , UserVO uv) {
+		ModelAndView mv = new ModelAndView();
 		int data = 0;
 		
+		mv.setViewName("Login");
 		
+		data = us.Loginaction(uv);
 		
-		return data;
+		System.out.println(data);
+		
+		mv.addObject("data", data);
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
@@ -94,6 +111,23 @@ public class UserController {
 	public ModelAndView UserAllData(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserAllData");
+		
+		List<UserVO> userlist = us.UserAllData();
+		
+		mv.addObject("userlist", userlist);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="UserInsertData.do", method=RequestMethod.GET) //유저정보 입력하기
+	public ModelAndView UserInsertData(UserVO vo,HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("UserAllData");
+/*		String u_name=req.getParameter("u_name");
+		String u_id=req.getParameter("u_id");
+		String u_pw=req.getParameter("u_pw");
+		String u_email=req.getParameter("u_email");*/
+		us.UserInsertData(vo);
 		
 		List<UserVO> userlist = us.UserAllData();
 		

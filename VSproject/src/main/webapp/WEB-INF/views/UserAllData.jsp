@@ -20,5 +20,7 @@
   </tr>
 </c:forEach>
 </table>
+
+<a href="Main">메인</a>
 </body>
 </html>

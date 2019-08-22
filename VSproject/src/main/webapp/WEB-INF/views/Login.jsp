@@ -33,7 +33,7 @@
 		};
 		jQuery.ajax({
 			type:"POST",
-			url:"/ajax/Loginaction.do",
+			url:"Loginaction.do",
 			data:$("#form1").serialize(),
 			async : false,
 			dataType : "json",
@@ -44,7 +44,7 @@
 					$("#u_pw").val("");
 				} else if (data == 1) {
 					alertify.alert("로그인 성공")
-					location.href = "/";
+					location.href = "Main";
 				}
 			},
 			error: function (req, status, error) {

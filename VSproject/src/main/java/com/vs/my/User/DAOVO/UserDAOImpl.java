@@ -18,5 +18,17 @@ public class UserDAOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".UserAllData");
 	}
+	
+	@Override
+	public void UserInsertData(UserVO vo) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".UserInsertData",vo);
+	}
+	
+	@Override
+	public UserVO Loginaction(UserVO uv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + " .Loginaction", uv);
+	}
 
 }

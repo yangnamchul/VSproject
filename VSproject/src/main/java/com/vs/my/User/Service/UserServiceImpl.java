@@ -20,5 +20,24 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return dao.UserAllData();
 	}
+	
+	@Override
+	public void UserInsertData(UserVO vo) {
+		// TODO Auto-generated method stub
+		dao.UserInsertData(vo);
+	}
+	@Override
+	public int Loginaction(UserVO uv) {
+		
+		try {
+			dao.Loginaction(uv);
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	
 
 }
