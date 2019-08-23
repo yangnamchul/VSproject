@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
 </head>
 <body>
-	<form name="form1"  id="form1" action="Login.do">
+	<form name="form1"  id="form1">
 	<h1>
 		아이디 : <input type="text" name="u_id" id="u_id"> <br>
 		비밀번호 : <input type="text" name="u_pw" id="u_pw"> <br>

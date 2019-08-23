@@ -70,14 +70,15 @@ public class UserController {
 	
 	@RequestMapping(value="LoginAction.do", method=RequestMethod.POST) //로그인
 	@ResponseBody
-	public int LoginAction(HttpServletRequest req , UserVO uv) {
+	public int LoginAction(HttpServletRequest req , UserVO uv, HttpSession hs) {
 		int data = 0;
 		
+		data = us.LoginAction(uv, hs);
 		
-		data = us.LoginAction(uv);
 		
+			return data;
 		
-		return data;
+	
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
@@ -120,10 +121,7 @@ public class UserController {
 	public ModelAndView UserInsertData(UserVO vo,HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserAllData");
-/*		String u_name=req.getParameter("u_name");
-		String u_id=req.getParameter("u_id");
-		String u_pw=req.getParameter("u_pw");
-		String u_email=req.getParameter("u_email");*/
+
 		us.UserInsertData(vo);
 		
 		List<UserVO> userlist = us.UserAllData();

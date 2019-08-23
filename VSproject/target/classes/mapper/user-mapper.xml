@@ -11,8 +11,9 @@
 	values(user_sequence1.NEXTVAL, #{u_id},#{u_pw},#{u_name},#{u_email},sysdate)
 	</select>
 	
-	<select id="LoginAction"  resultType="user" >
-		SELECT u_id, u_pw
+
+	<select id="LoginAction"  resultType="user">
+		SELECT *
 		FROM USERS
 		WHERE u_id=#{u_id} and u_pw=#{u_pw}
 	</select>
