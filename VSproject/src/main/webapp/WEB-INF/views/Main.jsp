@@ -5,123 +5,110 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="resources/js/jquery-3.4.1.js"></script>
-<script src="resources/js/alertify.min.js"></script>
-
-<!-- Vss's -->
-
-<link rel="stylesheet" href="resources/css/VSs_Main.css">
+<link rel="stylesheet" type="text/css" href="resources/css/MainFront.css"/>
 </head>
-
-<h1>메인페이지</h1>
-
 <body>
-	<div class="top">
-		<div class="search">
-			<div class="input">
-				<input type="text" class="input" placeholder="Type to search" />
-				<button class="icon" onclick="searchToggle(this, event);">
-					<span></span>
-				</button>
+
+<!-- 전체 Div -->
+	<div id="container" style="overflow-x: hidden; overflow-y: hidden;">
+<!-- 	내용물 Div -->
+		<div id="content-container">
+			<div id="header" class="clearfix" style="min-width: 300px;">
+				<div class="header-top"></div>
+				<div id="main-sidebar">
+					<div class="header-content">
+						<div class="top-menu">
+<!-- 							<div class="top-menu-left"> -->
+<!-- 								<a href="https://www.avsb.co.kr/login" -->
+<!-- 									style="color: #ffffff !important;">로그인</a> -->
+<!-- 							</div> -->
+<!-- 							<div class="top-menu-right"> -->
+<!-- 								<a href="https://www.avsb.co.kr/joinAuth" -->
+<!-- 									style="color: #ffffff !important;">회원가입</a> -->
+<!-- 							</div> -->
+						</div>						
+						<div class="navBarDiv"></div>
+						<div class="logoDiv"></div>
+						<div class="searchDiv">
+							<form id="searchForm" action="/search" method="get">
+								<input type="text" id="searchKeyword" name="searchKeyword"
+									placeholder=" 검색어를 입력하세요" value="" maxlength="255"> <a
+									href="javascript:goSearch();" class="srch_btn" id="SearchBtn">검색</a>
+								<input type="text" style="display: none;" />
+							</form>
+						</div>
+						<!-- <div class="header-menu">
+							<ul>
+								<li class="menu-news"><a href="/news" >뉴스</a></li>
+								<li><a href="/entertainment" >연예</a></li>
+								<li><a href="/sports" >스포츠</a></li>
+								<li><a href="/food" >푸드</a></li>
+								<li><a href="/style" >스타일</a></li>
+								<li style="width:130px !important;"><a href="/car" >차/테크</a></li>
+								<li style="width:40px !important;"><a href="/etc" >기타</a></li>
+							</ul>
+						</div> -->
+						<div class="mobile-header-menu">
+							<ul>							
+								<li class="bmenu-active" style="width: 25% !important; text-align: center;">
+									<a href="/main"> <b>부스러기</b> </a>
+								</li>
+
+								<li style="width: 25% !important; text-align: center;">
+								<a href="/ot256ListF"> 최신 </a>
+								</li>
+
+								<li style="width: 25% !important; text-align: center;">
+								<a href="/fanWorldList">인기VS</a>
+								</li>
+								
+								<li style="width: 25% !important; text-align: center;">
+								<a href="/bettingList">공지사항</a>
+								</li>								
+							</ul>							
+						</div>
+
+<!-- 						<div class="mobile-header-menu2"> -->
+<!-- 							<ul> -->
+<!-- 								<li style="width: 12.5% !important; text-align: center;"><a -->
+<!-- 									href="/news">뉴스</a></li> -->
+<!-- 								<li style="width: 12.5% !important; text-align: center;"><a -->
+<!-- 									href="/entertainment">연예</a></li> -->
+<!-- 								<li style="width: 16.5% !important; text-align: center;"><a -->
+<!-- 									href="/sports">스포츠</a></li> -->
+<!-- 								<li style="width: 12.5% !important; text-align: center;"><a -->
+<!-- 									href="/food">푸드</a></li> -->
+<!-- 								<li style="width: 16.5% !important; text-align: center;"><a -->
+<!-- 									href="/style">스타일</a></li> -->
+<!-- 								<li style="width: 17.5% !important; text-align: center;"><a -->
+<!-- 									href="/car">차/테크</a></li> -->
+<!-- 								<li style="width: 12% !important; text-align: center;"><a -->
+<!-- 									href="/etc">기타</a></li> -->
+<!-- 							</ul> -->
+<!-- 						</div> -->
+					</div>
+					<nav>
+
+
+
+
+				
+					</nav>
+					<div id="contentLayer" class="clearfix"></div>					
+				</div>
 			</div>
-			<span class="close" onclick="searchToggle(this, event);"></span>
-		</div>
-		<a href="#"><img src="#"> MY </a>
-	</div>
-	<hr />
-	<div class="slideshow-container">
-		<div class="mySlides fade">
-			<div class="numbertext">1 / 3</div>
-			<img src="resources/images/banner_img_01.jpg" style="width: 100%">
-			<div class="text">Caption Text</div>
-		</div>
 
-		<div class="mySlides fade">
-			<div class="numbertext">2 / 3</div>
-			<img src="resources/images/banner_img_02.jpg" style="width: 100%">
-			<div class="text">Caption Two</div>
-		</div>
-		<div class="mySlides fade">
-			<div class="numbertext">3 /3</div>
-			<img src="resources/images/banner_img_03.jpg" style="width: 100%">
-			<div class="text">Caption Three</div>
-		</div>
-		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
-			onclick="plusSlides(1)">&#10095;</a>
-	</div>
-
-
-	<br>
-	<div style="text-align: center">
-		<span class="dot" onclick="currentSlide(1)"></span> <span class="dot"
-			onclick="currentSlide(2)"></span> <span class="dot"
-			onclick="currentSlide(3)"></span>
-	</div>
-	<script>
-		var slideIndex = 1;
-		showSlides(slideIndex);
-
-		function plusSlides(n) {
-			showSlides(slideIndex += n);
-		}
-
-		function currentSlide(n) {
-			showSlides(slideIndex = n);
-		}
-
-		function showSlides(n) {
-			var i;
-			var slides = document.getElementsByClassName("mySlides");
-			var dots = document.getElementsByClassName("dot");
-			if (n > slides.length) {
-				slideIndex = 1
-			}
-			if (n < 1) {
-				slideIndex = slides.length
-			}
-			for (i = 0; i < slides.length; i++) {
-				slides[i].style.display = "none";
-			}
-			for (i = 0; i < dots.length; i++) {
-				dots[i].className = dots[i].className.replace(" active", "");
-			}
-			slides[slideIndex - 1].style.display = "block";
-			dots[slideIndex - 1].className += " active";
-		}
-		function searchToggle(obj, evt) {
-			var container = $(obj).closest('.search');
-			if (!container.hasClass('active')) {
-				container.addClass('active');
-				evt.preventDefault();
-			} else if (container.hasClass('active')
-					&& $(obj).closest('.input').length == 0) {
-				container.removeClass('active');
-				// clear input
-				container.find('.input').val('');
-			}
-		}
-	</script>
+			<div align="center" class="vss">
+				<ul>
+					<li><a href="Board.do"> 게시판 </a></li>
+					<li><a href="UserAllData.do">유저정보 전부보기</a></li>
+					<li><a href="SignUp.do">회원가입</a></li>
+					<li><a href="Login.do">로그인</a></li>
+					<li><a href="">메인</a></li>
+				</ul>
 
 
 
 
-	<h1>메인페이지</h1>
-	<div align="right">
-		<h2>검색 MY(로그인)</h2>
-	</div>
-
-	<hr />
-	<div align="center" style="color: red">
-		<h2>
-			<FONT COLOR="red">게시판 </FONT> <FONT COLOR="red"> 카테고리 </FONT> <FONT
-				COLOR="red"> 최신글 </FONT> <FONT COLOR="red"> 공지사항 </FONT> <br> <FONT
-				COLOR="green"><a href="Ajax.do">AJAX 실험실</a> </FONT>
-		</h2>
-	</div>
-	<hr />
-	<a href="Board"> 게시판 </a>
-	<a href="UserAllData.do">유저정보 전부보기</a>
-	<a href="SignUp.do">회원가입</a>
-	<a href="Login.do">로그인</a>
-</body>
+			</div></body>
 </html>

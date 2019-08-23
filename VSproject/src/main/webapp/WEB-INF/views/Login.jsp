@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
 </head>
 <body>
-	<form name="form1" action="Login.do">
+	<form name="form1"  id="form1">
 	<h1>
 		아이디 : <input type="text" name="u_id" id="u_id"> <br>
 		비밀번호 : <input type="text" name="u_pw" id="u_pw"> <br>
@@ -42,9 +42,8 @@
 					alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");
 					$("#u_id").val("");
 					$("#u_pw").val("");
-				} else if (data == 1) {
-					alertify.alert("로그인 성공")
-					location.href = "Main";
+				} else  {
+					location.href="Main";
 				}
 			},
 			error: function (req, status, error) {
