@@ -11,6 +11,8 @@
 
 </head>
 <!-- http://optimal.inven.co.kr/upload/2017/04/18/bbs/i15611233270.png -->
+
+
 <body>
 	<div class="top">
 		<a href="http://naver.com"><img src="img4.png"></a>
@@ -24,8 +26,6 @@
 			<span class="close" onclick="searchToggle(this, event);"></span>
 		</div>
 	</div>
-
-
 
 </body>
 </html>
