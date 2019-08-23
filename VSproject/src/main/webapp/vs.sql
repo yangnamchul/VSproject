@@ -24,13 +24,13 @@ CREATE TABLE Admin_Board
 CREATE TABLE Board
 (
 	B_seq number NOT NULL,
-	U_id varchar2(20) NOT NULL,
+	U_id varchar2(4000) NOT NULL,
 	C_seq number NOT NULL,
-	B_title varchar2(20) NOT NULL,
+	B_title varchar2(4000) NOT NULL,
 	B_content varchar2(4000),
 	B_cnt number NOT NULL,
 	B_date date NOT NULL,
-	B_tag varchar2(50) NOT NULL,
+	B_tag varchar2(4000) NOT NULL,
 	B_boolean number NOT NULL,
 	B_parent number,
 	PRIMARY KEY (B_seq)
@@ -49,8 +49,8 @@ CREATE TABLE Reply
 (
 	Re_seq number NOT NULL,
 	B_seq number NOT NULL,
-	U_id varchar2(20) NOT NULL UNIQUE,
-	Re_content varchar2(100) NOT NULL,
+	U_id varchar2(4000) NOT NULL UNIQUE,
+	Re_content varchar2(4000) NOT NULL,
 	Re_date date NOT NULL,
 	Re_parent number,
 	Re_boolean number,
@@ -61,10 +61,10 @@ CREATE TABLE Reply
 CREATE TABLE Users
 (
 	U_seq number NOT NULL,
-	U_id varchar2(20) NOT NULL,
-	U_pw varchar2(50) NOT NULL,
-	U_name varchar2(30) NOT NULL,
-	U_email varchar2(50) NOT NULL,
+	U_id varchar2(4000) NOT NULL,
+	U_pw varchar2(4000) NOT NULL,
+	U_name varchar2(4000) NOT NULL,
+	U_email varchar2(4000) NOT NULL,
 	U_date date NOT NULL,
 	PRIMARY KEY (U_id)
 );
@@ -149,4 +149,5 @@ create sequence board_sequence1;
 create sequence user_sequence1;
 
 user_sequence1.NEXTVAL
+
 

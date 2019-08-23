@@ -1,5 +1,6 @@
 package com.vs.my.Board.Controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +56,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
-	public ModelAndView BoardWriteData(BoardVO vo, HttpServletRequest req, HttpSession se) {
+	public ModelAndView BoardWriteData(BoardVO vo, HttpServletRequest req, HttpSession se){
 		ModelAndView mv = new ModelAndView();
 		
 		
@@ -66,7 +67,7 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO vo, HttpServletRequest req, HttpSession se) {
+	public ModelAndView BoardInsertData(BoardVO vo, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
 		ModelAndView mv = new ModelAndView();
 		
 		String st= (String) se.getAttribute("u_id");

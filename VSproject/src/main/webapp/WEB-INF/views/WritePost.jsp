@@ -8,12 +8,12 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet" />
 <script src="resources/js/jquery-3.4.1.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-<script src="resources/js/summernote-ko-KR.js"></script>
 <script src="resources/js/alertify.min.js"></script>
 <link rel="stylesheet" href="resources/css/alertify.default.css" />
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet" />
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<script src="resources/js/summernote-ko-KR.js"></script>
 <script>
 $(document).ready(function() {
     $('#b_content').summernote({
