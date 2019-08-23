@@ -1,11 +1,6 @@
 package com.vs.my.User.DAOVO;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.ibatis.io.Resources;
-
 
 public interface UserDAO {
 	/*private static SqlSessionFactory sqlSessionFactory1;
@@ -24,5 +19,8 @@ public interface UserDAO {
 		return sqlSessionFactory1.openSession().selectList("UserAllData");
 	}*/
 	public List<UserVO> UserAllData();
-	public void UserInsertData(UserVO vo);
+	
+	public void UserInsertData(UserVO uv);
+	
+	public UserVO LoginAction(UserVO uv);
 }

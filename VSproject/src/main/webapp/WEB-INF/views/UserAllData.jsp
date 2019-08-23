@@ -8,14 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+<table border="2">
 <c:forEach var="vo1" items="${userlist }">
+<tr>
     <td>${vo1.u_seq}</td>
     <td>${vo1.u_id}</td>
     <td>${vo1.u_pw}</td>
     <td>${vo1.u_name}</td>
     <td>${vo1.u_email}</td>
     <td>${vo1.u_date}</td>
-    <td>
+  </tr>
 </c:forEach>
+</table>
+
+<a href="Main">메인</a>
 </body>
 </html>
