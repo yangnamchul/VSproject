@@ -32,18 +32,17 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int LoginAction(UserVO uv, HttpSession hs) {
-		UserVO uv2;
+		UserVO uv2 = dao.LoginAction(uv);
 		int date=0;
-	if(dao.LoginAction(uv)!=null) {
-		uv2=dao.LoginAction(uv);  //u_seq가져오기 : BoardTable 에 넣기위해서 가져옴 
-		System.out.println(uv2.getU_seq());
-		hs.setAttribute("u_seq", uv2.getU_seq());
+	if(uv2 !=null) {
+		hs.setAttribute("u_id", uv2.getU_id());
 		date=1;
+		System.out.println("로그인 성공");
 		return date;
 	}
 	else {
 		return date;
-	}
+		}
 	}
 	
 

@@ -59,8 +59,8 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		
 		
-        int st= (Integer) se.getAttribute("u_seq");
-		vo.setU_seq(st);
+        String st= (String) se.getAttribute("u_id");
+		vo.setU_id(st);
 		System.out.println(st+"==> user_seq1");
 		mv.setViewName("WritePost");
 		return mv;
@@ -69,9 +69,9 @@ public class BoardController {
 	public ModelAndView BoardInsertData(BoardVO vo, HttpServletRequest req, HttpSession se) {
 		ModelAndView mv = new ModelAndView();
 		
-		int st= (Integer) se.getAttribute("u_seq");
+		String st= (String) se.getAttribute("u_id");
 		int c_seq=1;
-		vo.setU_seq(st);
+		vo.setU_id(st);
 		vo.setC_seq(c_seq);
 		System.out.println(st+"==> user_seq2");
 		
