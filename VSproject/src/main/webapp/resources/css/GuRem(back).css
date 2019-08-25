@@ -1,31 +1,33 @@
 @charset "UTF-8";
 
+@font-face { font-family: 'DungGeunMo'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Header 
 작성자 : GuRem
 2019.08.24 - GuRem 초기 작성 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 .VSlogo {
+	
 	/* 퍼스널컬러 	
 	#6441a5 -> #f77754 */
-	
 	font-family: 'Gugi', cursive;
-	/* 	font-family: 'Black Han Sans', sans-serif; */
 	font-size: 4.0em;
 	color: #f77754; /* 오렌지 */
-/* 	text-shadow: 2px 3px 3px #332e2e; */
-	}
+	/* 	text-shadow: 2px 3px 3px #332e2e; */
+}
 
 /* 시작부분 위아래 간격 */
 header {
 	padding: 0.4em 0
 }
 
-header #right-search-form {
+/* header #right-search-form { */
+header #right-menu {
 	padding: 0.5em 0
 }
 
-header #right-search-form>#right-search-btn {
+header #right-#right-menu>#right-search-btn {
 	color: #f77754;
 	background: transparent;
 	border: none;
@@ -51,20 +53,34 @@ header #header-bar {
 	padding-left: 30px
 }
 
-/* row 메뉴바 테두리 */
+
+/* ■■■□ Header-bar_row 테두리  □■■■ */
 header #header-bar>.row {
-	background: #fff;
+/* 	background: #f77754; 
+	background: #f77754;
 	padding-top: 0.3em;
 	padding-bottom: 0.3em;
-	border-top: 5px solid #f77754;
-	border-left: 2px solid #ebeae8;
-	border-bottom: 2px solid #ebeae8;
-	border-right: 2px solid #ebeae8;
+	
+	border-top: 3px double #f77754;
+/* 	border-left: 2px solid #ebeae8; 
+/* 	border-bottom: 2px solid #ebeae8; 
+/* 	border-right: 2px solid #ebeae8; 
+	border-left: 3px double #f77754;
+	border-bottom: 3px double #f77754;
+	border-right: 3px double #f77754;	
+
 	display:table;
 	width: 100%;  
 	table-layout: fixed;
-
 	/* 	border-top: 5px solid #f77754; */
+	
+	background-color: #f77754;
+	padding: 0.3em;
+	line-height: 1.4;
+	color: black;	
+	box-shadow: 4px 4px 0 white;
+	word-break: break-word;	
+	
 }
 
 
@@ -128,8 +144,7 @@ header #header-bar #header-menu-right #note-notification-badge {
 	background: #d80a0a
 }
 
-
-	/* 가운데 메뉴 Css */ 
+	/* ■■■□ header-bar 가운데 내용   □■■■ */
 header #header-bar #header-top-notice {
 	padding: 0em 0;
 	font-size: 2.0em;
@@ -137,8 +152,13 @@ header #header-bar #header-top-notice {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	font-family: 'Poor Story', cursive;
-	font-weight: bold;
+	
+	font-family: 'DungGeunMo'; src :
+	url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
+	format( 'woff'); font-weight : normal; font-style : normal;
+	color: white; 
+/* 	font-family: 'Poor Story', cursive; */
+/* 	font-weight: bold; */
 }
 
 header #header-bar #header-top-notice
@@ -153,6 +173,10 @@ header #header-bar #header-top-notice strong.notice-badge {
 	color: #fff;
 	font-weight: bold
 }
+
+
+
+
 
 /* ■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■ */
 /* 여기부터 BootStrap Import */

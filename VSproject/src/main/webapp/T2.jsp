@@ -7,9 +7,13 @@
 <title>Insert title here</title>
 
 
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
+	rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" />
+<link rel="stylesheet" type="text/css"
+	href="resources/css/style.article.dgm.css" />
 
 </head>
 <body>
@@ -18,22 +22,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-4">
-					<a href="/"> <span class="VSlogo">부스러기</span>
+					<a href="/"> <span class="VSlogo">부스러기 </span> <img
+						src="http://icons.iconarchive.com/icons/pixture/donuts/32/Yummy-icon.png"
+						alt="" />
 					</a>
 				</div>
-				
-<!-- 				검색 div -->
-				<!-- <div class="col-xs-8" align="right">
-					<form action="/login" method="get" id="right-search-form">
+
+				<!-- 				검색 div -->
+				<div class="col-xs-8" align="right">
+					<form action="#" method="get" id="right-search-form">
 						<input type="text" placeholder="부스러기 검색" value=""
-							id="right-search-input" name="q">
-							
-							검색 아이콘							
-						<button type="submit" id="search-btn">							
+							id="right-search-input" name="q"> 검색 아이콘
+						<button type="submit" id="search-btn">
 							<i class="fa fa-search"></i>
 						</button>
 					</form>
-				</div> -->
+				</div>
 			</div>
 		</div>
 
@@ -78,13 +82,11 @@
 				</div>
 
 				<div id="header-top-notice" class="col-xs-8" align="center">
-					부스러기   |   최신VS  |   인기VS  |  공지사항  
-
-				</div>
+					부스러기 | 최신VS | 인기VS | 공지사항</div>
 
 
 				<!-- 메인바 우측메뉴	 -->
-					<!-- <div id="header-menu-right" class="col-xs-2" align="right">
+				<!-- <div id="header-menu-right" class="col-xs-2" align="right">
 					<div class="dropdown">
 						<a href="/note/lists" class="dropdown-toggle"> <i
 							class="fa fa-envelope-o"></i> <span class="caret"></span>
@@ -102,10 +104,73 @@
 					</div>
 				</div> -->
 
-				</div>
-				<!-- row end -->
-
+			</div>
+			<!-- row end -->
 		</div>
 	</header>
+
+	<!-- 	Content 내용부분 -->
+
+	<div id="content-area">
+		<div class="container" id="main">
+			
+			<div class="row">
+			
+			<div class="col-xs-12">
+			 
+			 <img src="https://characterdevteam.files.wordpress.com/2016/04/pce18490e185a9e186bce18489e185b5e186ab__hitel_plaza.jpg" alt="" width="100%" />
+			
+			</div>
+			
+				
+				<div class="col-xs-6">
+					<h3>
+						<a href="#">부스러기 인기글</a>
+					</h3>
+					<ul class="vss-hot">
+						
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						
+					</ul>
+
+				</div>
+				
+<!-- 				중복 -->
+				<div class="col-xs-6">
+					<h3>
+						<a href="#">부스러기 최신글</a>
+					</h3>
+					<ul class="vss-hot">
+						
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a href="#">아무내용링크1</a>
+						</li>
+						
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
