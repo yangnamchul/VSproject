@@ -13,7 +13,7 @@
 <c:forEach var="vo1" items="${boardlist}">
 <tr>
     <td>${vo1.b_seq}</td>
-    <td>${vo1.b_title}</td>
+    <td><a href="OneView.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
     <td>${vo1.b_date}</td>
     <td>${vo1.b_cnt}</td>
 

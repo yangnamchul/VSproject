@@ -25,17 +25,8 @@ public class BoardServiceImpl implements BoardService
 
 	@Override
 	public void BoardInsertData(BoardVO vo) {
-		// TODO Auto-generated method stub
-/*		private int b_seq;
-		private int u_seq;
-		private int c_seq;
-		private String b_title;
-		private String b_content;
-		private int b_cnt;
-		private Date b_date;
-		private String b_tag;*/
 
-bdao.BoardInsertData(vo);		
+		bdao.BoardInsertData(vo);		
 
 	}
 

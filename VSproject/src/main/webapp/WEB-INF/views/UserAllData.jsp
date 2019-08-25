@@ -9,9 +9,6 @@
 </head>
 <body>
 <table border="2">
-
-
-
 <c:forEach var="vo1" items="${userlist }">
 <tr>
     <td>${vo1.u_seq}</td>
