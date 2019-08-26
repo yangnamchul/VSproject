@@ -21,11 +21,37 @@ $(document).ready(function() {
             minHeight: null,             // set minimum height of editor
             maxHeight: null,             // set maximum height of editor
             focus: true,                  // set focus to editable area after initializing summernote
-            lang: 'ko-KR'
+            lang: 'ko-KR',
+            callbacks: {
+				onImageUpload: function(files, editor, welEditable) {
+		            for (var i = files.length - 1; i >= 0; i--) {
+		            	sendFile(files[i]);
+		            }
+		        }
+			}
     });
 });
 
-
+function sendFile(file) {
+	var form_data = new FormData();
+  	form_data.append('file', file);
+  	$.ajax({
+    	data: form_data,
+    	type: "POST",
+    	url: 'BoardInsertFile.do',
+    	cache: false,
+    	contentType: false,
+    	enctype: 'multipart/form-data',
+    	processData: false,
+    	success: function(img_name) {
+    		alert(img_name);
+      		$('#b_content').summernote('insertImage', img_name);
+    	},
+    	error : function() {
+    		alert("업로드 실패");
+    	}
+  	});
+}
 </script>
 </head>
 <body>

@@ -4,17 +4,21 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
-import com.vs.my.User.DAOVO.UserVO;
 
 @Controller
 public class BoardController {
@@ -75,11 +79,24 @@ public class BoardController {
 		vo.setU_id(st);
 		vo.setC_seq(c_seq);
 		System.out.println(st+"==> user_seq2");
-		
+		System.out.println(vo.getB_imgpath());
 		bs.BoardInsertData(vo);
 		
 		mv.setViewName("Board");
 		return mv;
+	}
+	
+	@RequestMapping(value="BoardInsertFile.do", method=RequestMethod.POST) //이미지 저장 메소드
+	@ResponseBody
+	public String BoardInsertFile(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String path = "filesave";
+		System.out.println(file.getName());
+		String img_name = bs.BoardFileSave(path, file, request, response);
+		
+		String path1 = "http://127.0.0.1:8887\\" + img_name;
+		
+		return path1;
 	}
 	
 	@RequestMapping(value="EditPost.do", method=RequestMethod.POST) //글 수정 화면

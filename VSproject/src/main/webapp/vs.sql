@@ -33,6 +33,7 @@ CREATE TABLE Board
 	B_tag varchar2(4000) NOT NULL,
 	B_boolean number NOT NULL,
 	B_parent number,
+	B_imgpath varchar2(4000),
 	PRIMARY KEY (B_seq)
 );
 
@@ -118,9 +119,6 @@ ALTER TABLE Reply
 	REFERENCES Users (U_id)
 ;
 
-select *
-from users;
-
 insert into USERS
 values(1,'admin','admin','admin','admin',sysdate);
 
@@ -139,8 +137,10 @@ insert into CATEGORY
 values(3,'인물');
 
 insert into BOARD
-values(1,'123',1,'hello','hello11',1,sysdate,'tag11',0,null);
+values(1,'123',1,'hello','hello11',1,sysdate,'tag11',0,null,null);
 
+select *
+from users;
 SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM Category;
@@ -149,5 +149,4 @@ create sequence board_sequence1;
 create sequence user_sequence1;
 
 user_sequence1.NEXTVAL
-
 
