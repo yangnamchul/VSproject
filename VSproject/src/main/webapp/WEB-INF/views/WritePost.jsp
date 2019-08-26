@@ -15,17 +15,55 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <script src="resources/js/summernote-ko-KR.js"></script>
 <script>
-$(document).ready(function() {
-    $('#b_content').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true,                  // set focus to editable area after initializing summernote
-            lang: 'ko-KR'
-    });
+$( document ).ready(function() {
+	/* 텍스트 에디터 설정 */ 
+	$('#b_content').summernote({
+		height: 300,
+		minHeight: null,
+		maxHeight: null,
+		focus: true,
+		callbacks: {
+			onImageUpload: function(files, editor, welEditable) {
+				for (var i = files.length - 1; i >= 0; i--) {
+					console.log(files[i]);
+					sendImage(files[i], this);
+				}
+			},
+			onChange: function ($editable, sHtml) {
+				var htmlContent = $('#b_content').summernote('code');
+				//var plainText = $(htmlContent).text();
+				$('#maxContentPost').text(100000-htmlContent.length); 
+				if(100000-htmlContent.length < 0){
+					$('#maxContentPost').css("color","#f27386");
+				}else{
+					$('#maxContentPost').css("color","#333");
+				}
+			}
+		}
+	});	
+	var htmlContent = $('#b_content').summernote('code');
+	$('#maxContentPost').text(100000-htmlContent.length);    
+	
 });
 
 
+function sendfile(file, el) {
+	   var form_data = new FormData();
+	   form_data.append('file', file);   
+	   $.ajax({
+	      data: form_data,
+	      type: "POST",  
+	      url: '/ajax/sendFreeImage',
+	      cache: false,
+	      contentType: false,
+	      enctype: 'multipart/form-data',
+	      processData: false,
+	      success: function(url) { 
+	         $(el).summernote('editor.insertImage', url);   
+	         $('#imageBoard > ul').append('<li><img src="'+url+'" /></li>'); 
+	      }
+	   });    
+	}
 </script>
 </head>
 <body>
