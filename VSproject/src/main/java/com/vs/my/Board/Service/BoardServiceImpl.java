@@ -54,9 +54,10 @@ public class BoardServiceImpl implements BoardService
 		System.out.println("원본 파일명 : " + org_filename);
 		System.out.println("저장할 파일명 : " + str_filename);
 		
-		String filepath = realFolder + "\\" + path + "\\" + str_filename;
+		//String filepath = realFolder + "\\" + path + "\\" + str_filename;
+		String filepath = "arn:aws:s3:::vsproject" + str_filename;
 		System.out.println("파일경로 : " + filepath);
-
+		
 		File f = new File(filepath);
 		if (!f.exists()) {
 			f.mkdirs();
@@ -64,7 +65,7 @@ public class BoardServiceImpl implements BoardService
 		file.transferTo(f);
 		
 		
-		return str_filename;
+		return filepath;
 	}
 
 }

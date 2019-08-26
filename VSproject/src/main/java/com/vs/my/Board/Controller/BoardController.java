@@ -91,12 +91,10 @@ public class BoardController {
 	public String BoardInsertFile(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String path = "filesave";
-		System.out.println(file.getName());
 		String img_name = bs.BoardFileSave(path, file, request, response);
 		
-		String path1 = "http://127.0.0.1:8887\\" + img_name;
-		
-		return path1;
+		System.out.println(img_name);
+		return img_name;
 	}
 	
 	@RequestMapping(value="EditPost.do", method=RequestMethod.POST) //글 수정 화면
