@@ -57,7 +57,6 @@ function sendfile(file, el) {
 		contentType : false,
 		processData : false,
 		success : function(data) {
-			alert(data.url);
 			$(el).summernote('editor.insertImage', data.url);
 		},
 		error : function() {
