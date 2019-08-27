@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 
 
-<link
-	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" >
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -20,7 +17,6 @@
 	<header>
 		<div class="container">
 			<div class="row">
-
 				<div class="col-xs-4">
 					<a href="/"> <span class="VSlogo">부스러기 </span> <img
 						src="http://icons.iconarchive.com/icons/pixture/donuts/32/Yummy-icon.png"
@@ -31,43 +27,42 @@
 				<!-- 				검색 div -->
 				<!-- 				<div class="col-xs-8" align="right" style="display:none;"> -->
 				
-				<div class="col-xs-8" align="right">			
+				   <div class="col-xs-8">			
 					
-					
-					<form action="#" method="get" id="right-search-form" style="display: none;">
-						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="q"> 검색 아이콘	
-						<button type="submit" id="search-btn"> <i class="#">위치</i>		</button>
-					</form>
-										
-					<!-- 					<div class="col-xs-2" align="right">					 -->
-<!-- 					<div id="top-menu"> -->
-<!-- 						<div class="big-area"> -->
-<!-- 							<div class="small-unit">1</div> -->
-<!-- 							<div class="small-unit">2</div> -->
-<!-- 							<div class="small-unit">3</div> -->
-<!-- 							<div class="small-unit">4</div> -->
-<!-- 						</div> -->
-							<div>
-							<div class="right-div">검색</div>
-							<div class="right-div">로그인</div>
-							<div class="right-div"><img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
-							<div class="right-div"><img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"	alt="" /></div>
-							</div>
-	
+<!-- 					display: none; -->
+<!-- 					<form action="#" method="get" id="right-search-form" style=""> -->
+<!-- 						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름">  -->
+<!-- 						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px"/> </button> -->
+<!-- 					</form> -->
+
+					<div class="top-menu" style="float:right !important;">								
+						<div class="right-row">
+						<div class="right-col"><img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
+						<div class="right-col" align="center"><img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>				 							
+						</div>
+						<div class="right-row">
+							<div class="right-col">검색</div>
+							<div class="right-col">로그인</div>
+						</div>
+					</div>
+
+					<!-- 					<div class="top-menu"> -->
 <!-- 						검색 -->
 <!-- 						<img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /> -->
 <!-- 						로그인 -->
 <!-- 						<img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"	alt="" /> -->
-					</div>
-				</div>  
-				
-
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
+				</div>
 			</div>
 			</div>
+			
+		
 
 			<div id="header-bar" class="container">
 				<div class="row">
-					<div id="header-menu-left" class="col-xs-2" align="left">
+					<div id="header-menu-left" class="col-xs-2" >
 
 						<!-- 스크립트로 소메뉴 여는 부분 Class -->
 						<!-- <div class="dropdown">

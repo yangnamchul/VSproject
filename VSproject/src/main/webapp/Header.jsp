@@ -25,15 +25,15 @@
 				</div>
 
 				<!-- 				검색 div -->
-				<div class="col-xs-8" align="right">
-					<form action="#" method="get" id="right-search-form">
-						<input type="text" placeholder="부스러기 검색" value=""
-							id="right-search-input" name="q"> 검색 아이콘
-						<button type="submit" id="search-btn">
-							<i class="fa fa-search"></i>
-						</button>
-					</form>
-				</div>
+<!-- 				<div class="col-xs-8" align="right"> -->
+<!-- 					<form action="#" method="get" id="right-search-form"> -->
+<!-- 						<input type="text" placeholder="부스러기 검색" value="" -->
+<!-- 							id="right-search-input" name="q"> 검색 아이콘 -->
+<!-- 						<button type="submit" id="search-btn"> -->
+<!-- 							<i class="fa fa-search"></i> -->
+<!-- 						</button> -->
+<!-- 					</form> -->
+<!-- 				</div> -->
 			</div>
 		</div>
 

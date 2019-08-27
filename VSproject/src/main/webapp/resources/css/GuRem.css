@@ -21,10 +21,9 @@
  ff4d00 -> 퍼스널 오렌지
  #6441a5 -> #f77754 #ff4d00
 */
-
 .VSlogo {
-	/* 	 퍼스널컬러 	 */ 
-	font-family:'Gugi', cursive;
+	/* 	 퍼스널컬러 	 */
+	font-family: 'Gugi', cursive;
 	font-size: 4.0em;
 	color: #ff4d00; /* 오렌지 */
 	/* 	text-shadow: 2px 3px 3px #332e2e; */
@@ -61,22 +60,36 @@ header #right-search-form>input[type=text]::after {
 
 header #right-login {
 	display: inline-block;
-	position: relative;	
-/* 	border: 3px solid #ff4d00; */
-/* 	background: #fff; */
-/* 	font-size: 1.1em; */
+	position: relative;
+	/* 	border: 3px solid #ff4d00; */
+	/* 	background: #fff; */
+	/* 	font-size: 1.1em; */
 	padding: 0.3em 0.5em
 }
 
-header #top-menu {	
-	display : inline-flex ;	
-	vertical-align: bottom;
-	text-align: right;
-	
+/* 28일 새벽 건영 아이콘 창 부분  */
 
+header .top-menu {	
+	
+	display: table;
+	background-color: #ff4d00;
+    box-shadow: 2px 2px 0 black ;	
+    position: relative;
+    bottom: -30px;
 }
 
+header .right-row {
+	display: table-row;	
+	padding: 3px 11px;
+	cursor: pointer;
+}
 
+header .right-col {
+	display: table-cell;
+	padding:  2px 5px;
+	cursor: pointer;
+	
+}
 
 header #header-bar {
 	margin-top: 1em;
@@ -87,23 +100,6 @@ header #header-bar {
 
 /* ■■■□ Header-bar_row 테두리  □■■■ */
 header #header-bar>.row {
-	/* 	background: #ff4d00;
-
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
-	
-	border-top: 3px double #ff4d00;
-/* 	border-left: 2px solid #ebeae8; 
-/* 	border-bottom: 2px solid #ebeae8; 
-/* 	border-right: 2px solid #ebeae8; 
-	border-left: 3px double #ff4d00;
-	border-bottom: 3px double #ff4d00;
-	border-right: 3px double #ff4d00;	
-
-	display:table;
-	width: 100%;  
-	table-layout: fixed;
-	/* 	border-top: 5px solid #ff4d00; */
 	background-color: #ff4d00;
 	padding: 0.3em;
 	line-height: 1.4;
@@ -218,7 +214,7 @@ ul.vss-hot {
 	/* 	border-right: 2px solid #ebeae8; */
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
-	background-color: #BBBBBB;	
+	background-color: #BBBBBB;
 	box-shadow: 2px 2px 0 black, -2px -2px 0 white;
 }
 
@@ -229,8 +225,7 @@ ul.vss-hot>li, ul.vss-hot>.row>li {
 	border-bottom: 1px solid #f3f3f3
 }
 
-ul.vss-hot>li:last-of-type, ul.vss-hot>.row li:last-of-type
-	{
+ul.vss-hot>li:last-of-type, ul.vss-hot>.row li:last-of-type {
 	border-bottom: none
 }
 
@@ -243,19 +238,16 @@ a {
 	overflow: hidden;
 	white-space: nowrap;
 	vertical-align: middle;
-
-	color: #000084 ;
+	color: #000084;
 }
 
 /* 부스러기  링크  */
-ul.vss-hot>li a.board-name, ul.vss-hot>.row li a.board-name
-	{
-	
-	font-weight :   font-weight: 500;
-	background-color : #ff4d00 ;
+ul.vss-hot>li a.board-name, ul.vss-hot>.row li a.board-name {
+	font-weight: font-weight: 500;
+	background-color: #ff4d00;
 	color: #fff;
-	text-shadow: 1px 1px 1px #000;	
-	margin-right: 10px ;
+	text-shadow: 1px 1px 1px #000;
+	margin-right: 10px;
 	font-size: 22px !important;
 }
 
@@ -267,7 +259,7 @@ ul.vss-hot>li>span {
 	overflow: hidden;
 	white-space: nowrap;
 	vertical-align: middle;
-	color: #000084 ;
+	color: #000084;
 	margin-right: 10px
 }
 
@@ -275,23 +267,20 @@ ul.vss-hot>li>span {
 내 용 : 심플 간이 메뉴 링크 (vss-a-menu) 
 작성자 : GuRem
 2019.08.27 - GuRem 초기 작성  */
-
-ul.vss-a-menu {	
+ul.vss-a-menu {
 	/* 	background: #fff; */
 	/* 	border-bottom: 2px solid #ebeae8; */
 	/* 	border-right: 2px solid #ebeae8; */
-	padding-top : 0.5em;	
-	padding-bottom : 0.5em;	
-	background-color: #000084;	
-	color : white ;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: #000084;
+	color: white;
 	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
 
-ul.vss-a-menu>li a, ul.vss-a-menu.row li a {	
-
-	background-color: #000084;	
-	color : white ;
-	
+ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
+	background-color: #000084;
+	color: white;
 }
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
@@ -432,7 +421,11 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -447,7 +440,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -470,7 +467,11 @@ keyframes fa-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -485,7 +486,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -3315,10 +3320,14 @@ audio
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
@@ -3327,7 +3336,9 @@ controls
 ]
 
 
+
  
+
 
 
 ){
@@ -3336,13 +3347,19 @@ display
 
 
 
+
+
 :
+
 
 
  
 
 
+
 none
+
+
 
 
 
@@ -3353,10 +3370,14 @@ height
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -3423,17 +3444,23 @@ svg
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 :root
 
 
+
  
+
 
 
 ){
@@ -3442,13 +3469,19 @@ overflow
 
 
 
+
+
 :
+
 
 
  
 
 
+
 hidden
+
+
 
 
 
@@ -4737,7 +4770,7 @@ a {
 }
 
 a:focus, a:hover {
-/* 	color: #23527c; */
+	/* 	color: #23527c; */
 	color: #fff;
 	text-decoration: underline
 }
@@ -7382,38 +7415,50 @@ tbody.collapse.in {
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
@@ -7421,7 +7466,9 @@ tbody.collapse.in {
 
 
 
+
 	
+
 
 
 ){
@@ -7430,10 +7477,14 @@ border-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -7449,7 +7500,11 @@ border-radius
 
 
 
+
+
 :first-child
+
+
 
 
 
@@ -7457,28 +7512,36 @@ border-radius
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 .dropdown-toggle
 
 
+
  
+
 
 
 ){
@@ -7487,10 +7550,14 @@ border-top-right-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -7499,10 +7566,14 @@ border-bottom-right-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -7514,7 +7585,11 @@ border-bottom-right-radius
 
 
 
+
+
 :last-child
+
+
 
 
 
@@ -7522,14 +7597,18 @@ border-bottom-right-radius
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 ),
@@ -7540,18 +7619,24 @@ border-bottom-right-radius
 
 
 
+
+
 :not
+
 
 
 
 	
 
 
+
 (
 :first-child
 
 
+
  
+
 
 
 ){
@@ -7560,10 +7645,14 @@ border-top-left-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -7572,10 +7661,14 @@ border-bottom-left-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -7665,31 +7758,41 @@ border-bottom-left-radius
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 ){
@@ -7698,10 +7801,14 @@ border-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -7713,7 +7820,11 @@ border-radius
 
 
 
+
+
 :first-child
+
+
 
 
 
@@ -7721,14 +7832,18 @@ border-radius
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 ){
@@ -7737,14 +7852,20 @@ border-top-left-radius
 
 
 
+
+
 :
+
 
 
  
 
 
+
 4
 px
+
+
 
 
 
@@ -7755,14 +7876,20 @@ border-top-right-radius
 
 
 
+
+
 :
+
 
 
  
 
 
+
 4
 px
+
+
 
 
 
@@ -7773,10 +7900,14 @@ border-bottom-right-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -7785,10 +7916,14 @@ border-bottom-left-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -7800,7 +7935,11 @@ border-bottom-left-radius
 
 
 
+
+
 :last-child
+
+
 
 
 
@@ -7808,14 +7947,18 @@ border-bottom-left-radius
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 ){
@@ -7824,10 +7967,14 @@ border-top-left-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -7836,10 +7983,14 @@ border-top-right-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -7848,14 +7999,20 @@ border-bottom-right-radius
 
 
 
+
+
 :
+
 
 
  
 
 
+
 4
 px
+
+
 
 
 
@@ -7866,14 +8023,20 @@ border-bottom-left-radius
 
 
 
+
+
 :
+
 
 
  
 
 
+
 4
 px
+
+
 
 
 
@@ -8004,7 +8167,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 .input-group
 
 
+
  
+
 
 
 .form-control
@@ -8012,31 +8177,41 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 ),
@@ -8045,31 +8220,41 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 ),
@@ -8078,31 +8263,41 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 :first-child
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 ){
@@ -8111,10 +8306,14 @@ border-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -8157,10 +8356,14 @@ border-radius
 .input-group
 
 
+
  
 
 
+
 .form-control
+
+
 
 
 
@@ -8172,9 +8375,13 @@ border-radius
 
 
 
+
+
 :first-child
 ,
 .input-group-btn
+
+
 
 
 
@@ -8184,6 +8391,8 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
 
 
 
@@ -8195,6 +8404,8 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
 
 
 
@@ -8208,9 +8419,13 @@ border-radius
 
 
 
+
+
 :last-child
 >
 .btn-group
+
+
 
 
 
@@ -8219,14 +8434,18 @@ border-radius
 
 
 
+
 	
+
 
 
 (
 :last-child
 
 
+
  
+
 
 
 )>
@@ -8237,6 +8456,8 @@ border-radius
 
 
 
+
+
 :last-child
 >
 .btn
@@ -8244,10 +8465,14 @@ border-radius
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
@@ -8255,21 +8480,27 @@ border-radius
 
 
 
+
 	
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 .dropdown-toggle
 
 
+
  
+
 
 
 ){
@@ -8278,10 +8509,14 @@ border-top-right-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -8290,10 +8525,14 @@ border-bottom-right-radius
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0
@@ -11948,13 +12187,17 @@ i {
 .alertify
 
 
+
  
+
 
 
 .alert
 
 
+
  
+
 
 
 input
@@ -11962,33 +12205,45 @@ input
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 .form-control
 
 
+
  
+
 
 
 ),
 .alertify
 
 
+
  
+
 
 
 .dialog
 
 
+
  
 
 
+
 input
+
+
 
 
 
@@ -11997,14 +12252,18 @@ input
 
 
 
+
 	
+
 
 
 (
 .form-control
 
 
+
  
+
 
 
 ){
@@ -12013,14 +12272,20 @@ margin-bottom
 
 
 
+
+
 :
+
 
 
  
 
 
+
 15
 px
+
+
 
 
 
@@ -12031,10 +12296,14 @@ width
 
 
 
+
+
 :
 
 
+
  
+
 
 
 100%;
@@ -12043,10 +12312,14 @@ font-size
 
 
 
+
+
 :
 
 
+
  
+
 
 
 100%;
@@ -12055,14 +12328,20 @@ padding
 
 
 
+
+
 :
+
 
 
  
 
 
+
 12
 px
+
+
 
 
 
@@ -12083,19 +12362,25 @@ nav {
 .alertify
 
 
+
  
+
 
 
 .alert
 
 
+
  
+
 
 
 nav
 
 
+
  
+
 
 
 button
@@ -12103,38 +12388,50 @@ button
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 .btn
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 .pure-button
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
@@ -12142,40 +12439,52 @@ button
 
 
 
+
 	
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 .mdl-button
 
 
+
  
+
 
 
 ),
 .alertify
 
 
+
  
+
 
 
 .dialog
 
 
+
  
+
 
 
 nav
 
 
+
  
+
 
 
 button
@@ -12183,24 +12492,32 @@ button
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 .btn
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
@@ -12208,35 +12525,45 @@ button
 
 
 
+
 	
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 .md-button
 
 
+
  
+
 
 
 )
 :not
 
 
+
  
+
 
 
 (
 .mdl-button
 
 
+
  
+
 
 
 ){
@@ -12245,13 +12572,19 @@ background
 
 
 
+
+
 :
+
 
 
  
 
 
+
 transparent
+
+
 
 
 
@@ -12262,13 +12595,19 @@ box-sizing
 
 
 
+
+
 :
+
 
 
  
 
 
+
 border-box
+
+
 
 
 
@@ -12279,13 +12618,19 @@ color
 
 
 
+
+
 :
+
 
 
  
 
 
+
 rgba
+
+
 
 
 
@@ -12299,8 +12644,12 @@ rgba
 
 
 
+
+
 );
 position
+
+
 
 
 
@@ -12308,10 +12657,14 @@ position
 :
 
 
+
  
 
 
+
 relative
+
+
 
 
 
@@ -12322,10 +12675,14 @@ outline
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -12334,10 +12691,14 @@ border
 
 
 
+
+
 :
 
 
+
  
+
 
 
 0;
@@ -12346,13 +12707,19 @@ display
 
 
 
+
+
 :
+
 
 
  
 
 
+
 inline-block
+
+
 
 
 
@@ -12363,13 +12730,19 @@ inline-block
 
 
 
+
+
 :
+
 
 
  
 
 
+
 center
+
+
 
 
 
@@ -12380,13 +12753,19 @@ center
 
 
 
+
+
 :
+
 
 
  
 
 
+
 center
+
+
 
 
 
@@ -12397,13 +12776,19 @@ align-items
 
 
 
+
+
 :
+
 
 
  
 
 
+
 center
+
+
 
 
 
@@ -12414,15 +12799,21 @@ padding
 
 
 
+
+
 :
+
 
 
  
 
 
+
 0
 6
 px
+
+
 
 
 
@@ -12433,21 +12824,29 @@ margin
 
 
 
+
+
 :
 
 
+
  
+
 
 
 6
 px
 
 
+
  
+
 
 
 8
 px
+
+
 
 
 
@@ -12458,14 +12857,20 @@ line-height
 
 
 
+
+
 :
+
 
 
  
 
 
+
 36
 px
+
+
 
 
 
@@ -12476,14 +12881,20 @@ min-height
 
 
 
+
+
 :
+
 
 
  
 
 
+
 36
 px
+
+
 
 
 
@@ -12494,13 +12905,19 @@ white-space
 
 
 
+
+
 :
+
 
 
  
 
 
+
 nowrap
+
+
 
 
 
@@ -12511,14 +12928,20 @@ min-width
 
 
 
+
+
 :
+
 
 
  
 
 
+
 88
 px
+
+
 
 
 
@@ -12529,13 +12952,19 @@ text-align
 
 
 
+
+
 :
+
 
 
  
 
 
+
 center
+
+
 
 
 
@@ -12546,13 +12975,19 @@ text-transform
 
 
 
+
+
 :
+
 
 
  
 
 
+
 uppercase
+
+
 
 
 
@@ -12563,14 +12998,20 @@ font-size
 
 
 
+
+
 :
+
 
 
  
 
 
+
 14
 px
+
+
 
 
 
@@ -12581,13 +13022,19 @@ text-decoration
 
 
 
+
+
 :
+
 
 
  
 
 
+
 none
+
+
 
 
 
@@ -12598,13 +13045,19 @@ cursor
 
 
 
+
+
 :
+
 
 
  
 
 
+
 pointer
+
+
 
 
 
@@ -12615,26 +13068,36 @@ border
 
 
 
+
+
 :
 
 
+
  
+
 
 
 1
 px
 
 
+
  
+
 
 
 solid
 
 
+
  
 
 
+
 transparent
+
+
 
 
 
@@ -12645,14 +13108,20 @@ border-radius
 
 
 
+
+
 :
+
 
 
  
 
 
+
 2
 px
+
+
 
 
 
@@ -12690,6 +13159,8 @@ button.btn {
 
 
 
+
+
 .bottom
 ,
 .alertify-logs
@@ -12697,17 +13168,23 @@ button.btn {
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 .top
 
 
+
  
+
 
 
 ){
@@ -12716,14 +13193,20 @@ bottom
 
 
 
+
+
 :
+
 
 
  
 
 
+
 16
 px
+
+
 
 
 
@@ -12736,6 +13219,8 @@ px
 
 
 
+
+
 .left
 ,
 .alertify-logs
@@ -12743,17 +13228,23 @@ px
 
 
 
+
+
 :not
 
 
+
  
+
 
 
 (
 .right
 
 
+
  
+
 
 
 ){
@@ -12762,14 +13253,20 @@ left
 
 
 
+
+
 :
+
 
 
  
 
 
+
 16
 px
+
+
 
 
 
