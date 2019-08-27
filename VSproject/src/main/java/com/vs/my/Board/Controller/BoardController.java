@@ -88,13 +88,10 @@ public class BoardController {
 	
 	@RequestMapping(value="BoardInsertFile.do", method=RequestMethod.POST) //이미지 저장 메소드
 	@ResponseBody
-	public String BoardInsertFile(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void BoardInsertFile(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		bs.BoardFileSave(file, request, response);
 		
-		String path = "filesave";
-		String img_name = bs.BoardFileSave(path, file, request, response);
-		
-		System.out.println(img_name);
-		return img_name;
 	}
 	
 	@RequestMapping(value="EditPost.do", method=RequestMethod.POST) //글 수정 화면

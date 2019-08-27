@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+#vss-reply-area {
+	background-color: #BBBBBB;
+	padding: 24px;
+	color: black;
+	box-shadow: 2px 2px 0 black, -2px -2px 0 white;
+}
+
+#article-reply-area>.header {
+	padding: 1em 1.5em 0.7em
+}
+
+#article-reply-area>.header
+h5 {
+	font-size: 14px;
+	color: #735ba5;
+	font-weight: bold
+}
+
+#article-reply-area
+#viewReplyPrevPageBtn {
+	display: block;
+	padding: 8px 0;
+	text-align: center;
+	width: 100%
+}
+
+#article-reply-area #reply-real-area .reply, #article-reply-area #reply-best-area .reply
+	{
+	margin-bottom: 0.5em;
+	border: 1px solid #f1f1f1;
+	position: relative;
+}
+
+/* 블로그 부분 */
+#button-comment svg:nth-child(1), .nav-dropdown-comment>.button-comment-reply>svg
+	{
+	fill: transparent;
+	background-image:
+		url(https://tistory4.daumcdn.net/tistory/814207/skin/images/icon-386-comment.svg);
+}
+
+svg.normal, .icon_bg.normal, input[type="checkbox"].normal {
+	width: 32px;
+	height: 32px;
+}
+
+#vss-reply-area button {
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 #000000, -2px -2px 0 #FFFFFF;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	color: inherit;
+	font-family: inherit;
+    display: flex;
+    align-items: center;
+}
+
+
+
+#vss-reply-area button.icon.text > * + span {
+    margin-left: 12px;
+	font-size: 22px;
+	margin-left: 12px;
+	line-height: 1;
+}

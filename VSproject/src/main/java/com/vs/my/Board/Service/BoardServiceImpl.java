@@ -1,7 +1,6 @@
 package com.vs.my.Board.Service;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
@@ -9,10 +8,12 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.vs.my.Board.DAOVO.BoardDAO;
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.User.DAOVO.UserDAO;
@@ -39,10 +40,11 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public String BoardFileSave(String path, MultipartFile file, HttpServletRequest request,
+	public void BoardFileSave(MultipartFile file, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
 		// 업로드할 폴더 경로
 		String realFolder = request.getSession().getServletContext().getRealPath("profileUpload");
 		UUID uuid = UUID.randomUUID();
@@ -54,18 +56,21 @@ public class BoardServiceImpl implements BoardService
 		System.out.println("원본 파일명 : " + org_filename);
 		System.out.println("저장할 파일명 : " + str_filename);
 		
-		//String filepath = realFolder + "\\" + path + "\\" + str_filename;
-		String filepath = "arn:aws:s3:::vsproject" + str_filename;
+		String filepath = realFolder +"\\" + str_filename;
 		System.out.println("파일경로 : " + filepath);
-		
+
 		File f = new File(filepath);
 		if (!f.exists()) {
 			f.mkdirs();
 		}
 		file.transferTo(f);
 		
+		JSONObject jobj = new JSONObject();
+		jobj.put("url", "images/" + str_filename);
 		
-		return filepath;
+		//out.println("profileUpload/"+str_filename);
+		out.println(jobj.toJSONString());
+		out.close();
 	}
 
 }
