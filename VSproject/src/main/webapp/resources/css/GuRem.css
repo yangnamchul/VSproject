@@ -68,27 +68,29 @@ header #right-login {
 }
 
 /* 28일 새벽 건영 아이콘 창 부분  */
-
-header .top-menu {	
-	
+header .top-menu {
 	display: table;
-	background-color: #ff4d00;
-    box-shadow: 2px 2px 0 black ;	
-    position: relative;
-    bottom: -30px;
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 black;
+	position: relative;
+	bottom: -10px;
 }
 
 header .right-row {
-	display: table-row;	
+	display: table-row;
 	padding: 3px 11px;
 	cursor: pointer;
 }
 
 header .right-col {
 	display: table-cell;
-	padding:  2px 5px;
+	padding: 2px 5px;
 	cursor: pointer;
-	
+	color: #000084;
+}
+
+header .right-col:active {
+	background-color: #555555;
 }
 
 header #header-bar {
@@ -283,6 +285,35 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: white;
 }
 
+#pop_login {
+	position: absolute;
+    padding: 10px 21px;
+    right: -733px;
+    bottom: -313px;
+    z-index: 500;
+    width: 317px;
+}
+#pop_login > li {
+	list-style: none;
+    margin: 1px;
+}
+
+#pop_login>li>input[type=text] {
+	font-size: 18px;
+    padding: 0px 3px;
+    margin: 1px;
+    color: black;
+    background: #bbbbbb;
+    /* width: 1%; */
+    /* height: 1.5em; */
+}
+
+#pop_login > div > button {
+	color: black;
+	background-color: #ff4d00;
+
+	}
+
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 
 /* ■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■ */
@@ -423,7 +454,15 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -442,7 +481,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -469,7 +516,15 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -488,7 +543,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -3322,11 +3385,19 @@ audio
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -3337,7 +3408,11 @@ controls
 
 
 
+
+
  
+
+
 
 
 
@@ -3349,7 +3424,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -3357,7 +3438,13 @@ display
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -3372,11 +3459,19 @@ height
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -3446,11 +3541,19 @@ svg
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -3459,7 +3562,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -3471,7 +3578,13 @@ overflow
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -3479,7 +3592,13 @@ overflow
 
 
 
+
+
 hidden
+
+
+
+
 
 
 
@@ -7417,11 +7536,19 @@ tbody.collapse.in {
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -7430,7 +7557,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -7439,7 +7570,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -7448,7 +7583,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -7457,7 +7596,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -7467,7 +7610,11 @@ tbody.collapse.in {
 
 
 
+
+
 	
+
+
 
 
 
@@ -7479,11 +7626,19 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7502,7 +7657,15 @@ border-radius
 
 
 
+
+
+
+
 :first-child
+
+
+
+
 
 
 
@@ -7513,7 +7676,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7522,7 +7689,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7531,7 +7702,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7540,7 +7715,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7552,11 +7731,19 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7568,11 +7755,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7587,7 +7782,15 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :last-child
+
+
+
+
 
 
 
@@ -7598,7 +7801,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7607,7 +7814,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7621,7 +7832,13 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :not
+
+
 
 
 
@@ -7630,12 +7847,18 @@ border-bottom-right-radius
 
 
 
+
+
 (
 :first-child
 
 
 
+
+
  
+
+
 
 
 
@@ -7647,11 +7870,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7663,11 +7894,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7760,11 +7999,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -7773,7 +8020,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7782,7 +8033,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7791,7 +8046,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7803,11 +8062,19 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7822,7 +8089,15 @@ border-radius
 
 
 
+
+
+
+
 :first-child
+
+
+
+
 
 
 
@@ -7833,7 +8108,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7842,7 +8121,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7854,7 +8137,13 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -7862,8 +8151,14 @@ border-top-left-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -7878,7 +8173,13 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -7886,8 +8187,14 @@ border-top-right-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -7902,11 +8209,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7918,11 +8233,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7937,7 +8260,15 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :last-child
+
+
+
+
 
 
 
@@ -7948,7 +8279,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7957,7 +8292,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -7969,11 +8308,19 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -7985,11 +8332,19 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -8001,7 +8356,13 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -8009,8 +8370,14 @@ border-bottom-right-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -8025,7 +8392,13 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -8033,8 +8406,14 @@ border-bottom-left-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -8168,7 +8547,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8179,11 +8562,19 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -8192,7 +8583,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8201,7 +8596,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8210,7 +8609,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8222,11 +8625,19 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -8235,7 +8646,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8244,7 +8659,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8253,7 +8672,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8265,11 +8688,19 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -8278,7 +8709,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8287,7 +8722,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8296,7 +8735,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -8308,11 +8751,19 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -8357,11 +8808,19 @@ border-radius
 
 
 
+
+
  
 
 
 
+
+
 .form-control
+
+
+
+
 
 
 
@@ -8377,9 +8836,17 @@ border-radius
 
 
 
+
+
+
+
 :first-child
 ,
 .input-group-btn
+
+
+
+
 
 
 
@@ -8391,6 +8858,10 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
 
 
 
@@ -8404,6 +8875,10 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
 
 
 
@@ -8421,9 +8896,17 @@ border-radius
 
 
 
+
+
+
+
 :last-child
 >
 .btn-group
+
+
+
+
 
 
 
@@ -8435,7 +8918,11 @@ border-radius
 
 
 
+
+
 	
+
+
 
 
 
@@ -8444,7 +8931,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8458,6 +8949,10 @@ border-radius
 
 
 
+
+
+
+
 :last-child
 >
 .btn
@@ -8467,11 +8962,19 @@ border-radius
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -8481,7 +8984,11 @@ border-radius
 
 
 
+
+
 	
+
+
 
 
 
@@ -8490,7 +8997,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8499,7 +9010,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8511,11 +9026,19 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -8527,11 +9050,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -12188,7 +12719,11 @@ i {
 
 
 
+
+
  
+
+
 
 
 
@@ -12196,7 +12731,11 @@ i {
 
 
 
+
+
  
+
+
 
 
 
@@ -12207,11 +12746,19 @@ input
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -12220,7 +12767,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -12229,7 +12780,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -12237,11 +12792,19 @@ input
 
 
 
+
+
  
 
 
 
+
+
 input
+
+
+
+
 
 
 
@@ -12253,7 +12816,11 @@ input
 
 
 
+
+
 	
+
+
 
 
 
@@ -12262,7 +12829,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -12274,7 +12845,13 @@ margin-bottom
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12282,8 +12859,14 @@ margin-bottom
 
 
 
+
+
 15
 px
+
+
+
+
 
 
 
@@ -12298,11 +12881,19 @@ width
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -12314,11 +12905,19 @@ font-size
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -12330,7 +12929,13 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12338,8 +12943,14 @@ padding
 
 
 
+
+
 12
 px
+
+
+
+
 
 
 
@@ -12363,7 +12974,11 @@ nav {
 
 
 
+
+
  
+
+
 
 
 
@@ -12371,7 +12986,11 @@ nav {
 
 
 
+
+
  
+
+
 
 
 
@@ -12379,7 +12998,11 @@ nav
 
 
 
+
+
  
+
+
 
 
 
@@ -12390,11 +13013,19 @@ button
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -12403,7 +13034,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12412,7 +13047,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12421,7 +13060,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12430,7 +13073,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12440,7 +13087,11 @@ button
 
 
 
+
+
 	
+
+
 
 
 
@@ -12449,7 +13100,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12458,7 +13113,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12467,7 +13126,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12475,7 +13138,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12483,7 +13150,11 @@ nav
 
 
 
+
+
  
+
+
 
 
 
@@ -12494,11 +13165,19 @@ button
 
 
 
+
+
+
+
 :not
 
 
 
+
+
  
+
+
 
 
 
@@ -12507,7 +13186,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12516,7 +13199,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12526,7 +13213,11 @@ button
 
 
 
+
+
 	
+
+
 
 
 
@@ -12535,7 +13226,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12544,7 +13239,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12553,7 +13252,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12562,7 +13265,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -12574,7 +13281,13 @@ background
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12582,7 +13295,13 @@ background
 
 
 
+
+
 transparent
+
+
+
+
 
 
 
@@ -12597,7 +13316,13 @@ box-sizing
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12605,7 +13330,13 @@ box-sizing
 
 
 
+
+
 border-box
+
+
+
+
 
 
 
@@ -12620,7 +13351,13 @@ color
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12628,7 +13365,13 @@ color
 
 
 
+
+
 rgba
+
+
+
+
 
 
 
@@ -12646,8 +13389,16 @@ rgba
 
 
 
+
+
+
+
 );
 position
+
+
+
+
 
 
 
@@ -12658,11 +13409,19 @@ position
 
 
 
+
+
  
 
 
 
+
+
 relative
+
+
+
+
 
 
 
@@ -12677,11 +13436,19 @@ outline
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -12693,11 +13460,19 @@ border
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -12709,7 +13484,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12717,7 +13498,13 @@ display
 
 
 
+
+
 inline-block
+
+
+
+
 
 
 
@@ -12732,7 +13519,13 @@ inline-block
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12740,7 +13533,13 @@ inline-block
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -12755,7 +13554,13 @@ center
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12763,7 +13568,13 @@ center
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -12778,7 +13589,13 @@ align-items
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12786,7 +13603,13 @@ align-items
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -12801,7 +13624,13 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12809,9 +13638,15 @@ padding
 
 
 
+
+
 0
 6
 px
+
+
+
+
 
 
 
@@ -12826,11 +13661,19 @@ margin
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -12839,12 +13682,20 @@ px
 
 
 
+
+
  
+
+
 
 
 
 8
 px
+
+
+
+
 
 
 
@@ -12859,7 +13710,13 @@ line-height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12867,8 +13724,14 @@ line-height
 
 
 
+
+
 36
 px
+
+
+
+
 
 
 
@@ -12883,7 +13746,13 @@ min-height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12891,8 +13760,14 @@ min-height
 
 
 
+
+
 36
 px
+
+
+
+
 
 
 
@@ -12907,7 +13782,13 @@ white-space
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12915,7 +13796,13 @@ white-space
 
 
 
+
+
 nowrap
+
+
+
+
 
 
 
@@ -12930,7 +13817,13 @@ min-width
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12938,8 +13831,14 @@ min-width
 
 
 
+
+
 88
 px
+
+
+
+
 
 
 
@@ -12954,7 +13853,13 @@ text-align
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12962,7 +13867,13 @@ text-align
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -12977,7 +13888,13 @@ text-transform
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -12985,7 +13902,13 @@ text-transform
 
 
 
+
+
 uppercase
+
+
+
+
 
 
 
@@ -13000,7 +13923,13 @@ font-size
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -13008,8 +13937,14 @@ font-size
 
 
 
+
+
 14
 px
+
+
+
+
 
 
 
@@ -13024,7 +13959,13 @@ text-decoration
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -13032,7 +13973,13 @@ text-decoration
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -13047,7 +13994,13 @@ cursor
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -13055,7 +14008,13 @@ cursor
 
 
 
+
+
 pointer
+
+
+
+
 
 
 
@@ -13070,11 +14029,19 @@ border
 
 
 
+
+
+
+
 :
 
 
 
+
+
  
+
+
 
 
 
@@ -13083,7 +14050,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -13091,11 +14062,19 @@ solid
 
 
 
+
+
  
 
 
 
+
+
 transparent
+
+
+
+
 
 
 
@@ -13110,7 +14089,13 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -13118,8 +14103,14 @@ border-radius
 
 
 
+
+
 2
 px
+
+
+
+
 
 
 
@@ -13161,9 +14152,17 @@ button.btn {
 
 
 
+
+
+
+
 .bottom
 ,
 .alertify-logs
+
+
+
+
 
 
 
@@ -13174,7 +14173,11 @@ button.btn {
 
 
 
+
+
  
+
+
 
 
 
@@ -13183,7 +14186,11 @@ button.btn {
 
 
 
+
+
  
+
+
 
 
 
@@ -13195,7 +14202,13 @@ bottom
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -13203,8 +14216,14 @@ bottom
 
 
 
+
+
 16
 px
+
+
+
+
 
 
 
@@ -13221,9 +14240,17 @@ px
 
 
 
+
+
+
+
 .left
 ,
 .alertify-logs
+
+
+
+
 
 
 
@@ -13234,7 +14261,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -13243,7 +14274,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -13255,7 +14290,13 @@ left
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -13263,8 +14304,14 @@ left
 
 
 
+
+
 16
 px
+
+
+
+
 
 
 

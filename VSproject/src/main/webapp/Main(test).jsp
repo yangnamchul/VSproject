@@ -27,36 +27,46 @@
 				<!-- 				검색 div -->
 				<!-- 				<div class="col-xs-8" align="right" style="display:none;"> -->
 				
-				   <div class="col-xs-8">			
+				   <div class="col-xs-8" align="right">			
 					
-<!-- 					display: none; -->
-<!-- 					<form action="#" method="get" id="right-search-form" style=""> -->
-<!-- 						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름">  -->
-<!-- 						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px"/> </button> -->
-<!-- 					</form> -->
+					
+					<form action="#" method="get" id="right-search-form" style="display: none;">
+						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
+						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
+					</form>
 
-					<div class="top-menu" style="float:right !important;">								
-						<div class="right-row">
-						<div class="right-col"><img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
-						<div class="right-col" align="center"><img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>				 							
+					<div class="top-menu">	
+						<div class="right-col" id="btn-search">							
+							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
+							<div class="right-row"> 검색</div>						
 						</div>
-						<div class="right-row">
-							<div class="right-col">검색</div>
-							<div class="right-col">로그인</div>
+						<div class="right-col" id="btn-login">							
+							<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
+							<div class="right-row"> 로그인</div>						
 						</div>
 					</div>
+						
+						
 
-					<!-- 					<div class="top-menu"> -->
-<!-- 						검색 -->
-<!-- 						<img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /> -->
-<!-- 						로그인 -->
-<!-- 						<img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"	alt="" /> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
 					
 				</div>
 			</div>
 			</div>
+			
+<!-- 			로그인 팝업창  -->
+			<div class="col-xs-4" id="loginDiv" style="display: none;">
+						<h3>
+							<ul class="vss-a-menu" id="pop_login">
+								<li>아이디  <input type="text" /> </a></li>
+								<li>암　호  <input type="text" /> </a></li>
+								<li>확　인  <input type="text" /> </a></li>
+								<li>이메일  <input type="text" /> </a></li>
+								<li>코　드  <input type="text" /> </a></li>
+								<div align="center"> <button>완료</button></div>
+																
+							</ul>
+						</h3>
+					</div>
 			
 		
 
@@ -101,24 +111,8 @@
 					</div>
 
 					<div id="header-top-notice" class="col-xs-8" align="center">
-						부스러기 | 최신VS | 인기VS | <span id="loginBtn">공지사항 </span>
-					</div>
-
-
-					<div class="col-xs-4" id="loginDiv" style="display: none;">
-						<h3>
-							<ul class="vss-a-menu">
-								<li><a href="Board.do"> 게시판 </a></li>
-								<li><a href="UserAllData.do">유저정보 전부보기</a></li>
-								<li><a href="SignUp.do">회원가입</a></li>
-								<li><a href="Login.do">로그인</a></li>
-								<li><a href="">메인</a></li>
-							</ul>
-
-						</h3>
-					</div>
-
-
+						부스러기 | 최신VS | 인기VS | 공지사항 
+					</div>		
 
 
 					<!-- 메인바 우측메뉴	 -->
@@ -223,9 +217,16 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() { //DOM이 준비되고
-			$('#loginBtn').click(function() {
-				$('#loginDiv').toggle();
+// 			$('#btn-search').click(function() {
+			$("[id='btn-search']").click(function() {
+				$('#right-search-form').toggle();				
+				
 			});
+			
+			$("[id='btn-login']").click(function() {
+				$('#loginDiv').toggle();
+				});
+			
 		});
 	</script>
 
