@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+   <configuration>
+        <!--  <typeAliases> 
+             <typeAlias type="com.vs.my.User.DAOVO.UserVO" alias="User"/>                                                 
+         </typeAliases>
+         <environments default="development"> 
+                  <environment id="development">
+                           <transactionManager type="JDBC"/>
+                             
+                           <dataSource type="POOLED"> 
+         <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+         <property name="url" value="jdbc:oracle:thin:@DESKTOP-S1PLQAG:1521:xe" />
+         <property name="username" value="vss"/>
+         <property name="password" value="vss"/>
+                           </dataSource>
+                  </environment>
+         </environments>
+         <mappers> 
+           <mapper resource="mapper/user-mapper.xml" />
+          
+         
+         </mappers> -->
+         
+         
+         <typeAliases>		
+  <typeAlias type="com.vs.my.User.DAOVO.UserVO" alias="User"/>    
+   <typeAlias type="com.vs.my.Board.DAOVO.BoardVO" alias="Board"/>                                              
+         </typeAliases>
+
+   </configuration>
+
+
+
+
+
+
+<!-- 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+         <typeAliases> 
+             <typeAlias type="com.Employee.DAOVO.EmployeeVO" alias="sawon"/>
+                                                 
+         </typeAliases>
+ 	DB Connection default 설정
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			트랜잭션매니저가 JDBC (commit,rollback)  
+			컨테이너가 할 경우에는 Managed 적으면됨 JDBC대신
+			<dataSource type="POOLED"> conncetion pool
+				Unpooled : DB연결시 매번이므로 test시 사용함
+					JNDI(Java Naming Directory Interface) : pool에 이름을 준것 DB정보를 자바에 넣지 않고 WAS에 너어주고 이름을 줌
+				<property name="driver"	value="oracle.jdbc.driver.OracleDriver"></property>
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="hr"></property>
+				<property name="password" value="hr"></property>
+			</dataSource>
+		</environment>
+	</environments>
+</configuration>
+
+<mapper>
+	<mapper resource="com/Employee/DAOVO/employees-mapper.xml">
+	employees-mapper.xml는 sql무장을 annotation으로 적어놓은 곳 특히 preparedStatement 형식으로 
+	preparedstatement 의 sql문을  dao.java 에 해당되는곳으로 넘겨준다.
+	</mapper>	
+</mapper>
+ -->

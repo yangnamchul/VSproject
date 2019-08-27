@@ -1,0 +1,118 @@
+package com.vs.my.Board.Controller;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.vs.my.Board.DAOVO.BoardVO;
+import com.vs.my.Board.Service.BoardService;
+
+@Controller
+public class BoardController {
+	
+	@Autowired
+	BoardService bs;
+	
+	//////////////////////////// 게시판 관련 ////////////////////////////////"
+	
+	@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판
+	public ModelAndView Board(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Board");
+		
+		List<BoardVO> boardlist = bs.BoardAllData();
+		
+		mv.addObject("boardlist", boardlist);
+		
+		return mv;
+		
+		
+	}
+	
+	@RequestMapping(value="Category.do",method=RequestMethod.GET) // 카테고리
+	public ModelAndView Category(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Category");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="OneView.do", method=RequestMethod.GET) //글 하나 보기
+	public ModelAndView OneView(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("OneView");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
+	public ModelAndView BoardWriteData(BoardVO vo, HttpServletRequest req, HttpSession se){
+		ModelAndView mv = new ModelAndView();
+		
+		
+        String st= (String) se.getAttribute("u_id");
+		vo.setU_id(st);
+		System.out.println(st+"==> user_seq1");
+		mv.setViewName("WritePost");
+		return mv;
+	}
+	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
+	public ModelAndView BoardInsertData(BoardVO vo, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
+		ModelAndView mv = new ModelAndView();
+		
+		String st= (String) se.getAttribute("u_id");
+		int c_seq=1;
+		vo.setU_id(st);
+		vo.setC_seq(c_seq);
+		System.out.println(st+"==> user_seq2");
+		System.out.println(vo.getB_imgpath());
+		bs.BoardInsertData(vo);
+		
+		mv.setViewName("Board");
+		return mv;
+	}
+	
+	@RequestMapping(value="BoardInsertFile.do", method=RequestMethod.POST) //이미지 저장 메소드
+	@ResponseBody
+	public String BoardInsertFile(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String path = "filesave";
+		System.out.println(file.getName());
+		String img_name = bs.BoardFileSave(path, file, request, response);
+		
+		String path1 = "http://127.0.0.1:8887\\" + img_name;
+		
+		return path1;
+	}
+	
+	@RequestMapping(value="EditPost.do", method=RequestMethod.POST) //글 수정 화면
+	public ModelAndView EditPost(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("EditPost");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
+	public ModelAndView Search(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Search");
+		
+		return mv;
+	}
+	
+}

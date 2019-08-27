@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+body{font-family: sans-serif;
+color:#fff;
+}
+
+input[type=text], input[type=password]{
+	width: 100%;
+	padding:10px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border:none;
+	background-color:#ff4d00;
+	color:#fff;
+	box-shadow: 1px 1px 0 #ff4d00, 1px 1px 0 #fff;
+}
+
+input[type=text]:focus, input[type=password]:focus{
+	background-color:#ff4d00;
+	outline:none;
+}
+button{
+	background-color:#4CAF50;
+	color:white;
+	padding:14px 20px;
+	margin:8px 0;
+	border:none;
+	cursor:pointer;
+	width:100%;
+	opacity:0.9;
+}
+button:hover{
+	opacity:1;
+}
+.cancelbtn{
+	padding:14px 20px;
+	background-color: #f44336;
+}
+.cancelbtn, .signupbtn{
+	float:left;
+	width:50%;
+}
+.signup-container .password-container, .password-rep-container{
+	padding:16px;
+	color:#fff;
+}
+.signup-content{
+	background-color:#000084;
+	margin: 5% auto 15% auto;
+	border: 1px solid #888;
+	width:70%;
+}
+.clearfix::after{
+	content:"";
+	clear:both;
+	display:table;
+}
+.progress-bar_text{
+	display:inline-block;
+	color:#ff4d00;
+	margin-left:5px;
+	transition:.2s;
+}
+.password-container .password-req-container {
+	display:inline-block;
+	height:100%;
+	width:32.5%;
+	margin-right:.8;
+	border-radius:5px;
+	float:left;
+	transition: background-color .2s, visisility .1s;
+}
+.progress-bar_wrap{
+	width:300px;
+	height:5px;
+	background: #F6f6fa;
+	display: inline-block;
+	vertical-align:middle;
+	overflow:hidden;
+	border-radius: 5px;
+}
