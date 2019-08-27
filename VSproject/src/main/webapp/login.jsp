@@ -10,22 +10,17 @@
 	href="resources/css/test/login.css" />
 <link rel="stylesheet" type="text/css"
 	href="resources/css/test/login_g.css" />
+	
+	<link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" />
 
 
 
 </head>
 <body>
 
-	<div class="col-xs-4">
-		<form action="">
-			<ul class="vss-a-menu">
-				<li><a href="Board.do"> 게시판 </a></li>
-				<li><a href="UserAllData.do">유저정보 전부보기</a></li>
-				<li><a href="SignUp.do">회원가입</a></li>
-				<li><a href="Login.do">로그인</a></li>
-				<li><a href="">메인</a></li>
-			</ul>
-		</form>
+
+
+	
 
 
 	</div>

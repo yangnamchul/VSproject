@@ -59,6 +59,25 @@ header #right-search-form>input[type=text]::after {
 	content: "asdf"
 }
 
+header #right-login {
+	display: inline-block;
+	position: relative;	
+/* 	border: 3px solid #ff4d00; */
+/* 	background: #fff; */
+/* 	font-size: 1.1em; */
+	padding: 0.3em 0.5em
+}
+
+header #top-menu {	
+	display : inline-flex ;	
+	vertical-align: bottom;
+	text-align: right;
+	
+
+}
+
+
+
 header #header-bar {
 	margin-top: 1em;
 	margin-bottom: 1em;

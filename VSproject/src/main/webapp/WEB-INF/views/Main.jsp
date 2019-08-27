@@ -20,6 +20,7 @@
 	<header>
 		<div class="container">
 			<div class="row">
+			
 				<div class="col-xs-4">
 					<a href="/"> <span class="VSlogo">부스러기 </span> <img
 						src="http://icons.iconarchive.com/icons/pixture/donuts/32/Yummy-icon.png"
@@ -27,25 +28,43 @@
 					</a>
 				</div>
 
+
 				<!-- 				검색 div -->
-				<div class="col-xs-8" align="right">
-					<form action="#" method="get" id="right-search-form">
-						<input type="text" placeholder="부스러기 검색" value=""
-							id="right-search-input" name="q"> 검색 아이콘
+				<!-- 				<div class="col-xs-8" align="right" style="display:none;"> -->
+				<div class="col-xs-8" align="right" id="right-login">
+
+					<form action="#" method="get" id="right-search-form" style="display: none;">
+						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="q"> 검색 아이콘
 						<button type="submit" id="search-btn">
-							<i class="fa fa-search"></i>
+							<i class="#">위치</i>
 						</button>
 					</form>
+
+					<!-- 					<div class="col-xs-2" align="right">					 -->
+							
+					<div id="top-menu">  
+					<div> 훠이훠이 </div>
+					<h3>검색</h3>					
+					<img
+						src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png"
+						alt="" />
+
+					<h3>로그인</h3>
+					<img
+						src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"
+						alt="" />					
+					</div>
+					
 				</div>
+
 			</div>
-		</div>
 
-		<div id="header-bar" class="container">
-			<div class="row">
-				<div id="header-menu-left" class="col-xs-2" align="left">
+			<div id="header-bar" class="container">
+				<div class="row">
+					<div id="header-menu-left" class="col-xs-2" align="left">
 
-					<!-- 스크립트로 소메뉴 여는 부분 Class -->
-					<!-- <div class="dropdown">
+						<!-- 스크립트로 소메뉴 여는 부분 Class -->
+						<!-- <div class="dropdown">
 						<a href="#" class="dropdown-toggle" id="latestDropdown"
 							data-toggle="dropdown"> <i class="fa fa-clock-o"></i> 최근<span
 							class="caret"></span>
@@ -76,33 +95,33 @@
 							<li><a href="/play/chatutil">채팅툴</a></li>
 						</ul>
 					</div> -->
-					<!-- 스크립트로 소메뉴 여는 부분 Close -->
+						<!-- 스크립트로 소메뉴 여는 부분 Close -->
 
-				</div>
+					</div>
 
-				<div id="header-top-notice" class="col-xs-8" align="center">
-					부스러기 | 최신VS | 인기VS | <span id="loginBtn">공지사항 </span>
-				</div>
-
-
-				<div class="col-xs-4" id="loginDiv" style="display: none;">
-					<h3>
-						<ul class="vss-a-menu">
-							<li><a href="Board.do"> 게시판 </a></li>
-							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
-							<li><a href="SignUp.do">회원가입</a></li>
-							<li><a href="Login.do">로그인</a></li>
-							<li><a href="">메인</a></li>
-						</ul>
-
-					</h3>
-				</div>
+					<div id="header-top-notice" class="col-xs-8" align="center">
+						부스러기 | 최신VS | 인기VS | <span id="loginBtn">공지사항 </span>
+					</div>
 
 
+					<div class="col-xs-4" id="loginDiv" style="display: none;">
+						<h3>
+							<ul class="vss-a-menu">
+								<li><a href="Board.do"> 게시판 </a></li>
+								<li><a href="UserAllData.do">유저정보 전부보기</a></li>
+								<li><a href="SignUp.do">회원가입</a></li>
+								<li><a href="Login.do">로그인</a></li>
+								<li><a href="">메인</a></li>
+							</ul>
+
+						</h3>
+					</div>
 
 
-				<!-- 메인바 우측메뉴	 -->
-				<!-- <div id="header-menu-right" class="col-xs-2" align="right">
+
+
+					<!-- 메인바 우측메뉴	 -->
+					<!-- <div id="header-menu-right" class="col-xs-2" align="right">
 					<div class="dropdown">
 						<a href="/note/lists" class="dropdown-toggle"> <i
 							class="fa fa-envelope-o"></i> <span class="caret"></span>
@@ -120,9 +139,9 @@
 					</div>
 				</div> -->
 
+				</div>
+				<!-- row end -->
 			</div>
-			<!-- row end -->
-		</div>
 	</header>
 
 	<!-- 	Content 내용부분 -->
@@ -131,7 +150,6 @@
 		<div class="container" id="main">
 
 			<div class="row">
-
 				<div class="col-xs-4">
 					<h3>
 						<ul class="vss-a-menu">
@@ -201,14 +219,14 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">		
-	$(document).ready(function(){ //DOM이 준비되고
-	    $('#loginBtn').click(function(){ 
-	        $('#loginDiv').toggle(); 
-	    });
-	});
 
-</script>
+	<script type="text/javascript">
+		$(document).ready(function() { //DOM이 준비되고
+			$('#loginBtn').click(function() {
+				$('#loginDiv').toggle();
+			});
+		});
+	</script>
 
 </body>
 </html>
