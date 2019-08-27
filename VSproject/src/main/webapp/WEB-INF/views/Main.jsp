@@ -11,6 +11,8 @@
 	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -79,7 +81,24 @@
 				</div>
 
 				<div id="header-top-notice" class="col-xs-8" align="center">
-					부스러기 | 최신VS | 인기VS | 공지사항</div>
+					부스러기 | 최신VS | 인기VS | <span id="loginBtn">공지사항 </span>
+				</div>
+
+
+				<div class="col-xs-4" id="loginDiv" style="display: none;">
+					<h3>
+						<ul class="vss-a-menu">
+							<li><a href="Board.do"> 게시판 </a></li>
+							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
+							<li><a href="SignUp.do">회원가입</a></li>
+							<li><a href="Login.do">로그인</a></li>
+							<li><a href="">메인</a></li>
+						</ul>
+
+					</h3>
+				</div>
+
+
 
 
 				<!-- 메인바 우측메뉴	 -->
@@ -181,6 +200,15 @@
 			</div>
 		</div>
 	</div>
-	</div>
+
+	<script type="text/javascript">		
+	$(document).ready(function(){ //DOM이 준비되고
+	    $('#loginBtn').click(function(){ 
+	        $('#loginDiv').toggle(); 
+	    });
+	});
+
+</script>
+
 </body>
 </html>
