@@ -10,8 +10,15 @@
 	
 	<insert id="BoardInsertData"> <!-- resultType="user" user객체로 쿼리 실행 결과값을 받고자 할 때 -->
 		insert into board
-		values(board_sequence1.NEXTVAL, #{u_id},#{c_seq},#{b_title},#{b_content},1, sysdate, #{b_tag},0,null,#{b_imgpath})
+		values(board_sequence1.NEXTVAL, #{u_id},#{c_seq},#{b_title},#{b_content},1, sysdate, #{b_tag},0,null)
 	</insert>
+	
+	<select id="BoardOneView" resultType="board">
+		SELECT *
+		FROM board
+		WHERE b_seq = #{b_seq}
+	</select>
+	
 	
 	
 </mapper>

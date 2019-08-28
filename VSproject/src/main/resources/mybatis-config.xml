@@ -24,8 +24,8 @@
          
          
          <typeAliases>		
-  <typeAlias type="com.vs.my.User.DAOVO.UserVO" alias="User"/>    
-   <typeAlias type="com.vs.my.Board.DAOVO.BoardVO" alias="Board"/>                                              
+  			<typeAlias type="com.vs.my.User.DAOVO.UserVO" alias="User"/>    
+   			<typeAlias type="com.vs.my.Board.DAOVO.BoardVO" alias="Board"/>                                              
          </typeAliases>
 
    </configuration>

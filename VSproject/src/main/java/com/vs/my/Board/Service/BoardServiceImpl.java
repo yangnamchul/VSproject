@@ -73,4 +73,10 @@ public class BoardServiceImpl implements BoardService
 		out.close();
 	}
 
+	@Override
+	public BoardVO BoardOneView(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return bdao.BoardOneView(vo);
+	}
+
 }

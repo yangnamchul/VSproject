@@ -51,36 +51,46 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping(value="OneView.do", method=RequestMethod.GET) //글 하나 보기
-	public ModelAndView OneView(HttpServletRequest req) {
+	@RequestMapping(value="BoardOneView.do", method=RequestMethod.GET) //글 하나 보기
+	public ModelAndView BoardOneView(HttpServletRequest request, BoardVO bv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("OneView");
+		
+		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
+		
+		bv.setB_seq(b_seq);
+		
+		System.out.println(bv.getB_seq());
+		
+		BoardVO vo = bs.BoardOneView(bv);
+		
+		mv.addObject("vo",vo);
 		
 		return mv;
 	}
 	
 	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
-	public ModelAndView BoardWriteData(BoardVO vo, HttpServletRequest req, HttpSession se){
+	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest req, HttpSession se){
 		ModelAndView mv = new ModelAndView();
 		
 		
         String st= (String) se.getAttribute("u_id");
-		vo.setU_id(st);
+		bv.setU_id(st);
 		System.out.println(st+"==> user_seq1");
 		mv.setViewName("WritePost");
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO vo, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
+	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
 		ModelAndView mv = new ModelAndView();
 		
 		String st= (String) se.getAttribute("u_id");
 		int c_seq=1;
-		vo.setU_id(st);
-		vo.setC_seq(c_seq);
+		bv.setU_id(st);
+		bv.setC_seq(c_seq);
 		System.out.println(st+"==> user_seq2");
-		System.out.println(vo.getB_imgpath());
-		bs.BoardInsertData(vo);
+		
+		bs.BoardInsertData(bv);
 		
 		mv.setViewName("Board");
 		return mv;
