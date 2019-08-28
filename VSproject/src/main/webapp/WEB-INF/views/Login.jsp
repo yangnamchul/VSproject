@@ -31,6 +31,7 @@
 			alertify.alert("비밀번호를 입력해주세요");
 			return;
 		};
+		
 		jQuery.ajax({
 			type:"POST",
 			url:"LoginAction.do",

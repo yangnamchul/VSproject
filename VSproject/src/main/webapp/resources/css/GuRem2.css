@@ -1,34 +1,46 @@
 @charset "UTF-8";
 
-@font-face { font-family: 'DungGeunMo'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face {
+	font-family: 'DungGeunMo';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Header 
 작성자 : GuRem
 2019.08.24 - GuRem 초기 작성 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+/* 색깔 파레트  
+ 000084 -> 천리안 블루 
+ FFFF44 -> 다운로드 옐로우
+ ff4d00 -> 퍼스널 오렌지
+ #6441a5 -> #f77754 #ff4d00
+*/
 .VSlogo {
-	
-	/* 퍼스널컬러 	
-	#6441a5 -> #f77754 */
+	/* 	 퍼스널컬러 	 */
 	font-family: 'Gugi', cursive;
 	font-size: 4.0em;
-	color: #f77754; /* 오렌지 */
+	color: #ff4d00; /* 오렌지 */
 	/* 	text-shadow: 2px 3px 3px #332e2e; */
 }
 
 /* 시작부분 위아래 간격 */
 header {
-	padding: 0.4em 0
+	padding: 0.4em 0;
 }
 
 /* header #right-search-form { */
 header #right-menu {
-	padding: 0.5em 0
+	padding: 0.5em 0;
 }
 
 header #right-#right-menu>#right-search-btn {
-	color: #f77754;
+	color: #ff4d00;
 	background: transparent;
 	border: none;
 	font-size: 1.4em
@@ -36,7 +48,7 @@ header #right-#right-menu>#right-search-btn {
 
 header #right-search-form>input[type=text] {
 	position: relative;
-	border: 3px solid #f77754;
+	border: 3px solid #ff4d00;
 	background: #fff;
 	font-size: 1.1em;
 	padding: 0.3em 0.5em
@@ -46,6 +58,53 @@ header #right-search-form>input[type=text]::after {
 	content: "asdf"
 }
 
+header #right-login {
+	display: inline-block;
+	position: relative;
+	/* 	border: 3px solid #ff4d00; */
+	/* 	background: #fff; */
+	/* 	font-size: 1.1em; */
+	padding: 0.3em 0.5em
+}
+
+header #btn-search {
+	float: right;
+}
+
+header #btn-login {
+	float: right;
+}
+
+/* 28일 새벽 건영 아이콘 창 부분  */
+header .top-menu {
+	display: table;
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 black;
+/* 	position: relative; */
+	position: sticky;
+	top: 0; 
+/* 	bottom: -10px; */
+	width:100%;
+	
+}
+
+header .right-row {
+	display: table-row;
+	padding: 3px 11px;
+	cursor: pointer;
+}
+
+header .right-col {
+	display: table-cell;
+	padding: 2px 5px;
+	cursor: pointer;
+	color: #000084;
+	float: left}
+
+header .right-col:active {
+	background-color: #555555;
+}
+
 header #header-bar {
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -53,37 +112,17 @@ header #header-bar {
 	padding-left: 30px
 }
 
-
 /* ■■■□ Header-bar_row 테두리  □■■■ */
 header #header-bar>.row {
-/* 	background: #f77754; 
-	background: #f77754;
-	padding-top: 0.3em;
-	padding-bottom: 0.3em;
-	
-	border-top: 3px double #f77754;
-/* 	border-left: 2px solid #ebeae8; 
-/* 	border-bottom: 2px solid #ebeae8; 
-/* 	border-right: 2px solid #ebeae8; 
-	border-left: 3px double #f77754;
-	border-bottom: 3px double #f77754;
-	border-right: 3px double #f77754;	
-
-	display:table;
-	width: 100%;  
-	table-layout: fixed;
-	/* 	border-top: 5px solid #f77754; */
-	
-	background-color: #f77754;
+	background-color: #ff4d00;
 	padding: 0.3em;
 	line-height: 1.4;
-	color: black;	
-	box-shadow: 4px 4px 0 white;
-	word-break: break-word;	
-	
+	color: black;
+	/* 	그림자 */
+	/* 	box-shadow: 4px 4px 0 #ff0000; */
+	box-shadow: 4px 4px 0 #BBBBBB;
+	word-break: break-word;
 }
-
-
 
 header #header-bar a.dropdown-toggle {
 	display: inline-block;
@@ -144,7 +183,7 @@ header #header-bar #header-menu-right #note-notification-badge {
 	background: #d80a0a
 }
 
-	/* ■■■□ header-bar 가운데 내용   □■■■ */
+/* ■■■□ header-bar 본문 내용   □■■■ */
 header #header-bar #header-top-notice {
 	padding: 0em 0;
 	font-size: 2.0em;
@@ -152,13 +191,15 @@ header #header-bar #header-top-notice {
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	
-	font-family: 'DungGeunMo'; src :
-	url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
-	format( 'woff'); font-weight : normal; font-style : normal;
-	color: white; 
-/* 	font-family: 'Poor Story', cursive; */
-/* 	font-weight: bold; */
+	font-family: 'DungGeunMo';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	color: white;
+	/* 	font-family: 'Poor Story', cursive; */
+	/* 	font-weight: bold; */
 }
 
 header #header-bar #header-top-notice
@@ -168,15 +209,128 @@ a {
 }
 
 header #header-bar #header-top-notice strong.notice-badge {
-	background: #f77754;
+	background: #ff4d00;
 	padding: 4px 8px;
 	color: #fff;
 	font-weight: bold
 }
 
+/* 본문 content container */
+#content-area>.container {
+	position: relative
+}
 
+/* 부스러기 인기글  */
+ul.vss-hot {
+	list-style: none;
+	/* 	background: #fff; */
+	/* 	border-bottom: 2px solid #ebeae8; */
+	/* 	border-right: 2px solid #ebeae8; */
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 black, -2px -2px 0 white;
+}
 
+ul.vss-hot>li, ul.vss-hot>.row>li {
+	display: block;
+	padding: 0.2em 0.5em;
+	margin-left: -30px;
+	border-bottom: 1px solid #f3f3f3
+}
 
+ul.vss-hot>li:last-of-type, ul.vss-hot>.row li:last-of-type {
+	border-bottom: none
+}
+
+/* 부스러기 본문 링크 */
+ul.vss-hot>li a, ul.vss-hot>.row li
+a {
+	display: inline-block;
+	max-width: 250px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #000084;
+}
+
+/* 부스러기  링크  */
+ul.vss-hot>li a.board-name, ul.vss-hot>.row li a.board-name {
+	font-weight: font-weight: 500;
+	background-color: #ff4d00;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	margin-right: 10px;
+	font-size: 22px !important;
+}
+
+/* 나누기 선 디자인 */
+ul.vss-hot>li>span {
+	display: inline-block;
+	max-width: 250px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	vertical-align: middle;
+	color: #000084;
+	margin-right: 10px
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 심플 간이 메뉴 링크 (vss-a-menu) 
+작성자 : GuRem
+2019.08.27 - GuRem 초기 작성  */
+ul.vss-a-menu {
+	/* 	background: #fff; */
+	/* 	border-bottom: 2px solid #ebeae8; */
+	/* 	border-right: 2px solid #ebeae8; */
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: #000084;
+	color: white;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+
+ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
+	background-color: #000084;
+	color: white;
+}
+
+#pop_login {
+	position: absolute;
+	padding: 10px 21px;
+	right: -733px;
+	bottom: -313px;
+	z-index: 500;
+	width: 317px;
+}
+
+#pop_login>li {
+	list-style: none;
+	margin: 1px;
+}
+
+#pop_login>li>input[type=text], #pop_login>li>input[type=password] {
+	font-size: 18px;
+	padding: 0px 3px;
+	margin: 1px;
+	color: black;
+	background: #bbbbbb;
+	/* width: 1%; */
+	/* height: 1.5em; */
+}
+
+#pop_login>div>button {
+	color: white;
+	background-color: #ff4d00;
+}
+
+#pop_login>#pop_login_btn {
+	margin: 5px;
+}
+
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 
 /* ■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■ */
 /* 여기부터 BootStrap Import */
@@ -312,7 +466,27 @@ header #header-bar #header-top-notice strong.notice-badge {
 
 
 
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -323,7 +497,27 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -342,7 +536,27 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -353,7 +567,27 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3179,35 +3413,115 @@ audio, canvas, progress, video {
 audio
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 [
 controls
 ]
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 display
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 none
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 height
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -3271,24 +3585,84 @@ img {
 svg
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :root
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 overflow
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 hidden
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4549,12 +4923,17 @@ html {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
+/* 문자 바디 */
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.42857143;
-	color: #333;
-	background-color: #fff
+	/* 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+	/* 	font-size: 14px; */
+	/* 	line-height: 1.42857143; */
+	/* 	color: #333; */
+	/* 	background-color: #fff; */
+	font-family: 'DungGeunMo', monospace;
+	font-size: 16px;
+	color: black;
+	fill: black;
 }
 
 button, input, select, textarea {
@@ -4563,13 +4942,15 @@ button, input, select, textarea {
 	line-height: inherit
 }
 
+/* #미영씨 a링크 색깔 지정  */
 a {
-	color: #337ab7;
+	/* 	color: #FFFF44; */
 	text-decoration: none
 }
 
 a:focus, a:hover {
-	color: #23527c;
+	/* 	color: #23527c; */
+	color: #fff;
 	text-decoration: underline
 }
 
@@ -7211,43 +7592,133 @@ tbody.collapse.in {
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .dropdown-toggle
 
 
+
+
+
+
+
 	
+
+
+
+
+
 
 ){
 border-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -7260,43 +7731,143 @@ border-radius
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
+
+
+
+
 
 
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .dropdown-toggle
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-top-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border-bottom-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -7305,17 +7876,57 @@ border-bottom-right-radius
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
+
+
+
+
 
 
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ),
 .btn-group
@@ -7323,31 +7934,101 @@ border-bottom-right-radius
 .dropdown-toggle
 
 
+
+
+
+
+
+
+
+
+
+
 :not
+
+
+
+
+
 
 
 	
 
+
+
+
+
+
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-top-left-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border-bottom-left-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -7434,32 +8115,102 @@ border-bottom-left-radius
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -7468,57 +8219,197 @@ border-radius
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
+
+
+
+
 
 
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-top-left-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 4
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 border-top-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 4
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 border-bottom-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border-bottom-left-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -7527,56 +8418,196 @@ border-bottom-left-radius
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
+
+
+
+
 
 
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-top-left-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border-top-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border-bottom-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 4
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 border-bottom-left-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 4
 px
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7704,83 +8735,263 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 .input-group
 
+
+
+
+
+
  
+
+
+
+
+
 
 .form-control
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ),
 .input-group-addon
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ),
 .input-group-btn
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :first-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -7821,9 +9032,29 @@ border-radius
 
 .input-group
 
+
+
+
+
+
  
 
+
+
+
+
+
 .form-control
+
+
+
+
+
+
+
+
+
+
 
 
 :first-child
@@ -7831,9 +9062,29 @@ border-radius
 .input-group-addon
 
 
+
+
+
+
+
+
+
+
+
+
 :first-child
 ,
 .input-group-btn
+
+
+
+
+
+
+
+
+
+
 
 
 :first-child
@@ -7841,6 +9092,16 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
+
+
+
+
+
+
 
 
 :first-child
@@ -7850,6 +9111,16 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
+
+
+
+
+
+
 
 
 :first-child
@@ -7859,20 +9130,60 @@ border-radius
 .input-group-btn
 
 
+
+
+
+
+
+
+
+
+
+
 :last-child
 >
 .btn-group
 
 
+
+
+
+
+
+
+
+
+
+
 :not
+
+
+
+
+
 
 
 	
 
+
+
+
+
+
 (
 :last-child
 
+
+
+
+
+
  
+
+
+
+
+
 
 )>
 .btn
@@ -7880,46 +9191,146 @@ border-radius
 .input-group-btn
 
 
+
+
+
+
+
+
+
+
+
+
 :last-child
 >
 .btn
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 :last-child
 
 
+
+
+
+
+
 	
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .dropdown-toggle
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 border-top-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border-bottom-right-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 }
@@ -11572,84 +12983,284 @@ i {
 
 .alertify
 
+
+
+
+
+
  
+
+
+
+
+
 
 .alert
 
+
+
+
+
+
  
+
+
+
+
+
 
 input
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .form-control
 
+
+
+
+
+
  
+
+
+
+
+
 
 ),
 .alertify
 
+
+
+
+
+
  
+
+
+
+
+
 
 .dialog
 
+
+
+
+
+
  
 
+
+
+
+
+
 input
+
+
+
+
+
+
+
+
+
+
 
 
 :not
 
 
+
+
+
+
+
 	
+
+
+
+
+
 
 (
 .form-control
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 margin-bottom
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 15
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 width
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 100%;
 font-size
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 100%;
 padding
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 12
 px
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11667,146 +13278,476 @@ nav {
 
 .alertify
 
+
+
+
+
+
  
+
+
+
+
+
 
 .alert
 
+
+
+
+
+
  
+
+
+
+
+
 
 nav
 
+
+
+
+
+
  
+
+
+
+
+
 
 button
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .btn
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .pure-button
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .md-button
 
 
+
+
+
+
+
 	
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .mdl-button
 
+
+
+
+
+
  
+
+
+
+
+
 
 ),
 .alertify
 
+
+
+
+
+
  
+
+
+
+
+
 
 .dialog
 
+
+
+
+
+
  
+
+
+
+
+
 
 nav
 
+
+
+
+
+
  
+
+
+
+
+
 
 button
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .btn
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .pure-button
 
 
+
+
+
+
+
 	
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .md-button
 
+
+
+
+
+
  
+
+
+
+
+
 
 )
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .mdl-button
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 background
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 transparent
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 box-sizing
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 border-box
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 color
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 rgba
+
+
+
+
+
+
+
+
+
+
 
 
 (0
@@ -11816,240 +13757,860 @@ rgba
 .87
 
 
+
+
+
+
+
+
+
+
+
+
 );
 position
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 relative
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 outline
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 border
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0;
 display
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 inline-block
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 -ms-flex-align
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 center
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 -ms-grid-row-align
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 center
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 align-items
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 center
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 padding
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 0
 6
 px
 
 
+
+
+
+
+
+
+
+
+
+
 ;
 margin
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 6
 px
 
+
+
+
+
+
  
+
+
+
+
+
 
 8
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 line-height
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 36
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 min-height
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 36
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 white-space
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 nowrap
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 min-width
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 88
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 text-align
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 center
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 text-transform
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 uppercase
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 font-size
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 14
 px
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 text-decoration
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 none
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 cursor
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 pointer
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 border
 
 
+
+
+
+
+
+
+
+
+
+
 :
 
+
+
+
+
+
  
+
+
+
+
+
 
 1
 px
 
+
+
+
+
+
  
+
+
+
+
+
 
 solid
 
+
+
+
+
+
  
 
+
+
+
+
+
 transparent
+
+
+
+
+
+
+
+
+
+
 
 
 ;
 border-radius
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 2
 px
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12083,30 +14644,100 @@ button.btn {
 .alertify-logs
 
 
+
+
+
+
+
+
+
+
+
+
 .bottom
 ,
 .alertify-logs
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .top
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 bottom
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 16
 px
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12115,30 +14746,100 @@ px
 .alertify-logs
 
 
+
+
+
+
+
+
+
+
+
+
 .left
 ,
 .alertify-logs
 
 
+
+
+
+
+
+
+
+
+
+
 :not
 
+
+
+
+
+
  
+
+
+
+
+
 
 (
 .right
 
+
+
+
+
+
  
+
+
+
+
+
 
 ){
 left
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
 
  
 
+
+
+
+
+
 16
 px
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12211,7 +14912,7 @@ px
 html, body {
 	width: 100% !important;
 	height: 100%;
-	background: #f3f2f0
+	background: #fff /* 	background: #000084; 레트로 */
 }
 
 html {

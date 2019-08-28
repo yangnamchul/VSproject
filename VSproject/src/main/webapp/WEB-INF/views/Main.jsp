@@ -11,6 +11,11 @@
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" >
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<%
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
+%>
+
 </head>
 <body>
 
@@ -18,6 +23,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-4">
+				<div class="top-menu">	
+					
+					<div class="right-col" id="btn-search">					
+						<a href="/"> <span class="VSlogo">부스러기 </span> </a>
+					</div>					
+						<div class="right-col" id="btn-search">							
+							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
+							<div class="right-row"> 검색</div>						
+						</div>
+						<div class="right-col" id="btn-login">							
+							<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
+							<div class="right-row"> 로그인</div>						
+						</div>
+					</div>
+				
+				
 					<a href="/"> <span class="VSlogo">부스러기 </span> <img
 						src="http://icons.iconarchive.com/icons/pixture/donuts/32/Yummy-icon.png"
 						alt="" />
@@ -40,10 +61,24 @@
 							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
 							<div class="right-row"> 검색</div>						
 						</div>
-						<div class="right-col" id="btn-login">							
-							<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
-							<div class="right-row"> 로그인</div>						
-						</div>
+						
+					<%
+                		if (session.getAttribute("u_id") == null) {
+               		%>
+					<div class="right-col" id="btn-login">							
+						<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
+						<div class="right-row"> 로그인</div>						
+					</div>               
+					<%
+                  	} else {
+              		%>              		
+               		<div class="right-col" id="btn-logout">							
+						<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
+						<div class="right-row"> 로그아웃</div>						
+					</div>
+               		<%
+                	  }
+               		%>
 					</div>
 						
 						
@@ -54,20 +89,20 @@
 			</div>
 			
 <!-- 			로그인 팝업창  -->
-			<div class="col-xs-4" id="loginDiv" style="display: none;">
-						<h3>
-							<ul class="vss-a-menu" id="pop_login">
-								<li>아이디  <input type="text" /> </a></li>
-								<li>암　호  <input type="text" /> </a></li>
-								<li>확　인  <input type="text" /> </a></li>
-								<li>이메일  <input type="text" /> </a></li>
-								<li>코　드  <input type="text" /> </a></li>
-								<div align="center"> <button>완료</button></div>
-																
-							</ul>
-						</h3>
-					</div>
-			
+		<form id="loginForm" style="display: none;">
+		<h3>
+			<div class="col-xs-4" id="loginDiv" >
+					<ul class="vss-a-menu" id="pop_login">
+						<li>아이디  <input type="text" name="u_id" id="u_id"/></li>
+						<li>암　호  <input type="password" name="u_pw" id="u_pw"/></li>
+						<div align="center" id="pop_login_btn">
+							<button type="button" onclick = "login()">확인</button>
+							<button type="button" onclick = "">회원가입</button>							
+						</div>
+					</ul>
+			</div>
+		</h3>
+		</form>
 		
 
 			<div id="header-bar" class="container">
@@ -220,15 +255,52 @@
 // 			$('#btn-search').click(function() {
 			$("[id='btn-search']").click(function() {
 				$('#right-search-form').toggle();				
-				
 			});
 			
 			$("[id='btn-login']").click(function() {
-				$('#loginDiv').toggle();
-				});
+				$('#loginForm').toggle();
+			});
 			
+			$("[id='btn-logout']").click(function() {
+				<% session.invalidate();%>
+				location.reload();
+			});
 		});
 	</script>
+	
+	<script>
+	function login() {
+		if($("#u_id").val()=="") {
+			alertify.alert("아이디를 입력해주세요");
+			return;
+		};
+		if($("#u_pw").val()=="") {
+			alertify.alert("비밀번호를 입력해주세요");
+			return;
+		};
+		
+		jQuery.ajax({
+			type:"POST",
+			url:"LoginAction.do",
+			data:$("#loginForm").serialize(),
+			async : false,
+			dataType : "json",
+			success : function (data) {
+				if (data == 0) {
+					alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");
+					$("#u_id").val("");
+					$("#u_pw").val("");
+				} else  {
+					location.href = "Main";
+				}
+			},
+			error: function (req, status, error) {
+				alertify.alert(req.status+ "\nmessege"+ req.responseTest );
+			}
+		});
+	}
+	
+</script>
 
 </body>
 </html>
