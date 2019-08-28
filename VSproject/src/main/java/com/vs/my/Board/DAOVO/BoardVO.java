@@ -13,14 +13,7 @@ private Date b_date;
 private String b_tag;
 private int b_boolean;
 private int b_parent;
-private String b_imgpath;
 
-public String getB_imgpath() {
-	return b_imgpath;
-}
-public void setB_imgpath(String b_imgpath) {
-	this.b_imgpath = b_imgpath;
-}
 public int getB_seq() {
 	return b_seq;
 }

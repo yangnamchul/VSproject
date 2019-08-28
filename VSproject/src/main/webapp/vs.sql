@@ -33,7 +33,6 @@ CREATE TABLE Board
 	B_tag varchar2(4000) NOT NULL,
 	B_boolean number NOT NULL,
 	B_parent number,
-	B_imgpath varchar2(4000),
 	PRIMARY KEY (B_seq)
 );
 
@@ -149,4 +148,5 @@ create sequence board_sequence1;
 create sequence user_sequence1;
 
 user_sequence1.NEXTVAL
+
 

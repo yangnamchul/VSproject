@@ -24,4 +24,10 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.insert(namespace+".BoardInsertData",vo);
 	}
 
+	@Override
+	public BoardVO BoardOneView(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".BoardOneView",vo);
+	}
+
 }
