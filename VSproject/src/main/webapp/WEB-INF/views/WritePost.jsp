@@ -72,10 +72,29 @@ function sendfile(file, el) {
 			minHeight : null,
 			maxHeight : null,
 			focus : true,
+			airmode : true,
+			lang: 'ko-KR',
 			callbacks : {
 				onImageUpload : function(file, editor, welEditable) {
 						sendfile(file[0], this);
 				}
+			},
+			hint: {
+			    mentions: ['사자', '악어', '펭귄', '고양이', '강아지', 'COW', 'RABBIT', 'SNAKE', '기만 ㄴ'],
+			    match: /\B@([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)/,
+			    search: function (keyword, callback) {
+			        callback(
+			            $.grep(this.mentions, function (item) {
+			                return item.indexOf(keyword) === 0;
+			            })
+			        );
+			    },
+			    template: function (item) {
+			        return item;
+			    },
+			    content: function (item) {
+			        return '@' + item;
+			    }
 			}
 		});
 	});
