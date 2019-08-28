@@ -34,9 +34,6 @@
 			<textarea rows="10" cols="50" name="b_content" id="b_content"
 				placeholder="게시판 내용"></textarea>
 		</div>
-		<div class="createForm">
-			<label>태그</label> <input type="text" name="b_tag" placeholder="태그달기">
-		</div>
 
 		<div class="Formfooter">
 			<input type="submit" value="등록하기">

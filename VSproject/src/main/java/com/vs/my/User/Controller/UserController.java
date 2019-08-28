@@ -1,8 +1,10 @@
 package com.vs.my.User.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,10 +77,20 @@ public class UserController {
 		
 		data = us.LoginAction(uv, hs);
 		
-		
 		return data;
-		
+	}
 	
+	@RequestMapping(value="LogOut.do", method=RequestMethod.GET) //로그아웃
+	public ModelAndView Logout(HttpServletRequest request){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main");
+		
+		HttpSession hs = request.getSession();
+
+		hs.invalidate();
+		
+		return mv;
+		
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
