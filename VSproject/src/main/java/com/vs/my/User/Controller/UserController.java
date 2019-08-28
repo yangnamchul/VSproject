@@ -80,19 +80,6 @@ public class UserController {
 		return data;
 	}
 	
-	@RequestMapping(value="LogOut.do", method=RequestMethod.GET) //로그아웃
-	public ModelAndView Logout(HttpServletRequest request){
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Main");
-		
-		HttpSession hs = request.getSession();
-
-		hs.invalidate();
-		
-		return mv;
-		
-	}
-	
 	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
 	public ModelAndView FindID(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();

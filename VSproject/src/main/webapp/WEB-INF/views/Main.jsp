@@ -73,18 +73,18 @@
 			</div>
 			
 <!-- 			로그인 팝업창  -->
-		<form id="loginForm">
+		<form id="loginForm" style="display: none;">
 		<h3>
-			<div class="col-xs-4" id="loginDiv" style="display: none;">
+			<div class="col-xs-4" id="loginDiv" >
 					<ul class="vss-a-menu" id="pop_login">
 						<li>아이디  <input type="text" name="u_id" id="u_id"/></li>
 						<li>암　호  <input type="text" name="u_pw" id="u_pw"/></li>
 						<div align="center">
-							<button onclick = "login()">완료</button>
+							<input type="button" value="확인" onclick = "login()">
 						</div>
 					</ul>
 			</div>
-			</h3>
+		</h3>
 		</form>
 		
 
@@ -241,11 +241,12 @@
 			});
 			
 			$("[id='btn-login']").click(function() {
-				$('#loginDiv').toggle();
+				$('#loginForm').toggle();
 			});
 			
 			$("[id='btn-logout']").click(function() {
-				location.href="LogOut.do";
+				<% session.invalidate();%>
+				location.reload();
 			});
 		});
 	</script>
@@ -260,6 +261,7 @@
 			alertify.alert("비밀번호를 입력해주세요");
 			return;
 		};
+		
 		jQuery.ajax({
 			type:"POST",
 			url:"LoginAction.do",
@@ -272,7 +274,7 @@
 					$("#u_id").val("");
 					$("#u_pw").val("");
 				} else  {
-					location.href="Main";
+					location.href = "Main";
 				}
 			},
 			error: function (req, status, error) {
