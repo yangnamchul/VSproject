@@ -80,7 +80,7 @@
 						<li>아이디  <input type="text" name="u_id" id="u_id"/></li>
 						<li>암　호  <input type="text" name="u_pw" id="u_pw"/></li>
 						<div align="center">
-							<input type="button" value="확인" onclick = "login()">
+							<button type="button" onclick = "login()">확인</button>
 						</div>
 					</ul>
 			</div>
