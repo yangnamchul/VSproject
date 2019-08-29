@@ -16,4 +16,22 @@
 		FROM USERS
 		WHERE u_id=#{u_id} and u_pw=#{u_pw}
 	</select>
+	
+	<select id="FindID" resultType="user">
+		SELECT u_id
+		FROM USERS
+		WHERE u_email=#{u_email}
+	</select>
+	
+	<select id="FindPW" resultType="user">
+		SELECT u_id
+		FROM USERS
+		WHERE u_id=#{u_id} and u_email=#{u_email}
+	</select>
+	
+	<update id="ChangePW" >
+		UPDATE USERS
+		SET u_pw = #{u_pw}
+		WHERE u_id = #{u_id}
+	</update>
 </mapper>

@@ -10,6 +10,9 @@
 <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" >
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/alertify.min.js"></script>
+<link rel="stylesheet" href="resources/css/alertify.default.css" />
+<link rel="stylesheet" href="resources/css/alertify.core.css" />
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -45,7 +48,6 @@
 							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
 							<div class="right-row"> 검색</div>						
 						</div>
-						
 					<%
                 		if (session.getAttribute("u_id") == null) {
                		%>
@@ -81,6 +83,7 @@
 						<li>암　호  <input type="text" name="u_pw" id="u_pw"/></li>
 						<div align="center">
 							<button type="button" onclick = "login()">확인</button>
+							<a href="FindID.do">회원 찾기</a>
 						</div>
 					</ul>
 			</div>
@@ -249,6 +252,7 @@
 				location.reload();
 			});
 		});
+		
 	</script>
 	
 	<script>
@@ -267,7 +271,6 @@
 			url:"LoginAction.do",
 			data:$("#loginForm").serialize(),
 			async : false,
-			dataType : "json",
 			success : function (data) {
 				if (data == 0) {
 					alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");

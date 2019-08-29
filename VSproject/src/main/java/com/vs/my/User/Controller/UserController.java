@@ -76,11 +76,10 @@ public class UserController {
 		int data = 0;
 		
 		data = us.LoginAction(uv, hs);
-		
 		return data;
 	}
 	
-	@RequestMapping(value="FindID.do", method=RequestMethod.POST) //아이디 찾기
+	@RequestMapping(value="FindID.do", method=RequestMethod.GET) //아이디, 비번 찾기 페이지 이동
 	public ModelAndView FindID(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindID");
@@ -88,12 +87,39 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="FindPW.do", method=RequestMethod.POST) //비밀번호 찾기
-	public ModelAndView FindPW(HttpServletRequest req) {
+	@RequestMapping(value="FindID.do", method=RequestMethod.POST)// 아이디 찾기
+	@ResponseBody
+	public String FindIDAction(UserVO uv) {
+		UserVO vo = us.FindID(uv);
+		try {
+			vo.getU_id();
+		} catch (Exception e) {
+			return "no-data";
+		}
+		return vo.getU_id();
+	}
+	@RequestMapping(value="FindPW.do", method=RequestMethod.GET) //비밀번호 재설정페이지로 이동
+	public ModelAndView FindPW(HttpSession hs) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindPW");
 		
 		return mv;
+	}
+	
+	@RequestMapping(value="FindPW.do", method=RequestMethod.POST) //비밀번호 찾기
+	@ResponseBody
+	public int FindPWAction(HttpSession hs, UserVO uv) {
+		
+		return us.FindPW(uv,hs);
+	}
+	
+	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 찾기
+	@ResponseBody
+	public int ChangePWAction(HttpSession hs, UserVO uv) {
+		
+		uv.setU_id((String)hs.getAttribute("changPW"));
+		
+		return us.ChangePW(uv,hs);
 	}
 	
 	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지

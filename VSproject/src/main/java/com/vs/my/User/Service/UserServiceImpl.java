@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
 import com.vs.my.User.DAOVO.UserDAO;
@@ -37,12 +38,46 @@ public class UserServiceImpl implements UserService{
 	if(uv2 !=null) {
 		hs.setAttribute("u_id", uv2.getU_id());
 		date=1;
-		System.out.println("로그인 성공");
 		return date;
 	}
 	else {
 		return date;
 		}
+	}
+
+	@Override
+	public UserVO FindID(UserVO uv) {
+		// TODO Auto-generated method stub
+		return dao.FindID(uv);
+	}
+
+	@Override
+	public int FindPW(UserVO uv, HttpSession hs) {
+		// TODO Auto-generated method stub
+		UserVO vo =dao.FindPW(uv);
+		
+		
+		
+		try {
+			vo.getU_id();
+		} catch(Exception e) {
+			return 0;
+		}
+		hs.setAttribute("changPW", vo.getU_id());
+		return 1;
+	}
+
+	@Override
+	public int ChangePW(UserVO uv,HttpSession hs) {
+		// TODO Auto-generated method stub
+		
+		try {
+			dao.ChangePW(uv);
+		} catch(Exception e) {
+			return 0;
+		}
+		hs.removeAttribute("changPW");
+		return 1;
 	}
 	
 
