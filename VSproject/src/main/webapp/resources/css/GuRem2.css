@@ -22,7 +22,6 @@
  #6441a5 -> #f77754 #ff4d00
 */
 .VSlogo {
-	/* 	 퍼스널컬러 	 */
 	font-family: 'Gugi', cursive;
 	font-size: 4.0em;
 	color: #ff4d00; /* 오렌지 */
@@ -34,13 +33,13 @@ header {
 	padding: 0.4em 0;
 }
 
-/* 검색창 */
-header .frm-search {	
-   position: fixed;    
-   z-index: 20;
-
-	}
-
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 검색창
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+header .frm-search {
+	position: fixed;
+	z-index: 20;
+}
 
 header #right-search-form>input[type=text] {
 	position: relative;
@@ -50,15 +49,9 @@ header #right-search-form>input[type=text] {
 	padding: 0.3em 0.5em
 }
 
-
-
-
 header #right-login {
 	display: inline-block;
 	position: relative;
-	/* 	border: 3px solid #ff4d00; */
-	/* 	background: #fff; */
-	/* 	font-size: 1.1em; */
 	padding: 0.3em 0.5em
 }
 
@@ -70,23 +63,27 @@ header #btn-login {
 	float: right;
 }
 
-/* 건영 Top부분 */
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Top
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 header .top-menu {
 	display: table;
 	background-color: #BBBBBB;
-	box-shadow: 2px 2px 0 black;	
-	width: 100%;
+	box-shadow: 2px 2px 0 black;
 
-	/* 	bottom: -10px; */
+	/* 	PC전체화면일때 적용  할것 (추가해야함)*/
+	/* 	width: 100%	 */
 }
 
 .top-fixed {
-	display : inherit !important ;
+	display: inherit !important;
 	position: fixed;
 	top: 0px;
-	right : 0px;
+	left: 0px;
+	right: 0px;
 	z-index: 10;
-	opacity	: 0.9;
+	opacity: 0.98;
+	margin: 0px 10%;
 }
 
 header .right-row {
@@ -107,86 +104,104 @@ header .right-col:active {
 	background-color: #555555;
 }
 
-header #header-bar {
-	margin-top: 1em;
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 주메뉴
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#header-bar {
+	margin-top: 0.5em;
 	margin-bottom: 1em;
-	padding-right: 30px;
-	padding-left: 30px
+	
 }
 
-/* ■■■□ Header-bar_row 테두리  □■■■ */
-header #header-bar>.row {
-	background-color: #ff4d00;
-	padding: 0.3em;
+#header-bar>.row {
+	display: table;
+	width: 100%;	
 	line-height: 1.4;
-	color: black;
-	/* 	그림자 */
-	/* 	box-shadow: 4px 4px 0 #ff0000; */
-	box-shadow: 4px 4px 0 #BBBBBB;
-	word-break: break-word;
+	background-color: #000084;
+	box-shadow: 2px 2px 0px #000000;
+	color: black;	
+	margin: 0 auto ;
 }
 
-header #header-bar a.dropdown-toggle {
+#header-bar .header-row {
+	display: table-row;
+	background-color: #BBBBBB;
+}
+
+#header-bar .header-col {
+	display: table-cell;
+	border: 1px solid #3f3b3bfa;
+	box-shadow: 1px 1px 2px 0 black;
+	cursor: pointer;
+}
+
+#header-bar .header-col:active {
+	background-color: #555555;
+}
+
+
+/* 메뉴바 토글 추가메뉴 나중에 */
+}
+#header-bar a.dropdown-toggle {
 	display: inline-block;
 	color: #000;
 	text-decoration: none;
 	padding: 0.3em 0
 }
 
-header #header-bar
+#header-bar
 .dropdown {
 	display: inline-block
 }
 
-header #header-bar #header-menu-left {
+#header-bar #header-menu-left {
 	border-right: 1px solid #e2e2e2;
 	padding-right: 0
 }
 
-header #header-bar #header-menu-left
+#header-bar #header-menu-left
 #favoriteDropdown {
 	padding-left: 0.7em;
 	padding-right: 0.7em
 }
 
-header #header-bar #header-menu-left
+#header-bar #header-menu-left
 #playgroundDropdown {
 	padding-left: 0.7em;
 	padding-right: 0.7em
 }
 
-header #header-bar #header-menu-right {
+#header-bar #header-menu-right {
 	border-left: 1px solid #e2e2e2
 }
 
-header #header-bar #header-menu-right
+#header-bar #header-menu-right
 #userDropdown {
 	padding-left: 0.7em;
 	padding-right: 0
 }
 
-header #header-bar #header-menu-right #userDropdown img.profile-img {
+#header-bar #header-menu-right #userDropdown img.profile-img {
 	width: 2em;
 	height: 2em;
 	margin-top: -0.5em;
 	margin-bottom: -0.5em
 }
 
-header #header-bar #header-menu-right #userDropdown #notification-badge
-	{
+#header-bar #header-menu-right #userDropdown #notification-badge {
 	border-radius: 100px;
 	padding: 3px 6px;
 	background: #d80a0a
 }
 
-header #header-bar #header-menu-right #note-notification-badge {
+#header-bar #header-menu-right #note-notification-badge {
 	border-radius: 100px;
 	padding: 3px 6px;
 	background: #d80a0a
 }
 
 /* ■■■□ header-bar 본문 내용   □■■■ */
-header #header-bar #header-top-notice {
+#header-bar #header-top-notice {
 	padding: 0em 0;
 	font-size: 2.0em;
 	height: 40px;
@@ -204,13 +219,13 @@ header #header-bar #header-top-notice {
 	/* 	font-weight: bold; */
 }
 
-header #header-bar #header-top-notice
+#header-bar #header-top-notice
 a {
 	color: #000;
 	text-decoration: none
 }
 
-header #header-bar #header-top-notice strong.notice-badge {
+#header-bar #header-top-notice strong.notice-badge {
 	background: #ff4d00;
 	padding: 4px 8px;
 	color: #fff;
@@ -301,7 +316,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 #pop_login {
 	position: fixed;
-	padding: 10px 21px;	
+	padding: 10px 21px;
 	z-index: 500;
 	width: 317px;
 }
@@ -330,7 +345,78 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	margin: 5px;
 }
 
-/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : SignUp.jsp 
+작성자 : 미영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.vss-join {
+   padding-top: 0.5em;
+   padding-bottom: 0.5em;
+   background-color: #000084;
+   color: white;
+   box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+
+.vss-join>li {
+   font-size:40px;
+   background-color: #000084;
+   color: white;
+}
+
+#joinForm {
+    width: 317px;
+}
+#JoinForm > li {
+   list-style: none;
+   margin: 20px;
+}
+
+#JoinForm > li > button {
+   color: white;
+    background-color: #ff4d00;
+   font-size:25px;
+   }
+   
+#JoinForm>li>input[type=text] {
+   font-size: 30px;
+    padding: 0px 3px;
+    margin: 1px;
+    color: black;
+    background: #bbbbbb;
+}
+
+#JoinForm > div > button {
+   color: white;
+    background-color: #ff4d00;
+   font-size:40px;
+   }
+   
+.progress-bar_text, .progress-bar_re_text, .id-check_text{
+   font-size: 22px;
+   color: #f9ff00;
+   text-shadow: 1px 1px 1px #ff4d00;
+}
+
+.progress-bar_wrap {
+  border:1px solid blue;
+  margin-left: 190px;
+  width: 300px;
+  height: 10px;
+  background: #F6F6FA;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.progress-bar_item, .progress-bar_re_item {
+  display: inline-block;
+  height: 100%;
+  width: 32.5%;
+  margin-right: .8%;
+  border-radius: 5px;
+  float: left; 
+  transition: background-color .2s, visisility .1s;}
 
 /* ■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■ */
 /* 여기부터 BootStrap Import */
@@ -478,7 +564,19 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 
 
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
 
 
 
@@ -513,7 +611,19 @@ transform
 
 
 
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
 
 
 
@@ -556,7 +666,19 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
 
 
 
@@ -591,7 +713,19 @@ transform
 
 
 
+
+
+
+
+
+
 :rotate(359deg)
+
+
+
+
+
+
 
 
 
@@ -3441,6 +3575,12 @@ audio
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -3449,7 +3589,13 @@ audio
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3468,7 +3614,13 @@ controls
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3492,7 +3644,16 @@ display
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -3508,7 +3669,16 @@ display
 
 
 
+
+
+
 none
+
+
+
+
+
+
 
 
 
@@ -3539,6 +3709,12 @@ height
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -3547,7 +3723,13 @@ height
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3629,6 +3811,12 @@ svg
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -3637,7 +3825,13 @@ svg
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3654,7 +3848,13 @@ svg
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3678,7 +3878,16 @@ overflow
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -3694,7 +3903,16 @@ overflow
 
 
 
+
+
+
 hidden
+
+
+
+
+
+
 
 
 
@@ -7648,6 +7866,12 @@ tbody.collapse.in {
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -7656,7 +7880,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7673,7 +7903,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7690,7 +7926,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7707,7 +7949,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7724,7 +7972,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7742,7 +7996,13 @@ tbody.collapse.in {
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -7766,6 +8026,12 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -7774,7 +8040,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7805,7 +8077,19 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
 
 
 
@@ -7828,7 +8112,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7845,7 +8135,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7862,7 +8158,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7879,7 +8181,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7903,6 +8211,12 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -7911,7 +8225,13 @@ border-top-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7935,6 +8255,12 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -7943,7 +8269,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -7970,7 +8302,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
 
 
 
@@ -7993,7 +8337,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8010,7 +8360,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8036,7 +8392,16 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :not
+
+
+
 
 
 
@@ -8053,6 +8418,9 @@ border-bottom-right-radius
 
 
 
+
+
+
 (
 :first-child
 
@@ -8062,7 +8430,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8086,6 +8460,12 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -8094,7 +8474,13 @@ border-top-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8118,6 +8504,12 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -8126,7 +8518,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8231,6 +8629,12 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -8239,7 +8643,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8256,7 +8666,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8273,7 +8689,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8290,7 +8712,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8314,7 +8742,16 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -8330,11 +8767,20 @@ border-radius
 
 
 
+
+
+
 0
 }
 .btn-group-vertical
 >
 .btn
+
+
+
+
+
+
 
 
 
@@ -8364,6 +8810,12 @@ border-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -8372,7 +8824,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8389,7 +8847,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8413,7 +8877,16 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -8429,8 +8902,17 @@ border-top-left-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -8461,7 +8943,16 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -8477,8 +8968,17 @@ border-top-right-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -8509,6 +9009,12 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -8517,7 +9023,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8541,7 +9053,16 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -8557,11 +9078,20 @@ border-bottom-left-radius
 
 
 
+
+
+
 0
 }
 .btn-group-vertical
 >
 .btn
+
+
+
+
+
+
 
 
 
@@ -8591,6 +9121,12 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -8599,7 +9135,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8616,7 +9158,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8640,6 +9188,12 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -8648,7 +9202,13 @@ border-top-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8672,6 +9232,12 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -8680,7 +9246,13 @@ border-top-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8704,7 +9276,16 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -8720,8 +9301,17 @@ border-bottom-right-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -8752,7 +9342,16 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -8768,8 +9367,17 @@ border-bottom-left-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -8915,7 +9523,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8938,6 +9552,12 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -8946,7 +9566,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8963,7 +9589,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8980,7 +9612,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8997,7 +9635,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9021,6 +9665,12 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -9029,7 +9679,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9046,7 +9702,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9063,7 +9725,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9080,7 +9748,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9104,6 +9778,12 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -9112,7 +9792,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9129,7 +9815,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9146,7 +9838,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9163,7 +9861,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9187,6 +9891,12 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -9195,7 +9905,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9248,6 +9964,9 @@ border-radius
 
 
 
+
+
+
  
 
 
@@ -9256,7 +9975,16 @@ border-radius
 
 
 
+
+
+
 .form-control
+
+
+
+
+
+
 
 
 
@@ -9288,9 +10016,21 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
 ,
 .input-group-btn
+
+
+
+
+
+
 
 
 
@@ -9310,6 +10050,12 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
+
+
 
 
 
@@ -9331,6 +10077,12 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
+
+
 
 
 
@@ -9364,9 +10116,21 @@ border-radius
 
 
 
+
+
+
+
+
+
 :last-child
 >
 .btn-group
+
+
+
+
+
+
 
 
 
@@ -9390,7 +10154,13 @@ border-radius
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -9407,7 +10177,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9433,6 +10209,12 @@ border-radius
 
 
 
+
+
+
+
+
+
 :last-child
 >
 .btn
@@ -9450,6 +10232,12 @@ border-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -9458,7 +10246,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9476,7 +10270,13 @@ border-radius
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -9493,7 +10293,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9510,7 +10316,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9534,6 +10346,12 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -9542,7 +10360,13 @@ border-top-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -9566,6 +10390,12 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -9574,7 +10404,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13239,7 +14075,13 @@ i {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13255,7 +14097,13 @@ i {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13278,6 +14126,12 @@ input
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -13286,7 +14140,13 @@ input
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13303,7 +14163,13 @@ input
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13320,7 +14186,13 @@ input
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13336,6 +14208,9 @@ input
 
 
 
+
+
+
  
 
 
@@ -13344,7 +14219,16 @@ input
 
 
 
+
+
+
 input
+
+
+
+
+
+
 
 
 
@@ -13368,7 +14252,13 @@ input
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -13385,7 +14275,13 @@ input
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13409,7 +14305,16 @@ margin-bottom
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -13425,8 +14330,17 @@ margin-bottom
 
 
 
+
+
+
 15
 px
+
+
+
+
+
+
 
 
 
@@ -13457,6 +14371,12 @@ width
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -13465,7 +14385,13 @@ width
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13489,6 +14415,12 @@ font-size
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -13497,7 +14429,13 @@ font-size
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13521,7 +14459,16 @@ padding
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -13537,8 +14484,17 @@ padding
 
 
 
+
+
+
 12
 px
+
+
+
+
+
+
 
 
 
@@ -13574,7 +14530,13 @@ nav {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13590,7 +14552,13 @@ nav {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13606,7 +14574,13 @@ nav
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13629,6 +14603,12 @@ button
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -13637,7 +14617,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13654,7 +14640,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13671,7 +14663,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13688,7 +14686,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13705,7 +14709,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13723,7 +14733,13 @@ button
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -13740,7 +14756,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13757,7 +14779,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13774,7 +14802,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13790,7 +14824,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13806,7 +14846,13 @@ nav
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13829,6 +14875,12 @@ button
 
 
 
+
+
+
+
+
+
 :not
 
 
@@ -13837,7 +14889,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13854,7 +14912,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13871,7 +14935,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13889,7 +14959,13 @@ button
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -13906,7 +14982,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13923,7 +15005,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13940,7 +15028,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13957,7 +15051,13 @@ button
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -13981,7 +15081,16 @@ background
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -13997,7 +15106,16 @@ background
 
 
 
+
+
+
 transparent
+
+
+
+
+
+
 
 
 
@@ -14028,7 +15146,16 @@ box-sizing
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14044,7 +15171,16 @@ box-sizing
 
 
 
+
+
+
 border-box
+
+
+
+
+
+
 
 
 
@@ -14075,7 +15211,16 @@ color
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14091,7 +15236,16 @@ color
 
 
 
+
+
+
 rgba
+
+
+
+
+
+
 
 
 
@@ -14125,8 +15279,20 @@ rgba
 
 
 
+
+
+
+
+
+
 );
 position
+
+
+
+
+
+
 
 
 
@@ -14149,6 +15315,9 @@ position
 
 
 
+
+
+
  
 
 
@@ -14157,7 +15326,16 @@ position
 
 
 
+
+
+
 relative
+
+
+
+
+
+
 
 
 
@@ -14188,6 +15366,12 @@ outline
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -14196,7 +15380,13 @@ outline
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -14220,6 +15410,12 @@ border
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -14228,7 +15424,13 @@ border
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -14252,7 +15454,16 @@ display
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14268,7 +15479,16 @@ display
 
 
 
+
+
+
 inline-block
+
+
+
+
+
+
 
 
 
@@ -14299,7 +15519,16 @@ inline-block
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14315,7 +15544,16 @@ inline-block
 
 
 
+
+
+
 center
+
+
+
+
+
+
 
 
 
@@ -14346,7 +15584,16 @@ center
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14362,7 +15609,16 @@ center
 
 
 
+
+
+
 center
+
+
+
+
+
+
 
 
 
@@ -14393,7 +15649,16 @@ align-items
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14409,7 +15674,16 @@ align-items
 
 
 
+
+
+
 center
+
+
+
+
+
+
 
 
 
@@ -14440,7 +15714,16 @@ padding
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14456,9 +15739,18 @@ padding
 
 
 
+
+
+
 0
 6
 px
+
+
+
+
+
+
 
 
 
@@ -14489,6 +15781,12 @@ margin
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -14497,7 +15795,13 @@ margin
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -14514,7 +15818,13 @@ px
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -14524,6 +15834,12 @@ px
 
 8
 px
+
+
+
+
+
+
 
 
 
@@ -14554,7 +15870,16 @@ line-height
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14570,8 +15895,17 @@ line-height
 
 
 
+
+
+
 36
 px
+
+
+
+
+
+
 
 
 
@@ -14602,7 +15936,16 @@ min-height
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14618,8 +15961,17 @@ min-height
 
 
 
+
+
+
 36
 px
+
+
+
+
+
+
 
 
 
@@ -14650,7 +16002,16 @@ white-space
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14666,7 +16027,16 @@ white-space
 
 
 
+
+
+
 nowrap
+
+
+
+
+
+
 
 
 
@@ -14697,7 +16067,16 @@ min-width
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14713,8 +16092,17 @@ min-width
 
 
 
+
+
+
 88
 px
+
+
+
+
+
+
 
 
 
@@ -14745,7 +16133,16 @@ text-align
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14761,7 +16158,16 @@ text-align
 
 
 
+
+
+
 center
+
+
+
+
+
+
 
 
 
@@ -14792,7 +16198,16 @@ text-transform
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14808,7 +16223,16 @@ text-transform
 
 
 
+
+
+
 uppercase
+
+
+
+
+
+
 
 
 
@@ -14839,7 +16263,16 @@ font-size
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14855,8 +16288,17 @@ font-size
 
 
 
+
+
+
 14
 px
+
+
+
+
+
+
 
 
 
@@ -14887,7 +16329,16 @@ text-decoration
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14903,7 +16354,16 @@ text-decoration
 
 
 
+
+
+
 none
+
+
+
+
+
+
 
 
 
@@ -14934,7 +16394,16 @@ cursor
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -14950,7 +16419,16 @@ cursor
 
 
 
+
+
+
 pointer
+
+
+
+
+
+
 
 
 
@@ -14981,6 +16459,12 @@ border
 
 
 
+
+
+
+
+
+
 :
 
 
@@ -14989,7 +16473,13 @@ border
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -15006,7 +16496,13 @@ px
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -15022,6 +16518,9 @@ solid
 
 
 
+
+
+
  
 
 
@@ -15030,7 +16529,16 @@ solid
 
 
 
+
+
+
 transparent
+
+
+
+
+
+
 
 
 
@@ -15061,7 +16569,16 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -15077,8 +16594,17 @@ border-radius
 
 
 
+
+
+
 2
 px
+
+
+
+
+
+
 
 
 
@@ -15136,9 +16662,21 @@ button.btn {
 
 
 
+
+
+
+
+
+
 .bottom
 ,
 .alertify-logs
+
+
+
+
+
+
 
 
 
@@ -15161,7 +16699,13 @@ button.btn {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -15178,7 +16722,13 @@ button.btn {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -15202,7 +16752,16 @@ bottom
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -15218,8 +16777,17 @@ bottom
 
 
 
+
+
+
 16
 px
+
+
+
+
+
+
 
 
 
@@ -15252,9 +16820,21 @@ px
 
 
 
+
+
+
+
+
+
 .left
 ,
 .alertify-logs
+
+
+
+
+
+
 
 
 
@@ -15277,7 +16857,13 @@ px
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -15294,7 +16880,13 @@ px
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -15318,7 +16910,16 @@ left
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -15334,8 +16935,17 @@ left
 
 
 
+
+
+
 16
 px
+
+
+
+
+
+
 
 
 

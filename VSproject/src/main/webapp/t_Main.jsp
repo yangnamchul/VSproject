@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<%@ include file="Header.jsp"%>
+	<%@ include file="t_Header.jsp"%>
 
 
 	<!-- 	Content 내용부분 -->
