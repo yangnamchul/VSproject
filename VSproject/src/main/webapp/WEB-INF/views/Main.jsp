@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 
 
-<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="resources/css/GuRem.css" >
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css">
+<script src="resources/js/jquery-3.4.1.js"></script>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -18,161 +20,94 @@
 
 </head>
 <body>
-
 	<header>
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-4">
-				<div class="top-menu">	
-					
-					<div class="right-col" id="btn-search">					
-						<a href="/"> <span class="VSlogo">부스러기 </span> </a>
-					</div>					
-						<div class="right-col" id="btn-search">							
-							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
-							<div class="right-row"> 검색</div>						
-						</div>
-						<div class="right-col" id="btn-login">							
-							<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
-							<div class="right-row"> 로그인</div>						
-						</div>
-					</div>
-				
-				
-					<a href="/"> <span class="VSlogo">부스러기 </span> <img
-						src="http://icons.iconarchive.com/icons/pixture/donuts/32/Yummy-icon.png"
-						alt="" />
-					</a>
-				</div>
+				<div class="col-xs-12">
+					<div class="top-menu">
 
-				<!-- 				검색 div -->
-				<!-- 				<div class="col-xs-8" align="right" style="display:none;"> -->
-				
-				   <div class="col-xs-8" align="right">			
-					
-					
-					<form action="#" method="get" id="right-search-form" style="display: none;">
-						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
-						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
-					</form>
-
-					<div class="top-menu">	
-						<div class="right-col" id="btn-search">							
-							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
-							<div class="right-row"> 검색</div>						
-						</div>
-						
+						<div class="right-col" >
+							<a href="#"> <img src="resources/css/test/logo.png" alt="" /> </a>
+						</div>											
 					<%
                 		if (session.getAttribute("u_id") == null) {
                		%>
-					<div class="right-col" id="btn-login">							
-						<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
-						<div class="right-row"> 로그인</div>						
-					</div>               
-					<%
+						<div class="right-col" id="btn-login">
+							<div class="right-row" align="center">
+								<img
+									src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"
+									alt="" />
+							</div>
+							<div class="right-row">로그인</div>
+						</div>
+						<%
                   	} else {
-              		%>              		
-               		<div class="right-col" id="btn-logout">							
-						<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
-						<div class="right-row"> 로그아웃</div>						
-					</div>
-               		<%
+              		%>
+						<div class="right-col" id="btn-logout">
+							<div class="right-row" align="center">
+								<img
+									src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"
+									alt="" />
+							</div>
+							<div class="right-row">로그아웃</div>
+						</div>
+						<%
                 	  }
                		%>
-					</div>
-						
-						
+               		<div class="right-col" id="btn-search">
+							<div class="right-row">
+								<img
+									src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png"
+									alt="" />
+							</div>
+							<div class="right-row">검색</div>
+						</div>
 
-					
+
+					</div>
 				</div>
-			</div>
+				<div class="frm-search" style="display: none;">
+				<form action="#" method="get" id="right-search-form" >
+						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
+						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
+					</form>
+					</div>
 			</div>
 			
-<!-- 			로그인 팝업창  -->
+		</div>
+
+		<!-- 			로그인 팝업창  -->
 		<form id="loginForm" style="display: none;">
-		<h3>
-			<div class="col-xs-4" id="loginDiv" >
+			<h3>
+				<div class="col-xs-4" id="loginDiv">
 					<ul class="vss-a-menu" id="pop_login">
-						<li>아이디  <input type="text" name="u_id" id="u_id"/></li>
-						<li>암　호  <input type="password" name="u_pw" id="u_pw"/></li>
+						<li>아이디 <input type="text" name="u_id" id="u_id" /></li>
+						<li>암 호 <input type="password" name="u_pw" id="u_pw" /></li>
 						<div align="center" id="pop_login_btn">
-							<button type="button" onclick = "login()">확인</button>
-							<button type="button" onclick = "">회원가입</button>							
+							<button type="button" onclick="login()">확인</button>
+							<button type="button" onclick="">회원가입</button>
 						</div>
 					</ul>
-			</div>
-		</h3>
+				</div>
+			</h3>
 		</form>
+		</header> <!-- 상단 고정부분 --> 
 		
 
-			<div id="header-bar" class="container">
-				<div class="row">
-					<div id="header-menu-left" class="col-xs-2" >
 
-						<!-- 스크립트로 소메뉴 여는 부분 Class -->
-						<!-- <div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="latestDropdown"
-							data-toggle="dropdown"> <i class="fa fa-clock-o"></i> 최근<span
-							class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="latestDropdown"
-							id="latestDropdownMenu"></ul>
-					</div>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="favoriteDropdown"
-							data-toggle="dropdown"> <i class="fa fa-star"></i> <span
-							class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="favoriteDropdown"
-							id="favoriteDropdownMenu"></ul>
-					</div>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="playgroundDropdown"
-							data-toggle="dropdown"> <i class="fa fa-smile-o"></i> <span
-							class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="playgroundDropdown"
-							id="playgroundDropdownMenu">
-							<li><a href="/play/attendance">출석체크</a></li>
-							<li><a href="/play/ad">전광판</a></li>
-							<li><a href="/play/iconshop">아이콘샵</a></li>
-							<li><a href="/play/giveaway">포인트경품</a></li>
-							<li class="divider"></li>
-							<li><a href="/play/chatutil">채팅툴</a></li>
-						</ul>
-					</div> -->
-						<!-- 스크립트로 소메뉴 여는 부분 Close -->
-
-					</div>
-
-					<div id="header-top-notice" class="col-xs-8" align="center">
-						부스러기 | 최신VS | 인기VS | 공지사항 
-					</div>		
-
-
-					<!-- 메인바 우측메뉴	 -->
-					<!-- <div id="header-menu-right" class="col-xs-2" align="right">
-					<div class="dropdown">
-						<a href="/note/lists" class="dropdown-toggle"> <i
-							class="fa fa-envelope-o"></i> <span class="caret"></span>
-						</a>
-					</div>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="userDropdown"
-							data-toggle="dropdown"> <i class="fa fa-user"></i> <span
-							class="caret"></span></a> </a>
-						<ul class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="userDropdown">
-							<li><a href="/member/login"><i class="fa fa-twitch"></i>
-									로그인</a></li>
-						</ul>
-					</div>
-				</div> -->
+		<div id="header-bar" class="container">
+			<div class="row">
+				<div id="header-menu-left" class="col-xs-2">
+				
 
 				</div>
-				<!-- row end -->
+
+				<div id="header-top-notice" class="col-xs-8" align="center">
+					부스러기 | 최신VS | 인기VS | 공지사항</div>			
 			</div>
-	</header>
+			<!-- row end -->
+		</div>
+	
 
 	<!-- 	Content 내용부분 -->
 
@@ -250,14 +185,24 @@
 	</div>
 
 
+
+
 	<script type="text/javascript">
 		$(document).ready(function() { //DOM이 준비되고
-// 			$('#btn-search').click(function() {
-			$("[id='btn-search']").click(function() {
-				$('#right-search-form').toggle();				
+			var frm_search = $('.frm-search') ;
+			var frm_login = $('#loginForm') ;
+			var btn_search =$( document.querySelector("#btn-search") ).offset() ;				
+			var btn_login =$( document.querySelector("#btn-login") ).offset() ;				
+			$("[id='btn-search']").click(function() {				
+				frm_search.css('top', btn_search.top+10   ) ;
+				frm_search.css('left', btn_search.left-350 ) ;				
+				$('.frm-search' ).toggle();			
+				
 			});
 			
 			$("[id='btn-login']").click(function() {
+				frm_login.css('top', btn_login.top+10   ) ;
+				frm_login.css('left', btn_login.left ) ;	
 				$('#loginForm').toggle();
 			});
 			
@@ -267,7 +212,7 @@
 			});
 		});
 	</script>
-	
+
 	<script>
 	function login() {
 		if($("#u_id").val()=="") {
@@ -301,6 +246,31 @@
 	}
 	
 </script>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Top부분 스크롤 고정
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script type="text/javascript">
+
+$( document ).ready( function() {
+	var topOffset = $( '.top-menu' ).offset();
+	 $( window ).scroll( function() {		 
+		 if ( $( document ).scrollTop() > topOffset.top ) {
+			 $( '.top-menu' ).addClass( 'top-fixed' );			
+		 }
+		 else  {
+		 $('.top-menu').removeClass('top-fixed');	 
+		
+		 }
+		 });
+	 } );
+
+</script>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 팝업폼 상대경로 위치 계산
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+
 
 </body>
 </html>

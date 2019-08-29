@@ -34,17 +34,13 @@ header {
 	padding: 0.4em 0;
 }
 
-/* header #right-search-form { */
-header #right-menu {
-	padding: 0.5em 0;
-}
+/* 검색창 */
+header .frm-search {	
+   position: fixed;    
+   z-index: 20;
 
-header #right-#right-menu>#right-search-btn {
-	color: #ff4d00;
-	background: transparent;
-	border: none;
-	font-size: 1.4em
-}
+	}
+
 
 header #right-search-form>input[type=text] {
 	position: relative;
@@ -54,9 +50,8 @@ header #right-search-form>input[type=text] {
 	padding: 0.3em 0.5em
 }
 
-header #right-search-form>input[type=text]::after {
-	content: "asdf"
-}
+
+
 
 header #right-login {
 	display: inline-block;
@@ -75,17 +70,23 @@ header #btn-login {
 	float: right;
 }
 
-/* 28일 새벽 건영 아이콘 창 부분  */
+/* 건영 Top부분 */
 header .top-menu {
 	display: table;
 	background-color: #BBBBBB;
-	box-shadow: 2px 2px 0 black;
-/* 	position: relative; */
-	position: sticky;
-	top: 0; 
-/* 	bottom: -10px; */
-	width:100%;
-	
+	box-shadow: 2px 2px 0 black;	
+	width: 100%;
+
+	/* 	bottom: -10px; */
+}
+
+.top-fixed {
+	display : inherit !important ;
+	position: fixed;
+	top: 0px;
+	right : 0px;
+	z-index: 10;
+	opacity	: 0.9;
 }
 
 header .right-row {
@@ -99,7 +100,8 @@ header .right-col {
 	padding: 2px 5px;
 	cursor: pointer;
 	color: #000084;
-	float: left}
+	float: left
+}
 
 header .right-col:active {
 	background-color: #555555;
@@ -298,10 +300,8 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 #pop_login {
-	position: absolute;
-	padding: 10px 21px;
-	right: -733px;
-	bottom: -313px;
+	position: fixed;
+	padding: 10px 21px;	
 	z-index: 500;
 	width: 317px;
 }
@@ -476,7 +476,11 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -507,7 +511,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -546,7 +554,11 @@ keyframes fa-spin { 0%{
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -577,7 +589,11 @@ transform
 
 
 
+
+
 :rotate(359deg)
+
+
 
 
 
@@ -3423,6 +3439,8 @@ audio
 
 
 
+
+
 :not
 
 
@@ -3430,7 +3448,9 @@ audio
 
 
 
+
  
+
 
 
 
@@ -3447,7 +3467,9 @@ controls
 
 
 
+
  
+
 
 
 
@@ -3468,7 +3490,10 @@ display
 
 
 
+
+
 :
+
 
 
 
@@ -3482,7 +3507,10 @@ display
 
 
 
+
 none
+
+
 
 
 
@@ -3509,6 +3537,8 @@ height
 
 
 
+
+
 :
 
 
@@ -3516,7 +3546,9 @@ height
 
 
 
+
  
+
 
 
 
@@ -3595,6 +3627,8 @@ svg
 
 
 
+
+
 :not
 
 
@@ -3602,7 +3636,9 @@ svg
 
 
 
+
  
+
 
 
 
@@ -3617,7 +3653,9 @@ svg
 
 
 
+
  
+
 
 
 
@@ -3638,7 +3676,10 @@ overflow
 
 
 
+
+
 :
+
 
 
 
@@ -3652,7 +3693,10 @@ overflow
 
 
 
+
 hidden
+
+
 
 
 
@@ -7602,6 +7646,8 @@ tbody.collapse.in {
 
 
 
+
+
 :not
 
 
@@ -7609,7 +7655,9 @@ tbody.collapse.in {
 
 
 
+
  
+
 
 
 
@@ -7624,7 +7672,9 @@ tbody.collapse.in {
 
 
 
+
  
+
 
 
 
@@ -7639,7 +7689,9 @@ tbody.collapse.in {
 
 
 
+
  
+
 
 
 
@@ -7654,7 +7706,9 @@ tbody.collapse.in {
 
 
 
+
  
+
 
 
 
@@ -7669,7 +7723,9 @@ tbody.collapse.in {
 
 
 
+
  
+
 
 
 
@@ -7685,7 +7741,9 @@ tbody.collapse.in {
 
 
 
+
 	
+
 
 
 
@@ -7706,6 +7764,8 @@ border-radius
 
 
 
+
+
 :
 
 
@@ -7713,7 +7773,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -7741,7 +7803,11 @@ border-radius
 
 
 
+
+
 :first-child
+
+
 
 
 
@@ -7761,7 +7827,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -7776,7 +7844,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -7791,7 +7861,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -7806,7 +7878,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -7827,6 +7901,8 @@ border-top-right-radius
 
 
 
+
+
 :
 
 
@@ -7834,7 +7910,9 @@ border-top-right-radius
 
 
 
+
  
+
 
 
 
@@ -7855,6 +7933,8 @@ border-bottom-right-radius
 
 
 
+
+
 :
 
 
@@ -7862,7 +7942,9 @@ border-bottom-right-radius
 
 
 
+
  
+
 
 
 
@@ -7886,7 +7968,11 @@ border-bottom-right-radius
 
 
 
+
+
 :last-child
+
+
 
 
 
@@ -7906,7 +7992,9 @@ border-bottom-right-radius
 
 
 
+
  
+
 
 
 
@@ -7921,7 +8009,9 @@ border-bottom-right-radius
 
 
 
+
  
+
 
 
 
@@ -7944,7 +8034,10 @@ border-bottom-right-radius
 
 
 
+
+
 :not
+
 
 
 
@@ -7959,6 +8052,7 @@ border-bottom-right-radius
 
 
 
+
 (
 :first-child
 
@@ -7967,7 +8061,9 @@ border-bottom-right-radius
 
 
 
+
  
+
 
 
 
@@ -7988,6 +8084,8 @@ border-top-left-radius
 
 
 
+
+
 :
 
 
@@ -7995,7 +8093,9 @@ border-top-left-radius
 
 
 
+
  
+
 
 
 
@@ -8016,6 +8116,8 @@ border-bottom-left-radius
 
 
 
+
+
 :
 
 
@@ -8023,7 +8125,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8125,6 +8229,8 @@ border-bottom-left-radius
 
 
 
+
+
 :not
 
 
@@ -8132,7 +8238,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8147,7 +8255,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8162,7 +8272,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8177,7 +8289,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8198,7 +8312,10 @@ border-radius
 
 
 
+
+
 :
+
 
 
 
@@ -8212,11 +8329,14 @@ border-radius
 
 
 
+
 0
 }
 .btn-group-vertical
 >
 .btn
+
+
 
 
 
@@ -8242,6 +8362,8 @@ border-radius
 
 
 
+
+
 :not
 
 
@@ -8249,7 +8371,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -8264,7 +8388,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -8285,7 +8411,10 @@ border-top-left-radius
 
 
 
+
+
 :
+
 
 
 
@@ -8299,8 +8428,11 @@ border-top-left-radius
 
 
 
+
 4
 px
+
+
 
 
 
@@ -8327,7 +8459,10 @@ border-top-right-radius
 
 
 
+
+
 :
+
 
 
 
@@ -8341,8 +8476,11 @@ border-top-right-radius
 
 
 
+
 4
 px
+
+
 
 
 
@@ -8369,6 +8507,8 @@ border-bottom-right-radius
 
 
 
+
+
 :
 
 
@@ -8376,7 +8516,9 @@ border-bottom-right-radius
 
 
 
+
  
+
 
 
 
@@ -8397,7 +8539,10 @@ border-bottom-left-radius
 
 
 
+
+
 :
+
 
 
 
@@ -8411,11 +8556,14 @@ border-bottom-left-radius
 
 
 
+
 0
 }
 .btn-group-vertical
 >
 .btn
+
+
 
 
 
@@ -8441,6 +8589,8 @@ border-bottom-left-radius
 
 
 
+
+
 :not
 
 
@@ -8448,7 +8598,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8463,7 +8615,9 @@ border-bottom-left-radius
 
 
 
+
  
+
 
 
 
@@ -8484,6 +8638,8 @@ border-top-left-radius
 
 
 
+
+
 :
 
 
@@ -8491,7 +8647,9 @@ border-top-left-radius
 
 
 
+
  
+
 
 
 
@@ -8512,6 +8670,8 @@ border-top-right-radius
 
 
 
+
+
 :
 
 
@@ -8519,7 +8679,9 @@ border-top-right-radius
 
 
 
+
  
+
 
 
 
@@ -8540,7 +8702,10 @@ border-bottom-right-radius
 
 
 
+
+
 :
+
 
 
 
@@ -8554,8 +8719,11 @@ border-bottom-right-radius
 
 
 
+
 4
 px
+
+
 
 
 
@@ -8582,7 +8750,10 @@ border-bottom-left-radius
 
 
 
+
+
 :
+
 
 
 
@@ -8596,8 +8767,11 @@ border-bottom-left-radius
 
 
 
+
 4
 px
+
+
 
 
 
@@ -8740,7 +8914,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8760,6 +8936,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
 :not
 
 
@@ -8767,7 +8945,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8782,7 +8962,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8797,7 +8979,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8812,7 +8996,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8833,6 +9019,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
 :not
 
 
@@ -8840,7 +9028,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8855,7 +9045,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8870,7 +9062,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8885,7 +9079,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8906,6 +9102,8 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
 :not
 
 
@@ -8913,7 +9111,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8928,7 +9128,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8943,7 +9145,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8958,7 +9162,9 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
  
+
 
 
 
@@ -8979,6 +9185,8 @@ border-radius
 
 
 
+
+
 :
 
 
@@ -8986,7 +9194,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -9037,6 +9247,7 @@ border-radius
 
 
 
+
  
 
 
@@ -9044,7 +9255,10 @@ border-radius
 
 
 
+
 .form-control
+
+
 
 
 
@@ -9072,9 +9286,13 @@ border-radius
 
 
 
+
+
 :first-child
 ,
 .input-group-btn
+
+
 
 
 
@@ -9092,6 +9310,8 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
 
 
 
@@ -9111,6 +9331,8 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
 
 
 
@@ -9140,9 +9362,13 @@ border-radius
 
 
 
+
+
 :last-child
 >
 .btn-group
+
+
 
 
 
@@ -9163,7 +9389,9 @@ border-radius
 
 
 
+
 	
+
 
 
 
@@ -9178,7 +9406,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -9201,6 +9431,8 @@ border-radius
 
 
 
+
+
 :last-child
 >
 .btn
@@ -9216,6 +9448,8 @@ border-radius
 
 
 
+
+
 :not
 
 
@@ -9223,7 +9457,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -9239,7 +9475,9 @@ border-radius
 
 
 
+
 	
+
 
 
 
@@ -9254,7 +9492,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -9269,7 +9509,9 @@ border-radius
 
 
 
+
  
+
 
 
 
@@ -9290,6 +9532,8 @@ border-top-right-radius
 
 
 
+
+
 :
 
 
@@ -9297,7 +9541,9 @@ border-top-right-radius
 
 
 
+
  
+
 
 
 
@@ -9318,6 +9564,8 @@ border-bottom-right-radius
 
 
 
+
+
 :
 
 
@@ -9325,7 +9573,9 @@ border-bottom-right-radius
 
 
 
+
  
+
 
 
 
@@ -12988,7 +13238,9 @@ i {
 
 
 
+
  
+
 
 
 
@@ -13002,7 +13254,9 @@ i {
 
 
 
+
  
+
 
 
 
@@ -13022,6 +13276,8 @@ input
 
 
 
+
+
 :not
 
 
@@ -13029,7 +13285,9 @@ input
 
 
 
+
  
+
 
 
 
@@ -13044,7 +13302,9 @@ input
 
 
 
+
  
+
 
 
 
@@ -13059,7 +13319,9 @@ input
 
 
 
+
  
+
 
 
 
@@ -13073,6 +13335,7 @@ input
 
 
 
+
  
 
 
@@ -13080,7 +13343,10 @@ input
 
 
 
+
 input
+
+
 
 
 
@@ -13101,7 +13367,9 @@ input
 
 
 
+
 	
+
 
 
 
@@ -13116,7 +13384,9 @@ input
 
 
 
+
  
+
 
 
 
@@ -13137,7 +13407,10 @@ margin-bottom
 
 
 
+
+
 :
+
 
 
 
@@ -13151,8 +13424,11 @@ margin-bottom
 
 
 
+
 15
 px
+
+
 
 
 
@@ -13179,6 +13455,8 @@ width
 
 
 
+
+
 :
 
 
@@ -13186,7 +13464,9 @@ width
 
 
 
+
  
+
 
 
 
@@ -13207,6 +13487,8 @@ font-size
 
 
 
+
+
 :
 
 
@@ -13214,7 +13496,9 @@ font-size
 
 
 
+
  
+
 
 
 
@@ -13235,7 +13519,10 @@ padding
 
 
 
+
+
 :
+
 
 
 
@@ -13249,8 +13536,11 @@ padding
 
 
 
+
 12
 px
+
+
 
 
 
@@ -13283,7 +13573,9 @@ nav {
 
 
 
+
  
+
 
 
 
@@ -13297,7 +13589,9 @@ nav {
 
 
 
+
  
+
 
 
 
@@ -13311,7 +13605,9 @@ nav
 
 
 
+
  
+
 
 
 
@@ -13331,6 +13627,8 @@ button
 
 
 
+
+
 :not
 
 
@@ -13338,7 +13636,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13353,7 +13653,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13368,7 +13670,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13383,7 +13687,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13398,7 +13704,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13414,7 +13722,9 @@ button
 
 
 
+
 	
+
 
 
 
@@ -13429,7 +13739,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13444,7 +13756,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13459,7 +13773,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13473,7 +13789,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13487,7 +13805,9 @@ nav
 
 
 
+
  
+
 
 
 
@@ -13507,6 +13827,8 @@ button
 
 
 
+
+
 :not
 
 
@@ -13514,7 +13836,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13529,7 +13853,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13544,7 +13870,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13560,7 +13888,9 @@ button
 
 
 
+
 	
+
 
 
 
@@ -13575,7 +13905,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13590,7 +13922,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13605,7 +13939,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13620,7 +13956,9 @@ button
 
 
 
+
  
+
 
 
 
@@ -13641,7 +13979,10 @@ background
 
 
 
+
+
 :
+
 
 
 
@@ -13655,7 +13996,10 @@ background
 
 
 
+
 transparent
+
+
 
 
 
@@ -13682,7 +14026,10 @@ box-sizing
 
 
 
+
+
 :
+
 
 
 
@@ -13696,7 +14043,10 @@ box-sizing
 
 
 
+
 border-box
+
+
 
 
 
@@ -13723,7 +14073,10 @@ color
 
 
 
+
+
 :
+
 
 
 
@@ -13737,7 +14090,10 @@ color
 
 
 
+
 rgba
+
+
 
 
 
@@ -13767,8 +14123,12 @@ rgba
 
 
 
+
+
 );
 position
+
+
 
 
 
@@ -13788,6 +14148,7 @@ position
 
 
 
+
  
 
 
@@ -13795,7 +14156,10 @@ position
 
 
 
+
 relative
+
+
 
 
 
@@ -13822,6 +14186,8 @@ outline
 
 
 
+
+
 :
 
 
@@ -13829,7 +14195,9 @@ outline
 
 
 
+
  
+
 
 
 
@@ -13850,6 +14218,8 @@ border
 
 
 
+
+
 :
 
 
@@ -13857,7 +14227,9 @@ border
 
 
 
+
  
+
 
 
 
@@ -13878,7 +14250,10 @@ display
 
 
 
+
+
 :
+
 
 
 
@@ -13892,7 +14267,10 @@ display
 
 
 
+
 inline-block
+
+
 
 
 
@@ -13919,7 +14297,10 @@ inline-block
 
 
 
+
+
 :
+
 
 
 
@@ -13933,7 +14314,10 @@ inline-block
 
 
 
+
 center
+
+
 
 
 
@@ -13960,7 +14344,10 @@ center
 
 
 
+
+
 :
+
 
 
 
@@ -13974,7 +14361,10 @@ center
 
 
 
+
 center
+
+
 
 
 
@@ -14001,7 +14391,10 @@ align-items
 
 
 
+
+
 :
+
 
 
 
@@ -14015,7 +14408,10 @@ align-items
 
 
 
+
 center
+
+
 
 
 
@@ -14042,7 +14438,10 @@ padding
 
 
 
+
+
 :
+
 
 
 
@@ -14056,9 +14455,12 @@ padding
 
 
 
+
 0
 6
 px
+
+
 
 
 
@@ -14085,6 +14487,8 @@ margin
 
 
 
+
+
 :
 
 
@@ -14092,7 +14496,9 @@ margin
 
 
 
+
  
+
 
 
 
@@ -14107,7 +14513,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -14116,6 +14524,8 @@ px
 
 8
 px
+
+
 
 
 
@@ -14142,7 +14552,10 @@ line-height
 
 
 
+
+
 :
+
 
 
 
@@ -14156,8 +14569,11 @@ line-height
 
 
 
+
 36
 px
+
+
 
 
 
@@ -14184,7 +14600,10 @@ min-height
 
 
 
+
+
 :
+
 
 
 
@@ -14198,8 +14617,11 @@ min-height
 
 
 
+
 36
 px
+
+
 
 
 
@@ -14226,7 +14648,10 @@ white-space
 
 
 
+
+
 :
+
 
 
 
@@ -14240,7 +14665,10 @@ white-space
 
 
 
+
 nowrap
+
+
 
 
 
@@ -14267,7 +14695,10 @@ min-width
 
 
 
+
+
 :
+
 
 
 
@@ -14281,8 +14712,11 @@ min-width
 
 
 
+
 88
 px
+
+
 
 
 
@@ -14309,7 +14743,10 @@ text-align
 
 
 
+
+
 :
+
 
 
 
@@ -14323,7 +14760,10 @@ text-align
 
 
 
+
 center
+
+
 
 
 
@@ -14350,7 +14790,10 @@ text-transform
 
 
 
+
+
 :
+
 
 
 
@@ -14364,7 +14807,10 @@ text-transform
 
 
 
+
 uppercase
+
+
 
 
 
@@ -14391,7 +14837,10 @@ font-size
 
 
 
+
+
 :
+
 
 
 
@@ -14405,8 +14854,11 @@ font-size
 
 
 
+
 14
 px
+
+
 
 
 
@@ -14433,7 +14885,10 @@ text-decoration
 
 
 
+
+
 :
+
 
 
 
@@ -14447,7 +14902,10 @@ text-decoration
 
 
 
+
 none
+
+
 
 
 
@@ -14474,7 +14932,10 @@ cursor
 
 
 
+
+
 :
+
 
 
 
@@ -14488,7 +14949,10 @@ cursor
 
 
 
+
 pointer
+
+
 
 
 
@@ -14515,6 +14979,8 @@ border
 
 
 
+
+
 :
 
 
@@ -14522,7 +14988,9 @@ border
 
 
 
+
  
+
 
 
 
@@ -14537,7 +15005,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -14551,6 +15021,7 @@ solid
 
 
 
+
  
 
 
@@ -14558,7 +15029,10 @@ solid
 
 
 
+
 transparent
+
+
 
 
 
@@ -14585,7 +15059,10 @@ border-radius
 
 
 
+
+
 :
+
 
 
 
@@ -14599,8 +15076,11 @@ border-radius
 
 
 
+
 2
 px
+
+
 
 
 
@@ -14654,9 +15134,13 @@ button.btn {
 
 
 
+
+
 .bottom
 ,
 .alertify-logs
+
+
 
 
 
@@ -14676,7 +15160,9 @@ button.btn {
 
 
 
+
  
+
 
 
 
@@ -14691,7 +15177,9 @@ button.btn {
 
 
 
+
  
+
 
 
 
@@ -14712,7 +15200,10 @@ bottom
 
 
 
+
+
 :
+
 
 
 
@@ -14726,8 +15217,11 @@ bottom
 
 
 
+
 16
 px
+
+
 
 
 
@@ -14756,9 +15250,13 @@ px
 
 
 
+
+
 .left
 ,
 .alertify-logs
+
+
 
 
 
@@ -14778,7 +15276,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -14793,7 +15293,9 @@ px
 
 
 
+
  
+
 
 
 
@@ -14814,7 +15316,10 @@ left
 
 
 
+
+
 :
+
 
 
 
@@ -14828,8 +15333,11 @@ left
 
 
 
+
 16
 px
+
+
 
 
 

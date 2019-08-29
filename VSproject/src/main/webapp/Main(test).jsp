@@ -11,8 +11,7 @@
 	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/jquery-3.4.1.js"></script>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -67,10 +66,12 @@
 
 					</div>
 				</div>
-				<form action="#" method="get" id="right-search-form" style="display: none;">
+				<div class="frm-search" style="display: none;">
+				<form action="#" method="get" id="right-search-form" >
 						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
 						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
 					</form>
+					</div>
 			</div>
 			
 		</div>
@@ -90,75 +91,23 @@
 				</div>
 			</h3>
 		</form>
+		</header> <!-- 상단 고정부분 --> 
+		
 
 
 		<div id="header-bar" class="container">
 			<div class="row">
 				<div id="header-menu-left" class="col-xs-2">
-
-					<!-- 스크립트로 소메뉴 여는 부분 Class -->
-					<!-- <div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="latestDropdown"
-							data-toggle="dropdown"> <i class="fa fa-clock-o"></i> 최근<span
-							class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="latestDropdown"
-							id="latestDropdownMenu"></ul>
-					</div>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="favoriteDropdown"
-							data-toggle="dropdown"> <i class="fa fa-star"></i> <span
-							class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="favoriteDropdown"
-							id="favoriteDropdownMenu"></ul>
-					</div>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="playgroundDropdown"
-							data-toggle="dropdown"> <i class="fa fa-smile-o"></i> <span
-							class="caret"></span>
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="playgroundDropdown"
-							id="playgroundDropdownMenu">
-							<li><a href="/play/attendance">출석체크</a></li>
-							<li><a href="/play/ad">전광판</a></li>
-							<li><a href="/play/iconshop">아이콘샵</a></li>
-							<li><a href="/play/giveaway">포인트경품</a></li>
-							<li class="divider"></li>
-							<li><a href="/play/chatutil">채팅툴</a></li>
-						</ul>
-					</div> -->
-					<!-- 스크립트로 소메뉴 여는 부분 Close -->
+				
 
 				</div>
 
 				<div id="header-top-notice" class="col-xs-8" align="center">
-					부스러기 | 최신VS | 인기VS | 공지사항</div>
-
-
-				<!-- 메인바 우측메뉴	 -->
-				<!-- <div id="header-menu-right" class="col-xs-2" align="right">
-					<div class="dropdown">
-						<a href="/note/lists" class="dropdown-toggle"> <i
-							class="fa fa-envelope-o"></i> <span class="caret"></span>
-						</a>
-					</div>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" id="userDropdown"
-							data-toggle="dropdown"> <i class="fa fa-user"></i> <span
-							class="caret"></span></a> </a>
-						<ul class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="userDropdown">
-							<li><a href="/member/login"><i class="fa fa-twitch"></i>
-									로그인</a></li>
-						</ul>
-					</div>
-				</div> -->
-
+					부스러기 | 최신VS | 인기VS | 공지사항</div>			
 			</div>
 			<!-- row end -->
 		</div>
-	</header>
+	
 
 	<!-- 	Content 내용부분 -->
 
@@ -236,14 +185,24 @@
 	</div>
 
 
+
+
 	<script type="text/javascript">
 		$(document).ready(function() { //DOM이 준비되고
-// 			$('#btn-search').click(function() {
-			$("[id='btn-search']").click(function() {
-				$('#right-search-form').toggle();				
+			var frm_search = $('.frm-search') ;
+			var frm_login = $('#loginForm') ;
+			var btn_search =$( document.querySelector("#btn-search") ).offset() ;				
+			var btn_login =$( document.querySelector("#btn-login") ).offset() ;				
+			$("[id='btn-search']").click(function() {				
+				frm_search.css('top', btn_search.top+10   ) ;
+				frm_search.css('left', btn_search.left-350 ) ;				
+				$('.frm-search' ).toggle();			
+				
 			});
 			
 			$("[id='btn-login']").click(function() {
+				frm_login.css('top', btn_login.top+10   ) ;
+				frm_login.css('left', btn_login.left ) ;	
 				$('#loginForm').toggle();
 			});
 			
@@ -287,6 +246,31 @@
 	}
 	
 </script>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Top부분 스크롤 고정
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script type="text/javascript">
+
+$( document ).ready( function() {
+	var topOffset = $( '.top-menu' ).offset();
+	 $( window ).scroll( function() {		 
+		 if ( $( document ).scrollTop() > topOffset.top ) {
+			 $( '.top-menu' ).addClass( 'top-fixed' );			
+		 }
+		 else  {
+		 $('.top-menu').removeClass('top-fixed');	 
+		
+		 }
+		 });
+	 } );
+
+</script>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 팝업폼 상대경로 위치 계산
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+
 
 </body>
 </html>
