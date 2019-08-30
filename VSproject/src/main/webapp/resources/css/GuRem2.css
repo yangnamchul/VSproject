@@ -72,7 +72,7 @@ header .top-menu {
 	box-shadow: 2px 2px 0 black;
 
 	/* 	PC전체화면일때 적용  할것 (추가해야함)*/
-	/* 	width: 100%	 */
+/* 	width: 100%	 */
 }
 
 .top-fixed {
@@ -314,6 +314,8 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: white;
 }
 
+
+/* 팝 로그인 미영 */
 #pop_login {
 	position: fixed;
 	padding: 10px 21px;
@@ -345,20 +347,55 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	margin: 5px;
 }
 
+#pop_login>div>button {
+   color: white;
+   background-color: #ff4d00;
+   margin:5px;/* 8.30 미영수정 */
+}
+
+.find-id-pw, .find-id-pw > a {
+   color:white;
+   font-size:20px;
+   text-align:center;
+}
+
+.auto-login { text-align:right;}
+
+
+}
+
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : SignUp.jsp 
 작성자 : 미영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
-.vss-join {
-   padding-top: 0.5em;
-   padding-bottom: 0.5em;
+#Join {
+   margin-left:0px;
+   margin-right:0px;   
+}
+#joinDiv {
+/*    padding-top: 0.5em;
+   padding-bottom: 0.5em; */
+/*    margin-top: 5%; */
+   padding: 3.5em;
    background-color: #000084;
    color: white;
    box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
+#joinDiv > h1 {
+   color:white;
+   align:center;
+}
+
+.vss-join {
+   border-top:4px solid white;
+   border-bottom:4px solid white;
+   margin-top: 10px;
+    padding-left: 15%;
+    padding-bottom: 20px;
+}
 
 .vss-join>li {
-   font-size:40px;
+   font-size:30px;
    background-color: #000084;
    color: white;
 }
@@ -377,7 +414,12 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
    font-size:25px;
    }
    
+.id-check-text {
+   margin-left:18%;
+}
+   
 #JoinForm>li>input[type=text] {
+   width:50%;
    font-size: 30px;
     padding: 0px 3px;
     margin: 1px;
@@ -388,10 +430,10 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 #JoinForm > div > button {
    color: white;
     background-color: #ff4d00;
-   font-size:40px;
+   font-size:25px;
    }
    
-.progress-bar_text, .progress-bar_re_text, .id-check_text{
+.progress-bar_text, .progress-bar_re_text, .id-check-text{
    font-size: 22px;
    color: #f9ff00;
    text-shadow: 1px 1px 1px #ff4d00;
@@ -399,7 +441,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 .progress-bar_wrap {
   border:1px solid blue;
-  margin-left: 190px;
+  margin-left: 1%;
   width: 300px;
   height: 10px;
   background: #F6F6FA;

@@ -59,7 +59,6 @@
 						href="#">아무내용링크1</a></li>
 					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
 						href="#">아무내용링크1</a></li>
-
 				</ul>
 
 			</div>
@@ -89,6 +88,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
