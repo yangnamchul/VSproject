@@ -24,14 +24,16 @@ CREATE TABLE Admin_Board
 CREATE TABLE Board
 (
 	B_seq number NOT NULL,
-	U_seq number NOT NULL,
+	U_id varchar2(4000) NOT NULL,
 	C_seq number NOT NULL,
-	B_title varchar2(20) NOT NULL,
-	B_content varchar2(500),
+	B_title varchar2(4000) NOT NULL,
+	B_content varchar2(4000),
 	B_cnt number NOT NULL,
 	B_date date NOT NULL,
-	B_tag varchar2(50) NOT NULL,
+	B_tag varchar2(4000) NOT NULL,
 	B_boolean number NOT NULL,
+	B_parent number,
+	B_imgpath varchar2(4000),
 	PRIMARY KEY (B_seq)
 );
 
@@ -48,7 +50,8 @@ CREATE TABLE Reply
 (
 	Re_seq number NOT NULL,
 	B_seq number NOT NULL,
-	Re_content varchar2(100) NOT NULL,
+	U_id varchar2(4000) NOT NULL UNIQUE,
+	Re_content varchar2(4000) NOT NULL,
 	Re_date date NOT NULL,
 	Re_parent number,
 	Re_boolean number,
@@ -59,12 +62,12 @@ CREATE TABLE Reply
 CREATE TABLE Users
 (
 	U_seq number NOT NULL,
-	U_id varchar2(20) NOT NULL UNIQUE,
-	U_pw varchar2(50) NOT NULL,
-	U_name varchar2(30) NOT NULL,
-	U_email varchar2(50) NOT NULL UNIQUE,
+	U_id varchar2(4000) NOT NULL,
+	U_pw varchar2(4000) NOT NULL,
+	U_name varchar2(4000) NOT NULL,
+	U_email varchar2(4000) NOT NULL,
 	U_date date NOT NULL,
-	PRIMARY KEY (U_seq)
+	PRIMARY KEY (U_id)
 );
 
 
@@ -106,12 +109,15 @@ ALTER TABLE Board
 
 
 ALTER TABLE Board
-	ADD FOREIGN KEY (U_seq)
-	REFERENCES Users (U_seq)
+	ADD FOREIGN KEY (U_id)
+	REFERENCES Users (U_id)
 ;
 
-select *
-from users;
+
+ALTER TABLE Reply
+	ADD FOREIGN KEY (U_id)
+	REFERENCES Users (U_id)
+;
 
 insert into USERS
 values(1,'admin','admin','admin','admin',sysdate);
@@ -119,17 +125,28 @@ values(1,'admin','admin','admin','admin',sysdate);
 insert into USERS
 values(2,'123','456','asd','asd',sysdate);
 
-create sequence user_sequence1;
-
-user_sequence1.NEXTVAL
-
 SELECT u_id, u_pw
 FROM USERS 
 WHERE u_id='admin' and u_pw='admin' ;
 
 insert into CATEGORY
+values(1,'테크');
+insert into CATEGORY
+values(2,'스포츠');
+insert into CATEGORY
 values(3,'인물');
 
 insert into BOARD
-values(1,1,1,0,'hello','hello11',1,sysdate,'tag11');
+values(1,'123',1,'hello','hello11',1,sysdate,'tag11',0,null,null);
+
+select *
+from users;
+SELECT * FROM tabs;
+SELECT * FROM Board;
+SELECT * FROM Category;
+
+create sequence board_sequence1;
+create sequence user_sequence1;
+
+user_sequence1.NEXTVAL
 

@@ -129,7 +129,43 @@
          <artifactId>jackson-databind</artifactId>
          <version>2.1.1</version>
       </dependency>
+      
+	<dependency>
+    	<groupId>com.googlecode.json-simple</groupId>
+    	<artifactId>json-simple</artifactId>
+    	<version>1.1.1</version>
+	</dependency>
 
+<!-- https://mvnrepository.com/artifact/org.webjars/jquery-jsonview -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery-jsonview</artifactId>
+    <version>1.2.2</version>
+</dependency>
+
+
+<!-- JSON -->
+<!-- <dependency>
+    <groupId>net.sf.json-lib</groupId>
+    <artifactId>json-lib-ext-spring</artifactId>
+    <version>1.0.2</version>
+</dependency>
+ -->
+
+      
+      
+      <!-- 파일 업로드 -->
+    <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.0.1</version>
+    </dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -37,10 +37,35 @@
 
 </bean>
 
-<!--  sqlSession: DB사용이 끝나면 sqlSessoionFactory 에 접근하여 커넨션을 close()해줌.-->
-<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+	<!--  sqlSession: DB사용이 끝나면 sqlSessoionFactory 에 접근하여 커넨션을 close()해줌.-->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 
 	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 
-</bean>  
+	</bean>  
+	
+	<bean id="spring.RegularCommonsMultipartResolver"
+
+  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+    <property name="maxUploadSize" value="100000000" />
+
+    <property name="maxInMemorySize" value="100000000" />
+    
+	</bean>
+	<alias name="spring.RegularCommonsMultipartResolver" alias="multipartResolver" />
+ 
+ 
+ 
+<!-- ajax JSON parsing -->
+<!-- 
+<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+    <property name="contentType" value="application/json;charset=UTF-8"> </property>
+</bean> -->
+<!-- <bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"></bean>
+
+<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+    <property name="order" value="0"></property>
+</bean>
+ -->
 </beans>
