@@ -26,12 +26,13 @@
 				<div class="col-xs-12">
 					<div class="top-menu">
 
-						<div class="right-col" >
-							<a href="#"> <img src="resources/css/test/logo.png" alt="" /> </a>
-						</div>											
-					<%
-                		if (session.getAttribute("u_id") == null) {
-               		%>
+						<div class="right-col">
+							<a href="#"> <img src="resources/css/test/logo.png" alt="" />
+							</a>
+						</div>
+						<%
+							if (session.getAttribute("u_id") == null) {
+						%>
 						<div class="right-col" id="btn-login">
 							<div class="right-row" align="center">
 								<img
@@ -41,8 +42,8 @@
 							<div class="right-row">로그인</div>
 						</div>
 						<%
-                  	} else {
-              		%>
+							} else {
+						%>
 						<div class="right-col" id="btn-logout">
 							<div class="right-row" align="center">
 								<img
@@ -52,9 +53,9 @@
 							<div class="right-row">로그아웃</div>
 						</div>
 						<%
-                	  }
-               		%>
-               		<div class="right-col" id="btn-search">
+							}
+						%>
+						<div class="right-col" id="btn-search">
 							<div class="right-row">
 								<img
 									src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png"
@@ -67,13 +68,17 @@
 					</div>
 				</div>
 				<div class="frm-search" style="display: none;">
-				<form action="#" method="get" id="right-search-form" >
-						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
-						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
+					<form action="#" method="get" id="right-search-form">
+						<input type="text" placeholder="부스러기 검색" value=""
+							id="right-search-input" name="검색input이름">
+						<button type="submit" id="search-btn">
+							<img src="https://static.thenounproject.com/png/644045-200.png"
+								width="16px" height="16px" />
+						</button>
 					</form>
-					</div>
+				</div>
 			</div>
-			
+
 		</div>
 
 		<!-- 			로그인 팝업창  -->
@@ -91,102 +96,33 @@
 				</div>
 			</h3>
 		</form>
-		</header> <!-- 상단 고정부분 --> 
-		
-
-
-		<div id="header-bar" class="container">
-			<div class="row">
-				<div id="header-menu-left" class="col-xs-2">
-				
-
-				</div>
-
-				<div id="header-top-notice" class="col-xs-8" align="center">
-					부스러기 | 최신VS | 인기VS | 공지사항</div>			
-			</div>
-			<!-- row end -->
-		</div>
+	</header>	
 	
-
-	<!-- 	Content 내용부분 -->
-
-	<div id="content-area">
-		<div class="container" id="main">
-
-			<div class="row">
-				<div class="col-xs-4">
-					<h3>
-						<ul class="vss-a-menu">
-							<li><a href="Board.do"> 게시판 </a></li>
-							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
-							<li><a href="SignUp.do">회원가입</a></li>
-							<li><a href="Login.do">로그인</a></li>
-							<li><a href="">메인</a></li>
-						</ul>
-
-					</h3>
-				</div>
-
-				<img
-					src="https://characterdevteam.files.wordpress.com/2016/04/pce18490e185a9e186bce18489e185b5e186ab__hitel_plaza.jpg"
-					alt="" width="100%" />
+	<div id="header-bar" class="container">
+		<div class="row" align="center">               
+             
+			<div class="header-row">
+				<div class="header-col">메뉴1 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>
+				
+				<div class="header-col">메뉴2 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>
+				
+				<div class="header-col">메뉴3 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>
+				
+				<div class="header-col">메뉴4 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>										
 
 			</div>
 
-
-			<div class="col-xs-6">
-				<h3>
-					<a href="#">부스러기 인기글</a>
-				</h3>
-				<ul class="vss-hot">
-
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-
-				</ul>
-
-			</div>
-
-			<!-- 				중복 -->
-			<div class="col-xs-6">
-				<h3>
-					<a href="#">부스러기 최신글</a>
-				</h3>
-				<ul class="vss-hot">
-
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-
-				</ul>
-
-			</div>
 		</div>
 	</div>
-
-
-
-
+	<!-- row end -->
+	
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Header toggle,offset
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script type="text/javascript">
 		$(document).ready(function() { //DOM이 준비되고
 			var frm_search = $('.frm-search') ;
@@ -213,6 +149,9 @@
 		});
 	</script>
 
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : ajax 로그인
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
 	function login() {
 		if($("#u_id").val()=="") {
@@ -253,24 +192,30 @@
 <script type="text/javascript">
 
 $( document ).ready( function() {
-	var topOffset = $( '.top-menu' ).offset();
-	 $( window ).scroll( function() {		 
-		 if ( $( document ).scrollTop() > topOffset.top ) {
-			 $( '.top-menu' ).addClass( 'top-fixed' );			
-		 }
-		 else  {
-		 $('.top-menu').removeClass('top-fixed');	 
-		
-		 }
-		 });
-	 } );
+	   var topOffset = $( '.top-menu' ).offset();
+	    $( window ).scroll( function() {       
+	       if ( $( document ).scrollTop() > topOffset.top ) {
+	          $( '.top-menu' ).addClass( 'top-fixed' );
+	         
+	       }
+	       else  {
+	       $('.top-menu').removeClass('top-fixed');    
+	      
+	       }
+	       });
+	    } );
+
+
 
 </script>
 
 <!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 팝업폼 상대경로 위치 계산
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+	
+	
 
+	
 
 </body>
 </html>

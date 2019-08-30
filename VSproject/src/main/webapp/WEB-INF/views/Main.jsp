@@ -6,12 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
 <link
 	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css">
 <script src="resources/js/jquery-3.4.1.js"></script>
+<script src="resources/js/alertify.min.js"></script>
+<link rel="stylesheet" href="resources/css/alertify.default.css" />
+<link rel="stylesheet" href="resources/css/alertify.core.css" />
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -25,13 +27,13 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="top-menu">
-
-						<div class="right-col" >
-							<a href="#"> <img src="resources/css/test/logo.png" alt="" /> </a>
-						</div>											
-					<%
-                		if (session.getAttribute("u_id") == null) {
-               		%>
+						<div class="right-col">
+							<a href="Main.do"> <img src="resources/css/test/logo.png" alt="" />
+							</a>
+						</div>
+						<%
+							if (session.getAttribute("u_id") == null) {
+						%>
 						<div class="right-col" id="btn-login">
 							<div class="right-row" align="center">
 								<img
@@ -41,8 +43,8 @@
 							<div class="right-row">로그인</div>
 						</div>
 						<%
-                  	} else {
-              		%>
+							} else {
+						%>
 						<div class="right-col" id="btn-logout">
 							<div class="right-row" align="center">
 								<img
@@ -52,9 +54,9 @@
 							<div class="right-row">로그아웃</div>
 						</div>
 						<%
-                	  }
-               		%>
-               		<div class="right-col" id="btn-search">
+							}
+						%>
+						<div class="right-col" id="btn-search">
 							<div class="right-row">
 								<img
 									src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png"
@@ -67,13 +69,17 @@
 					</div>
 				</div>
 				<div class="frm-search" style="display: none;">
-				<form action="#" method="get" id="right-search-form" >
-						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
-						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
+					<form action="#" method="get" id="right-search-form">
+						<input type="text" placeholder="부스러기 검색" value=""
+							id="right-search-input" name="검색input이름">
+						<button type="submit" id="search-btn">
+							<img src="https://static.thenounproject.com/png/644045-200.png"
+								width="16px" height="16px" />
+						</button>
 					</form>
-					</div>
+				</div>
 			</div>
-			
+
 		</div>
 
 		<!-- 			로그인 팝업창  -->
@@ -91,26 +97,30 @@
 				</div>
 			</h3>
 		</form>
-		</header> <!-- 상단 고정부분 --> 
-		
-
-
-		<div id="header-bar" class="container">
-			<div class="row">
-				<div id="header-menu-left" class="col-xs-2">
-				
-
-				</div>
-
-				<div id="header-top-notice" class="col-xs-8" align="center">
-					부스러기 | 최신VS | 인기VS | 공지사항</div>			
-			</div>
-			<!-- row end -->
-		</div>
+	</header>	
 	
+	<div id="header-bar" class="container">
+		<div class="row" align="center">               
+             
+			<div class="header-row">
+				<div class="header-col">메뉴1 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>
+				
+				<div class="header-col">메뉴2 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>
+				
+				<div class="header-col">메뉴3 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>
+				
+				<div class="header-col">메뉴4 
+				<img src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png" alt="" width="32px" /></div>										
+
+			</div>
+
+		</div>
+	</div>
 
 	<!-- 	Content 내용부분 -->
-
 	<div id="content-area">
 		<div class="container" id="main">
 
@@ -184,9 +194,9 @@
 		</div>
 	</div>
 
-
-
-
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Header toggle,offset
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script type="text/javascript">
 		$(document).ready(function() { //DOM이 준비되고
 			var frm_search = $('.frm-search') ;
@@ -213,6 +223,9 @@
 		});
 	</script>
 
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : ajax 로그인
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
 	function login() {
 		if($("#u_id").val()=="") {
@@ -253,25 +266,20 @@
 <script type="text/javascript">
 
 $( document ).ready( function() {
-	var topOffset = $( '.top-menu' ).offset();
-	 $( window ).scroll( function() {		 
-		 if ( $( document ).scrollTop() > topOffset.top ) {
-			 $( '.top-menu' ).addClass( 'top-fixed' );
-			$('.top-fixed').css('width','1080px').css('left','15%');
-		 }
-		 else  {
-		 $('.top-menu').removeClass('top-fixed');	 
-		
-		 }
-		 });
-	 } );
+	   var topOffset = $( '.top-menu' ).offset();
+	    $( window ).scroll( function() {       
+	       if ( $( document ).scrollTop() > topOffset.top ) {
+	          $( '.top-menu' ).addClass( 'top-fixed' );
+	         
+	       }
+	       else  {
+	       $('.top-menu').removeClass('top-fixed');    
+	      
+	       }
+	       });
+	    } );
 
 </script>
-
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 팝업폼 상대경로 위치 계산
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-
 
 </body>
 </html>

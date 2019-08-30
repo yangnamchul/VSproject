@@ -75,7 +75,7 @@ header .top-menu {
 	display: table;
 	background-color: #BBBBBB;
 	box-shadow: 2px 2px 0 black;	
-	width: 1080px;
+	width: 100%;
 
 	/* 	bottom: -10px; */
 }
@@ -84,7 +84,7 @@ header .top-menu {
 	display : inherit !important ;
 	position: fixed;
 	top: 0px;
-	/* left:50px; */
+	right : 0px;
 	z-index: 10;
 	opacity	: 0.9;
 }
