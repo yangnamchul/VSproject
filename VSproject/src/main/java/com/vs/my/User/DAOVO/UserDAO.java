@@ -29,4 +29,6 @@ public interface UserDAO {
 	public UserVO FindPW(UserVO uv);
 	
 	public void ChangePW(UserVO uv);
+	
+	public UserVO MyPage(UserVO uv);
 }

@@ -34,4 +34,10 @@
 		SET u_pw = #{u_pw}
 		WHERE u_id = #{u_id}
 	</update>
+	
+	<select id="MyPage">
+		SELECT *
+		FROM USERS
+		WHERE u_id=#{u_id}
+	</select>
 </mapper>

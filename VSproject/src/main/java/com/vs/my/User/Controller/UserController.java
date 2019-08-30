@@ -62,7 +62,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="Login.do", method=RequestMethod.GET) //로그인
+	@RequestMapping(value="Login.do", method=RequestMethod.GET) //로그인 페이지 이동
 	public ModelAndView Login(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Login");
@@ -72,15 +72,18 @@ public class UserController {
 	
 	@RequestMapping(value="LoginAction.do", method=RequestMethod.POST) //로그인
 	@ResponseBody
-	public int LoginAction(HttpServletRequest req , UserVO uv, HttpSession hs) {
+	public int LoginAction(HttpServletRequest request, UserVO uv, HttpSession hs) {
 		int data = 0;
 		
 		data = us.LoginAction(uv, hs);
+		
+		System.out.println(hs.getAttribute("u_id"));
+		
 		return data;
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.GET) //아이디, 비번 찾기 페이지 이동
-	public ModelAndView FindID(HttpServletRequest req) {
+	public ModelAndView FindID() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("FindID");
 		
@@ -123,9 +126,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
-	public ModelAndView MyPage(HttpServletRequest req) {
+	public ModelAndView MyPage(HttpSession hs, UserVO uv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
+		
+		String u_id = (String) hs.getAttribute("u_id");
+		
+		System.out.println(u_id);
+		
+		uv.setU_id(u_id);
+		
+		mv.addObject(us.MyPage(uv));
 		
 		return mv;
 	}

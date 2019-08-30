@@ -56,8 +56,6 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		UserVO vo =dao.FindPW(uv);
 		
-		
-		
 		try {
 			vo.getU_id();
 		} catch(Exception e) {
@@ -78,6 +76,13 @@ public class UserServiceImpl implements UserService{
 		}
 		hs.removeAttribute("changPW");
 		return 1;
+	}
+
+	@Override
+	public UserVO MyPage(UserVO uv) {
+		// TODO Auto-generated method stub
+		
+		return dao.MyPage(uv);
 	}
 	
 

@@ -48,6 +48,12 @@ public class UserDAOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		sqlSession.selectOne(namespace+".ChangePW",uv);
 	}
+
+	@Override
+	public UserVO MyPage(UserVO uv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".MyPage",uv);
+	}
 	
 	
 

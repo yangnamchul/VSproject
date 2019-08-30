@@ -42,22 +42,23 @@
 						<input type="text" placeholder="부스러기 검색" value="" id="right-search-input" name="검색input이름"> 
 						<button type="submit" id="search-btn"> <img src="https://static.thenounproject.com/png/644045-200.png" width="16px" height="16px" /> </button>
 					</form>
-
+					
+					
 					<div class="top-menu">	
 						<div class="right-col" id="btn-search">							
 							<div class="right-row"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png" alt="" /></div>
 							<div class="right-row"> 검색</div>						
-						</div>
+					</div>
 					<%
                 		if (session.getAttribute("u_id") == null) {
                		%>
 					<div class="right-col" id="btn-login">							
 						<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
 						<div class="right-row"> 로그인</div>						
-					</div>               
+					</div>
 					<%
                   	} else {
-              		%>              		
+              		%>
                		<div class="right-col" id="btn-logout">							
 						<div class="right-row" align="center"> <img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png" alt="" /></div>
 						<div class="right-row"> 로그아웃</div>						
@@ -174,6 +175,7 @@
 							<li><a href="SignUp.do">회원가입</a></li>
 							<li><a href="Login.do">로그인</a></li>
 							<li><a href="">메인</a></li>
+							<li><a href="MyPage.do">마이페이지</a></li>
 						</ul>
 
 					</h3>
@@ -235,6 +237,38 @@
 		</div>
 	</div>
 
+	<script>
+		function login() {
+			if($("#u_id").val()=="") {
+				alertify.alert("아이디를 입력해주세요");
+				return;
+			};
+			if($("#u_pw").val()=="") {
+				alertify.alert("비밀번호를 입력해주세요");
+				return;
+			};
+		
+			jQuery.ajax({
+				type:"POST",
+				url:"LoginAction.do",
+				data:$("#loginForm").serialize(),
+				async : false,
+				success : function (data) {
+					if (data == 0) {
+						alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");
+						$("#u_id").val("");
+						$("#u_pw").val("");
+					} else  {
+						location.href = "Main";
+					}
+				},
+				error: function (req, status, error) {
+					alertify.alert(req.status+ "\nmessege"+ req.responseTest );
+				}
+			});
+		}
+	
+	</script>
 
 	<script type="text/javascript">
 		$(document).ready(function() { //DOM이 준비되고
@@ -255,38 +289,7 @@
 		
 	</script>
 	
-	<script>
-	function login() {
-		if($("#u_id").val()=="") {
-			alertify.alert("아이디를 입력해주세요");
-			return;
-		};
-		if($("#u_pw").val()=="") {
-			alertify.alert("비밀번호를 입력해주세요");
-			return;
-		};
-		
-		jQuery.ajax({
-			type:"POST",
-			url:"LoginAction.do",
-			data:$("#loginForm").serialize(),
-			async : false,
-			success : function (data) {
-				if (data == 0) {
-					alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");
-					$("#u_id").val("");
-					$("#u_pw").val("");
-				} else  {
-					location.href = "Main";
-				}
-			},
-			error: function (req, status, error) {
-				alertify.alert(req.status+ "\nmessege"+ req.responseTest );
-			}
-		});
-	}
-	
-</script>
+
 
 </body>
 </html>
