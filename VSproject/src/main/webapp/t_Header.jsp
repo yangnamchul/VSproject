@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-<link
-	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css">
 <script src="resources/js/jquery-3.4.1.js"></script>
+<script src="resources/js/alertify.min.js"></script>
+<link rel="stylesheet" href="resources/css/alertify.default.css" />
+<link rel="stylesheet" href="resources/css/alertify.core.css" />
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -27,7 +27,7 @@
 					<div class="top-menu">
 
 						<div class="right-col">
-							<a href="#"> <img src="resources/css/test/logo.png" alt="" />
+							<a href="Main.do"> <img src="resources/css/test/logo.png" alt="" />
 							</a>
 						</div>
 						<%
@@ -208,14 +208,9 @@ $( document ).ready( function() {
 
 
 </script>
-
 <!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 팝업폼 상대경로 위치 계산
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-	
-	
-
-	
 
 </body>
 </html>

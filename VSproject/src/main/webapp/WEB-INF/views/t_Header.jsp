@@ -6,24 +6,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link
-	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css">
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script src="resources/js/alertify.min.js"></script>
 <link rel="stylesheet" href="resources/css/alertify.default.css" />
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	response.setCharacterEncoding("UTF-8");
+%>
+
 </head>
-<body>	
-	
-<header>
+<body>
+	<header>
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="top-menu">
+
 						<div class="right-col">
-							<a href="Main.do"> <img src="resources/css/test/logo.png" alt="" />
+							<a href="#"> <img src="resources/css/test/logo.png" alt="" />
 							</a>
 						</div>
 						<%
@@ -85,7 +89,7 @@
 						<li>아이디 <input type="text" name="u_id" id="u_id" /></li>
 						<li>암 호 <input type="password" name="u_pw" id="u_pw" /></li>
 						<div align="center" id="pop_login_btn">
-							<button type="button" onclick="loginAction()">확인</button>
+							<button type="button" onclick="login()">확인</button>
 							<button type="button" onclick="">회원가입</button>
 						</div>
 					</ul>
@@ -114,8 +118,9 @@
 
 		</div>
 	</div>
-
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	<!-- row end -->
+	
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Header toggle,offset
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script type="text/javascript">
@@ -170,7 +175,7 @@
 					$("#u_id").val("");
 					$("#u_pw").val("");
 				} else  {
-					 location.reload() ;
+					location.href = "Main";
 				}
 			},
 			error: function (req, status, error) {
@@ -202,72 +207,9 @@ $( document ).ready( function() {
 
 </script>
 
-	   <div class="container">
-      <div class="row" >
-         <div class="col-xs-6">
-            <form name="form1" id="form1">
-               <ul class="vss-a-menu" id="pop_login">
-                  <li>아이디 <input type="text" name="u_id" id="u_id"></li><br>
-                  <li>암 호 <input type="password" name="u_pw" id="u_pw"></li>               
-                  <div align="center" id="pop_login_btn">
-                  <div class="auto-login"> <input type="checkbox" id="auto-login" /> 자동로그인 </div>
-                     <button type="button" onclick="login()">로그인</button>
-                     <div class="find-id-pw">
-                        <a href="#">아이디찾기</a> /
-                        <a href="#">암호찾기</a>
-                     </div>
-                     아직 회원이 아니면?? <button type="button" onclick="">회원가입</button>
-                  </div>
-               </ul>
-            </form>
+	
 
-         </div>
-      </div>
-   </div>
+	
 
-	<!-- 	<form name="form1"  id="form1"> -->
-	<!-- 	<h1> -->
-	<!-- 		아이디 : <input type="text" name="u_id" id="u_id"> <br> -->
-	<!-- 		비밀번호 : <input type="text" name="u_pw" id="u_pw"> <br> -->
-	<!-- 		<input type="button" value="확인" onclick="login()"> -->
-	<!-- 	</h1> -->
-	<!-- 	</form> -->
-
-
-
-<script>
-	function loginAction() {
-		if ($("#u_id").val() == "") {
-			alertify.alert("아이디를 입력해주세요");
-			return;
-		}
-		;
-		if ($("#u_pw").val() == "") {
-			alertify.alert("비밀번호를 입력해주세요");
-			return;
-		}
-		;
-
-		jQuery.ajax({
-			type : "POST",
-			url : "LoginAction.do",
-			data : $("#form1").serialize(),
-			async : false,
-			dataType : "json",
-			success : function(data) {
-				if (data == 0) {
-					alertify.alert("로그인 실패했습니다. 다시 로그인 해주시기 바랍니다");
-					$("#u_id").val("");
-					$("#u_pw").val("");
-				} else {
-					location.href = "Main";
-				}
-			},
-			error : function(req, status, error) {
-				alertify.alert(req.status + "\nmessege" + req.responseTest);
-			}
-		});
-	}
-</script>
 </body>
 </html>
