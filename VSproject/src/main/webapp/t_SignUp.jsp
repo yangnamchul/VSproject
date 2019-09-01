@@ -15,7 +15,7 @@
 <div class="container" id="cont">
    <div class="row" id="Join">
       <!-- <div class="col-xs-2"></div> -->
-      <div class="col-xs-12" id="joinDiv">
+      <div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="joinDiv">
          <h1> 회원가입 </h1>
             <ul class="vss-join" id="JoinForm">
                <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" />

@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%-- 	<%@ include file="t_Header.jsp"%> --%>
 	<%@ include file="Header.jsp"%>
 
 
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xl-6">
 				<form name="form1" id="form1">
 					<ul class="vss-a-menu" id="pop_login">
 						<li>아이디 <input type="text" name="u_id" id="u_id"></li>

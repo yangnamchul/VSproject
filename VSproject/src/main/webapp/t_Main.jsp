@@ -15,13 +15,11 @@
 
 	<%@ include file="t_Header.jsp"%>
 
-
 	<!-- 	Content 내용부분 -->
 	<div id="content-area">
 		<div class="container" id="main">
-
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-12 col-sm-12 col-lg-6 col-xl-4">
 					<h3>
 						<ul class="vss-a-menu">
 							<li><a href="Board.do"> 게시판 </a></li>
@@ -30,61 +28,59 @@
 							<li><a href="Login.do">로그인</a></li>
 							<li><a href="">메인</a></li>
 						</ul>
-
 					</h3>
 				</div>
 
 				<img
 					src="https://characterdevteam.files.wordpress.com/2016/04/pce18490e185a9e186bce18489e185b5e186ab__hitel_plaza.jpg"
-					alt="" width="100%"/>
-
-			</div>
+					alt="" width="100%" />
 
 
-			<div class="col-xs-6">
-				<h3>
-					<a href="#">부스러기 인기글</a>
-				</h3>
-				<ul class="vss-hot">
+				<div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+					<h3>
+						<a href="#">부스러기 인기글</a>
+					</h3>
+					<ul class="vss-hot">
 
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-				</ul>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+					</ul>
 
-			</div>
+				</div>
 
-			<!-- 				중복 -->
-			<div class="col-xs-6">
-				<h3>
-					<a href="#">부스러기 최신글</a>
-				</h3>
-				<ul class="vss-hot">
+				<!-- 				중복 -->
+				<div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+					<h3>
+						<a href="#">부스러기 최신글</a>
+					</h3>
+					<ul class="vss-hot">
 
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
-					<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-						href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
+							href="#">아무내용링크1</a></li>
 
-				</ul>
+					</ul>
 
+				</div>
 			</div>
 		</div>
 	</div>

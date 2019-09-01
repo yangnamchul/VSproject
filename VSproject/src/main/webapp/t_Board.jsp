@@ -17,18 +17,18 @@
 		<!-- 	글목록 보기 -->
 		<div class="row" id="boardDiv">
 
-			<div class="col-xs-12" id="board-inner">
+			<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
 			[아무]의 부스러기 (전체 글 : { 딸린	vss count}</div>
 
-			<div class="col-xs-10" id="board-menu">
+			<div class="col-xl-10" id="board-menu">
 				해당 부스러기 관련 링크 (정렬, 인기글, 공지 같은거 연결하기)
 			</div>
 
-			<div class="col-xs-2" id="board-write">
+			<div class="col-xl-2" id="board-write" align="center">
 				<button type="button">글쓰기 </button>
 			</div>
 
-			<div class="col-xs-12" id="board-list">
+			<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-list">
 				<table class="table table-striped table-bordered table-hover" id="board-table">
 					<thead>
 						<tr>
