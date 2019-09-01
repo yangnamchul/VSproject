@@ -27,7 +27,7 @@
 					<div class="top-menu">
 
 						<div class="right-col">
-							<a href="#"> <img src="resources/css/test/logo.png" alt="" />
+							<a href="Main.do"> <img src="resources/css/test/logo.png" alt="" />
 							</a>
 						</div>
 						<%
@@ -187,8 +187,9 @@
 </script>
 
 <!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : Top부분 스크롤 고정
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+내 용 : Top부분 스크롤 고정 
+수 정 : 일단 PC화면은 적용안함 (8/31) 
+
 <script type="text/javascript">
 
 $( document ).ready( function() {
@@ -206,7 +207,7 @@ $( document ).ready( function() {
 	    } );
 
 </script>
-
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	
 
 	

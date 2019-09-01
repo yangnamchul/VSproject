@@ -36,7 +36,7 @@
 
 				<img
 					src="https://characterdevteam.files.wordpress.com/2016/04/pce18490e185a9e186bce18489e185b5e186ab__hitel_plaza.jpg"
-					alt="" width="100%" />
+					alt="" width="100%"/>
 
 			</div>
 

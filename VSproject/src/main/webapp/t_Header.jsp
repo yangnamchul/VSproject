@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/GuRem2.css">
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script src="resources/js/alertify.min.js"></script>
+<script src="resources/js/bootstrap.js"></script>
 <link rel="stylesheet" href="resources/css/alertify.default.css" />
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
 
@@ -187,8 +188,9 @@
 </script>
 
 <!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : Top부분 스크롤 고정
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+내 용 : Top부분 스크롤 고정 
+수 정 : 일단 PC화면은 적용안함 (8/31) 
+
 <script type="text/javascript">
 
 $( document ).ready( function() {
@@ -205,12 +207,11 @@ $( document ).ready( function() {
 	       });
 	    } );
 
-
-
 </script>
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 팝업폼 상대경로 위치 계산
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+	
+
+	
 
 </body>
 </html>
