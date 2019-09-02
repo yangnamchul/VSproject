@@ -12,7 +12,7 @@
 	
 <body>
 
- <%@ include file="/t_Header.jsp" %> 
+ <%@ include file="t_Header.jsp" %> 
 
 
 

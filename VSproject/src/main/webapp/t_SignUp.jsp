@@ -8,8 +8,7 @@
 </head>
 <body>		
 
-<%-- <%@ include file="t_Header.jsp"%> --%>
-<%@ include file="Header.jsp"%>
+<%@ include file="t_Header.jsp"%>
 
 	 <!-- 회원가입 폼 -->
 <form class="signup-content" action="UserInsertData.do" method="get">
@@ -20,11 +19,8 @@
          <h1> 회원가입 </h1>
             <ul class="vss-join" id="JoinForm">
                <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" />
-               <button type="button" class="checkbtn"> 중복검사 </button>
-               <br>
-               <div>
-                  <span class="id-check-text">중복검사항목</span>
-               </div>
+               <div class="check-div"><button type="button" class="checkbtn"> 중복검사 </button></div>
+               <div class="id-check-text">중복검사항목</div>
                </li>
                <li>이&nbsp;&nbsp;름&nbsp;&nbsp; <input type="text" name="u_name" /></li>
                <li>닉네임&nbsp;&nbsp; <input type="text" name="u_nick" /></li>
@@ -45,7 +41,7 @@
                <span class="progress-bar_re_text">칸이 비어있습니다</span>
                </li>
                <li>이메일&nbsp;&nbsp; <input type="text" name="u_email" /></li>
-               <div align="center" class="clearfix"> 
+               <div align="center" class="submit-div"> 
                   <button type="submit" class="submitbtn">회원가입</button>             
                </div>                                                
             </ul>

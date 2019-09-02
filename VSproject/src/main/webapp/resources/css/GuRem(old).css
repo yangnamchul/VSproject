@@ -42,7 +42,7 @@ header .frm-search {
 }
 
 header #right-search-form>input[type=text] {
-	position: relative;
+	/* 	position: relative; */
 	border: 3px solid #ff4d00;
 	background: #fff;
 	font-size: 1.1em;
@@ -51,7 +51,7 @@ header #right-search-form>input[type=text] {
 
 header #right-login {
 	display: inline-block;
-	position: relative;
+	/* 	position: relative; */
 	padding: 0.3em 0.5em
 }
 
@@ -70,22 +70,22 @@ header .top-menu {
 	display: table;
 	background-color: #BBBBBB;
 	box-shadow: 2px 2px 0 black;
+	width: 100%;
 
 	/* 	PC전체화면일때 적용  할것 (추가해야함)*/
-/* 	width: 100%	 */
+	/* 	width: 100%	 */
 }
 
-.top-fixed {
-	display: inherit !important;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	z-index: 10;
-	opacity: 0.98;
-	margin: 0px 10%;
-}
-
+/* .top-fixed { */
+/* 	display: inherit !important; */
+/* 	position: fixed; */
+/* 	top: 0px; */
+/* 	left: 0px; */
+/* 	right: 0px; */
+/* 	z-index: 10; */
+/* 	opacity: 0.98; */
+/* 	margin: 0px 10%; */
+/* } */
 header .right-row {
 	display: table-row;
 	padding: 3px 11px;
@@ -110,17 +110,16 @@ header .right-col:active {
 #header-bar {
 	margin-top: 0.5em;
 	margin-bottom: 1em;
-	
 }
 
 #header-bar>.row {
 	display: table;
-	width: 100%;	
+	width: 100%;
 	line-height: 1.4;
 	background-color: #000084;
 	box-shadow: 2px 2px 0px #000000;
-	color: black;	
-	margin: 0 auto ;
+	color: black;
+	margin: 0 auto;
 }
 
 #header-bar .header-row {
@@ -138,7 +137,6 @@ header .right-col:active {
 #header-bar .header-col:active {
 	background-color: #555555;
 }
-
 
 /* 메뉴바 토글 추가메뉴 나중에 */
 }
@@ -314,7 +312,6 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: white;
 }
 
-
 /* 팝 로그인 미영 */
 #pop_login {
 	position: fixed;
@@ -338,78 +335,29 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	/* height: 1.5em; */
 }
 
+#pop_login>div>button {
+	color: white;
+	background-color: #ff4d00;
+}
+
 #pop_login>#pop_login_btn {
 	margin: 5px;
 }
 
 #pop_login>div>button {
-   color: white;
-   background-color: #ff4d00;
-   margin:5px;/* 8.30 미영수정 */
+	color: white;
+	background-color: #ff4d00;
+	margin: 5px; /* 8.30 미영수정 */
 }
 
-.find-id-pw, .find-id-pw > a {
-   color:white;
-   font-size:20px;
-   text-align:center;
+.find-id-pw, .find-id-pw>a {
+	color: white;
+	font-size: 20px;
+	text-align: center;
 }
 
-.auto-login { text-align:right;}
-
-/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : Login.jsp 
-작성자 : 미영
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
-#Login {
-   margin-left:0px;
-   margin-right:0px;   
-}
-#Login_Div {
-/*    padding-top: 0.5em;
-   padding-bottom: 0.5em; */
-/*    margin-top: 5%; */
-   padding: 3.5em;
-   background-color: #000084;
-   color: white;
-   box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
-}
-#Login_Div > h1 {
-   color:white;
-   align:center;
-}
-.vss-login {
-   border-top:4px solid white;
-   border-bottom:4px solid white;
-   margin-top: 10px;
-    padding-left: 15%;
-    padding-bottom: 20px;
-}
-.vss-login>li {
-   font-size:30px;
-   background-color: #000084;
-   color: white;
-}
-#LoginForm > li {
-   list-style: none;
-   margin: 20px;
-}
-
-#LoginForm > div > div > button {
-   color: white;
-    background-color: #ff4d00;
-   font-size:25px;
-}
-.id-check-text {
-   margin-left:18%;
-}
-   
-#LoginForm>li>input[type=text] {
-   width:50%;
-   font-size: 30px;
-    padding: 0px 3px;
-    margin: 1px;
-    color: black;
-    background: #bbbbbb;
+.auto-login {
+	text-align: right;
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -417,96 +365,169 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 작성자 : 미영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #Join {
-   margin-left:0px;
-   margin-right:0px;   
+	margin-left: 0px;
+	margin-right: 0px;
 }
+
 #joinDiv {
-/*    padding-top: 0.5em;
-   padding-bottom: 0.5em; */
-/*    margin-top: 5%; */
-   padding: 3.5em;
-   background-color: #000084;
-   color: white;
-   box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+	padding: 3.5em;
+	background-color: #000084;
+	color: white;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
-#joinDiv > h1 {
-   color:white;
-   align:center;
+
+#joinDiv>h1 {
+	color: white;
+	align: center;
 }
 
 .vss-join {
-   border-top:4px solid white;
-   border-bottom:4px solid white;
-   margin-top: 10px;
-    padding-left: 15%;
-    padding-bottom: 20px;
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+	margin-top: 10px;
+	padding-left: 15%;
+	padding-bottom: 20px;
+}
+
+.vss-join>li {
+	font-size: 30px;
+	background-color: #000084;
+	color: white;
 }
 
 #joinForm {
-    width: 317px;
-}
-#JoinForm > li {
-   font-size:30px;
-   background-color: #000084;
-   color: white;
-   list-style: none;
-   margin: 20px;
+	width: 317px;
 }
 
-#JoinForm > li > button {
-   color: white;
-    background-color: #ff4d00;
-   font-size:25px;
-   }
-   
+#JoinForm>li {
+	list-style: none;
+	margin: 20px;
+}
+
+#JoinForm>li>button {
+	color: white;
+	background-color: #ff4d00;
+	font-size: 25px;
+}
+
 .id-check-text {
-   margin-left:18%;
-}
-   
-#JoinForm>li>input[type=text] {
-   width:50%;
-   font-size: 30px;
-    padding: 0px 3px;
-    margin: 1px;
-    color: black;
-    background: #bbbbbb;
+	margin-left: 18%;
 }
 
-#JoinForm > div > button {
-   color: white;
-    background-color: #ff4d00;
-   font-size:25px;
-   }
-   
-.progress-bar_text, .progress-bar_re_text, .id-check-text{
-   font-size: 22px;
-   color: #f9ff00;
-   text-shadow: 1px 1px 1px #ff4d00;
+#JoinForm>li>input[type=text] {
+	width: 50%;
+	font-size: 30px;
+	padding: 0px 3px;
+	margin: 1px;
+	color: black;
+	background: #bbbbbb;
+}
+
+#JoinForm>div>button {
+	color: white;
+	background-color: #ff4d00;
+	font-size: 25px;
+}
+
+.progress-bar_text, .progress-bar_re_text, .id-check-text {
+	font-size: 22px;
+	color: #f9ff00;
+	text-shadow: 1px 1px 1px #ff4d00;
 }
 
 .progress-bar_wrap {
-  border:1px solid blue;
-  margin-left: 1%;
-  width: 300px;
-  height: 10px;
-  background: #F6F6FA;
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-  border-radius: 5px;
+	border: 1px solid blue;
+	margin-left: 1%;
+	width: 300px;
+	height: 10px;
+	background: #F6F6FA;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 .progress-bar_item, .progress-bar_re_item {
-  display: inline-block;
-  height: 100%;
-  width: 32.5%;
-  margin-right: .8%;
-  border-radius: 5px;
-  float: left; 
-  transition: background-color .2s, visisility .1s;}
+	display: inline-block;
+	height: 100%;
+	width: 32.5%;
+	margin-right: .8%;
+	border-radius: 5px;
+	float: left;
+	transition: background-color .2s, visisility .1s;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : board.jsp > 글 목록 보기 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#boardDiv {
+	background-color: #000084;
+	margin: 0 auto;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+
+#boardDiv>#board-inner {
+	display: table;
+	width: 100%;
+	border-top: 3px solid blue;
+	border-bottom: 3px solid black;
+	text-align: center;
+	color: white;
+	font-size: 1.5em;
+	margin: 0.5em auto;
+	padding: 0.5em;
+}
+
+#boardDiv>#board-menu {
+	border: 1px solid #ff4d00;
+	color: white;
+	padding: 0.5em;
+	text-align: center;
+}
+
+#boardDiv>#board-write {
+	text-align: center;
+}
+
+#boardDiv>#board-write>button {
+	color: white;
+	background-color: #ff4d00;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1.5em !important;
+	padding: 0.1em;
+	text-align: center;
+}
+
+#board-list {
+	margin: 1% auto;
+}
+
+#board-table {
+	margin: 1% auto;
+	color: blue;
+}
+
+/* 게시글 head */
+#board-list>table>thead {
+	background-color: #BBBBBB;
+}
+
+#board-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#board-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
+}
+
+#board-page {
+	color: white;
+	text-align: center;
+	margin: 1% auto;
+}
 
 /* ■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■■■■■■■■■■■□□□□□□□□□□■■■■■■■■■■ */
-/* 여기부터 BootStrap Import */
+/* 여기부터 부트스트랩 BootStrap Import */
 @font-face {
 	font-family: 'FontAwesome';
 	src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
@@ -657,7 +678,15 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -704,7 +733,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -759,7 +796,15 @@ keyframes fa-spin { 0%{
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -806,7 +851,15 @@ transform
 
 
 
+
+
+
+
 :rotate(359deg)
+
+
+
+
 
 
 
@@ -3668,6 +3721,10 @@ audio
 
 
 
+
+
+
+
 :not
 
 
@@ -3679,7 +3736,11 @@ audio
 
 
 
+
+
  
+
+
 
 
 
@@ -3704,7 +3765,11 @@ controls
 
 
 
+
+
  
+
+
 
 
 
@@ -3737,7 +3802,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -3759,7 +3830,13 @@ display
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -3802,6 +3879,10 @@ height
 
 
 
+
+
+
+
 :
 
 
@@ -3813,7 +3894,11 @@ height
 
 
 
+
+
  
+
+
 
 
 
@@ -3904,6 +3989,10 @@ svg
 
 
 
+
+
+
+
 :not
 
 
@@ -3915,7 +4004,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -3938,7 +4031,11 @@ svg
 
 
 
+
+
  
+
+
 
 
 
@@ -3971,7 +4068,13 @@ overflow
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -3993,7 +4096,13 @@ overflow
 
 
 
+
+
 hidden
+
+
+
+
 
 
 
@@ -5778,6 +5887,12 @@ code {
 	margin-left: auto
 }
 
+@media (min-width: 576px) {
+  .container {
+    	width: 540px;
+  }
+}
+
 @media ( min-width :768px) {
 	.container {
 		width: 750px
@@ -6030,6 +6145,8 @@ code {
 .col-xs-offset-0 {
 	margin-left: 0
 }
+
+
 
 @media ( min-width :768px) {
 	.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3,
@@ -7881,7 +7998,8 @@ tbody.collapse.in {
 	content: "";
 	border-top: 0;
 	border-bottom: 4px dashed;
-	border-bottom: 4px solid\9
+	border-bottom: 4px solid\9
+
 }
 
 .dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
@@ -7959,6 +8077,10 @@ tbody.collapse.in {
 
 
 
+
+
+
+
 :not
 
 
@@ -7970,7 +8092,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -7993,7 +8119,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -8016,7 +8146,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -8039,7 +8173,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -8062,7 +8200,11 @@ tbody.collapse.in {
 
 
 
+
+
  
+
+
 
 
 
@@ -8086,7 +8228,11 @@ tbody.collapse.in {
 
 
 
+
+
 	
+
+
 
 
 
@@ -8119,6 +8265,10 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
@@ -8130,7 +8280,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8148,142 +8302,12 @@ border-radius
 }
 
 .btn-group
->
-.btn
+>.btn:first-child:not(
+:last-child):not(.dropdown-toggle){order-top-right-radius
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:first-child
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:not
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-(
-:last-child
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-)
-:not
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-(
-.dropdown-toggle
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-){
-border-top-right-radius
 
 
 
@@ -8315,7 +8339,11 @@ border-top-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8348,7 +8376,13 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -8370,11 +8404,17 @@ border-bottom-right-radius
 
 
 
+
+
 0
 }
 .btn-group
 >
 .btn
+
+
+
+
 
 
 
@@ -8416,6 +8456,10 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :not
 
 
@@ -8427,7 +8471,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8450,7 +8498,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8485,7 +8537,13 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :not
+
+
 
 
 
@@ -8508,6 +8566,8 @@ border-bottom-right-radius
 
 
 
+
+
 (
 :first-child
 
@@ -8520,7 +8580,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8553,6 +8617,10 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
@@ -8564,7 +8632,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8597,6 +8669,10 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
 
 
@@ -8608,7 +8684,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8722,6 +8802,10 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :not
 
 
@@ -8733,7 +8817,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8756,7 +8844,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8779,7 +8871,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8802,7 +8898,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8835,7 +8935,13 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -8857,11 +8963,17 @@ border-radius
 
 
 
+
+
 0
 }
 .btn-group-vertical
 >
 .btn
+
+
+
+
 
 
 
@@ -8903,6 +9015,10 @@ border-radius
 
 
 
+
+
+
+
 :not
 
 
@@ -8914,7 +9030,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8937,7 +9057,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -8970,7 +9094,13 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -8992,8 +9122,14 @@ border-top-left-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -9036,7 +9172,13 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -9058,8 +9200,14 @@ border-top-right-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -9102,6 +9250,10 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
@@ -9113,7 +9265,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -9146,7 +9302,13 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -9168,11 +9330,17 @@ border-bottom-left-radius
 
 
 
+
+
 0
 }
 .btn-group-vertical
 >
 .btn
+
+
+
+
 
 
 
@@ -9214,6 +9382,10 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :not
 
 
@@ -9225,7 +9397,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -9248,7 +9424,11 @@ border-bottom-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -9281,6 +9461,10 @@ border-top-left-radius
 
 
 
+
+
+
+
 :
 
 
@@ -9292,7 +9476,11 @@ border-top-left-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -9325,6 +9513,10 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
@@ -9336,7 +9528,11 @@ border-top-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -9369,7 +9565,13 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -9391,8 +9593,14 @@ border-bottom-right-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -9435,7 +9643,13 @@ border-bottom-left-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -9457,8 +9671,14 @@ border-bottom-left-radius
 
 
 
+
+
 4
 px
+
+
+
+
 
 
 
@@ -9613,7 +9833,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9645,6 +9869,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
 :not
 
 
@@ -9656,7 +9884,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9679,7 +9911,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9702,7 +9938,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9725,7 +9965,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9758,6 +10002,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
 :not
 
 
@@ -9769,7 +10017,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9792,7 +10044,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9815,7 +10071,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9838,7 +10098,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9871,6 +10135,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
+
+
 :not
 
 
@@ -9882,7 +10150,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9905,7 +10177,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9928,7 +10204,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9951,7 +10231,11 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 
 
+
+
  
+
+
 
 
 
@@ -9984,6 +10268,10 @@ border-radius
 
 
 
+
+
+
+
 :
 
 
@@ -9995,7 +10283,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -10054,6 +10346,8 @@ border-radius
 
 
 
+
+
  
 
 
@@ -10065,7 +10359,13 @@ border-radius
 
 
 
+
+
 .form-control
+
+
+
+
 
 
 
@@ -10109,9 +10409,17 @@ border-radius
 
 
 
+
+
+
+
 :first-child
 ,
 .input-group-btn
+
+
+
+
 
 
 
@@ -10137,6 +10445,10 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
 
 
 
@@ -10164,6 +10476,10 @@ border-radius
 .btn
 ,
 .input-group-btn
+
+
+
+
 
 
 
@@ -10209,9 +10525,17 @@ border-radius
 
 
 
+
+
+
+
 :last-child
 >
 .btn-group
+
+
+
+
 
 
 
@@ -10244,7 +10568,11 @@ border-radius
 
 
 
+
+
 	
+
+
 
 
 
@@ -10267,7 +10595,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -10302,6 +10634,10 @@ border-radius
 
 
 
+
+
+
+
 :last-child
 >
 .btn
@@ -10325,6 +10661,10 @@ border-radius
 
 
 
+
+
+
+
 :not
 
 
@@ -10336,7 +10676,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -10360,7 +10704,11 @@ border-radius
 
 
 
+
+
 	
+
+
 
 
 
@@ -10383,7 +10731,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -10406,7 +10758,11 @@ border-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -10439,6 +10795,10 @@ border-top-right-radius
 
 
 
+
+
+
+
 :
 
 
@@ -10450,7 +10810,11 @@ border-top-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -10483,6 +10847,10 @@ border-bottom-right-radius
 
 
 
+
+
+
+
 :
 
 
@@ -10494,7 +10862,11 @@ border-bottom-right-radius
 
 
 
+
+
  
+
+
 
 
 
@@ -13685,11 +14057,11 @@ li {
 	}
 }
 
-.container {
-	max-width: none !important;
-	width: 1100px
-}
-
+/* 컨테이너 */
+/* .container { */
+/* 	max-width: none !important; */
+/* 	width: 1100px */
+/* } */
 .navbar-header {
 	float: left
 }
@@ -14165,7 +14537,11 @@ i {
 
 
 
+
+
  
+
+
 
 
 
@@ -14187,7 +14563,11 @@ i {
 
 
 
+
+
  
+
+
 
 
 
@@ -14219,6 +14599,10 @@ input
 
 
 
+
+
+
+
 :not
 
 
@@ -14230,7 +14614,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -14253,7 +14641,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -14276,7 +14668,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -14298,6 +14694,8 @@ input
 
 
 
+
+
  
 
 
@@ -14309,7 +14707,13 @@ input
 
 
 
+
+
 input
+
+
+
+
 
 
 
@@ -14342,7 +14746,11 @@ input
 
 
 
+
+
 	
+
+
 
 
 
@@ -14365,7 +14773,11 @@ input
 
 
 
+
+
  
+
+
 
 
 
@@ -14398,7 +14810,13 @@ margin-bottom
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -14420,8 +14838,14 @@ margin-bottom
 
 
 
+
+
 15
 px
+
+
+
+
 
 
 
@@ -14464,6 +14888,10 @@ width
 
 
 
+
+
+
+
 :
 
 
@@ -14475,7 +14903,11 @@ width
 
 
 
+
+
  
+
+
 
 
 
@@ -14508,6 +14940,10 @@ font-size
 
 
 
+
+
+
+
 :
 
 
@@ -14519,7 +14955,11 @@ font-size
 
 
 
+
+
  
+
+
 
 
 
@@ -14552,7 +14992,13 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -14574,8 +15020,14 @@ padding
 
 
 
+
+
 12
 px
+
+
+
+
 
 
 
@@ -14620,7 +15072,11 @@ nav {
 
 
 
+
+
  
+
+
 
 
 
@@ -14642,7 +15098,11 @@ nav {
 
 
 
+
+
  
+
+
 
 
 
@@ -14664,7 +15124,11 @@ nav
 
 
 
+
+
  
+
+
 
 
 
@@ -14696,6 +15160,10 @@ button
 
 
 
+
+
+
+
 :not
 
 
@@ -14707,7 +15175,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14730,7 +15202,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14753,7 +15229,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14776,7 +15256,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14799,7 +15283,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14823,7 +15311,11 @@ button
 
 
 
+
+
 	
+
+
 
 
 
@@ -14846,7 +15338,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14869,7 +15365,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14892,7 +15392,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14914,7 +15418,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -14936,7 +15444,11 @@ nav
 
 
 
+
+
  
+
+
 
 
 
@@ -14968,6 +15480,10 @@ button
 
 
 
+
+
+
+
 :not
 
 
@@ -14979,7 +15495,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15002,7 +15522,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15025,7 +15549,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15049,7 +15577,11 @@ button
 
 
 
+
+
 	
+
+
 
 
 
@@ -15072,7 +15604,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15095,7 +15631,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15118,7 +15658,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15141,7 +15685,11 @@ button
 
 
 
+
+
  
+
+
 
 
 
@@ -15174,7 +15722,13 @@ background
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15196,7 +15750,13 @@ background
 
 
 
+
+
 transparent
+
+
+
+
 
 
 
@@ -15239,7 +15799,13 @@ box-sizing
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15261,7 +15827,13 @@ box-sizing
 
 
 
+
+
 border-box
+
+
+
+
 
 
 
@@ -15304,7 +15876,13 @@ color
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15326,7 +15904,13 @@ color
 
 
 
+
+
 rgba
+
+
+
+
 
 
 
@@ -15372,8 +15956,16 @@ rgba
 
 
 
+
+
+
+
 );
 position
+
+
+
+
 
 
 
@@ -15405,6 +15997,8 @@ position
 
 
 
+
+
  
 
 
@@ -15416,7 +16010,13 @@ position
 
 
 
+
+
 relative
+
+
+
+
 
 
 
@@ -15459,6 +16059,10 @@ outline
 
 
 
+
+
+
+
 :
 
 
@@ -15470,7 +16074,11 @@ outline
 
 
 
+
+
  
+
+
 
 
 
@@ -15503,6 +16111,10 @@ border
 
 
 
+
+
+
+
 :
 
 
@@ -15514,7 +16126,11 @@ border
 
 
 
+
+
  
+
+
 
 
 
@@ -15547,7 +16163,13 @@ display
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15569,7 +16191,13 @@ display
 
 
 
+
+
 inline-block
+
+
+
+
 
 
 
@@ -15612,7 +16240,13 @@ inline-block
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15634,7 +16268,13 @@ inline-block
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -15677,7 +16317,13 @@ center
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15699,7 +16345,13 @@ center
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -15742,7 +16394,13 @@ align-items
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15764,7 +16422,13 @@ align-items
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -15807,7 +16471,13 @@ padding
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15829,9 +16499,15 @@ padding
 
 
 
+
+
 0
 6
 px
+
+
+
+
 
 
 
@@ -15874,6 +16550,10 @@ margin
 
 
 
+
+
+
+
 :
 
 
@@ -15885,7 +16565,11 @@ margin
 
 
 
+
+
  
+
+
 
 
 
@@ -15908,7 +16592,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -15921,6 +16609,10 @@ px
 
 8
 px
+
+
+
+
 
 
 
@@ -15963,7 +16655,13 @@ line-height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -15985,8 +16683,14 @@ line-height
 
 
 
+
+
 36
 px
+
+
+
+
 
 
 
@@ -16029,7 +16733,13 @@ min-height
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16051,8 +16761,14 @@ min-height
 
 
 
+
+
 36
 px
+
+
+
+
 
 
 
@@ -16095,7 +16811,13 @@ white-space
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16117,7 +16839,13 @@ white-space
 
 
 
+
+
 nowrap
+
+
+
+
 
 
 
@@ -16160,7 +16888,13 @@ min-width
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16182,8 +16916,14 @@ min-width
 
 
 
+
+
 88
 px
+
+
+
+
 
 
 
@@ -16226,7 +16966,13 @@ text-align
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16248,7 +16994,13 @@ text-align
 
 
 
+
+
 center
+
+
+
+
 
 
 
@@ -16291,7 +17043,13 @@ text-transform
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16313,7 +17071,13 @@ text-transform
 
 
 
+
+
 uppercase
+
+
+
+
 
 
 
@@ -16356,7 +17120,13 @@ font-size
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16378,8 +17148,14 @@ font-size
 
 
 
+
+
 14
 px
+
+
+
+
 
 
 
@@ -16422,7 +17198,13 @@ text-decoration
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16444,7 +17226,13 @@ text-decoration
 
 
 
+
+
 none
+
+
+
+
 
 
 
@@ -16487,7 +17275,13 @@ cursor
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16509,7 +17303,13 @@ cursor
 
 
 
+
+
 pointer
+
+
+
+
 
 
 
@@ -16552,6 +17352,10 @@ border
 
 
 
+
+
+
+
 :
 
 
@@ -16563,7 +17367,11 @@ border
 
 
 
+
+
  
+
+
 
 
 
@@ -16586,7 +17394,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -16608,6 +17420,8 @@ solid
 
 
 
+
+
  
 
 
@@ -16619,7 +17433,13 @@ solid
 
 
 
+
+
 transparent
+
+
+
+
 
 
 
@@ -16662,7 +17482,13 @@ border-radius
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16684,8 +17510,14 @@ border-radius
 
 
 
+
+
 2
 px
+
+
+
+
 
 
 
@@ -16755,9 +17587,17 @@ button.btn {
 
 
 
+
+
+
+
 .bottom
 ,
 .alertify-logs
+
+
+
+
 
 
 
@@ -16789,7 +17629,11 @@ button.btn {
 
 
 
+
+
  
+
+
 
 
 
@@ -16812,7 +17656,11 @@ button.btn {
 
 
 
+
+
  
+
+
 
 
 
@@ -16845,7 +17693,13 @@ bottom
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -16867,8 +17721,14 @@ bottom
 
 
 
+
+
 16
 px
+
+
+
+
 
 
 
@@ -16913,9 +17773,17 @@ px
 
 
 
+
+
+
+
 .left
 ,
 .alertify-logs
+
+
+
+
 
 
 
@@ -16947,7 +17815,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -16970,7 +17842,11 @@ px
 
 
 
+
+
  
+
+
 
 
 
@@ -17003,7 +17879,13 @@ left
 
 
 
+
+
+
+
 :
+
+
 
 
 
@@ -17025,8 +17907,14 @@ left
 
 
 
+
+
 16
 px
+
+
+
+
 
 
 
