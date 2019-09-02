@@ -21,8 +21,6 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <script src="resources/js/summernote-ko-KR.js"></script>
 
-
-
 </head>
 <body>
 	<h1>게시글 작성</h1>
@@ -35,9 +33,6 @@
 			<label>내용</label>
 			<textarea rows="10" cols="50" name="b_content" id="b_content"
 				placeholder="게시판 내용"></textarea>
-		</div>
-		<div class="createForm">
-			<label>태그</label> <input type="text" name="b_tag" placeholder="태그달기">
 		</div>
 
 		<div class="Formfooter">
@@ -74,10 +69,29 @@ function sendfile(file, el) {
 			minHeight : null,
 			maxHeight : null,
 			focus : true,
+			airmode : true,
+			lang: 'ko-KR',
 			callbacks : {
 				onImageUpload : function(file, editor, welEditable) {
 						sendfile(file[0], this);
 				}
+			},
+			hint: {
+			    mentions: ['사자', '악어', '펭귄', '고양이', '강아지', 'COW', 'RABBIT', 'SNAKE', '기만 ㄴ'],
+			    match: /\B@([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)/,
+			    search: function (keyword, callback) {
+			        callback(
+			            $.grep(this.mentions, function (item) {
+			                return item.indexOf(keyword) === 0;
+			            })
+			        );
+			    },
+			    template: function (item) {
+			        return item;
+			    },
+			    content: function (item) {
+			        return '@' + item;
+			    }
 			}
 		});
 	});

@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +10,8 @@
 </head>
 <body>
 
-<%-- 	<%@ include file="t_Header.jsp"%> --%>
-	<%@ include file="Header.jsp"%>
+	<%@ include file="../t_Header.jsp"%>
+
 	<div class="container">
 
 		<!-- 	글목록 보기 -->
@@ -42,46 +40,41 @@
 						</tr>
 					</thead>
 					<tbody>
-					
 						<c:forEach var="vo1" items="${boardlist}">
 							<tr>
 								<td>${vo1.b_seq}</td>
 								<td id="title"><a href="BoardOneView.do?b_seq=${vo1.b_seq}">${vo1.b_title}
 								</a></td>
 
- 
-
 								<td>${vo1.u_id}</td>
-								<td> <fmt:formatDate value="${vo1.b_date}" pattern="MM-dd" /> </td>
+								<td>${vo1.b_date}</td>
 								<td>${vo1.b_cnt}</td>
 							</tr>
-						
-							</c:forEach>							
-										
+							</c:forEach>
+							
+							<tr>
+								<td>${vo1.b_seq}1111</td>
+								<td id="title"><a href="BoardOneView.do?b_seq=${vo1.b_seq}">${vo1.b_title} 2222
+								</a></td>
+
+								<td>${vo1.u_id} 333 </td>
+								<td>${vo1.b_date} 444 </td>
+								<td>${vo1.b_cnt}555</td>
+							<tr>
+							<tr>
+								<td>${vo1.b_seq}1111</td>
+								<td id="title"><a href="BoardOneView.do?b_seq=${vo1.b_seq}">${vo1.b_title} 2222
+								</a></td>
+
+								<td>${vo1.u_id} 333 </td>
+								<td>${vo1.b_date} 444 </td>
+								<td>${vo1.b_cnt}555</td>
+							<tr>					
 					</tbody>
 				</table>
-			
 
-			<!-- Paging 처리 -->
-
-		       <% int total=Integer.parseInt(request.getParameter("ListCount"));
-				int p=0;
-				if(total%5==0){
-					p=total/5;
-				}
-				else{
-					p=(total/5)+1;
-				}
-				%>
-				
-				
-				<div class="col-xs-12" id="paging">
-				<%for (int i=1; i<=p; i++){
-				%>
-				<a href="Board.do?num=<%=i%>"> <%=i%></a>
-				<%
-				} %>
-				</div>
+				<!-- Paging 처리 -->
+				<div class="col-xs-12" id="board-page">${pageCode}(페이지번호)</div>
 			</div>
 		</div>
 

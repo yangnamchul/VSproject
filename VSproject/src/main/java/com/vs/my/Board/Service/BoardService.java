@@ -14,11 +14,13 @@ import com.vs.my.Board.DAOVO.BoardVO;
 public interface BoardService {
 
 	
-public List<BoardVO> BoardAllData();
-	
+   public List<BoardVO> BoardAllData(int page);
+
 	public void BoardInsertData(BoardVO vo);
 	
 	public void BoardFileSave(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	public BoardVO BoardOneView(BoardVO vo);
+	
+	public int BoardListCount();
 }
