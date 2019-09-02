@@ -55,6 +55,10 @@
 				${vo.b_content}
 			</td>
 		</tr>
+		<tr>
+			<td> <button type="button" onclick="">전자</button> </td>
+			<td> <button type="button" onclick="">후자</button> </td>
+		</tr>
 </table>
 <br>
 	<form>

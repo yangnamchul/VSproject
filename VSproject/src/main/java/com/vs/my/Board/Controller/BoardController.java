@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.User.DAOVO.UserVO;
 
 @Controller
 public class BoardController {
@@ -74,7 +73,8 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		
 		
-        String st= (String) se.getAttribute("u_id");
+        UserVO uv= (UserVO) se.getAttribute("uv");
+        String st = uv.getU_id();
 		bv.setU_id(st);
 		System.out.println(st+"==> user_seq1");
 		mv.setViewName("WritePost");
@@ -84,12 +84,12 @@ public class BoardController {
 	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
 		ModelAndView mv = new ModelAndView();
 		
-		String st= (String) se.getAttribute("u_id");
+		UserVO uv= (UserVO) se.getAttribute("uv");
+        String st = uv.getU_id();
 		int c_seq=1;
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
 		String aa = "aaa";
-		bv.setB_tag(aa);
 		System.out.println(st+"==> user_seq2");
 		
 		bs.BoardInsertData(bv);

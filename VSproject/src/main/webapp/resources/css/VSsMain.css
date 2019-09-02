@@ -10,6 +10,18 @@
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 부스러기 양식 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+#vss {
+	font-weight: font-weight: 500;
+	background-color: #ff4d00;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	margin-right: 10px;
+	font-size: 1.25rem !important;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Header 
 작성자 : GuRem
 2019.08.24 - GuRem 초기 작성 
@@ -36,8 +48,10 @@
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 
 /* 시작부분 위아래 간격 */
-header {
-	padding: 0.4em 0;
+@media ( min-width :992px) {
+	header {
+		padding: 0.4em 0;
+	}
 }
 
 header #top-menu {
@@ -101,7 +115,7 @@ header #right-search-form>input[type=text] {
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #header-bar {
 	margin-top: 0.5em;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 }
 
 #header-bar>.row {
@@ -229,9 +243,16 @@ a {
 	position: relative
 }
 
-#main {
-	padding-left: 30px;
-	padding-right: 30px;
+/* 전체 pc화면일때만 옆에 패딩 */
+/* 일단 뺄게요 임시 메인 이미지말고는 딱히 패딩넣을이유가 안보임 */
+@media ( min-width :1200px) {
+	.container {
+		max-width: 1140px
+	}
+	/* #main {
+		padding-left: 30px;
+		padding-right: 30px;
+	} */
 }
 
 /* 부스러기 인기글  */
@@ -466,15 +487,15 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 #boardDiv>#board-inner {
-	display: table;
 	width: 100%;
 	border-top: 3px solid blue;
 	border-bottom: 3px solid black;
 	text-align: center;
 	color: white;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	margin: 0.5em auto;
 	padding: 0.5em;
+	white-space: nowrap;
 }
 
 #boardDiv>#board-menu {
@@ -488,11 +509,11 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	text-align: center;
 }
 
-#boardDiv>#board-write>button {
+#boardDiv>#board-write>form>button {
 	color: white;
 	background-color: #ff4d00;
 	text-shadow: 1px 1px 1px #000;
-	font-size: 1.5em !important;
+	font-size: 1.25em !important;
 	padding: 0.1em;
 	text-align: center;
 }
@@ -509,7 +530,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 /* 게시글 head */
 #board-list>table>thead {
 	background-color: #BBBBBB;
-	 white-space: nowrap;
+	white-space: nowrap;
 }
 
 #board-list>table>tbody>tr {
@@ -524,4 +545,90 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: white;
 	text-align: center;
 	margin: 0.25rem auto;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Content.jsp > 글 보기 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#contentDiv {
+	background-color: #000084;
+	margin: 0 auto;
+	color: white;
+	font-size: 1rem;
+
+	/* 	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00; */
+}
+
+#contentDiv>#content-title {
+	width: 100%;
+	border-top: 3px solid blue;
+	border-bottom: 3px solid black;
+	text-align: center;
+	/* 	color: white ; */
+	font-size: 1.25em !important;
+	margin: 0.25em auto;
+	padding: 0.5rem;
+}
+
+#contentDiv>#content-info {
+	width: 100%;
+}
+
+#contentDiv>#content-vs {
+	display: inline-flex;
+	width: 100%;
+	height: 100%;
+	padding: 0.2rem;
+	border-bottom: 2px solid white;
+}
+
+#vs-vs {
+	width: 100%;
+	height: 100%;
+	padding-top: 10%;
+}
+
+#vs-left>img, #vs-right>img, #vs-vs>img {
+	width: 100%;
+	height: 100%;
+}
+
+#content-info>ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#content-info>ul>li {
+	float: left;
+	width: 20%;
+	text-align: center;
+	font-size: 1.1rem;
+	padding-bottom: 0.1rem;
+	border-bottom: 2px solid white;
+}
+
+#content-vote {
+	padding: 0.5rem;
+	font-size: 1.25rem;
+}
+
+#content-vote>#vote-title>div>ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#vote-title>div>ul>li>button {
+	width: 95%;
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 black;
+}
+
+#vote-title>div>ul>li {
+	width: 50%;
+}
+
+#vote-title>div>ul>li:nth-child(2) {
+	text-align: right;
 }

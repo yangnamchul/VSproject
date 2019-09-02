@@ -50,7 +50,7 @@
 					</div>
 
 					<%
-							if (session.getAttribute("u_id") == null) {
+							if (session.getAttribute("uv") == null) {
 						%>
 
 
@@ -172,8 +172,7 @@
 			});
 
 			$("[id='btn-logout']").click(function() {
-	<%session.invalidate();%>
-		location.reload();
+				location.href="LogOut.do";
 			});
 		});
 	</script>
