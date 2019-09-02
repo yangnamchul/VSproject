@@ -31,4 +31,6 @@ public interface UserDAO {
 	public void ChangePW(UserVO uv);
 	
 	public UserVO MyPage(UserVO uv);
+	
+	public UserVO idCheck(UserVO uv);
 }

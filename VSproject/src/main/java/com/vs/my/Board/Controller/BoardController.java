@@ -90,7 +90,6 @@ public class BoardController {
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
 		String aa = "aaa";
-		bv.setB_tag(aa);
 		System.out.println(st+"==> user_seq2");
 		
 		bs.BoardInsertData(bv);

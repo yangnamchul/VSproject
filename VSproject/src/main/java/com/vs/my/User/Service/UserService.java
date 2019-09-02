@@ -19,4 +19,5 @@ public interface UserService {
 	public int FindPW(UserVO uv, HttpSession hs);
 	public int ChangePW(UserVO uv,HttpSession hs);
 	public UserVO MyPage(UserVO uv);
+	public UserVO idCheck(UserVO uv);
 }

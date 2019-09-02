@@ -10,7 +10,6 @@ private String b_title;
 private String b_content;
 private int b_cnt;
 private Date b_date;
-private String b_tag;
 private int b_boolean;
 private int b_parent;
 
@@ -55,12 +54,6 @@ public Date getB_date() {
 }
 public void setB_date(Date b_date) {
 	this.b_date = b_date;
-}
-public String getB_tag() {
-	return b_tag;
-}
-public void setB_tag(String b_tag) {
-	this.b_tag = b_tag;
 }
 public int getB_boolean() {
 	return b_boolean;

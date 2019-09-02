@@ -84,6 +84,12 @@ public class UserServiceImpl implements UserService{
 		
 		return dao.MyPage(uv);
 	}
+
+	@Override
+	public UserVO idCheck(UserVO uv) {
+		// TODO Auto-generated method stub
+		return dao.idCheck(uv);
+	}
 	
 
 /*	@Override

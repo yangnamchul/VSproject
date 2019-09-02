@@ -40,4 +40,10 @@
 		FROM USERS
 		WHERE u_id=#{u_id}
 	</select>
+	
+	<select id="idCheck" resultType="user">
+		SELECT u_id
+		FROM USERS
+		WHERE u_id = #{u_id}
+	</select>
 </mapper>

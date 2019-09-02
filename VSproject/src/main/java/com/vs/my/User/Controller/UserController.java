@@ -54,6 +54,23 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(value="idCheck.do", method=RequestMethod.POST) //회원가입
+	@ResponseBody
+	public int idCheck(HttpServletRequest request, UserVO uv) {
+		
+		String u_id = request.getParameter("u_id");
+		uv.setU_id(u_id);
+		
+		UserVO uv2 = us.idCheck(uv);
+		
+		try {
+			uv2.getU_id();
+		} catch (Exception e) {
+			return 1;
+		}
+		return 0;
+	}
+	
 	@RequestMapping(value="Terms.do", method=RequestMethod.GET) //약관 동의
 	public ModelAndView Terms(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
