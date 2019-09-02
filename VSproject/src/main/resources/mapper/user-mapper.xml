@@ -35,7 +35,7 @@
 		WHERE u_id = #{u_id}
 	</update>
 	
-	<select id="MyPage">
+	<select id="MyPage" resultType="user">
 		SELECT *
 		FROM USERS
 		WHERE u_id=#{u_id}

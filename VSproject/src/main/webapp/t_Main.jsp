@@ -13,8 +13,7 @@
 </head>
 <body>
 
-<%-- 	<%@ include file="t_Header.jsp"%> --%>
-	<%@ include file="Header.jsp"%>
+	<%@ include file="t_Header.jsp"%>
 
 	<!-- 	Content 내용부분 -->
 	<div id="content-area">
@@ -28,7 +27,6 @@
 							<li><a href="SignUp.do">회원가입</a></li>
 							<li><a href="Login.do">로그인</a></li>
 							<li><a href="">메인</a></li>
-							<li><a href="MyPage.do">마이페이지</a></li>
 						</ul>
 					</h3>
 				</div>

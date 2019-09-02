@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 		UserVO uv2 = dao.LoginAction(uv);
 		int date=0;
 	if(uv2 !=null) {
-		hs.setAttribute("u_id", uv2.getU_id());
+		hs.setAttribute("uv", uv2);
 		date=1;
 		return date;
 	}

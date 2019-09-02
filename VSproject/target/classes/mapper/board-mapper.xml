@@ -4,7 +4,7 @@
 
 
      <select id="BoardAllData" resultType="board">
-		SELECT b_seq, b_title,b_date,b_cnt
+		SELECT b_seq, b_title,b_date,b_cnt, u_id
 		FROM board
 	</select>
 	

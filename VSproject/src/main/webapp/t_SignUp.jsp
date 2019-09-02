@@ -8,8 +8,7 @@
 </head>
 <body>		
 
-<%-- <%@ include file="t_Header.jsp"%> --%>
-<%@ include file="Header.jsp"%>
+<%@ include file="t_Header.jsp"%>
 
 	 <!-- 회원가입 폼 -->
 <form class="signup-content" action="UserInsertData.do" method="get">

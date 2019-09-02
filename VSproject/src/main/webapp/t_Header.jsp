@@ -26,6 +26,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
+	
 %>
 
 </head>
@@ -50,7 +51,7 @@
 					</div>
 
 					<%
-							if (session.getAttribute("uv") == null) {
+							if (session.getAttribute("u_id") == null) {
 						%>
 
 
@@ -172,7 +173,8 @@
 			});
 
 			$("[id='btn-logout']").click(function() {
-				location.href="LogOut.do";
+	<%session.invalidate();%>
+		location.reload();
 			});
 		});
 	</script>

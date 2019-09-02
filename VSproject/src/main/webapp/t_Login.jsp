@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- 	<%@ include file="t_Header.jsp"%> --%>
-	<%@ include file="Header.jsp"%>
+	<%@ include file="t_Header.jsp"%>
 
 
 	<div class="container">

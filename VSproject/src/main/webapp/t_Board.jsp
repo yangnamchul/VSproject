@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +10,8 @@
 </head>
 <body>
 
-<%-- 	<%@ include file="t_Header.jsp"%> --%>
-	<%@ include file="Header.jsp"%>
+	<%@ include file="../t_Header.jsp"%>
+
 	<div class="container">
 
 		<!-- 	글목록 보기 -->
@@ -27,9 +25,7 @@
 			</div>
 
 			<div class="col-xl-2" id="board-write" align="center">
-				<form action="BoardWriteData.do" method="post">
-					<button type="submit">글쓰기</button>
-				</form>
+				<button type="button">글쓰기 </button>
 			</div>
 
 			<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-list">
@@ -50,14 +46,30 @@
 								<td id="title"><a href="BoardOneView.do?b_seq=${vo1.b_seq}">${vo1.b_title}
 								</a></td>
 
- 
-
 								<td>${vo1.u_id}</td>
-								<td> <fmt:formatDate value="${vo1.b_date}" pattern="MM-dd" /> </td>
+								<td>${vo1.b_date}</td>
 								<td>${vo1.b_cnt}</td>
 							</tr>
-							</c:forEach>							
-										
+							</c:forEach>
+							
+							<tr>
+								<td>${vo1.b_seq}1111</td>
+								<td id="title"><a href="BoardOneView.do?b_seq=${vo1.b_seq}">${vo1.b_title} 2222
+								</a></td>
+
+								<td>${vo1.u_id} 333 </td>
+								<td>${vo1.b_date} 444 </td>
+								<td>${vo1.b_cnt}555</td>
+							<tr>
+							<tr>
+								<td>${vo1.b_seq}1111</td>
+								<td id="title"><a href="BoardOneView.do?b_seq=${vo1.b_seq}">${vo1.b_title} 2222
+								</a></td>
+
+								<td>${vo1.u_id} 333 </td>
+								<td>${vo1.b_date} 444 </td>
+								<td>${vo1.b_cnt}555</td>
+							<tr>					
 					</tbody>
 				</table>
 
@@ -69,5 +81,4 @@
 	</div>
 
 </body>
-
 </html>

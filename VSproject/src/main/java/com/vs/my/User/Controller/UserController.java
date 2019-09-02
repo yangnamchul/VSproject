@@ -77,9 +77,17 @@ public class UserController {
 		
 		data = us.LoginAction(uv, hs);
 		
-		System.out.println(hs.getAttribute("u_id"));
-		
 		return data;
+	}
+	
+	@RequestMapping(value="LogOut.do", method=RequestMethod.GET) //로그인
+	public ModelAndView LogOut(HttpServletRequest request, UserVO uv, HttpSession hs) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Main");
+		
+		hs.removeAttribute("uv");
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.GET) //아이디, 비번 찾기 페이지 이동
@@ -130,14 +138,12 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
 		
-		String u_id = (String) hs.getAttribute("u_id");
-		
-		System.out.println(u_id);
+		UserVO uv2 = (UserVO) hs.getAttribute("uv");
+		String u_id = uv2.getU_id();
 		
 		uv.setU_id(u_id);
 		
-		mv.addObject(us.MyPage(uv));
-		
+		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}
 	
