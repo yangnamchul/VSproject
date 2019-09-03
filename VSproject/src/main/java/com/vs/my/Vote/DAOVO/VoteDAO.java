@@ -1,5 +1,8 @@
 package com.vs.my.Vote.DAOVO;
 
-public interface VoteDAO {
+import java.util.List;
 
+public interface VoteDAO {
+	
+	public List<VoteVO> allVote(VoteVO vv);
 }

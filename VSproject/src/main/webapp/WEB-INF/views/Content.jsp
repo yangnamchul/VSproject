@@ -6,11 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="Header.jsp"%> 
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css"
-	rel="stylesheet" />
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <script src="resources/js/summernote-ko-KR.js"></script>
 
 </head>
@@ -36,8 +33,8 @@
 					<ul>
 						<li>번호_${vo.b_seq}</li>
 						<li>별명_${u_id}</li>
-						<li>날짜_{vo.b_date}</li>
-						<li>조회_{vo.b_cnt}</li>
+						<li>날짜_${vo.b_date}</li>
+						<li>조회_${vo.b_cnt}</li>
 						<li>추천_{}</li>
 					</ul>
 				</div>
@@ -82,27 +79,7 @@
 
 					</div>
 				</div>
-				<div id="content-content">{vo.b_content} 보드내용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤 용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤
-					용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤
-					용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤
-					용스크롤용스크롤용스크롤용스크롤용스크롤스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤
-					용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤
-					용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용용스크롤용스크롤용스크롤용스크롤용
-					롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤
-					용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용
-					롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용스크롤용</div>
+				<div id="content-content">${vo.b_content}</div>
 
 
 			</div>
@@ -116,9 +93,6 @@
 			</div>
 		</div>
 	</div>
-
-
-</body>
 <script>
 	$(document).ready(function() {
 		$('#r_reply').summernote({
@@ -132,4 +106,7 @@
 		});
 	});
 </script>
+
+</body>
+
 </html>

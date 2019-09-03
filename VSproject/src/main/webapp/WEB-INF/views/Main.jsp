@@ -95,8 +95,8 @@ $(document).ready(function() {
           for(var i=0; i<5;i++){
              var objRow = $("#board_list").clone();  //li 복사
              objRow.removeAttr("style");
-          	 objRow.html('<li><a href="BoardOneView.do?b_seq=' +data[i]['b_seq']+ ' " class="board-name">'+data[i]['c_seq']+
-          	'</a><span>▶  </span> <a href="BoardOneView.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
+          	 objRow.html('<li><a href="Content.do?b_seq=' +data[i]['b_seq']+ ' " class="board-name">'+data[i]['c_seq']+
+          	'</a><span>▶  </span> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
           	 
           	$("#board_ul").append(objRow);
           }

@@ -20,6 +20,8 @@ import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.Vote.DAOVO.VoteVO;
+import com.vs.my.Vote.Service.VoteService;
 
 @Controller
 public class BoardController {
@@ -28,6 +30,8 @@ public class BoardController {
 	BoardService bs;
 	@Autowired
 	UserService us;
+	@Autowired
+	VoteService vs;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -119,7 +123,7 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
+	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
 		ModelAndView mv = new ModelAndView();
 		
 		UserVO uv= (UserVO) se.getAttribute("uv");
@@ -128,11 +132,26 @@ public class BoardController {
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
 		String aa = "aaa";
+		
+		
+		
 		System.out.println(st+"==> user_seq2");
 		
 		bs.BoardInsertData(bv);
 		
-		mv.setViewName("Board");
+		String vsleft = request.getParameter("vsleft");
+		String vsright = request.getParameter("vsright");
+		
+		int b_seq = bv.getB_seq();
+		
+		VoteVO vv = new VoteVO();
+		
+		vv.setB_seq(b_seq);
+		
+		VoteVO vv2 = vs.allVote(vv);
+		
+		
+		mv.setViewName("Main");
 		return mv;
 	}
 	
