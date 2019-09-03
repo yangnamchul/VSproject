@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<%@ include file="Header.jsp"%> 
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css"
 	rel="stylesheet" />
@@ -15,24 +15,12 @@
 
 </head>
 
-<script>
-	$(document).ready(function() {
-		$('#r_reply').summernote({
-			height : 100,
-			minHeight : 100,
-			maxHeight : 100,
-			focus : true,
-			airmode : true,
-			lang : 'ko-KR',
-			toolbar : false
-		})
-	})
-</script>
+
 
 <body>
 
 <%-- 	<%@ include file="t_Header.jsp"%> --%>
-		<%@ include file="Header.jsp"%> 
+		
 
 
 	<div id="content-area">
@@ -122,7 +110,7 @@
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
 				id="contentReply">
 				<form style="width: 100%">
-					<textarea id="r_reply" style="width: 100%"></textarea>
+					<textarea id="r_reply" name="r_reply"></textarea>
 					<input type="submit" value="확인">
 				</form>
 			</div>
@@ -131,4 +119,17 @@
 
 
 </body>
+<script>
+	$(document).ready(function() {
+		$('#r_reply').summernote({
+			height : 100,
+			minHeight : 100,
+			maxHeight : 100,
+			focus : true,
+			airmode : true,
+			lang : 'ko-KR',
+			toolbar : false
+		});
+	});
+</script>
 </html>

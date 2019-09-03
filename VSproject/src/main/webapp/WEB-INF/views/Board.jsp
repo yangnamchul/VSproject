@@ -61,7 +61,25 @@
 					</table>
 
 					<!-- Paging 처리 -->
-					<div class="col-xs-12" id="board-page">${pageCode}(페이지번호)</div>
+					<%  /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
+		      
+		        int total =Integer.parseInt((request.getAttribute("ListCount")).toString()); 
+				int p=0;
+				if(total%5==0){
+					p=total/5;
+				}
+				else{
+					p=(total/5)+1;
+				}
+				%>
+				
+				
+				<div class="col-xs-12" id="paging">
+				<%for (int i=1; i<=p; i++){
+				%>
+				<a href="Board.do?page=<%=i%>"> <%=i%></a>
+				<%
+				} %>
 				</div>
 			</div>
 		</div>

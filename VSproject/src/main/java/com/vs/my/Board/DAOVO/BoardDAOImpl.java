@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	private static final String namespace="mapper.board-mapper";
@@ -13,9 +14,9 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<BoardVO> BoardAllData() {
+	public List<BoardVO> BoardAllData(int page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".BoardAllData");
+		return  sqlSession.selectList(namespace+".BoardAllDataPage", page);
 	}
 
 	@Override
@@ -28,6 +29,12 @@ public class BoardDAOImpl implements BoardDAO {
 	public BoardVO Content(BoardVO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".BoardOneView",vo);
+	}
+	
+	@Override
+	public int BoardListCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".BoardListCount");
 	}
 
 }

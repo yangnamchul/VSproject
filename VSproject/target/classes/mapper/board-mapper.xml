@@ -19,4 +19,23 @@
 		WHERE b_seq = #{b_seq}
 	</select>
 	
+	<select id="BoardAllDataPage" resultType="board">
+		<!-- SELECT b_seq, b_title,b_date,b_cnt
+		FROM board -->
+   select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id
+   from 
+   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id
+   from 
+   (select b_seq, b_title,b_date,b_cnt,u_id
+   from board) 
+   A  where rownum <![CDATA[ < ]]> = #{page}*5)
+   X  where x.rum <![CDATA[ > ]]> = ((#{page}-1)*5)+1
+	</select>
+	
+	<select id="BoardListCount" resultType="int">
+	
+   select count (*)
+   from board
+	</select> 
+	
 </mapper>
