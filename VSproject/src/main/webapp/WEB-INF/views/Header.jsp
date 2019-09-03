@@ -66,8 +66,8 @@
 					<%
 							} else {
 						%>
-						
-						<div class="right-col" id="btn-logout">
+
+					<div class="right-col" id="btn-logout">
 						<div class="right-row" align="center">
 							<img
 								src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"
@@ -123,12 +123,11 @@
 					메뉴1 <img
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
-						<!-- Dropdown -->
-						<div id="dropdown" class="dropdown-content">
-						<a href="Main.do">고것은</a>
-						<a href="https://youtu.be/PKkFG21lz7M">옥냥이가</a>
+					<!-- Dropdown -->
+					<div id="dropdown" class="dropdown-content">
+						<a href="Main.do">고것은</a> <a href="https://youtu.be/PKkFG21lz7M">옥냥이가</a>
 						<a href="#">먼저 했고연</a>
-						</div>
+					</div>
 				</div>
 
 				<div class="header-col">
@@ -222,10 +221,15 @@
 						}
 					});
 		}
-
 	</script>
-<script>
-/* 내용: Dropdown */
+
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : dropdown
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+	<script>
+
+
+
 function myFunction(){
 	document.getElementById("dropdown").classList.toggle("show");
 }

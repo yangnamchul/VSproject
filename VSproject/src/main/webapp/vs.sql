@@ -11,6 +11,7 @@ DROP TABLE Users CASCADE CONSTRAINTS;
 
 
 
+
 /* Create Tables */
 
 CREATE TABLE Admin_Board
@@ -30,7 +31,6 @@ CREATE TABLE Board
 	B_content varchar2(4000),
 	B_cnt number NOT NULL,
 	B_date date NOT NULL,
-	B_tag varchar2(4000) NOT NULL,
 	B_boolean number NOT NULL,
 	B_parent number,
 	PRIMARY KEY (B_seq)
@@ -74,8 +74,10 @@ CREATE TABLE Vote
 (
 	V_seq number NOT NULL,
 	B_seq number NOT NULL,
-	V_first number NOT NULL,
-	V_last number NOT NULL,
+	U_id varchar2(4000) NOT NULL,
+	-- 1 : 전자
+	-- 2 : 후자
+	V_like number NOT NULL,
 	PRIMARY KEY (V_seq)
 );
 
@@ -118,6 +120,20 @@ ALTER TABLE Reply
 	REFERENCES Users (U_id)
 ;
 
+
+ALTER TABLE Vote
+	ADD FOREIGN KEY (U_id)
+	REFERENCES Users (U_id)
+;
+
+
+
+/* Comments */
+
+COMMENT ON COLUMN Vote.V_like IS '1 : 전자
+2 : 후자';
+
+
 insert into USERS
 values(1,'admin','admin','admin','admin',sysdate);
 
@@ -129,16 +145,17 @@ FROM USERS
 WHERE u_id='admin' and u_pw='admin' ;
 
 insert into CATEGORY
-values(1,'?��?��');
+values(1,'테크');
 insert into CATEGORY
-values(2,'?��?���?');
+values(2,'스포츠');
 insert into CATEGORY
-values(3,'?���?');
+values(3,'인물');
 
 insert into BOARD
-values(1,'123',1,'hello','hello11',1,sysdate,'tag11',0,null,null);
+values(1,'123',1,'hello','hello11',1,sysdate,0,null);
 
-select * from users;
+select *
+from users;
 SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM Category;
