@@ -12,7 +12,6 @@
 	
 <body>
 
- <%@ include file="t_Header.jsp" %> 
 
 
 

@@ -31,4 +31,36 @@ public class UserDAOImpl implements UserDAO{
 		return sqlSession.selectOne(namespace + ".LoginAction", uv);
 	}
 
+	@Override
+	public UserVO FindID(UserVO uv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".FindID",uv);
+	}
+
+	@Override
+	public UserVO FindPW(UserVO uv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".FindPW",uv);
+	}
+
+	@Override
+	public void ChangePW(UserVO uv) {
+		// TODO Auto-generated method stub
+		sqlSession.selectOne(namespace+".ChangePW",uv);
+	}
+
+	@Override
+	public UserVO MyPage(UserVO uv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".MyPage",uv);
+	}
+
+	@Override
+	public UserVO idCheck(UserVO uv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".idCheck",uv);
+	}
+	
+	
+
 }
