@@ -19,8 +19,8 @@
       <div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="joinDiv">
          <h1> 회원가입 </h1>
             <ul class="vss-join" id="JoinForm">
-               <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" />
-               <button type="button" class="checkbtn"> 중복검사 </button>
+               <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" id="u_id11"/>
+               <button type="button" class="checkbtn" onclick="idCheck()"> 중복검사 </button>
                <br>
                <div>
                   <span class="id-check-text">중복검사항목</span>
@@ -107,6 +107,28 @@ $( document ).ready( function() {
                }
    });
 });
+
+function idCheck() {
+	var userId = $("#u_id11").val();
+	var gdata = { "u_id" : userId };
+	jQuery.ajax({
+		type : "POST",
+		url : "idCheck.do",
+		data : gdata,
+		async : false,
+		success : function(data) {
+			if (data == 0) {
+				alertify.alert("중복");
+			} else {
+				alertify.alert("가능");
+			}
+		},
+		error : function(req, status, error) {
+			alertify.alert(req.status + "\nmessege" + req.responseTest);
+		}
+	});
+}
+
 </script>
 
 </body>

@@ -6,45 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="resources/js/jquery-3.4.1.js"></script>
-<script src="resources/js/alertify.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>   <!-- 항상 최신버전의 JQuery를 사용가능하다. -->
-<script type="text/javascript" language="javascript">
-<%
-	request.setCharacterEncoding("UTF-8");
-	response.setCharacterEncoding("UTF-8");
-%>
-
-$(document).ready(function() { 
-	
-	$.ajax({
-		type: 'GET',
-		url: 'Board1.do',
-        async: false,
-        dataType: 'json',//동기 비동기 설정
-		 error : function(){
-             alert("통신실패!!!!");
-         },
-         success : function(data){
-          /* alert("통신 데이터 값 : " + data[0]["b_title"]); */
-        
-          for(var i=0; i<5;i++){
-             var objRow = $("#board_list").clone();  //li 복사
-             objRow.removeAttr("style");
-          	 objRow.html('<li><a href="BoardOneView.do?b_seq=' +data[i]['b_seq']+ ' " class="board-name">'+data[i]['c_seq']+
-          	'</a><span>▶  </span> <a href="BoardOneView.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
-          	 
-          	$("#board_ul").append(objRow);
-          }
-         }
-	});
-	
-});
-</script>
 </head>
 <body>
 
-<%-- 	<%@ include file="t_Header.jsp"%> --%>
+	<%-- 	<%@ include file="t_Header.jsp"%> --%>
 	<%@ include file="Header.jsp"%>
 
 	<!-- 	Content 내용부분 -->
@@ -59,6 +24,7 @@ $(document).ready(function() {
 							<li><a href="SignUp.do">회원가입</a></li>
 							<li><a href="Login.do">로그인</a></li>
 							<li><a href="">메인</a></li>
+							<li><a href="MyPage.do">마이페이지</a></li>
 						</ul>
 					</h3>
 				</div>
@@ -92,22 +58,51 @@ $(document).ready(function() {
 
 				<!-- 				중복 -->
 				<div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-	
-				<h3>
-					<a href="#">부스러기 최신글</a>
-				</h3>
+
+					<h3>
+						<a href="#">부스러기 최신글</a>
+					</h3>
 
 					<ul class="vss-hot" id="board_ul">
 
-				 	<li id="board_list" style="display:none;"><a href=" "  class="board-name" ></a> <span>▶ </span> <a
-						href=" ">ㄹㄹ</a></li>
+						<li id="board_list" style="display: none;"><a href=" "
+							class="board-name"></a> <span>▶ </span> <a href=" ">ㄹㄹ</a></li>
 
-				</ul>
+					</ul>
 
-                <a href="Board.do"><span id="MoreALL" class="">+1111더보기</span></a>
-			</div>
+					<a href="Board.do?page=1"><span id="MoreALL" class="">+1111더보기</span></a>
+				</div>
 			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+
+
+$(document).ready(function() { 
+	
+	$.ajax({
+		type: 'GET',
+		url: 'Board1.do',
+        async: false,
+        dataType: 'json',//동기 비동기 설정
+		 error : function(){
+             alert("통신실패!!!!");
+         },
+         success : function(data){
+          /* alert("통신 데이터 값 : " + data[0]["b_title"]); */
+        
+          for(var i=0; i<5;i++){
+             var objRow = $("#board_list").clone();  //li 복사
+             objRow.removeAttr("style");
+          	 objRow.html('<li><a href="BoardOneView.do?b_seq=' +data[i]['b_seq']+ ' " class="board-name">'+data[i]['c_seq']+
+          	'</a><span>▶  </span> <a href="BoardOneView.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
+          	 
+          	$("#board_ul").append(objRow);
+          }
+         }
+	});
+	
+});
+</script>
 </html>

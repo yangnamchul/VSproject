@@ -19,7 +19,8 @@
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
 <script src="resources/js/jquery-3.4.1.js"></script>
 <script src="resources/js/alertify.min.js"></script>
-<script src="resources/js/bootstrap.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 
 
@@ -50,7 +51,7 @@
 					</div>
 
 					<%
-							if (session.getAttribute("u_id") == null) {
+							if (session.getAttribute("uv") == null) {
 						%>
 
 
@@ -172,8 +173,7 @@
 			});
 
 			$("[id='btn-logout']").click(function() {
-	<%session.invalidate();%>
-		location.reload();
+				location.href="LogOut.do";
 			});
 		});
 	</script>

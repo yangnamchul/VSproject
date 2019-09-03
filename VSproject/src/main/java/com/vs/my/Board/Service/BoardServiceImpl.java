@@ -26,13 +26,10 @@ public class BoardServiceImpl implements BoardService
     @Autowired
    	UserDAO udao;
 	
-	@Override
+    @Override
 	public List<BoardVO> BoardAllData(int page) {
 		// TODO Auto-generated method stub
-	
-			return bdao.BoardAllData(page);
-		
-	
+		return bdao.BoardAllData(page);
 	}
 
 	@Override
@@ -77,17 +74,15 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public BoardVO BoardOneView(BoardVO vo) {
+	public BoardVO Content(BoardVO vo) {
 		// TODO Auto-generated method stub
-		return bdao.BoardOneView(vo);
+		return bdao.Content(vo);
 	}
-
+	
 	@Override
 	public int BoardListCount() {
 		// TODO Auto-generated method stub
 		return bdao.BoardListCount();
 	}
-
-
 
 }

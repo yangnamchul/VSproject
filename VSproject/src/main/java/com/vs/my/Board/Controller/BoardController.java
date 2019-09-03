@@ -18,53 +18,62 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Reply.DAOVO.ReplyVO;
+import com.vs.my.Reply.Service.ReplyService;
+import com.vs.my.User.DAOVO.UserVO;
+import com.vs.my.User.Service.UserService;
 
 @Controller
 public class BoardController {
 	
 	@Autowired
 	BoardService bs;
+	@Autowired
+	UserService us;
+	@Autowired
+	ReplyService rs;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
-
-@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판
-public ModelAndView Board2(@RequestParam int page, HttpServletRequest req) {
-	ModelAndView mv = new ModelAndView();	
-	mv.setViewName("Board");
-
-	int paging=0;
-	if(page>1) {
-		paging=page;
-	}
-	else {
-		paging=1;
-	}
-	List<BoardVO> boardlist = bs.BoardAllData(paging);
-	int listcount=bs.BoardListCount();
 	
-	mv.addObject("ListCount", listcount);
-	mv.addObject("boardlist", boardlist);
-	
-	return mv;
+	@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판
+	public ModelAndView Board2(@RequestParam int page, HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();	
+		mv.setViewName("Board");
 
-}
-
-
-	@RequestMapping(value="Board1.do", method=RequestMethod.GET) //ajax 미니게시판
-	@ResponseBody
-	public List<BoardVO> Board1(HttpServletRequest req) {
+		int paging=0;
+		if(page>1) {
+			paging=page;
+		}
+		else {
+			paging=1;
+		}
+		List<BoardVO> boardlist = bs.BoardAllData(paging);
+		int listcount=bs.BoardListCount();
 		
-		int page=1;
-		List<BoardVO> boardlist = bs.BoardAllData(page);
-
-		System.out.println(boardlist);
-
-	
-		System.out.println( boardlist.get(0).getC_seq());
-		return boardlist;
+		mv.addObject("ListCount", listcount);
+		mv.addObject("boardlist", boardlist);
 		
 		
+		return mv;
+
 	}
+
+
+		@RequestMapping(value="Board1.do", method=RequestMethod.GET) //ajax 미니게시판
+		@ResponseBody
+		public List<BoardVO> Board1(HttpServletRequest req) {
+			
+			int page=1;
+			List<BoardVO> boardlist = bs.BoardAllData(page);
+
+			System.out.println(boardlist);
+
+		
+			System.out.println( boardlist.get(0).getC_seq());
+			return boardlist;
+			
+			
+		}
 	
 	@RequestMapping(value="Category.do",method=RequestMethod.GET) // 카테고리
 	public ModelAndView Category(HttpServletRequest req) {
@@ -75,58 +84,62 @@ public ModelAndView Board2(@RequestParam int page, HttpServletRequest req) {
 	}
 	
 	
-	@RequestMapping(value="OneView.do", method=RequestMethod.GET) //글 하나 보기
-	public ModelAndView OneView(HttpServletRequest req) {
+	@RequestMapping(value="Content.do", method=RequestMethod.GET) //글 하나 보기
+	public ModelAndView Content(HttpServletRequest request, BoardVO bv) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("OneView");
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="BoardOneView.do", method=RequestMethod.GET) //글 하나 보기
-	public ModelAndView BoardOneView(HttpServletRequest request, BoardVO bv) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("OneView");
+		mv.setViewName("Content");
 		
 		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
 		
 		bv.setB_seq(b_seq);
-		System.out.println("게시물로가기~");
-		System.out.println(bv.getB_seq());
 		
-		BoardVO vo = bs.BoardOneView(bv);
+		BoardVO bv2 = bs.Content(bv);
 		
-		mv.addObject("vo",vo);
+		UserVO uv = new UserVO(); 
+				
+		uv.setU_id(bv2.getU_id());
+		
+		UserVO uv2 = us.MyPage(uv);
+		
+		String u_id = uv2.getU_id();
+		
+		/*===댓글==*/
+		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
+	
+		mv.addObject("vo",bv2);
+		mv.addObject("u_id", u_id);
+		mv.addObject("ReplyList",replylist);
+		System.out.println("안들오나?");
+		System.out.println(replylist);
 		
 		return mv;
 	}
 	
-	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.GET) //글 작성 화면
-	public ModelAndView BoardWriteData(BoardVO vo, HttpServletRequest req, HttpSession se){
+	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
+	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest req, HttpSession se){
 		ModelAndView mv = new ModelAndView();
 		
 		
-        String st= (String) se.getAttribute("u_id");
-		vo.setU_id(st);
+        UserVO uv= (UserVO) se.getAttribute("uv");
+        String st = uv.getU_id();
+		bv.setU_id(st);
 		System.out.println(st+"==> user_seq1");
 		mv.setViewName("WritePost");
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO vo, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
+	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
 		ModelAndView mv = new ModelAndView();
-		int page=1;
-		String st= (String) se.getAttribute("u_id");
+		
+		UserVO uv= (UserVO) se.getAttribute("uv");
+        String st = uv.getU_id();
 		int c_seq=1;
-		vo.setU_id(st);
-		vo.setC_seq(c_seq);
+		bv.setU_id(st);
+		bv.setC_seq(c_seq);
+		String aa = "aaa";
 		System.out.println(st+"==> user_seq2");
-	
-		bs.BoardInsertData(vo);
 		
-        List<BoardVO> boardlist = bs.BoardAllData(page);
-		
-		mv.addObject("boardlist", boardlist);
+		bs.BoardInsertData(bv);
 		
 		mv.setViewName("Board");
 		return mv;

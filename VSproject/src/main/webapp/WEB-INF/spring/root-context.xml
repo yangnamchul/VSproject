@@ -20,7 +20,8 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
          <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-         <property name="url" value="jdbc:oracle:thin:@DESKTOP-S1PLQAG:1521:xe" />
+       <property name="url" value="jdbc:oracle:thin:@DESKTOP-S1PLQAG:1521:xe" /> 
+        <!--  <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
          <property name="username" value="vss"/>
          <property name="password" value="vss"/>
          	</bean>
@@ -56,16 +57,4 @@
 	<alias name="spring.RegularCommonsMultipartResolver" alias="multipartResolver" />
  
  
- 
-<!-- ajax JSON parsing -->
-<!-- 
-<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
-    <property name="contentType" value="application/json;charset=UTF-8"> </property>
-</bean> -->
-<!-- <bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"></bean>
-
-<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-    <property name="order" value="0"></property>
-</bean>
- -->
 </beans>

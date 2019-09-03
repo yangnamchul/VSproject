@@ -8,10 +8,10 @@ public interface BoardDAO {
 
 
 	public List<BoardVO> BoardAllData(int page);
-	public List<BoardVO> BoardAllData();
+	
 	public void BoardInsertData(BoardVO vo);
 	
-	public BoardVO BoardOneView(BoardVO vo);
+	public BoardVO Content(BoardVO vo);
 	
 	public int BoardListCount();
 }
