@@ -12,13 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.vs.my.Board.DAOVO.BoardVO;
 @Service
 public interface BoardService {
+	
+	public List<BoardVO> BoardAllData(int page);
 
-	
-public List<BoardVO> BoardAllData();
-	
 	public void BoardInsertData(BoardVO vo);
 	
 	public void BoardFileSave(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
-	public BoardVO BoardOneView(BoardVO vo);
+	public BoardVO Content(BoardVO vo);
+	
+	public int BoardListCount();
 }

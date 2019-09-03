@@ -11,7 +11,6 @@ DROP TABLE Users CASCADE CONSTRAINTS;
 
 
 
-
 /* Create Tables */
 
 CREATE TABLE Admin_Board
@@ -33,6 +32,8 @@ CREATE TABLE Board
 	B_date date NOT NULL,
 	B_boolean number NOT NULL,
 	B_parent number,
+	B_left varchar2(4000),
+	B_right varchar2(4000),
 	PRIMARY KEY (B_seq)
 );
 
@@ -134,6 +135,8 @@ COMMENT ON COLUMN Vote.V_like IS '1 : 전자
 2 : 후자';
 
 
+
+
 insert into USERS
 values(1,'admin','admin','admin','admin',sysdate);
 
@@ -152,16 +155,23 @@ insert into CATEGORY
 values(3,'인물');
 
 insert into BOARD
-values(1,'123',1,'hello','hello11',1,sysdate,0,null);
+values(1,'123',1,'hello','hello11',1,sysdate,0,null,null,null);
+
+insert into reply
+values(1,1,'123','댓글입니다12333',sysdate,null,null);
 
 select *
 from users;
 SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM Category;
+SELECT * FROM vote;
+
 
 create sequence board_sequence1;
 create sequence user_sequence1;
+create sequence Reply_sequence1;
+
 
 user_sequence1.NEXTVAL
 

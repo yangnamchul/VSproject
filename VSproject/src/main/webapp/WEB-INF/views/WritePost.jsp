@@ -5,32 +5,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-	rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+href="resources/css/bootstrap.css">
 <script src="resources/js/jquery-3.4.1.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="resources/js/bootstrap.js"></script>
 <script src="resources/js/alertify.min.js"></script>
 <link rel="stylesheet" href="resources/css/alertify.default.css" />
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css"
-	rel="stylesheet" />
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <script src="resources/js/summernote-ko-KR.js"></script>
 
 </head>
 <body>
 	<h1>게시글 작성</h1>
 	<form action="BoardInsertData.do" method="POST">
+		<input type="checkbox" name="vsCheck" id="vsCheck" value="vsCheck">vs게시물작성하기 <br>
 		<div class="createForm">
 			<label>제목</label> <input type="text" name="b_title"
 				placeholder="게시판 제목">
 		</div>
 		<div class="createForm">
 			<label>내용</label>
+			<div class="vsimgdiv" style="display:none;">	
+				<div style="width:40%;">
+					<textarea name="vsleft" id="vsleft"></textarea>
+					<textarea name="vsright" id="vsright"></textarea>
+				</div>
+			</div>
 			<textarea rows="10" cols="50" name="b_content" id="b_content"
 				placeholder="게시판 내용"></textarea>
 		</div>
@@ -94,7 +96,54 @@ function sendfile(file, el) {
 			    }
 			}
 		});
+		
+		$('#vsCheck').change(function() {
+			if($('#vsCheck').is(':checked')) {
+				$('.vsimgdiv').css('display','block');
+			} else {
+				$('.vsimgdiv').css('display','none');
+			}
+		})
+		
+		$('#vsleft').summernote({
+			height : 300,
+			minHeight : null,
+			maxHeight : null,
+			focus : true,
+			airmode : true,
+			lang: 'ko-KR',
+			toolbar: [
+				  ['insert', ['link', 'picture', 'video']],
+				],
+			callbacks : {
+				onImageUpload : function(file, editor, welEditable) {
+						sendfile(file[0], this);
+				}
+			}
+		});
+		
+		$('#vsright').summernote({
+			height : 300,
+			minHeight : null,
+			maxHeight : null,
+			focus : true,
+			airmode : true,
+			lang: 'ko-KR',
+			toolbar: [
+				  ['insert', ['link', 'picture', 'video']],
+				],
+			callbacks : {
+				onImageUpload : function(file, editor, welEditable) {
+						sendfile(file[0], this);
+				}
+			}
+		});
+		
+		
+		
+		
 	});
-
+	
+	
 </script>
 </html>
