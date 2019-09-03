@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +64,9 @@
 
 			<!-- Paging 처리 -->
 
-		       <% int total=Integer.parseInt(request.getParameter("ListCount"));
+		       <%  /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
+		      
+		        int total =Integer.parseInt((request.getAttribute("ListCount")).toString()); 
 				int p=0;
 				if(total%5==0){
 					p=total/5;
@@ -78,7 +80,7 @@
 				<div class="col-xs-12" id="paging">
 				<%for (int i=1; i<=p; i++){
 				%>
-				<a href="Board.do?num=<%=i%>"> <%=i%></a>
+				<a href="Board.do?page=<%=i%>"> <%=i%></a>
 				<%
 				} %>
 				</div>

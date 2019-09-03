@@ -26,45 +26,24 @@ public class BoardController {
 	BoardService bs;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
-/*	
 
-@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판 (메인에서 게시판)
-	public ModelAndView Board(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();	
-		mv.setViewName("Board");
-	    int page=1;
-		List<BoardVO> boardlist = bs.BoardAllData(page);
-		int listcount=bs.BoardListCount();
-		
-		mv.addObject("boardlist", boardlist);
-		mv.addObject("ListCount", listcount);
-		System.out.println(boardlist);
-		System.out.println(page);
-		return mv;
-	
-	}*/
-@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판 (페이지이동)
-public ModelAndView Board2(@RequestParam int num, HttpServletRequest req) {
+@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판
+public ModelAndView Board2(@RequestParam int page, HttpServletRequest req) {
 	ModelAndView mv = new ModelAndView();	
 	mv.setViewName("Board");
-	
-	System.out.println( num+"num값");
-	int page=0;
-	if(num>1) {
-		page=num;
+
+	int paging=0;
+	if(page>1) {
+		paging=page;
 	}
 	else {
-		page=1;
+		paging=1;
 	}
-	List<BoardVO> boardlist = bs.BoardAllData(page);
+	List<BoardVO> boardlist = bs.BoardAllData(paging);
 	int listcount=bs.BoardListCount();
 	
 	mv.addObject("ListCount", listcount);
 	mv.addObject("boardlist", boardlist);
-	
-	System.out.println(boardlist);
-	System.out.println(listcount+"리스트 카운크");
-	System.out.println(page);
 	
 	return mv;
 
