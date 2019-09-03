@@ -75,7 +75,7 @@
 				</table>
 
 				<!-- Paging 처리 -->
-				<div class="col-xs-12" id="board-page">${pageCode}(페이지번호)</div>
+				<div class="col-xs-12" id="board-page">${pageCode}(페이지번호)
 			</div>
 		</div>
 

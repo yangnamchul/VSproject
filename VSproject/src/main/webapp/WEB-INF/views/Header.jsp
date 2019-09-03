@@ -123,9 +123,10 @@
 					메뉴1 <img
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
+						<!-- Dropdown -->
 						<div id="dropdown" class="dropdown-content">
-						<a href="#">고것은</a>
-						<a href="#">옥냥이가</a>
+						<a href="Main.do">고것은</a>
+						<a href="https://youtu.be/PKkFG21lz7M">옥냥이가</a>
 						<a href="#">먼저 했고연</a>
 						</div>
 				</div>
@@ -221,7 +222,10 @@
 						}
 					});
 		}
-		
+
+	</script>
+<script>
+/* 내용: Dropdown */
 function myFunction(){
 	document.getElementById("dropdown").classList.toggle("show");
 }
@@ -237,8 +241,7 @@ window.onclick = function(event){
 	    }
 	  }
 }
-	</script>
-
+</script>
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Top부분 스크롤 고정 
 수 정 : 일단 PC화면은 적용안함 (8/31) 
@@ -261,9 +264,5 @@ $( document ).ready( function() {
 
 </script>
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-
-
-
-
 </body>
 </html>
