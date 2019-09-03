@@ -18,12 +18,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
 import com.vs.my.User.DAOVO.UserVO;
+import com.vs.my.User.Service.UserService;
 
 @Controller
 public class BoardController {
 	
 	@Autowired
 	BoardService bs;
+	@Autowired
+	UserService us;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -50,20 +53,27 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping(value="BoardOneView.do", method=RequestMethod.GET) //글 하나 보기
-	public ModelAndView BoardOneView(HttpServletRequest request, BoardVO bv) {
+	@RequestMapping(value="Content.do", method=RequestMethod.GET) //글 하나 보기
+	public ModelAndView Content(HttpServletRequest request, BoardVO bv) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("OneView");
+		mv.setViewName("Content");
 		
 		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
 		
 		bv.setB_seq(b_seq);
 		
-		System.out.println(bv.getB_seq());
+		BoardVO bv2 = bs.Content(bv);
 		
-		BoardVO vo = bs.BoardOneView(bv);
+		UserVO uv = new UserVO(); 
+				
+		uv.setU_id(bv2.getU_id());
 		
-		mv.addObject("vo",vo);
+		UserVO uv2 = us.MyPage(uv);
+		
+		String u_id = uv2.getU_id();
+		
+		mv.addObject("vo",bv2);
+		mv.addObject("u_id", u_id);
 		
 		return mv;
 	}

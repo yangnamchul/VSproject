@@ -74,9 +74,9 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public BoardVO BoardOneView(BoardVO vo) {
+	public BoardVO Content(BoardVO vo) {
 		// TODO Auto-generated method stub
-		return bdao.BoardOneView(vo);
+		return bdao.Content(vo);
 	}
 
 }

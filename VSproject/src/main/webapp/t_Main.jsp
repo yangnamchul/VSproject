@@ -14,6 +14,7 @@
 <body>
 
 	<%@ include file="t_Header.jsp"%>
+<%-- 	<%@ include file="Header.jsp"%>  --%>
 
 	<!-- 	Content 내용부분 -->
 	<div id="content-area">

@@ -11,5 +11,5 @@ public interface BoardDAO {
 	
 	public void BoardInsertData(BoardVO vo);
 	
-	public BoardVO BoardOneView(BoardVO vo);
+	public BoardVO Content(BoardVO vo);
 }

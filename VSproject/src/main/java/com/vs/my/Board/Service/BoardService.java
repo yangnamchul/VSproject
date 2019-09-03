@@ -20,5 +20,5 @@ public List<BoardVO> BoardAllData();
 	
 	public void BoardFileSave(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
-	public BoardVO BoardOneView(BoardVO vo);
+	public BoardVO Content(BoardVO vo);
 }

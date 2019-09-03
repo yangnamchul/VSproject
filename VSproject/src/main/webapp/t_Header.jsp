@@ -26,7 +26,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
-	
 %>
 
 </head>
@@ -51,7 +50,7 @@
 					</div>
 
 					<%
-							if (session.getAttribute("u_id") == null) {
+							if (session.getAttribute("uv") == null) {
 						%>
 
 
@@ -117,7 +116,7 @@
 
 
 	<!-- 주메뉴 -->
-	<div id="header-bar" class="container">
+	<div class="container"  id="header-bar" >
 		<div class="row" align="center">
 			<div class="header-row">
 				<div class="header-col">
@@ -173,8 +172,7 @@
 			});
 
 			$("[id='btn-logout']").click(function() {
-	<%session.invalidate();%>
-		location.reload();
+				location.href="LogOut.do";
 			});
 		});
 	</script>

@@ -25,7 +25,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardVO BoardOneView(BoardVO vo) {
+	public BoardVO Content(BoardVO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".BoardOneView",vo);
 	}

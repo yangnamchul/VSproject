@@ -19,6 +19,4 @@
 		WHERE b_seq = #{b_seq}
 	</select>
 	
-	
-	
 </mapper>
