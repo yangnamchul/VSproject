@@ -11,52 +11,55 @@
 <%@ include file="t_Header.jsp"%>
 
 	 <!-- 회원가입 폼 -->
-<form class="signup-content" action="UserInsertData.do" method="get">
-<div class="container" id="cont">
-   <div class="row" id="Join">
-      <!-- <div class="col-xs-2"></div> -->
-      <div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="joinDiv">
+<div id="content-area">
+<div class="container" id="main">
+   <div class="row" id="joinDiv">
+      <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+      <form action="UserInsertData.do" method="get">
          <h1> 회원가입 </h1>
-            <ul class="vss-join" id="JoinForm">
+         <div id="JoinForm">
+            <ul class="vss-join">
                <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" />
-               <button type="button" class="checkbtn"> 중복검사 </button>
-               <br>
-               <div>
-                  <span class="id-check-text">중복검사항목</span>
+               <div class="id-check-btn">
+               	<button type="button" class="checkbtn"> 중복검사 </button>
+               	<span class="id-check-text">중복검사항목</span>
+               	<div class="id-check-text2">중복검사항목</div>
                </div>
-               </li>
+               </li>                 
                <li>이&nbsp;&nbsp;름&nbsp;&nbsp; <input type="text" name="u_name" /></li>
-               <li>닉네임&nbsp;&nbsp; <input type="text" name="u_nick" /></li>
-               <li>암&nbsp;&nbsp;호&nbsp;&nbsp; <input type="text" name="u_pw" class="password" /><br>
+               <li>별&nbsp;&nbsp;명&nbsp;&nbsp; <input type="text" name="u_nick" /></li>
+               <li>암&nbsp;&nbsp;호&nbsp;&nbsp; <input type="password" name="u_pw" class="password" /><br>
                <div class="progress-bar_wrap">
                <div class="progress-bar_item progress-bar_item-1"></div>
                <div class="progress-bar_item progress-bar_item-2"></div>
                <div class="progress-bar_item progress-bar_item-3"></div>               
             </div>
-               <span class="progress-bar_text">칸이 비어있습니다</span>
+               <div class="progress-bar_text">칸이 비어있습니다</div>
                </li>               
-               <li>암호확인 <input type="text" name="u_pw_rep" class="password-rep" /><br>
+               <li>암호확인 <input type="password" name="u_pw_rep" class="password-rep" /><br>
                <div class="progress-bar_wrap">
                <div class="progress-bar_re_item progress-bar_re_item-1"></div>
                <div class="progress-bar_re_item progress-bar_re_item-2"></div>
                <div class="progress-bar_re_item progress-bar_re_item-3"></div>               
             </div>               
-               <span class="progress-bar_re_text">칸이 비어있습니다</span>
+               <div class="progress-bar_re_text">칸이 비어있습니다</div>
                </li>
                <li>이메일&nbsp;&nbsp; <input type="text" name="u_email" /></li>
-               <div align="center" class="clearfix"> 
+               <div align="center" class="submit-btn"> 
                   <button type="submit" class="submitbtn">회원가입</button>             
                </div>                                                
             </ul>
-         
+            </div>
+        </form> 
       </div>
    </div>
 </div>
-</form>
-
+</div>
 <script type="text/javascript">
+
+
 $( document ).ready( function() {
-     const changeText = function (el, text, color) {
+	const changeText = function (el, text, color) {
        el.text(text).css('color', color);
      };
      $('.password').keyup(function(){

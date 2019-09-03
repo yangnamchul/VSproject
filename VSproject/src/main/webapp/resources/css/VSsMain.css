@@ -384,87 +384,96 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 내 용 : SignUp.jsp 
 작성자 : 미영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
-#Join {
-	margin-left: 0px;
-	margin-right: 0px;
+@media ( max-width :576px){
+	.id-check-text{visibility: visible;}
+	.id-check-text2{visibility: hidden; }
+}
+@media ( min-width :576px) {
+	.id-check-text{visibility: hidden;}
+	.id-check-text2{visibility: visible; }
+}
+
+@media ( min-width :768px) {
+	.vss-join>li {padding-left: 10rem;}
+}
+
+@media ( min-width :992px) {
+	.vss-join>li {padding-left: 15rem;}
+}
+
+@media ( min-width :1200px) {
+	.vss-join>li {padding-left: 20rem;}
 }
 
 #joinDiv {
-	padding: 2rem;
+	padding: 1rem;
 	background-color: #000084;
 	color: white;
 	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
 
-#joinDiv>h1 {
+#joinDiv>div>form>h1 {
 	color: white;
-	align: center;
+	font-size: 1.5rem;
 }
+
+.id-check-btn{ display:inline;}
 
 .vss-join {
 	border-top: 4px solid white;
 	border-bottom: 4px solid white;
 	margin-top: 0.5rem;
-	padding-left: 2rem;
+	/* padding-left: 2rem; */
+	padding-left:0;
 	padding-bottom: 1rem;
 }
 
 .vss-join>li {
-	font-size: 30px;
-	background-color: #000084;
-	color: white;
+    font-size: 1.5rem;
+    background-color: #000084;
+    color: white;
+    list-style: none;
+    margin: 0.5rem;
 }
 
-#joinForm {
-	width: 317px;
+.vss-join>li>div>button {
+	display:inline;
+    color: white;
+    background-color: #ff4d00;
+    font-size: 1.2rem;
 }
 
-#JoinForm>li {
-	list-style: none;
-	margin: 20px;
+.vss-join>li>input[type=text], input[type=password] {
+    width: 13rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    padding: 0 3px;
+    margin: 1px;
+    color: black;
+    background: #bbbbbb;
 }
 
-#JoinForm>li>button {
-	color: white;
-	background-color: #ff4d00;
-	font-size: 25px;
+.vss-join>div>button {
+    color: white;
+    background-color: #ff4d00;
+    font-size: 1.2rem;
 }
 
-.id-check-text {
-	margin-left: 18%;
-}
-
-#JoinForm>li>input[type=text] {
-	width: 50%;
-	font-size: 30px;
-	padding: 0px 3px;
-	margin: 1px;
-	color: black;
-	background: #bbbbbb;
-}
-
-#JoinForm>div>button {
-	color: white;
-	background-color: #ff4d00;
-	font-size: 25px;
-}
-
-.progress-bar_text, .progress-bar_re_text, .id-check-text {
-	font-size: 22px;
+.progress-bar_text, .progress-bar_re_text, .id-check-text, .id-check-text2 {
+	font-size: 1.3rem;
 	color: #f9ff00;
 	text-shadow: 1px 1px 1px #ff4d00;
 }
 
 .progress-bar_wrap {
 	border: 1px solid blue;
-	margin-left: 1%;
-	width: 300px;
-	height: 10px;
-	background: #F6F6FA;
-	display: inline-block;
-	vertical-align: middle;
-	overflow: hidden;
-	border-radius: 5px;
+    width: 15rem;
+    height: 10px;
+    background: #F6F6FA;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 5px;
 }
 
 .progress-bar_item, .progress-bar_re_item {
