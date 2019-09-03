@@ -33,7 +33,6 @@ CREATE TABLE Board
 	B_tag varchar2(4000) NOT NULL,
 	B_boolean number NOT NULL,
 	B_parent number,
-	B_imgpath varchar2(4000),
 	PRIMARY KEY (B_seq)
 );
 
@@ -130,17 +129,16 @@ FROM USERS
 WHERE u_id='admin' and u_pw='admin' ;
 
 insert into CATEGORY
-values(1,'테크');
+values(1,'?��?��');
 insert into CATEGORY
-values(2,'스포츠');
+values(2,'?��?���?');
 insert into CATEGORY
-values(3,'인물');
+values(3,'?���?');
 
 insert into BOARD
 values(1,'123',1,'hello','hello11',1,sysdate,'tag11',0,null,null);
 
-select *
-from users;
+select * from users;
 SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM Category;

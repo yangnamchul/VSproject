@@ -23,4 +23,6 @@ public interface UserDAO {
 	public void UserInsertData(UserVO uv);
 	
 	public UserVO LoginAction(UserVO uv);
+	
+
 }

@@ -30,5 +30,4 @@ public class UserDAOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace + ".LoginAction", uv);
 	}
-
 }

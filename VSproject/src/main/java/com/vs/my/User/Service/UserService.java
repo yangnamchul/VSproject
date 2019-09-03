@@ -14,5 +14,5 @@ public interface UserService {
 /*	public UserVO UserOneData(UserVO vo);*/
 	public void UserInsertData(UserVO vo);
 	public int LoginAction(UserVO uv, HttpSession hs);
-	
 }
+
