@@ -3,8 +3,8 @@ package com.vs.my.Vote.DAOVO;
 public class VoteVO {
 	private int v_seq;
 	private int b_seq;
-	private int v_first;
-	private int v_last;
+	private String u_id;
+	private int v_like;
 	
 	public int getV_seq() {
 		return v_seq;
@@ -18,18 +18,17 @@ public class VoteVO {
 	public void setB_seq(int b_seq) {
 		this.b_seq = b_seq;
 	}
-	public int getV_first() {
-		return v_first;
+	public String getU_id() {
+		return u_id;
 	}
-	public void setV_first(int v_first) {
-		this.v_first = v_first;
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
 	}
-	public int getV_last() {
-		return v_last;
+	public int getV_like() {
+		return v_like;
 	}
-	public void setV_last(int v_last) {
-		this.v_last = v_last;
+	public void setV_like(int v_like) {
+		this.v_like = v_like;
 	}
-	
 	
 }

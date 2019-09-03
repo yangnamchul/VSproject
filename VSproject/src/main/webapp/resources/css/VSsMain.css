@@ -8,6 +8,92 @@
 	font-weight: normal;
 	font-style: normal;
 }
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	내용 : 모달
+	작성자 : 미영
+	09-04 작성(bootstrap.css에 작성)
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+@media ( min-width :576px) {
+	모달창
+	.modal-dialog {
+		max-width: 300px !important;
+		background-color:#ff4d00;
+	}
+	
+	.modal-content {
+		border: 1px solid rgba(0, 0, 0, .2);
+	}
+	
+	.modal-header {
+		padding: 0.5rem;
+		border-bottom: 1px solid #000084;
+	    background-color: #000084;
+	    color: #FFFFFF;
+	    font-size: 1.5rem;
+	}
+	
+	.modal-body {
+		background-color: #000084;
+		padding: 0.5rem;
+	}
+	
+	.modal-footer {
+		padding: 0.5rem;
+		border-top: 1px solid #000084;
+		background-color: #000084;
+	}
+
+	모달컨텐츠 안 양식
+	.modal-login>li {
+	    width: 230px;
+	    list-style: none;
+	    margin: 1px;
+	    color: #fff;
+	    font-size: 1.3rem;
+	    padding-left: 1.5rem;
+	}
+	
+	.modal-login>li>input[type=text], [type=password] {
+	    width: 230px;
+	    padding: 0px 3px;
+	    margin: 1px;
+	    color: #000;
+	    background: #bbbbbb;
+	}
+	
+	.auto-login {
+	    text-align: right;
+	    color: #fff;
+	    font-size: 1.1rem;
+	    margin: 0.5rem; 
+	    padding-right: 1rem;   
+	}
+	
+	#pop_login_btn {
+	    color: #fff;
+	    font-size: 1rem;
+	}
+	
+	#pop_login_btn>button {
+	    color: #fff;
+	    background-color: #ff4d00;
+	    margin-bottom: 5px;
+	    font-size: 1.1rem;
+	}
+	
+	.find-id-pw, .find-id-pw>a {
+	    color: #fff;
+	    font-size: 1.3rem;
+	    text-align: center;
+	}
+	
+	.close {
+		color: #b3d7ff;
+    	text-shadow: 0 1px 0 #ff4d00;
+    	font-size: 2rem;
+    }
+}
+---------------------*/
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 부스러기 양식 
@@ -384,96 +470,87 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 내 용 : SignUp.jsp 
 작성자 : 미영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
-@media ( max-width :576px){
-	.id-check-text{visibility: visible;}
-	.id-check-text2{visibility: hidden; }
-}
-@media ( min-width :576px) {
-	.id-check-text{visibility: hidden;}
-	.id-check-text2{visibility: visible; }
-}
-
-@media ( min-width :768px) {
-	.vss-join>li {padding-left: 10rem;}
-}
-
-@media ( min-width :992px) {
-	.vss-join>li {padding-left: 15rem;}
-}
-
-@media ( min-width :1200px) {
-	.vss-join>li {padding-left: 20rem;}
+#Join {
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 #joinDiv {
-	padding: 1rem;
+	padding: 2rem;
 	background-color: #000084;
 	color: white;
 	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
 
-#joinDiv>div>form>h1 {
+#joinDiv>h1 {
 	color: white;
-	font-size: 1.5rem;
+	align: center;
 }
-
-.id-check-btn{ display:inline;}
 
 .vss-join {
 	border-top: 4px solid white;
 	border-bottom: 4px solid white;
 	margin-top: 0.5rem;
-	/* padding-left: 2rem; */
-	padding-left:0;
+	padding-left: 2rem;
 	padding-bottom: 1rem;
 }
 
 .vss-join>li {
-    font-size: 1.5rem;
-    background-color: #000084;
-    color: white;
-    list-style: none;
-    margin: 0.5rem;
+	font-size: 30px;
+	background-color: #000084;
+	color: white;
 }
 
-.vss-join>li>div>button {
-	display:inline;
-    color: white;
-    background-color: #ff4d00;
-    font-size: 1.2rem;
+#joinForm {
+	width: 317px;
 }
 
-.vss-join>li>input[type=text], input[type=password] {
-    width: 13rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    padding: 0 3px;
-    margin: 1px;
-    color: black;
-    background: #bbbbbb;
+#JoinForm>li {
+	list-style: none;
+	margin: 20px;
 }
 
-.vss-join>div>button {
-    color: white;
-    background-color: #ff4d00;
-    font-size: 1.2rem;
+#JoinForm>li>button {
+	color: white;
+	background-color: #ff4d00;
+	font-size: 25px;
 }
 
-.progress-bar_text, .progress-bar_re_text, .id-check-text, .id-check-text2 {
-	font-size: 1.3rem;
+.id-check-text {
+	margin-left: 18%;
+}
+
+#JoinForm>li>input[type=text] {
+	width: 50%;
+	font-size: 30px;
+	padding: 0px 3px;
+	margin: 1px;
+	color: black;
+	background: #bbbbbb;
+}
+
+#JoinForm>div>button {
+	color: white;
+	background-color: #ff4d00;
+	font-size: 25px;
+}
+
+.progress-bar_text, .progress-bar_re_text, .id-check-text {
+	font-size: 22px;
 	color: #f9ff00;
 	text-shadow: 1px 1px 1px #ff4d00;
 }
 
 .progress-bar_wrap {
 	border: 1px solid blue;
-    width: 15rem;
-    height: 10px;
-    background: #F6F6FA;
-    display: inline-block;
-    vertical-align: middle;
-    overflow: hidden;
-    border-radius: 5px;
+	margin-left: 1%;
+	width: 300px;
+	height: 10px;
+	background: #F6F6FA;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 .progress-bar_item, .progress-bar_re_item {
