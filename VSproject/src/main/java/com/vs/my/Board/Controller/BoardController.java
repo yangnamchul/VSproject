@@ -131,16 +131,25 @@ public class BoardController {
 		int c_seq=1;
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
-		String aa = "aaa";
 		
+		
+		try {
+		String vsleft = request.getParameter("vsleft");
+		String vsright = request.getParameter("vsright");
+		
+		bv.setB_left(vsleft);
+		bv.setB_right(vsright);
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 		System.out.println(st+"==> user_seq2");
 		
 		bs.BoardInsertData(bv);
 		
-		String vsleft = request.getParameter("vsleft");
-		String vsright = request.getParameter("vsright");
+		
 		
 		int b_seq = bv.getB_seq();
 		
@@ -148,9 +157,14 @@ public class BoardController {
 		
 		vv.setB_seq(b_seq);
 		
-		VoteVO vv2 = vs.allVote(vv);
+		List<VoteVO> vv2 = vs.allVote(vv);
 		
-		
+		try {
+		int count = vv2.size();
+		} catch(Exception e) {
+			e.printStackTrace();
+			
+		}
 		mv.setViewName("Main");
 		return mv;
 	}
