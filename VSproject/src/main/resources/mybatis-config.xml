@@ -21,13 +21,19 @@
           
          
          </mappers> -->
-         
+         <settings>
+			<setting name="cacheEnabled" value="false" />
+			<setting name="jdbcTypeForNull" value="NULL" />
+		</settings>
          
          <typeAliases>		
   			<typeAlias type="com.vs.my.User.DAOVO.UserVO" alias="User"/>
-   			<typeAlias type="com.vs.my.Board.DAOVO.BoardVO" alias="Board"/>               
+   			<typeAlias type="com.vs.my.Board.DAOVO.BoardVO" alias="Board"/>
+   			<typeAlias type="com.vs.my.Vote.DAOVO.VoteVO" alias="Vote"/> 
          </typeAliases>
-
+		
+	
+		
    </configuration>
 
 

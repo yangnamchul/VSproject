@@ -13,6 +13,24 @@ public class BoardVO {
 	private Date b_date;
 	private int b_boolean;
 	private int b_parent;
+	private String b_left;
+	private String b_right;
+
+	public String getB_left() {
+		return b_left;
+	}
+
+	public void setB_left(String b_left) {
+		this.b_left = b_left;
+	}
+
+	public String getB_right() {
+		return b_right;
+	}
+
+	public void setB_right(String b_right) {
+		this.b_right = b_right;
+	}
 
 	public int getB_seq() {
 		return b_seq;
