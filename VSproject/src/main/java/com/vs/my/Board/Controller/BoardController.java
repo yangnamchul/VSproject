@@ -22,6 +22,8 @@ import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.Vote.DAOVO.VoteVO;
+import com.vs.my.Vote.Service.VoteService;
 
 @Controller
 public class BoardController {
@@ -30,6 +32,8 @@ public class BoardController {
 	BoardService bs;
 	@Autowired
 	UserService us;
+	@Autowired
+	VoteService vs;
 	@Autowired
 	ReplyService rs;
 	
@@ -66,10 +70,7 @@ public class BoardController {
 			int page=1;
 			List<BoardVO> boardlist = bs.BoardAllData(page);
 
-			System.out.println(boardlist);
-
 		
-			System.out.println( boardlist.get(0).getC_seq());
 			return boardlist;
 			
 			
@@ -91,17 +92,34 @@ public class BoardController {
 		
 		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
 		
+//		content 내용 가져오기
 		bv.setB_seq(b_seq);
-		
 		BoardVO bv2 = bs.Content(bv);
 		
+		
+//		u_id 값 가져오기
 		UserVO uv = new UserVO(); 
-				
 		uv.setU_id(bv2.getU_id());
-		
 		UserVO uv2 = us.MyPage(uv);
-		
 		String u_id = uv2.getU_id();
+		
+		
+//		투표값 가져오기
+		int data = 0;
+		VoteVO vv = new VoteVO();
+		vv.setB_seq(b_seq);
+		List<VoteVO> lv = vs.allVote(vv);
+		int vcount = lv.size();
+		if (vcount < 1) { //vs게시물아님
+			data = 0;
+		} else { //vs게시물
+			data = 1;
+			mv.addObject("totalVote",vcount-1);
+			int LeftCnt = vs.LeftCnt(vv);
+			mv.addObject("LeftCnt", LeftCnt);
+			int RightCnt = vs.RightCnt(vv);
+			mv.addObject("RightCnt", RightCnt);
+		}
 		
 		/*===댓글==*/
 		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
@@ -114,6 +132,11 @@ public class BoardController {
 		System.out.println("안들오나?");
 		System.out.println(replylist);
 		
+		
+		mv.addObject("data", data);
+		mv.addObject("vo",bv2);
+		mv.addObject("u_id", u_id);
+		
 		return mv;
 	}
 	
@@ -125,12 +148,11 @@ public class BoardController {
         UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
 		bv.setU_id(st);
-		System.out.println(st+"==> user_seq1");
 		mv.setViewName("WritePost");
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest req, HttpSession se) throws UnsupportedEncodingException {
+	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
 		ModelAndView mv = new ModelAndView();
 		
 		UserVO uv= (UserVO) se.getAttribute("uv");
@@ -138,12 +160,34 @@ public class BoardController {
 		int c_seq=1;
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
-		String aa = "aaa";
-		System.out.println(st+"==> user_seq2");
+		String[] vsCheck = request.getParameterValues("vsCheck");
+		String vsleft = request.getParameter("vsleft");
+		String vsright = request.getParameter("vsright");
 		
-		bs.BoardInsertData(bv);
 		
-		mv.setViewName("Board");
+		
+		
+		if (vsCheck != null) {
+			bv.setB_left(vsleft);
+			bv.setB_right(vsright);
+			bs.BoardInsertData(bv);
+			
+			
+			VoteVO vv = new VoteVO();
+			vv.setU_id(st);
+			vs.FirstVote(vv);
+		} else {
+			vsleft = null;
+			vsright = null;
+			bv.setB_left(vsleft);
+			bv.setB_right(vsright);
+			bs.BoardInsertData(bv);
+		}
+		
+		
+		
+		mv.setViewName("Main");
+		
 		return mv;
 	}
 	

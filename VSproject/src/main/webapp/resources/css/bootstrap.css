@@ -7894,13 +7894,17 @@ to {
 }
 
 .close {
-	float: right;
-	font-size: 1.5rem;
+	float: right;	
 	font-weight: 700;
 	line-height: 1;
-	color: #000;
+	opacity: .5;
+/* 	color: #000;	
 	text-shadow: 0 1px 0 #fff;
-	opacity: .5
+	font-size: 1.5rem; */
+	
+	color: #b3d7ff;
+    text-shadow: 0 1px 0 #ff4d00;
+    font-size: 2rem;
 }
 
 .close:hover {
@@ -8080,7 +8084,9 @@ margin-bottom
 	position: relative;
 	width: auto;
 	margin: .5rem;
-	pointer-events: none
+	pointer-events: none;
+	
+	background-color:#ff4d00;/* 모달창배경색 */
 }
 
 .modal.fade .modal-dialog {
@@ -8163,11 +8169,60 @@ margin-bottom
 	pointer-events: auto;
 	background-color: #fff;
 	background-clip: padding-box;
-	border: 1px solid rgba(0, 0, 0, .2);
 	border-radius: .3rem;
-	outline: 0
+	outline: 0;
+	
+	border: 1px solid rgba(0, 0, 0, .2);
 }
 
+/* 모달컨텐츠 안 양식 */
+.modal-login>li {
+    width: 230px;
+    list-style: none;
+    margin: 1px;
+    color: #fff;
+    font-size: 1.3rem;
+    padding-left: 1.5rem;
+}
+
+.modal-login>li>input[type=text], [type=password] {
+    width: 230px;
+    padding: 0px 3px;
+    margin: 1px;
+    color: #000;
+    background: #bbbbbb;
+}
+
+.auto-login {
+    text-align: right;
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0.5rem; 
+    padding-right: 1rem;   
+}
+
+#pop_login_btn, #pop_join_btn {
+    color: #fff;
+    font-size: 1rem;
+}
+
+#pop_login_btn>button, #pop_join_btn>button {
+    color: #fff;
+    background-color: #ff4d00;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+#pop_join_btn{
+	padding-right: 0.7rem;
+}
+
+#pop_join_btn>.find-id-pw>a {
+    color: #fff;
+    font-size: 1.3rem;
+    text-align: center;  
+}
+/* --------------------- */
 .modal-backdrop {
 	position: fixed;
 	top: 0;
@@ -8193,10 +8248,16 @@ margin-bottom
 	align-items: flex-start;
 	-ms-flex-pack: justify;
 	justify-content: space-between;
-	padding: 1rem 1rem;
-	border-bottom: 1px solid #dee2e6;
 	border-top-left-radius: .3rem;
-	border-top-right-radius: .3rem
+	border-top-right-radius: .3rem;
+	/*padding: 1rem 1rem;
+	border-bottom: 1px solid #dee2e6; */
+	
+	padding: 0.5rem;
+	border-bottom: 1px solid #000084;
+    background-color: #000084;
+    color: #FFFFFF;
+    font-size: 1.5rem;
 }
 
 .modal-header .close {
@@ -8213,7 +8274,12 @@ margin-bottom
 	position: relative;
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;
-	padding: 1rem
+	/* padding: 1rem; */
+	
+	background-color: #000084;
+	padding: 0.5rem;
+	border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .modal-footer {
@@ -8223,10 +8289,14 @@ margin-bottom
 	align-items: center;
 	-ms-flex-pack: end;
 	justify-content: flex-end;
-	padding: 1rem;
-	border-top: 1px solid #dee2e6;
 	border-bottom-right-radius: .3rem;
-	border-bottom-left-radius: .3rem
+	border-bottom-left-radius: .3rem;
+	/* border-top: 1px solid #dee2e6;
+	padding: 1rem; */
+	
+	padding: 0.5rem;
+	border-top: 1px solid #000084;
+	background-color: #000084;
 }
 
 .modal-footer
@@ -8389,7 +8459,8 @@ margin-right
 
 @media ( min-width :576px) {
 	.modal-dialog {
-		max-width: 500px;
+		max-width: 300px;
+		/* max-width: 500px; */
 		margin: 1.75rem auto
 	}
 	.modal-dialog-scrollable {
