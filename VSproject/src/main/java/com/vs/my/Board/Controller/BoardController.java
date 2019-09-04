@@ -91,19 +91,29 @@ public class BoardController {
 		
 		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
 		
+//		content 내용 가져오기
 		bv.setB_seq(b_seq);
-		
 		BoardVO bv2 = bs.Content(bv);
 		
+//		u_id 값 가져오기
 		UserVO uv = new UserVO(); 
-				
 		uv.setU_id(bv2.getU_id());
-		
 		UserVO uv2 = us.MyPage(uv);
-		
 		String u_id = uv2.getU_id();
 		
+//		투표값 가져오기
+		int data = 0;
+		VoteVO vv = new VoteVO();
+		vv.setB_seq(b_seq);
+		List<VoteVO> lv = vs.allVote(vv);
+		int vcount = lv.size();
+		if (vcount < 1) { //vs게시물아님
+			data = 0;
+		} else { //vs게시물
+			data = 1;
+		}
 		
+		mv.addObject("data", data);
 		mv.addObject("vo",bv2);
 		mv.addObject("u_id", u_id);
 		
@@ -131,41 +141,40 @@ public class BoardController {
 		int c_seq=1;
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
-		
-		
-		try {
-		String vsleft = request.getParameter("vsleft");
-		String vsright = request.getParameter("vsright");
-		
-		bv.setB_left(vsleft);
-		bv.setB_right(vsright);
-		
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
+		String[] vsCheck = request.getParameterValues("vsCheck");
+		String vsleft = null;
+		String vsright = null;
 		
 		System.out.println(st+"==> user_seq2");
 		
 		bs.BoardInsertData(bv);
 		
-		
-		
-		int b_seq = bv.getB_seq();
-		
-		VoteVO vv = new VoteVO();
-		
-		vv.setB_seq(b_seq);
-		
-		List<VoteVO> vv2 = vs.allVote(vv);
-		
-		try {
-		int count = vv2.size();
-		} catch(Exception e) {
-			e.printStackTrace();
+		if (vsCheck != null) {
+			vsleft = request.getParameter("vsleft");
+			vsright = request.getParameter("vsright");
 			
+			bv.setB_left(vsleft);
+			bv.setB_right(vsright);
+			
+			int b_seq = bv.getB_seq();
+			
+			VoteVO vv = new VoteVO();
+			
+			
+			vv.setU_id(st);
+			
+			vs.FirstVote(vv);
+			
+		} else {
+			vsleft = null;
+			vsright = null;
+			
+			bv.setB_left(vsleft);
+			bv.setB_right(vsright);
 		}
+		
 		mv.setViewName("Main");
+		
 		return mv;
 	}
 	

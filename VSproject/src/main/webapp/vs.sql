@@ -171,7 +171,9 @@ SELECT * FROM vote;
 create sequence board_sequence1;
 create sequence user_sequence1;
 create sequence Reply_sequence1;
+create sequence Vote_sequence1;
 
 
-user_sequence1.NEXTVAL
+insert into board
+values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
 

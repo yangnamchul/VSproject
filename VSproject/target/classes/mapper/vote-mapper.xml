@@ -3,12 +3,20 @@
 <mapper namespace="mapper.vote-mapper">
 
 
-     <select id="AllVote" resultType="vote">
+     <select id="allVote" resultType="vote">
 		SELECT *
 		FROM VOTE
 		WHERE b_seq = #{b_seq}
 	</select>
 	
+	<insert id="FirstVote">
+		<selectKey resultType="Integer" keyProperty="b_seq"  order="BEFORE">
+			SELECT MAX(b_seq)
+			FROM board
+		</selectKey>
+		INSERT INTO VOTE
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},0)
+	</insert>
 	
 	
 </mapper>

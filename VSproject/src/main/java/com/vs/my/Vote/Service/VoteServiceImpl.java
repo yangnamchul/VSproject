@@ -19,6 +19,12 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		return vdao.allVote(vv);
 	}
+
+	@Override
+	public void FirstVote(VoteVO vv) {
+		// TODO Auto-generated method stub
+		vdao.FirstVote(vv);
+	}
 	
 	
 	

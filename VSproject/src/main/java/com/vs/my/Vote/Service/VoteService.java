@@ -6,4 +6,5 @@ import com.vs.my.Vote.DAOVO.VoteVO;
 
 public interface VoteService {
 	public List<VoteVO> allVote(VoteVO vv);
+	public void FirstVote(VoteVO vv);
 }

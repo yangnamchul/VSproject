@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,6 @@
 <script src="resources/js/summernote-ko-KR.js"></script>
 
 </head>
-
-
 
 <body>
 
@@ -40,19 +39,16 @@
 				</div>
 
 
-				<!-- 				if ( 이 b_seq가 vs컨텐츠를 갖고 있는가? ) { -->
+				
 				<div class="col-12" id="content-vs">
 					<div class="col-5" id="vs-left">
-						<img src="https://t1.daumcdn.net/cfile/tistory/21158E4055E46F022F"
-							alt="" />
+						${vo.b_left }
 					</div>
 					<div class="col-2" id="vs-vs">
 						<img src="resources/css/test/versus.png" alt="" />
 					</div>
 					<div class="col-5" id="vs-right">
-						<img
-							src="https://image.fmkorea.com/files/attach/new/20161130/486616/37794526/521994155/53f9306c0bddf0b78ac7c82f3169feec.png"
-							alt="" />
+						${vo.b_right }
 					</div>
 				</div>
 				<div class="col-12" id="content-vote">

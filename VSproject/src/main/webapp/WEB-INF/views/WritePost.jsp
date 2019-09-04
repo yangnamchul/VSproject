@@ -138,10 +138,6 @@ function sendfile(file, el) {
 				}
 			}
 		});
-		
-		
-		
-		
 	});
 	
 	
