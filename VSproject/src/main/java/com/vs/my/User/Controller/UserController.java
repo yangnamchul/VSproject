@@ -134,14 +134,16 @@ public class UserController {
 		return data;
 	}
 	
-	@RequestMapping(value="LogOut.do", method=RequestMethod.GET) //로그인
-	public ModelAndView LogOut(HttpServletRequest request, UserVO uv, HttpSession hs) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Main");
+	@RequestMapping(value="LogOut.do", method=RequestMethod.POST) //로그아웃
+	@ResponseBody
+	public int LogOut(HttpServletRequest request, UserVO uv, HttpSession hs) {
 		
+		try {
 		hs.removeAttribute("uv");
-		
-		return mv;
+		} catch(Exception e) {
+			return 0;
+		}
+		return 1;
 	}
 	
 	@RequestMapping(value="FindID.do", method=RequestMethod.GET) //아이디, 비번 찾기 페이지 이동

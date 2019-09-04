@@ -67,14 +67,13 @@ href="resources/css/bootstrap.css">
 							} else {
 						%>
 						
-						<div class="right-col" id="btn-logout">
-						<div class="right-row" align="center">
-							<img
-								src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"
+						<div class="right-col" id="btn-logout" onclick="logout()">
+							<div class="right-row" align="center">
+								<img src="http://icons.iconarchive.com/icons/pixture/donuts/32/Coffee-icon.png"
 								alt="" />
+							</div>
+							<div class="right-row">로그아웃</div>
 						</div>
-						<div class="right-row">로그아웃</div>
-					</div>
 					<%
 							}
 						%>
@@ -215,6 +214,25 @@ href="resources/css/bootstrap.css">
 						}
 					});			
 		}
+		
+		function logout() {
+			jQuery.ajax({
+				type : "POST",
+				url : "LogOut.do",
+				async : false,
+				success : function(data) {
+					if (data == 0) {
+						alertify.alert("로그아웃 실패");
+					} else {
+						location.reload() ;
+					}
+				},
+				error : function(req, status, error) {
+					alertify.alert(req.status + "\nmessege"
+							+ req.responseTest);
+				}
+			});	
+		}
 	</script>
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -254,11 +272,6 @@ $(document).ready(function() {
 	$("[id='btn-login']").click(function() {
 		$('#myModal').modal('hide');
 	});
-	
-	$("[id='btn-logout']").click(function() {
-		location.href="LogOut.do";
-	});
-	
 	
 });
 </script>
