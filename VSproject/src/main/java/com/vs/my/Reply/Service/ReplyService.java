@@ -8,5 +8,6 @@ public interface ReplyService {
 
 	
 	public List<ReplyVO> ReplyAllData(int b_seq);
-	public List<ReplyVO>  ReplyInsertData(ReplyVO rv);
+	public int ReplyInsertData(ReplyVO rv);
+	public ReplyVO ReplyOneData(int re_seq);
 }

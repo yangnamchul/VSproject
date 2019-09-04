@@ -19,24 +19,36 @@ public class ReplyServiceImpl implements ReplyService{
 		return rdao.ReplyAllData(b_seq);
 	}
 	@Override
-	public List<ReplyVO> ReplyInsertData(ReplyVO rv) {
+	public int ReplyInsertData(ReplyVO rv) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("replyService");
+		System.out.println("replyService -insert");
 		System.out.println(rv.getB_seq());
 		System.out.println(rv.getU_id());
 		System.out.println(rv.getRe_content());
 		
 		
-		rdao.ReplyInsertData(rv);
+		int re_seq=rdao.ReplyInsertData(rv);
 		
-		int b_seq2=rv.getB_seq();
+	    
 		
+		/*int b_seq2=rv.getB_seq();
 		
-		
-		return rdao.ReplyAllData(b_seq2);
+		rdao.ReplyAllData(b_seq2);
+		*/
+		return re_seq;
 				
 			
 	}
+	@Override
+	public ReplyVO ReplyOneData(int re_seq) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("replyService -onedata");
+		System.out.println(re_seq);
+		return rdao.ReplyOneData(re_seq);
+	}
+	
+
 
 }

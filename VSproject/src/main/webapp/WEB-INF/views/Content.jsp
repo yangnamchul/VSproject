@@ -86,33 +86,33 @@
 					</div>
 				</div>
 				<div id="content-content">${vo.b_content} 
-					</div>
+				</div>
 
 
 			</div>
-			<!-- 			댓글창 (임시) -->
+			<!-- 			댓글입력창 (임시) -->
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
 				id="contentReply">
 				<form id="replyform">
 					<textarea id="r_reply" name="re_content"></textarea>
-					<button type="button" onclick="reply()">댓글달기</button>
+					<button type="button" onclick="reply()">댓글등록</button>
 				</form>
 			</div>
 			 
-			 
+			 <!-- 			댓글 (임시) -->
 			 <div class="reply-css">
-			
-		
-	
-	 		<c:forEach var="vo" items="${ReplyList}">
-			<table border=2 id="replytable">
+			<table border="2" id="replytable">
+			<c:forEach var="vo" items="${ReplyList}">
 								<tr id="reply_list">
 									<td>${vo.re_content}</td>
-								</tr>
+									<td>${vo.re_seq}</td>
+									<td><button type="button" onclick="re_create()">대댓달기</button></td>
+								</tr>	                     
+			</c:forEach>					   
 			</table> 
-		   </c:forEach>
-							
-				</div>
+			
+			 
+      	</div>
 				
 				
 		</div>
@@ -138,8 +138,7 @@ function reply() {
 		if ($("#r_reply").val() == "") {
 			alertify.alert("내용을 입력해주세요");
 			return;
-		};
-		
+		};		
 		$.ajax({
 			type: 'GET',
 			url: 'Reply.do?b_seq=${vo.b_seq}',
@@ -149,19 +148,57 @@ function reply() {
 			 error : function(){
 	             alert("통신실패!!!!");
 	         },
-	         success : function(data){
-	          /* alert("통신 데이터 값 : " + data[0]["b_title"]); */
-	        
-	          for(var i=0; i<5;i++){
-	             var objRow = $("#reply_list").clone();  //li 복사
-	            /*  objRow.removeAttr("style"); */
-	          	 objRow.html('<td>' +data[i]['re_content']+ '</td>');       
-	          	 
+	         success : function(data){   
+	             var objRow = $("#reply_list").clone();  // 복사
+	          	 objRow.html('<td>' +data['re_content']+ '</td><td>'+data['re_seq']+'</td><td><button type="button" onclick="re_create()">대댓달기</button></td>');       
 	          	$("#replytable").append(objRow);
-	          }
+	          
 	         }
 		});
 		
 	}
+	
+/* function re_create(){
+
+var con = document.getElementById("re_contentReply");
+if  (con.style.display=='none'){
+    con.style.display = 'block';
+}else{
+    con.style.display = 'none';
+}
+
+} */
+
+	
+/* function re_reply() {
+	if ($("#r_reply").val() == "") {
+		alertify.alert("내용을 입력해주세요");
+		return;
+	};
+	
+	$.ajax({
+		type: 'GET',
+		url: 'Reply.do?b_seq=${vo.b_seq}',
+        async: false,
+        data : $("#replyform").serialize(),
+        dataType: 'json',//동기 비동기 설정
+		 error : function(){
+             alert("통신실패!!!!");
+         },
+         success : function(data){
+
+        
+      
+             var objRow = $("#reply_list").clone();  // 복사
+    
+          	 objRow.html('<td>' +data['re_content']+ '</td><td>'+data['re_seq']+'</td>');       
+          	 
+          	$("#replytable").append(objRow);
+
+          
+         }
+	});
+	
+} */
 </script>
 </html>

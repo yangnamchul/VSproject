@@ -6,8 +6,9 @@ public interface ReplyDAO {
 
 	public List<ReplyVO> ReplyAllData(int b_seq);
 	
-	public void ReplyInsertData(ReplyVO rv);
+	public int ReplyInsertData(ReplyVO rv);
 	
+	public ReplyVO ReplyOneData(int re_seq);
 	
 }
 

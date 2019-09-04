@@ -108,6 +108,8 @@ public class BoardController {
 	
 		mv.addObject("vo",bv2);
 		mv.addObject("u_id", u_id);
+		
+		
 		mv.addObject("ReplyList",replylist);
 		System.out.println("안들오나?");
 		System.out.println(replylist);
