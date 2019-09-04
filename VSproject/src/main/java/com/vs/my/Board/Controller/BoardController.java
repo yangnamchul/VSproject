@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Reply.DAOVO.ReplyVO;
+import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
 import com.vs.my.Vote.DAOVO.VoteVO;
@@ -32,6 +34,8 @@ public class BoardController {
 	UserService us;
 	@Autowired
 	VoteService vs;
+	@Autowired
+	ReplyService rs;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -117,7 +121,16 @@ public class BoardController {
 			mv.addObject("RightCnt", RightCnt);
 		}
 		
+		/*===댓글==*/
+		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
+	
+		mv.addObject("vo",bv2);
+		mv.addObject("u_id", u_id);
 		
+		
+		mv.addObject("ReplyList",replylist);
+		System.out.println("안들오나?");
+		System.out.println(replylist);
 		
 		
 		mv.addObject("data", data);

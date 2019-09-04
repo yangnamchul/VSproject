@@ -628,9 +628,10 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	padding-top: 10%;
 }
 
-#vs-left>img, #vs-right>img, #vs-vs>img {
-	width: 100%;
-	height: 100%;
+
+#vs-left img , #vs-right img, #vs-vs>img {
+	width: 100% !important;
+	height: 100% !important;
 }
 
 #content-info>ul {

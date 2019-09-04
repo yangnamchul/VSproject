@@ -79,14 +79,31 @@
 
 
 			</div>
-			<!-- 			댓글창 (임시) -->
+			<!-- 			댓글입력창 (임시) -->
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
 				id="contentReply">
-				<form style="width: 100%">
-					<textarea id="r_reply" name="r_reply"></textarea>
-					<input type="submit" value="확인">
+				<form id="replyform">
+					<textarea id="r_reply" name="re_content"></textarea>
+					<button type="button" onclick="reply()">댓글등록</button>
 				</form>
 			</div>
+			 
+			 <!-- 			댓글 (임시) -->
+			 <div class="reply-css">
+			<table border="2" id="replytable">
+			<c:forEach var="vo" items="${ReplyList}">
+								<tr id="reply_list">
+									<td>${vo.re_content}</td>
+									<td>${vo.re_seq}</td>
+									<td><button type="button" onclick="re_create()">대댓달기</button></td>
+								</tr>	                     
+			</c:forEach>					   
+			</table> 
+			
+			 
+      	</div>
+				
+				
 		</div>
 	</div>
 <script>
@@ -101,6 +118,30 @@
 			toolbar : false
 		});
 	});
+	
+	function reply() {
+		if ($("#r_reply").val() == "") {
+			alertify.alert("내용을 입력해주세요");
+			return;
+		};		
+		$.ajax({
+			type: 'GET',
+			url: 'Reply.do?b_seq=${vo.b_seq}',
+	        async: false,
+	        data : $("#replyform").serialize(),
+	        dataType: 'json',//동기 비동기 설정
+			 error : function(){
+	             alert("통신실패!!!!");
+	         },
+	         success : function(data){   
+	             var objRow = $("#reply_list").clone();  // 복사
+	          	 objRow.html('<td>' +data['re_content']+ '</td><td>'+data['re_seq']+'</td><td><button type="button" onclick="re_create()">대댓달기</button></td>');       
+	          	$("#replytable").append(objRow);
+	          
+	         }
+		});
+		
+	}
 </script>
 
 <script>
