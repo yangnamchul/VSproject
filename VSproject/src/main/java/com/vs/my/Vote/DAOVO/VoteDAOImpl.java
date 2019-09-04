@@ -25,6 +25,24 @@ public class VoteDAOImpl implements VoteDAO{
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".FirstVote", vv);
 	}
+
+	@Override
+	public void Vote(VoteVO vv) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".Vote", vv);
+	}
+
+	@Override
+	public int LeftCnt(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".LeftCnt",vv);
+	}
+
+	@Override
+	public int RightCnt(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".RightCnt",vv);
+	}
 	
 	
 }

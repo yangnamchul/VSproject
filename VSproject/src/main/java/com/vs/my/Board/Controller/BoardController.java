@@ -66,10 +66,7 @@ public class BoardController {
 			int page=1;
 			List<BoardVO> boardlist = bs.BoardAllData(page);
 
-			System.out.println(boardlist);
-
 		
-			System.out.println( boardlist.get(0).getC_seq());
 			return boardlist;
 			
 			
@@ -95,11 +92,13 @@ public class BoardController {
 		bv.setB_seq(b_seq);
 		BoardVO bv2 = bs.Content(bv);
 		
+		
 //		u_id 값 가져오기
 		UserVO uv = new UserVO(); 
 		uv.setU_id(bv2.getU_id());
 		UserVO uv2 = us.MyPage(uv);
 		String u_id = uv2.getU_id();
+		
 		
 //		투표값 가져오기
 		int data = 0;
@@ -111,7 +110,15 @@ public class BoardController {
 			data = 0;
 		} else { //vs게시물
 			data = 1;
+			mv.addObject("totalVote",vcount-1);
+			int LeftCnt = vs.LeftCnt(vv);
+			mv.addObject("LeftCnt", LeftCnt);
+			int RightCnt = vs.RightCnt(vv);
+			mv.addObject("RightCnt", RightCnt);
 		}
+		
+		
+		
 		
 		mv.addObject("data", data);
 		mv.addObject("vo",bv2);
@@ -128,7 +135,6 @@ public class BoardController {
         UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
 		bv.setU_id(st);
-		System.out.println(st+"==> user_seq1");
 		mv.setViewName("WritePost");
 		return mv;
 	}
@@ -142,36 +148,30 @@ public class BoardController {
 		bv.setU_id(st);
 		bv.setC_seq(c_seq);
 		String[] vsCheck = request.getParameterValues("vsCheck");
-		String vsleft = null;
-		String vsright = null;
+		String vsleft = request.getParameter("vsleft");
+		String vsright = request.getParameter("vsright");
 		
-		System.out.println(st+"==> user_seq2");
 		
-		bs.BoardInsertData(bv);
+		
 		
 		if (vsCheck != null) {
-			vsleft = request.getParameter("vsleft");
-			vsright = request.getParameter("vsright");
-			
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
+			bs.BoardInsertData(bv);
 			
-			int b_seq = bv.getB_seq();
 			
 			VoteVO vv = new VoteVO();
-			
-			
 			vv.setU_id(st);
-			
 			vs.FirstVote(vv);
-			
 		} else {
 			vsleft = null;
 			vsright = null;
-			
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
+			bs.BoardInsertData(bv);
 		}
+		
+		
 		
 		mv.setViewName("Main");
 		

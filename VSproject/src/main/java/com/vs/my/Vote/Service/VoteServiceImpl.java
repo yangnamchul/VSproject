@@ -25,6 +25,24 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		vdao.FirstVote(vv);
 	}
+
+	@Override
+	public void Vote(VoteVO vv) {
+		// TODO Auto-generated method stub
+		vdao.Vote(vv);
+	}
+
+	@Override
+	public int LeftCnt(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return vdao.LeftCnt(vv);
+	}
+
+	@Override
+	public int RightCnt(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return vdao.RightCnt(vv);
+	}
 	
 	
 	

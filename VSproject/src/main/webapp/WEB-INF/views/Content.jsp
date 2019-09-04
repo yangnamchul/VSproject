@@ -61,14 +61,14 @@
 						</div>
 						<div style="clear: both">
 							<ul>
-								<li style="float: left;"><button type="button" onclick="">전자</button></li>
-								<li style="float: right;"><button type="button" onclick="">후자</button></li>
+								<li style="float: left;"><button type="button" id="vsLeft" onclick="vsVote(this.id)">전자</button></li>
+								<li style="float: right;"><button type="button" id="vsRight" onclick="vsVote(this.id)">후자</button></li>
 							</ul>
 						</div>
 						<div style="clear: both">
 							<ul>
-								<li style="float: left;">결과1</li>
-								<li style="float: right;">결과2</li>
+								<li style="float: left;">${LeftCnt }</li>
+								<li style="float: right;">${RightCnt }</li>
 							</ul>
 							<!-- 	한개 bar에 style width % 직접 값을 가져오는거 같음 -->
 						</div>
@@ -101,6 +101,30 @@
 			toolbar : false
 		});
 	});
+</script>
+
+<script>
+	function vsVote(button_id) {
+		var vdata = {
+			"button_id" : button_id
+		};
+		jQuery.ajax({
+			type : "POST",
+			url : "Vote.do?b_seq=${vo.b_seq}",
+			data : vdata,
+			async : false,
+			success : function(data) {
+				if (data == 0) {
+					alertify.alert("투표 실패");
+				} else {
+					location.reload();
+				}
+			},
+			error : function(req, status, error) {
+				alertify.alert(req.status + "\nmessege" + req.responseTest);
+			}
+		});
+	}
 </script>
 
 </body>

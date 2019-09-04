@@ -3,7 +3,7 @@
 <mapper namespace="mapper.vote-mapper">
 
 
-     <select id="allVote" resultType="vote">
+	<select id="allVote" resultType="vote">
 		SELECT *
 		FROM VOTE
 		WHERE b_seq = #{b_seq}
@@ -15,8 +15,24 @@
 			FROM board
 		</selectKey>
 		INSERT INTO VOTE
-		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},0)
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},0,sysdate)
 	</insert>
 	
+	<insert id="Vote">
+		INSERT INTO VOTE
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},#{v_like},sysdate)
+	</insert>
+	
+	<select id="LeftCnt" resultType="Integer">
+		SELECT count(*)
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and v_like=1
+	</select>
+	
+	<select id="RightCnt" resultType="Integer">
+		SELECT count(*)
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and v_like=2
+	</select>
 	
 </mapper>
