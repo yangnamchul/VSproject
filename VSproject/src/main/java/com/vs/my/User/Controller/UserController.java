@@ -1,10 +1,9 @@
 package com.vs.my.User.Controller;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,9 @@ import com.vs.my.User.Service.UserService;
 @Controller
 public class UserController {
 	
+	private final static Logger logger = Logger.getGlobal();
+	
 	@Autowired
-
 	UserService us;
 	HttpSession hs;
 	
@@ -45,6 +45,43 @@ public class UserController {
 	}
 	
 	///////////////////////////// 회원 관련 ///////////////////////////////////
+	
+	@RequestMapping(value="ip.do", method=RequestMethod.GET) //ip
+	private String getIp(HttpServletRequest request) {
+		 
+        String ip = request.getHeader("X-Forwarded-For");
+ 
+        logger.info(">>>> X-FORWARDED-FOR : " + ip);
+ 
+        if (ip == null) {
+            ip = request.getHeader("Proxy-Client-IP");
+            logger.info(">>>> Proxy-Client-IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
+            logger.info(">>>> WL-Proxy-Client-IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+            logger.info(">>>> HTTP_CLIENT_IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+            logger.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getRemoteAddr();
+        }
+        
+        logger.info(">>>> Result : IP Address : "+ip);
+        
+        System.out.println(ip);
+ 
+        return ip;
+ 
+    }
+
+	
 	
 	@RequestMapping(value="SignUp.do", method=RequestMethod.GET) //회원가입
 	public ModelAndView SignUp(HttpServletRequest req) {

@@ -6,6 +6,7 @@
      <select id="BoardAllData" resultType="board">
 		SELECT b_seq, b_title,b_date,b_cnt, u_id
 		FROM board
+		ORDER BY b_seq DESC
 	</select>
 	
 	<insert id="BoardInsertData"> <!-- resultType="user" user객체로 쿼리 실행 결과값을 받고자 할 때 -->
@@ -27,7 +28,8 @@
    (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id
    from 
    (select b_seq, b_title,b_date,b_cnt,u_id
-   from board) 
+   from board
+   order by b_seq DESC) 
    A  where rownum <![CDATA[ < ]]> = #{page}*5)
    X  where x.rum <![CDATA[ > ]]> = ((#{page}-1)*5)+1
 	</select>
