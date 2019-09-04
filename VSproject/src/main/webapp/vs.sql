@@ -50,7 +50,7 @@ CREATE TABLE Reply
 (
 	Re_seq number NOT NULL,
 	B_seq number NOT NULL,
-	U_id varchar2(4000) NOT NULL UNIQUE,
+	U_id varchar2(4000) NOT NULL,
 	Re_content varchar2(4000) NOT NULL,
 	Re_date date NOT NULL,
 	Re_parent number,
@@ -79,6 +79,7 @@ CREATE TABLE Vote
 	-- 1 : 전자
 	-- 2 : 후자
 	V_like number NOT NULL,
+	V_date date,
 	PRIMARY KEY (V_seq)
 );
 
@@ -135,43 +136,4 @@ COMMENT ON COLUMN Vote.V_like IS '1 : 전자
 2 : 후자';
 
 
-
-
-insert into USERS
-values(1,'admin','admin','admin','admin',sysdate);
-
-insert into USERS
-values(2,'123','456','asd','asd',sysdate);
-
-SELECT u_id, u_pw
-FROM USERS 
-WHERE u_id='admin' and u_pw='admin' ;
-
-insert into CATEGORY
-values(1,'테크');
-insert into CATEGORY
-values(2,'스포츠');
-insert into CATEGORY
-values(3,'인물');
-
-insert into BOARD
-values(1,'123',1,'hello','hello11',1,sysdate,0,null,null,null);
-
-insert into reply
-values(1,1,'123','댓글입니다12333',sysdate,null,null);
-
-select *
-from users;
-SELECT * FROM tabs;
-SELECT * FROM Board;
-SELECT * FROM Category;
-SELECT * FROM vote;
-
-
-create sequence board_sequence1;
-create sequence user_sequence1;
-create sequence Reply_sequence1;
-
-
-user_sequence1.NEXTVAL
 

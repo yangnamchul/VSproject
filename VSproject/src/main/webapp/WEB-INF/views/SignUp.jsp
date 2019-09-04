@@ -24,7 +24,7 @@
 										<div>
 											<!-- 										모바일 일때 안쪽으로 배치용 -->
 											<span class="id-check-text2"> 중복검사항목 </span>
-											<button type="button" class="checkbtn">중복검사</button>
+											<button type="button" class="checkbtn" onclick="idCheck()">중복검사</button>
 										</div>										
 									</div>
 									<div class="id-check-text">중복검사항목</div>
@@ -63,28 +63,52 @@
 </div>
 </div>
 
-	<script>	
-		$(document).ready(function() {
-			$('.checkbtn').click(function() {		
-				
-				if (!/^[a-z0-9]{3,15}$/.test($("#user_id").val())) {
+	
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : id 유효성 검사 Ajax
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script>			
+		    function idCheck() {	
+	    		var userId = $("#user_id").val();
+	    		var gdata = { "u_id" : userId };
+	    		
+	    		if (!/^[a-z0-9]{3,15}$/.test($("#user_id").val())) {
 					alert("아이디는 영 대소문자, 숫자 3~15자리로 입력해주세요.");
 					$('#user_id').val("")  ;
 					$('#user_id').focus();
 					return;
 					}
-			});
-		});
+	    		
+	    		jQuery.ajax({
+	    			type : "POST",
+	    			url : "idCheck.do",
+	    			data : gdata,
+	    			async : false,
+	    			success : function(data) {
+	    				if (data == 0) {
+	    					alertify.alert("중복");
+	    				} else {
+	    					alertify.alert("가능");
+	    				}
+	    			},
+	    			error : function(req, status, error) {
+	    				alertify.alert(req.status + "\nmessege" + req.responseTest);
+	    			}
+	    		});
+	    	}					
+		
 	</script>
+	
 
-
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 비밀번호 유효성 검사
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script type="text/javascript">
-
-
 $( document ).ready( function() {
    const changeText = function (el, text, color) {
        el.text(text).css('color', color);
      };
+     
      $('.password').keyup(function(){
           len = this.value.length;
           const pbText = $('.progress-bar_text');
@@ -110,6 +134,7 @@ $( document ).ready( function() {
             changeText(pbText, '안정적이군요');
           } 
      });
+     
      $('.password-rep').keyup(function(){
           len = this.value.length;
           const pbText = $('.progress-bar_re_text');
@@ -130,7 +155,7 @@ $( document ).ready( function() {
                  });
                  changeText(pbText, '비밀번호가 같습니다');
                }
-   });
+   });      
 });
 </script>
 

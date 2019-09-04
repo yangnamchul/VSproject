@@ -15,10 +15,10 @@
 <div class="container" id="cont">
    <div class="row" id="Join">
       <!-- <div class="col-xs-2"></div> -->
-      <div class="col-xs-12" id="joinDiv">
+      <div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="joinDiv">
          <h1> 회원가입 </h1>
             <ul class="vss-join" id="JoinForm">
-               <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" id="u_id"/>
+               <li>아이디&nbsp;&nbsp; <input type="text" name="u_id" />
                <button type="button" class="checkbtn"> 중복검사 </button>
                <br>
                <div>
@@ -27,7 +27,7 @@
                </li>
                <li>이&nbsp;&nbsp;름&nbsp;&nbsp; <input type="text" name="u_name" /></li>
                <li>닉네임&nbsp;&nbsp; <input type="text" name="u_nick" /></li>
-               <li>암&nbsp;&nbsp;호&nbsp;&nbsp; <input type="text" name="u_pw" id="u_pw" class="password" /><br>
+               <li>암&nbsp;&nbsp;호&nbsp;&nbsp; <input type="text" name="u_pw" class="password" /><br>
                <div class="progress-bar_wrap">
                <div class="progress-bar_item progress-bar_item-1"></div>
                <div class="progress-bar_item progress-bar_item-2"></div>
@@ -54,10 +54,7 @@
 </div>
 </form>
 
-	
-
-
-	<script type="text/javascript">
+<script type="text/javascript">
 $( document ).ready( function() {
      const changeText = function (el, text, color) {
        el.text(text).css('color', color);
