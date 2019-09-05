@@ -35,4 +35,10 @@
 		WHERE b_seq=#{b_seq} and v_like=2
 	</select>
 	
+	<select id="UserVote" resultType="vote">
+		SELECT *
+		FROM VOTE
+		WHERE u_id = #{u_id}
+	</select>
+	
 </mapper>

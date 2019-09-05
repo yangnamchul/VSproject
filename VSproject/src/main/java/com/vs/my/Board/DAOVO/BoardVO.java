@@ -6,7 +6,7 @@ public class BoardVO {
 	
 	private int b_seq;
 	private String u_id;
-	private int c_seq;
+	private int vss_seq;
 	private String b_title;
 	private String b_content;
 	private int b_cnt;
@@ -48,12 +48,13 @@ public class BoardVO {
 		this.u_id = u_id;
 	}
 
-	public int getC_seq() {
-		return c_seq;
+
+	public int getVss_seq() {
+		return vss_seq;
 	}
 
-	public void setC_seq(int c_seq) {
-		this.c_seq = c_seq;
+	public void setVss_seq(int vss_seq) {
+		this.vss_seq = vss_seq;
 	}
 
 	public String getB_title() {
