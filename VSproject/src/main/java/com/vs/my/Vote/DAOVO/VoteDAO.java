@@ -9,4 +9,5 @@ public interface VoteDAO {
 	public void Vote(VoteVO vv);
 	public int LeftCnt(VoteVO vv);
 	public int RightCnt(VoteVO vv);
+	public List<VoteVO> UserVote(String u_id);
 }

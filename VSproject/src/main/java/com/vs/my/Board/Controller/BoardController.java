@@ -22,6 +22,8 @@ import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.VSS.DAOVO.VSSVO;
+import com.vs.my.VSS.Service.VSSService;
 import com.vs.my.Vote.DAOVO.VoteVO;
 import com.vs.my.Vote.Service.VoteService;
 
@@ -36,6 +38,8 @@ public class BoardController {
 	VoteService vs;
 	@Autowired
 	ReplyService rs;
+	@Autowired
+	VSSService vss;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -121,18 +125,11 @@ public class BoardController {
 			mv.addObject("RightCnt", RightCnt);
 		}
 		
-		/*===댓글==*/
+//		댓글
 		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
-	
-		mv.addObject("vo",bv2);
-		mv.addObject("u_id", u_id);
 		
 		
 		mv.addObject("ReplyList",replylist);
-		System.out.println("안들오나?");
-		System.out.println(replylist);
-		
-		
 		mv.addObject("data", data);
 		mv.addObject("vo",bv2);
 		mv.addObject("u_id", u_id);
@@ -143,12 +140,17 @@ public class BoardController {
 	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
 	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest req, HttpSession se){
 		ModelAndView mv = new ModelAndView();
-		
-		
+		mv.setViewName("WritePost");
+//		아이디 가져오기
         UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
 		bv.setU_id(st);
-		mv.setViewName("WritePost");
+		
+//		부스러기 전부 가져오기
+		List<VSSVO> vsslist = vss.getAllVSS();
+		mv.addObject("vsslist", vsslist);
+		mv.addObject("vssCnt", vsslist.size());
+		
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
@@ -157,9 +159,9 @@ public class BoardController {
 		
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
-		int c_seq=1;
+		int vss_seq=0;
 		bv.setU_id(st);
-		bv.setC_seq(c_seq);
+		bv.setVss_seq(vss_seq);
 		String[] vsCheck = request.getParameterValues("vsCheck");
 		String vsleft = request.getParameter("vsleft");
 		String vsright = request.getParameter("vsright");
@@ -211,6 +213,18 @@ public class BoardController {
 	public ModelAndView Search(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Search");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
+	public ModelAndView VSSBoard(@RequestParam int VSS_seq) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("VSSBoard");
+		
+		List<BoardVO> bvlist = bs.VSSBoard(VSS_seq);
+		
+		mv.addObject("bvlist", bvlist);
 		
 		return mv;
 	}

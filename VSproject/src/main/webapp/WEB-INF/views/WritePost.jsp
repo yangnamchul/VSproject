@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +40,17 @@
 							<div id="write-vscheck">
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
-
 								<!-- 										vs 유무 -->
 								<button type="button" id="btn_vschk">VS!</button>
 							</div>
-
+							<div>
+								<select name='VSS' size=${vssCnt }>
+									<option value='' selected>-- 선택 --</option>
+									<c:forEach var="vo1" items="${vsslist}">
+										<option value=${vo1.VSS_seq }>${vo1.VSS_name }</option>
+									</c:forEach>
+								</select>
+							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
 								<input type="text" name="" id="p_title" maxlength="40"
 									placeholder="제목" />
@@ -100,6 +107,15 @@
 	$(document)
 			.ready(
 					function() {
+						$.ajax({
+							  url: 'https://api.github.com/emojis',
+							  async: false 
+							}).then(function(data) {
+								alert(data);
+								window.emojis = Object.keys(data);
+								window.emojiUrls = data; 
+						});
+						
 						/* 텍스트 에디터 설정 */
 						$('#b_content')
 								.summernote(
@@ -145,30 +161,25 @@
 													sendfile(file[0], this);
 												}
 											},
-											hint : {
-												mentions : [ '사자', '악어', '펭귄',
-														'고양이', '강아지', 'COW',
-														'RABBIT', 'SNAKE',
-														'기만 ㄴ' ],
-												match : /\B@([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)/,
-												search : function(keyword,
-														callback) {
-													callback($
-															.grep(
-																	this.mentions,
-																	function(
-																			item) {
-																		return item
-																				.indexOf(keyword) === 0;
-																	}));
-												},
-												template : function(item) {
-													return item;
-												},
-												content : function(item) {
-													return '@' + item;
-												}
-											}
+											hint: {
+											    match: /:([\-+\w]+)$/,
+											    search: function (keyword, callback) {
+											      callback($.grep(emojis, function (item) {
+											        return item.indexOf(keyword)  === 0;
+											      }));
+											    },
+											    template: function (item) {
+											      var content = emojiUrls[item];
+											      return '<a href=' + item + ':';
+											    },
+											    content: function (item) {
+											      var url = emojiUrls[item];
+											      if (url) {
+											        return $('<img />').attr('src', url).css('width', 20)[0];
+											      }
+											      return '';
+											    }
+											  }
 										});
 
 						$('#vsCheck').change(function() {

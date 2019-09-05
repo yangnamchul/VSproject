@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.Vote.Service.VoteService;
 
 /**
  * Handles requests for the application home page.
@@ -26,7 +29,15 @@ public class UserController {
 	
 	@Autowired
 	UserService us;
-	HttpSession hs;
+	
+	@Autowired
+	BoardService bs;
+	
+	@Autowired
+	VoteService vs;
+	
+	@Autowired
+	ReplyService rs;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -199,6 +210,9 @@ public class UserController {
 		
 		uv.setU_id(u_id);
 		
+		mv.addObject("rvlist", rs.UserReply(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));
+		mv.addObject("bvlist", bs.UserBoard(u_id));
 		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}

@@ -30,7 +30,8 @@
   			<typeAlias type="com.vs.my.User.DAOVO.UserVO" alias="User"/>
    			<typeAlias type="com.vs.my.Board.DAOVO.BoardVO" alias="Board"/>
    			<typeAlias type="com.vs.my.Vote.DAOVO.VoteVO" alias="Vote"/> 
-   			<typeAlias type="com.vs.my.Reply.DAOVO.ReplyVO" alias="Reply"/>  
+   			<typeAlias type="com.vs.my.Reply.DAOVO.ReplyVO" alias="Reply"/>
+   			<typeAlias type="com.vs.my.VSS.DAOVO.VSSVO" alias="VSS"/>
          </typeAliases>
 		
 	

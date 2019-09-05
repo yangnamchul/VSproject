@@ -1,13 +1,22 @@
 package com.vs.my.Vote.DAOVO;
 
+import java.util.Date;
+
 public class VoteVO {
 	private int v_seq;
 	private int b_seq;
 	private String u_id;
 	private int v_like;
+	private Date v_date;
 	
 	public int getV_seq() {
 		return v_seq;
+	}
+	public Date getV_date() {
+		return v_date;
+	}
+	public void setV_date(Date v_date) {
+		this.v_date = v_date;
 	}
 	public void setV_seq(int v_seq) {
 		this.v_seq = v_seq;
