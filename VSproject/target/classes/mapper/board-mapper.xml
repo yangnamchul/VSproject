@@ -35,9 +35,14 @@
 	</select>
 	
 	<select id="BoardListCount" resultType="int">
-	
-   select count (*)
-   from board
+   		select count (*)
+   		from board
 	</select> 
+	
+	<select id="UserBoard" resultType="board">
+		SELECT *
+		FROM board
+		WHERE u_id = #{u_id}
+	</select>
 	
 </mapper>

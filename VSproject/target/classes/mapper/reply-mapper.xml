@@ -29,6 +29,11 @@
 		WHERE re_seq = #{re_seq}
 	</select>
 	
+	<select id="UserReply" resultType="Reply">
+		SELECT *
+		FROM Reply
+		WHERE u_id = #{u_id}
+	</select>
 
 	
 	</mapper>

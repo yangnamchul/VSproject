@@ -48,6 +48,11 @@ public class ReplyServiceImpl implements ReplyService{
 		System.out.println(re_seq);
 		return rdao.ReplyOneData(re_seq);
 	}
+	@Override
+	public List<ReplyVO> UserReply(String u_id) {
+		// TODO Auto-generated method stub
+		return rdao.UserReply(u_id);
+	}
 	
 
 

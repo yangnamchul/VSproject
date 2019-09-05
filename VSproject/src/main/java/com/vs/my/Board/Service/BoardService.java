@@ -23,4 +23,6 @@ public interface BoardService {
 	
 	public int BoardListCount();
 	
+	public List<BoardVO> UserBoard(String u_id);
+	
 }

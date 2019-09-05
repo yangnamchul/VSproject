@@ -37,4 +37,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne(namespace+".BoardListCount");
 	}
 
+	@Override
+	public List<BoardVO> UserBoard(String u_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".UserBoard", u_id);
+	}
+
 }

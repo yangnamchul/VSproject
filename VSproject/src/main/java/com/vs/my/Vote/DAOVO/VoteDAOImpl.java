@@ -43,6 +43,12 @@ public class VoteDAOImpl implements VoteDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".RightCnt",vv);
 	}
+
+	@Override
+	public List<VoteVO> UserVote(String u_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".UserVote", u_id);
+	}
 	
 	
 }
