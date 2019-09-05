@@ -22,4 +22,5 @@ public interface BoardService {
 	public BoardVO Content(BoardVO vo);
 	
 	public int BoardListCount();
+	
 }

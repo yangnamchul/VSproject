@@ -3,22 +3,43 @@
 <mapper namespace="mapper.vote-mapper">
 
 
-     <select id="BoardAllData" resultType="board">
-		SELECT b_seq, b_title,b_date,b_cnt, u_id
-		FROM board
-	</select>
-	
-	<insert id="BoardInsertData"> <!-- resultType="user" user객체로 쿼리 실행 결과값을 받고자 할 때 -->
-		insert into board
-		values(board_sequence1.NEXTVAL, #{u_id},#{c_seq},#{b_title},#{b_content},1, sysdate, #{b_tag},0,null)
-	</insert>
-	
-	<select id="BoardOneView" resultType="board">
+	<select id="allVote" resultType="vote">
 		SELECT *
-		FROM board
+		FROM VOTE
 		WHERE b_seq = #{b_seq}
 	</select>
 	
+	<insert id="FirstVote">
+		<selectKey resultType="Integer" keyProperty="b_seq"  order="BEFORE">
+			SELECT MAX(b_seq)
+			FROM board
+		</selectKey>
+		INSERT INTO VOTE
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},0,sysdate)
+	</insert>
+	
+	<insert id="Vote">
+		INSERT INTO VOTE
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},#{v_like},sysdate)
+	</insert>
+	
+	<select id="LeftCnt" resultType="Integer">
+		SELECT count(*)
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and v_like=1
+	</select>
+	
+	<select id="RightCnt" resultType="Integer">
+		SELECT count(*)
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and v_like=2
+	</select>
+	
+	<select id="VoteConfirm" resultType="Vote">
+		SELECT *
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and u_id=#{u_id}
+	</select>
 	
 	
 </mapper>
