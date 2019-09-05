@@ -88,7 +88,7 @@ $(document).ready(function() {
         async: false,
         dataType: 'json',//동기 비동기 설정
 		 error : function(){
-             alert("통신실패!!!!");
+//              alert("통신실패!!!!");
          },
          success : function(data){
           /* alert("통신 데이터 값 : " + data[0]["b_title"]); */

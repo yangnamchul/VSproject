@@ -12,8 +12,8 @@
 	href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gugi|Poor+Story&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="resources/css/VSsMain.css">
-<link rel="stylesheet" type="text/css"
-href="resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
+
 
 <link rel="stylesheet" href="resources/css/alertify.default.css" />
 <link rel="stylesheet" href="resources/css/alertify.core.css" />
@@ -282,7 +282,7 @@ $(document).ready(function() {
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 <script>
 function myFunction(){
-   document.getElementById("dropdown").classList.toggle("show");
+   $("#dropdown").toggle();
 }
 window.onclick = function(event){
    if(!event.target.matches('.header-col')){
