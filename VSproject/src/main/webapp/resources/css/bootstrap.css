@@ -65,7 +65,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav,
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 body {
 	margin: 0;
-	font-family: 'DungGeunMo', monospace;
+	font-family: 'DungGeunMo', Arial, monospace;
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
@@ -171,7 +171,7 @@ a {
 a:focus, a:hover {
 	/* 	color: #23527c; */
 	color: #fff;
-	text-decoration: underline
+	text-decoration: underline;
 }
 
 a
@@ -915,6 +915,8 @@ pre code {
 	overflow-y: scroll
 }
 
+
+/* 건영 컨테이너 마진 */
 .container {
 	width: 98%;
 	/* 	padding-right: 15px; */
@@ -957,7 +959,7 @@ pre code {
 	margin-left: auto
 }
 
-/* row 마진 다뺌  */
+/* 건영 row 마진 다뺌  */
 .row {
 	display: -ms-flexbox;
 	display: flex;
@@ -3590,7 +3592,11 @@ none
 	white-space: nowrap
 }
 
-.dropdown-toggle::after {
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : summernote랑 충돌나서 없애버림
+작성자 : 건영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+/* .dropdown-toggle::after {
 	display: inline-block;
 	margin-left: .255em;
 	vertical-align: .255em;
@@ -3599,7 +3605,7 @@ none
 	border-right: .3em solid transparent;
 	border-bottom: 0;
 	border-left: .3em solid transparent
-}
+} */
 
 .dropdown-toggle:empty::after {
 	margin-left: 0
@@ -7897,12 +7903,12 @@ to {
 	float: right;	
 	font-weight: 700;
 	line-height: 1;
-	opacity: .5;
+	opacity: .9 !important;
 /* 	color: #000;	
 	text-shadow: 0 1px 0 #fff;
 	font-size: 1.5rem; */
 	
-	color: #b3d7ff;
+	color: #b3d7ff !important	;
     text-shadow: 0 1px 0 #ff4d00;
     font-size: 2rem;
 }
@@ -8185,7 +8191,7 @@ margin-bottom
     padding-left: 1.5rem;
 }
 
-.modal-login>li>input[type=text], [type=password] {
+.modal-login>li>input[type=text], .modal-login>li>input[type=password] {
     width: 230px;
     padding: 0px 3px;
     margin: 1px;
@@ -8201,22 +8207,26 @@ margin-bottom
     padding-right: 1rem;   
 }
 
-#pop_login_btn {
+#pop_login_btn, #pop_join_btn {
     color: #fff;
     font-size: 1rem;
 }
 
-#pop_login_btn>button {
+#pop_login_btn>button, #pop_join_btn>button {
     color: #fff;
     background-color: #ff4d00;
     margin-bottom: 5px;
     font-size: 1.1rem;
 }
 
-.find-id-pw, .find-id-pw>a {
+#pop_join_btn{
+	padding-right: 0.7rem;
+}
+
+#pop_join_btn>.find-id-pw>a {
     color: #fff;
     font-size: 1.3rem;
-    text-align: center;
+    text-align: center;  
 }
 /* --------------------- */
 .modal-backdrop {
@@ -8274,6 +8284,8 @@ margin-bottom
 	
 	background-color: #000084;
 	padding: 0.5rem;
+	border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .modal-footer {

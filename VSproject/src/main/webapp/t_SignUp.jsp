@@ -44,7 +44,7 @@
                <span class="progress-bar_re_text">칸이 비어있습니다</span>
                </li>
                <li>이메일&nbsp;&nbsp; <input type="text" name="u_email" /></li>
-               <div align="center" class="clearfix"> 
+               <div align="center" class="submit-btn"> 
                   <button type="submit" class="submitbtn">회원가입</button>             
                </div>                                                
             </ul>

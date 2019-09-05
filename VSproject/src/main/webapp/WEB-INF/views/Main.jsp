@@ -25,6 +25,7 @@
 							<li><a href="Login.do">로그인</a></li>
 							<li><a href="">메인</a></li>
 							<li><a href="MyPage.do">마이페이지</a></li>
+							<li><a href="ip.do">ip</a></li>
 						</ul>
 					</h3>
 				</div>
@@ -87,7 +88,7 @@ $(document).ready(function() {
         async: false,
         dataType: 'json',//동기 비동기 설정
 		 error : function(){
-             alert("통신실패!!!!");
+//              alert("통신실패!!!!");
          },
          success : function(data){
           /* alert("통신 데이터 값 : " + data[0]["b_title"]); */
