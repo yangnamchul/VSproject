@@ -25,4 +25,6 @@ public interface BoardService {
 	
 	public List<BoardVO> UserBoard(String u_id);
 	
+	public List<BoardVO> VSSBoard(int VSS_seq);
+	
 }

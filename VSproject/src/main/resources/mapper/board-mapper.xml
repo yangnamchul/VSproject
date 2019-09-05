@@ -45,4 +45,10 @@
 		WHERE u_id = #{u_id}
 	</select>
 	
+	<select id="VSSBoard" resultType="board">
+		SELECT *
+		FROM board
+		WHERE vss_seq = #{VSS_seq}
+	</select>
+	
 </mapper>

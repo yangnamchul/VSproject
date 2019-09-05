@@ -107,6 +107,15 @@
 	$(document)
 			.ready(
 					function() {
+						$.ajax({
+							  url: 'https://api.github.com/emojis',
+							  async: false 
+							}).then(function(data) {
+								alert(data);
+								window.emojis = Object.keys(data);
+								window.emojiUrls = data; 
+						});
+						
 						/* 텍스트 에디터 설정 */
 						$('#b_content')
 								.summernote(
@@ -152,30 +161,25 @@
 													sendfile(file[0], this);
 												}
 											},
-											hint : {
-												mentions : [ '사자', '악어', '펭귄',
-														'고양이', '강아지', 'COW',
-														'RABBIT', 'SNAKE',
-														'기만 ㄴ' ],
-												match : /\B@([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)/,
-												search : function(keyword,
-														callback) {
-													callback($
-															.grep(
-																	this.mentions,
-																	function(
-																			item) {
-																		return item
-																				.indexOf(keyword) === 0;
-																	}));
-												},
-												template : function(item) {
-													return item;
-												},
-												content : function(item) {
-													return '@' + item;
-												}
-											}
+											hint: {
+											    match: /:([\-+\w]+)$/,
+											    search: function (keyword, callback) {
+											      callback($.grep(emojis, function (item) {
+											        return item.indexOf(keyword)  === 0;
+											      }));
+											    },
+											    template: function (item) {
+											      var content = emojiUrls[item];
+											      return '<a href=' + item + ':';
+											    },
+											    content: function (item) {
+											      var url = emojiUrls[item];
+											      if (url) {
+											        return $('<img />').attr('src', url).css('width', 20)[0];
+											      }
+											      return '';
+											    }
+											  }
 										});
 
 						$('#vsCheck').change(function() {

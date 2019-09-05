@@ -43,4 +43,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace+".UserBoard", u_id);
 	}
 
+	@Override
+	public List<BoardVO> VSSBoard(int VSS_seq) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".VSSBoard",VSS_seq);
+	}
+
 }

@@ -217,4 +217,16 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
+	public ModelAndView VSSBoard(@RequestParam int VSS_seq) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("VSSBoard");
+		
+		List<BoardVO> bvlist = bs.VSSBoard(VSS_seq);
+		
+		mv.addObject("bvlist", bvlist);
+		
+		return mv;
+	}
+	
 }
