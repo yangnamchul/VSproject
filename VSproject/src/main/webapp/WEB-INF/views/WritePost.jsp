@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +40,17 @@
 							<div id="write-vscheck">
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
-
 								<!-- 										vs 유무 -->
 								<button type="button" id="btn_vschk">VS!</button>
 							</div>
-
+							<div>
+								<select name='VSS' size=${vssCnt }>
+									<option value='' selected>-- 선택 --</option>
+									<c:forEach var="vo1" items="${vsslist}">
+										<option value=${vo1.VSS_seq }>${vo1.VSS_name }</option>
+									</c:forEach>
+								</select>
+							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
 								<input type="text" name="" id="p_title" maxlength="40"
 									placeholder="제목" />

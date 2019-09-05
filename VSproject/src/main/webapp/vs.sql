@@ -151,6 +151,8 @@ FROM USERS
 WHERE u_id='admin' and u_pw='admin' ;
 
 insert into VSS
+values(0,'없음',null);
+insert into VSS
 values(1,'테크','최신 기술');
 insert into VSS
 values(2,'스포츠','운동');
@@ -169,14 +171,18 @@ SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM Category;
 SELECT * FROM vote;
+SELECT * FROM VSS;
 
 
 create sequence board_sequence1;
 create sequence user_sequence1;
 create sequence Reply_sequence1;
 create sequence Vote_sequence1;
-
+create sequence VSS_sequence1;
 
 insert into board
 values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
+
+SELECT VSS_sequence1.NEXTVAL
+FROM DUAL;
 
