@@ -74,12 +74,14 @@
 				%>
 				
 				
-				<div class="col-xs-12" id="paging">
+				<div class="col-xs-12" id="paging board-page">
+				-
 				<%for (int i=1; i<=p; i++){
 				%>
 				<a href="Board.do?page=<%=i%>"> <%=i%></a>
 				<%
 				} %>
+				-
 				</div>
 			</div>
 		</div>
