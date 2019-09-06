@@ -49,6 +49,12 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		return vdao.VoteConfirm(vv);
 	}
+
+	@Override
+	public VoteVO VoteConfirm2(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return vdao.VoteConfirm2(vv);
+	}
 	
 	
 	

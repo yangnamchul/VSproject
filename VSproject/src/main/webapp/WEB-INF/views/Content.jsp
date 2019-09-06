@@ -229,7 +229,8 @@
 				} 
 				else if(data == "c"){
 					alertify.alert("이미 투표하셨습니다.");
-				}else {
+				}
+				else {
 					location.reload();
 				}
 			},

@@ -5,14 +5,15 @@ public class VoteVO {
 	private int b_seq;
 	private String u_id;
 	private int v_like;
-	public String getIp() {
-		return ip;
-	}
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-	private String ip;
+	private String v_ip;
+
 	
+	public String getV_ip() {
+		return v_ip;
+	}
+	public void setV_ip(String v_ip) {
+		this.v_ip = v_ip;
+	}
 	public int getV_seq() {
 		return v_seq;
 	}

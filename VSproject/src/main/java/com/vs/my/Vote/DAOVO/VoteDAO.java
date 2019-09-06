@@ -9,6 +9,7 @@ public interface VoteDAO {
 	public void Vote(VoteVO vv);
 	public int LeftCnt(VoteVO vv);
 	public int RightCnt(VoteVO vv);
-	public VoteVO VoteConfirm(VoteVO vv);
+	public VoteVO VoteConfirm(VoteVO vv);  //회원
+	public VoteVO VoteConfirm2(VoteVO vv);  //비회원
 	
 }

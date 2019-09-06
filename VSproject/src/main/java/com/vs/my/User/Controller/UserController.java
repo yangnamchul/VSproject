@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.Vote.DAOVO.VoteVO;
+import com.vs.my.Vote.Service.VoteService;
 
 /**
  * Handles requests for the application home page.
@@ -26,7 +28,10 @@ public class UserController {
 	
 	@Autowired
 	UserService us;
+	@Autowired
 	HttpSession hs;
+	@Autowired
+	VoteService vs;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -47,7 +52,7 @@ public class UserController {
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
 	@RequestMapping(value="ip.do", method=RequestMethod.GET) //ip
-	private String getIp(HttpServletRequest request) {
+	private String getIp(HttpServletRequest request, VoteVO vv) {
 		 System.out.println("들옴모모");
         String ip = request.getHeader("X-Forwarded-For");
  
@@ -77,6 +82,11 @@ public class UserController {
         
         System.out.println(ip);
  
+        
+   /* 	if(vs.VoteConfirm(vv)==null) {           //투표 유효성 검사(비회원)
+			vs.Vote(vv);//투표 인설트
+		}
+        */
         return ip;
  
     }
