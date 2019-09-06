@@ -1,6 +1,7 @@
 package com.vs.my.Board.Controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,8 @@ import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
 import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
+import com.vs.my.Tag.DAOVO.TagVO;
+import com.vs.my.Tag.Service.TagService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
 import com.vs.my.VSS.DAOVO.VSSVO;
@@ -40,6 +43,8 @@ public class BoardController {
 	ReplyService rs;
 	@Autowired
 	VSSService vss;
+	@Autowired
+	TagService ts;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -138,7 +143,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
-	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest req, HttpSession se){
+	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest request, HttpSession se){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WritePost");
 //		아이디 가져오기
@@ -146,11 +151,10 @@ public class BoardController {
         String st = uv.getU_id();
 		bv.setU_id(st);
 		
-//		부스러기 전부 가져오기
-		List<VSSVO> vsslist = vss.getAllVSS();
-		mv.addObject("vsslist", vsslist);
-		mv.addObject("vssCnt", vsslist.size());
-		
+//		부스러기 가져오기
+		int vss_seq = Integer.parseInt(request.getParameter("vss_seq"));
+		VSSVO vssvo = vss.getOneVSS(vss_seq);
+		mv.addObject("vss_seq", vssvo.getVSS_seq());
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
@@ -159,24 +163,40 @@ public class BoardController {
 		
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
-		int vss_seq=0;
+        
+		int vss_seq=Integer.parseInt(request.getParameter("vss_seq"));
 		bv.setU_id(st);
 		bv.setVss_seq(vss_seq);
 		String[] vsCheck = request.getParameterValues("vsCheck");
 		String vsleft = request.getParameter("vsleft");
 		String vsright = request.getParameter("vsright");
 		
+		List<VSSVO> vsslist = vss.getAllVSS();
 		
 		
+		
+	
 		
 		if (vsCheck != null) {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
+			for (int i = 0; i < vsslist.size(); i++) {
+				TagVO tv = new TagVO();
+				try {
+					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					tv.setVss_seq(vss_seq1);
+					ts.makeTag(tv);
+					System.out.println("들어옴");
+				} catch(Exception e) {
+					
+				}
+			}
 			
 			VoteVO vv = new VoteVO();
 			vv.setU_id(st);
+			
 			vs.FirstVote(vv);
 		} else {
 			vsleft = null;
@@ -184,6 +204,18 @@ public class BoardController {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
+			
+			for (int i = 0; i < vsslist.size(); i++) {
+				TagVO tv = new TagVO();
+				try {
+					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					tv.setVss_seq(vss_seq1);
+					ts.makeTag(tv);
+					System.out.println("들어옴");
+				} catch(Exception e) {
+					
+				}
+			}
 		}
 		
 		
@@ -218,14 +250,40 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
-	public ModelAndView VSSBoard(@RequestParam int VSS_seq) {
+	public ModelAndView VSSBoard(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("VSSBoard");
 		
-		List<BoardVO> bvlist = bs.VSSBoard(VSS_seq);
+		String vss_seq1 = request.getParameter("vss_seq");
+		
+		int vss_seq = Integer.parseInt(vss_seq1);
+		
+		List<BoardVO> bvlist = new ArrayList<BoardVO>() ;
+		
+		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
+		
+		TagVO tv = new TagVO();
+		
+		tv.setVss_seq(vss_seq);
+		
+		List<TagVO> tvlist = ts.getVSSBoard(tv);
+		
+		for (int i = 0; i < tvlist.size(); i++) {
+			
+			int b_seq = tvlist.get(i).getB_seq();
+			BoardVO bv = new BoardVO();
+			bv.setB_seq(b_seq);
+			
+			BoardVO bv1 = bs.Content(bv);
+			
+			bvlist.add(bv1);
+			
+		}
 		
 		mv.addObject("bvlist", bvlist);
-		
+		mv.addObject("vssOne",vssOne);
+		mv.addObject("vss_seq",vss_seq);
+		mv.addObject("count", bvlist.size());
 		return mv;
 	}
 	

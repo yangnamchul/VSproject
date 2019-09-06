@@ -43,16 +43,8 @@
 								<!-- 										vs 유무 -->
 								<button type="button" id="btn_vschk">VS!</button>
 							</div>
-							<div>
-								<select name='VSS' size=${vssCnt }>
-									<option value='' selected>-- 선택 --</option>
-									<c:forEach var="vo1" items="${vsslist}">
-										<option value=${vo1.VSS_seq }>${vo1.VSS_name }</option>
-									</c:forEach>
-								</select>
-							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
-								<input type="text" name="" id="p_title" maxlength="40"
+								<input type="text" name="b_title" id="b_title" maxlength="40"
 									placeholder="제목" />
 
 							</div>
@@ -63,21 +55,22 @@
 
 									<textarea name="vsleft" id="vsleft"></textarea>
 									
-						<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
+									<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
 				
 									<textarea name="vsright" id="vsright"></textarea>
 
 								</div>
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
+								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
+								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
 							</div>
-
+							
 							<div id="write-submit">
 								<input type="submit" value="등록하기" id="write-btn-submit">
 							</div>
 						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -108,17 +101,16 @@
 			.ready(
 					function() {
 						$.ajax({
-							  url: 'https://api.github.com/emojis',
-							  async: false 
+							  url: 'getAllVSS.do',
+							  async: false ,
+							  dataType : 'json'
 							}).then(function(data) {
-								alert(data);
-								window.emojis = Object.keys(data);
-								window.emojiUrls = data; 
+								window.vss = Object.keys(data);
+								window.vss_seq = data; 
 						});
 						
 						/* 텍스트 에디터 설정 */
-						$('#b_content')
-								.summernote(
+						$('#b_content').summernote(
 										{
 											height : 300,
 											minHeight : null,
@@ -127,29 +119,10 @@
 											airmode : true,
 											lang : 'ko-KR',
 											placeholder : ' 내용을 입력하세요. ',
-											toolbar : [
-													[
-															'font',
-															[
-																	'bold',
-																	'underline',
-																	'clear' ] ],
-													[ 'fontname',
-															[ 'fontname' ] ],
-													[ 'fontsize',
-															[ 'fontsize' ] ],
-													[ 'color', [ 'color' ] ],
-													[ 'para', [ 'paragraph' ] ],
-													[
-															'insert',
-															[ 'link',
-																	'picture',
-																	'video' ] ],
-													[
-															'view',
-															[ 'fullscreen',
-																	'codeview',
-																	'help' ] ], ],
+											toolbar : [['font',['bold','underline','clear' ] ],[ 'fontname',[ 'fontname' ] ],
+												[ 'fontsize',[ 'fontsize' ] ],[ 'color', [ 'color' ] ],[ 'para', [ 'paragraph' ] ],
+												['insert',[ 'link','picture','video' ] ],
+													['view',[ 'fullscreen','codeview','help' ] ], ],
 											fontNames : [ 'DungGeunMo',
 													'Arial', 'Arial Black',
 													'Comic Sans MS',
@@ -162,22 +135,23 @@
 												}
 											},
 											hint: {
-											    match: /:([\-+\w]+)$/,
+											    match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)$/,
 											    search: function (keyword, callback) {
-											      callback($.grep(emojis, function (item) {
+											      callback($.grep(vss, function (item) {
 											        return item.indexOf(keyword)  === 0;
 											      }));
 											    },
 											    template: function (item) {
-											      var content = emojiUrls[item];
-											      return '<a href=' + item + ':';
+											    	var seq = vss_seq[item];
+											     	return item;
 											    },
 											    content: function (item) {
-											      var url = emojiUrls[item];
-											      if (url) {
-											        return $('<img />').attr('src', url).css('width', 20)[0];
-											      }
-											      return '';
+											    	var seq = vss_seq[item];
+											    	if (seq) {
+											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
+											    	}
+											    	return '';
 											    }
 											  }
 										});
@@ -210,9 +184,9 @@
 															[ 'picture',
 																	'video' ] ], ],
 											callbacks : {
-												onImageUpload : function(file,
-														editor, welEditable) {
+													onImageUpload : function(file,editor, welEditable) {
 													sendfile(file[0], this);
+													
 												}
 											}
 										});

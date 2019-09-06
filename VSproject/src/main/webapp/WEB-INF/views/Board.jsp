@@ -28,7 +28,8 @@
 					공지 같은거 연결하기)</div>
 
 				<div class="col-xl-2" id="board-write" align="center">
-					<form action="BoardWriteData.do" method="post">
+					<form action="BoardWriteData.do?vss_seq=0" method="post">
+						<input hidden="hidden" />
 						<button type="submit">글쓰기</button>
 					</form>
 				</div>
@@ -74,14 +75,12 @@
 				%>
 				
 				
-				<div class="col-xs-12" id="paging board-page">
-				-
+				<div class="col-xs-12" id="paging">
 				<%for (int i=1; i<=p; i++){
 				%>
 				<a href="Board.do?page=<%=i%>"> <%=i%></a>
 				<%
 				} %>
-				-
 				</div>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ public class VoteVO {
 	private String u_id;
 	private int v_like;
 	private Date v_date;
+	private String v_ip;
 	
 	public int getV_seq() {
 		return v_seq;
@@ -38,6 +39,12 @@ public class VoteVO {
 	}
 	public void setV_like(int v_like) {
 		this.v_like = v_like;
+	}
+	public String getV_ip() {
+		return v_ip;
+	}
+	public void setV_ip(String v_ip) {
+		this.v_ip = v_ip;
 	}
 	
 }
