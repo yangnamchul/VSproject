@@ -1,6 +1,9 @@
 package com.vs.my.Vote.Controller;
 
 
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,35 +22,95 @@ public class VoteController {
 	@Autowired
 	VoteService vs;
 	
+
+	private final static Logger logger = Logger.getGlobal();
+	
 	@RequestMapping(value="Vote.do", method=RequestMethod.POST)
 	@ResponseBody
-	public int Vote(@RequestParam String button_id,@RequestParam int b_seq, HttpSession hs) {
+	public String Vote(@RequestParam String button_id,@RequestParam int b_seq, HttpSession hs ,HttpServletRequest request) {
 		
-		try {
-		UserVO uv = (UserVO) hs.getAttribute("uv");
-		
-		String u_id = uv.getU_id();
-		int v_like = 1;
-		
+		UserVO uv=new UserVO();
 		VoteVO vv = new VoteVO();
+        int v_like = 1;
 		
 		if (button_id.equals("vsLeft")) {
 			v_like = 1;
 			
 		} else {
-			v_like = 2;
+			v_like = 2;   //vsRight
 		}
 		
+		if( hs.getAttribute("uv")==null){  //비회원인지 검사(세션에 저장된 UserVO값이 없다면 비회원)			
+			System.out.println("UserVO null검사");
+		}else {
+		   uv= (UserVO) hs.getAttribute("uv"); //세션에 저자된 UserVO값이 있다면 회원
+		}
+		try {
+
+		if(uv.getU_id()==null) {
+			
+			 String ip = request.getHeader("X-Forwarded-For");
+			 
+		        logger.info(">>>> X-FORWARDED-FOR : " + ip);
+		 
+		        if (ip == null) {
+		            ip = request.getHeader("Proxy-Client-IP");
+		            logger.info(">>>> Proxy-Client-IP : " + ip);
+		        }
+		        if (ip == null) {
+		            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
+		            logger.info(">>>> WL-Proxy-Client-IP : " + ip);
+		        }
+		        if (ip == null) {
+		            ip = request.getHeader("HTTP_CLIENT_IP");
+		            logger.info(">>>> HTTP_CLIENT_IP : " + ip);
+		        }
+		        if (ip == null) {
+		            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+		            logger.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
+		        }
+		        if (ip == null) {
+		            ip = request.getRemoteAddr();
+		        }
+		        
+		        logger.info(">>>> Result : IP Address : "+ip);
+		     
+		    	vv.setV_like(v_like);
+				vv.setB_seq(b_seq);
+				vv.setV_ip(ip);
+				System.out.println("b_seq="+b_seq);
+				System.out.println("v_like="+v_like);
+		        if(vs.VoteConfirm2(vv)==null) {   //투표 유효성 검사(비회원)
+					vs.Vote(vv);//투표 인설트
+
+				}else{
+					return "c";   //투표가 이미 되어 있는경우.
+				}
+
+			
+		}
+		else {
+	    String u_id = uv.getU_id();
+	    vv.setU_id(u_id);
 		vv.setV_like(v_like);
-		vv.setU_id(u_id);
 		vv.setB_seq(b_seq);
+		System.out.println(  "dsd"+ b_seq);
 		
-		vs.Vote(vv);
+		if(vs.VoteConfirm(vv)==null) {         //투표 유효성 검사(회원)
+			vs.Vote(vv);//투표 인설트
+			  
+		}else {
+			return "c";   //투표가 이미 되어 있는경우.
+		}
+		
+		}
+		
 		} catch(Exception e) {
 			e.printStackTrace();
-			return 0;
+			return "a";
 		}
-		return 1;
+		System.out.println("비회원투표~~~");
+		return "b";      //정상적으로 투표가 되었을경우.
 
 	}
 }

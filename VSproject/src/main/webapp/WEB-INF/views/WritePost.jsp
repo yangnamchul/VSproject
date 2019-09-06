@@ -112,7 +112,6 @@
 							  async: false ,
 							  dataType : 'json'
 							}).then(function(data) {
-								alert(data);
 								window.vss = Object.keys(data);
 								window.vss_seq = data; 
 						});
@@ -151,7 +150,7 @@
 											    },
 											    template: function (item) {
 											    	var seq = vss_seq[item];
-											     	return '<a href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>';
+											     	return item;
 											    },
 											    content: function (item) {
 											    	var seq = vss_seq[item];

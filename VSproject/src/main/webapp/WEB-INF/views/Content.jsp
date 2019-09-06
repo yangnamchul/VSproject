@@ -99,10 +99,47 @@
 								</tr>	                     
 			</c:forEach>					   
 			</table> 
-			
 			 
       	</div>
+				<!-- 			댓글 ( test) -->
+				<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
+				id="contentReply">
+				<form id="replyform">
+					<textarea id="r_reply" name="re_content"></textarea>
+					<button type="button" onclick="reply()">댓글등록</button>
+				</form>
+			</div>
+			 
+			 <!-- 댓글 (임시) -->
+			 <div class="reply-css">
+			<table border="2" id="replytable">
+			<%int cnt=1; %>
+			<c:forEach var="vo" items="${ReplyList}">
+			
+								<tr id="reply_list">
+									<td>${vo.re_content}</td>
+									<td>${vo.re_seq}</td>
+									<td><button type="button" class="rere" id="bt<%=cnt%>">대댓달기</button></td>
+								</tr>	 
+							 <tr><td><form id="bbt<%=cnt%>" style="display:none">
+					<textarea id="r_reply" name="re_content"></textarea>
+					<button type="button" onclick="reply()">댓글등록</button>
+				</form></td></tr>
+			
+					                    
 				
+			<%cnt++; %>
+			</c:forEach>	
+
+				<td><button type="button" id="bt">대댓달기</button></td>
+			</tr>	 
+							
+					                    
+					                    <tr><td><form id="replyform1" style="display:none">
+					<textarea id="r_reply" name="re_content"></textarea>
+					<button type="button" onclick="reply()">댓글등록</button>
+				</form></td></tr>
+			</table>
 				
 		</div>
 	</div>
@@ -117,6 +154,18 @@
 			lang : 'ko-KR',
 			toolbar : false
 		});
+	});
+	
+	$( '#bt' ).click(    //대댓글 토글
+		
+	        function(){
+	        $( '#replyform1' ).toggle();
+	});
+
+	$('.rere').click(function(){
+	    var bt_id = $(this).attr("id");
+	   $( "#b"+bt_id ).toggle();
+		       
 	});
 	
 	function reply() {
@@ -144,10 +193,12 @@
 	}
 </script>
 
+
 <script>
 	function vsVote(button_id) {
 		var vdata = {
-			"button_id" : button_id
+
+			"button_id" : button_id   //전자를 선택할경우 voteleft가 옴
 		};
 		jQuery.ajax({
 			type : "POST",
@@ -155,8 +206,11 @@
 			data : vdata,
 			async : false,
 			success : function(data) {
-				if (data == 0) {
+				if (data == "a") {
 					alertify.alert("투표 실패");
+				} 
+				else if(data == "c"){
+					alertify.alert("이미 투표하셨습니다.");
 				} else {
 					location.reload();
 				}
@@ -165,7 +219,7 @@
 				alertify.alert(req.status + "\nmessege" + req.responseTest);
 			}
 		});
-	}
+	};
 </script>
 
 </body>
