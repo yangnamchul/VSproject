@@ -30,6 +30,8 @@ import com.vs.my.VSS.Service.VSSService;
 import com.vs.my.Vote.DAOVO.VoteVO;
 import com.vs.my.Vote.Service.VoteService;
 
+import sun.security.krb5.internal.ReplayCache;
+
 @Controller
 public class BoardController {
 	
@@ -131,9 +133,9 @@ public class BoardController {
 		}
 		
 //		댓글
-		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
+		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);		
 		
-		
+		mv.addObject("ReplyCnt",replylist.size()) ;		
 		mv.addObject("ReplyList",replylist);
 		mv.addObject("data", data);
 		mv.addObject("vo",bv2);

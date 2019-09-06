@@ -3,7 +3,7 @@
 
  <mapper namespace="mapper.reply-mapper">
   <select id="ReplyAllData" resultType="Reply">
-		SELECT re_content,re_seq
+		SELECT *
 		FROM reply where b_seq = #{b_seq}
 	</select> 
 	
@@ -18,9 +18,7 @@
             	select MAX(re_seq) from Reply
             </selectKey> 
     
-	</insert>
-	
-	
+	</insert>	
 	
 	
 	<select id="ReplyOneData" resultType="Reply">

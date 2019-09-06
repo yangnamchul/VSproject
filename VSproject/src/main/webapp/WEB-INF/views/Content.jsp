@@ -7,18 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="Header.jsp"%> 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<%@ include file="Header.jsp"%>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
 <script src="resources/js/summernote-ko-KR.js"></script>
 
 </head>
 
 <body>
 
-<%-- 	<%@ include file="t_Header.jsp"%> --%>
-		
-
+	<%-- 	<%@ include file="t_Header.jsp"%> --%>
 
 	<div id="content-area">
 		<div class="container" id="main">
@@ -33,24 +34,20 @@
 					<ul>
 						<li>번호_${vo.b_seq}</li>
 						<li>별명_${u_id}</li>
-						<li>날짜_ <fmt:formatDate value="${vo.b_date}" pattern="MM-dd" />
+						<li>날짜_<fmt:formatDate value="${vo.b_date}" pattern="MM-dd" />
 						<li>조회_${vo.b_cnt}</li>
 						<li>추천_{}</li>
 					</ul>
 				</div>
 
 
-				
-				<div class="col-12" id="content-vs" >
-					<div class="col-5" id="vs-left">
-						${vo.b_left }
-					</div>
+	
+				<div class="col-12" id="content-vs">
+					<div class="col-5" id="vs-left">${vo.b_left }</div>
 					<div class="col-2" id="vs-vs">
 						<img src="resources/css/test/versus.png" alt="" />
 					</div>
-					<div class="col-5" id="vs-right">
-						${vo.b_right }
-					</div>
+					<div class="col-5" id="vs-right">${vo.b_right }</div>
 				</div>
 				<div class="col-12" id="content-vote">
 					<div id="vote-title">
@@ -62,8 +59,10 @@
 						</div>
 						<div style="clear: both">
 							<ul>
-								<li style="float: left;"><button type="button" id="vsLeft" onclick="vsVote(this.id)">전자</button></li>
-								<li style="float: right;"><button type="button" id="vsRight" onclick="vsVote(this.id)">후자</button></li>
+								<li style="float: left;"><button type="button" id="vsLeft"
+										onclick="vsVote(this.id)">전자</button></li>
+								<li style="float: right;"><button type="button"
+										id="vsRight" onclick="vsVote(this.id)">후자</button></li>
 							</ul>
 						</div>
 						<div style="clear: both">
@@ -76,185 +75,147 @@
 
 					</div>
 				</div>
+				
 				<div id="content-content">${vo.b_content}</div>
 
 
 			</div>
 			<!-- 			댓글입력창 (임시) -->
-			
+
 			<div class="row">
 				<div class="col-12" id="replyDiv">
-					<div class=replyTitle>댓글 (?개)</div>
+					<div class=replyTitle>전체 댓글  <span id="reply-cnt">${ReplyCnt}</span>개</div>
 
 
 					<ul class="replyUlist">
+						<!-- 						list 반복 -->
+						<c:forEach var="vo" items="${ReplyList}">
+							<li id="" class="comment_li">
+								<div class="reply-grid">
+									<div class="reply-info">
+										<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
+										<span class="reply-date"><fmt:formatDate
+												value="${vo.re_date}" pattern="MM.dd HH:mm" /></span> 
+									    <span class="reply-vss"> <span id="vss">부스럭</span>
+									    
+<!-- 									    이 댓글이 내가쓴글이면  hidden  or inline-->
+									    <span id="reply_hidden" style="display: hidden;">
+									    <button type="button" id="reply_del" value="삭제" > <span> 삭제 </span></button>
+									    <button type="button" id="reply_edit" > <span>수정</span> </button>
+									    </span>  
+										</span>
 
-						<!-- 						list 반복 -->					
-							<c:forEach var="vo" items="${ReplyList}">
-						<li id="" class="commnet_li">
-							<div class="reply-grid">
-								<div class="reply-info">
-									<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
-									<span class="reply-date">${vo.re_date}</span> <span
-										class="reply-vss"> <span id="vss">부스러기</span>
-									</span>
-
+									</div>
+									<div>${vo.re_content}</div>
 								</div>
-								<div>${vo.re_content}</div>
-							</div>
-						</li>
-						
-			</c:forEach>
+							</li>
 
-<!-- 						<li id="" class="commnet_li"> -->
-<!-- 							<div class="reply-grid"> -->
-<!-- 								<div class="reply-info"> -->
-<!-- 									<span class="reply-writer"> <span id="vss_u_id">작성자2222</span></span> -->
-<!-- 									<span class="reply-date">19.08.20 21:52</span> <span -->
-<!-- 										class="reply-vss"> <span id="vss">부스러기</span> -->
-<!-- 									</span> -->
+						</c:forEach>
 
-<!-- 								</div> -->
-<!-- 								<div>댓글내용 아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 -->
-<!-- 									아무말아무말 아무말아무말 아무말?</div> -->
-<!-- 							</div> -->
-<!-- 						</li> -->
+						<!-- 						<li id="" class="commnet_li"> -->
+						<!-- 							<div class="reply-grid"> -->
+						<!-- 								<div class="reply-info"> -->
+						<!-- 									<span class="reply-writer"> <span id="vss_u_id">작성자2222</span></span> -->
+						<!-- 									<span class="reply-date">19.08.20 21:52</span> <span -->
+						<!-- 										class="reply-vss"> <span id="vss">부스러기</span> -->
+						<!-- 									</span> -->
+
+						<!-- 								</div> -->
+						<!-- 								<div>댓글내용 아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 -->
+						<!-- 									아무말아무말 아무말아무말 아무말?</div> -->
+						<!-- 							</div> -->
+						<!-- 						</li> -->
 
 
 					</ul>
 					<div id="reply-form">
 						<form id="replyform">
 							<textarea id="r_reply" name="re_content" maxlength="250"></textarea>
-							<div id="reply-submit"> <button type="button" onclick="reply()" id="reply-btn">등록</button></div>
-							
+							<div id="reply-submit">
+								<button type="button" onclick="reply()" id="reply-btn">등록</button>
+							</div>
+
 						</form>
 					</div>
 				</div>
 			</div>
-<!-- 			###############################################여기서부터 기존 Reply 연결하기 -->	
-
-			 
-<!--       	</div> -->
-				<!-- 			댓글 ( test) -->
-				<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
-				id="contentReply">
-				<form id="replyform">
-					<textarea id="r_reply" name="re_content"></textarea>
-					<button type="button" onclick="reply()">댓글등록</button>
-				</form>
-			</div>
-			 
-			 <!-- 댓글 (임시) -->
-			 <div class="reply-css">
-			<table border="2" id="replytable">
-			<%int cnt=1; %>
-			<c:forEach var="vo" items="${ReplyList}">
-			
-								<tr id="reply_list">
-									<td>${vo.re_content}</td>
-									<td>${vo.re_seq}</td>
-									<td><button type="button" class="rere" id="bt<%=cnt%>">대댓달기</button></td>
-								</tr>	 
-							 <tr><td><form id="bbt<%=cnt%>" style="display:none">
-					<textarea id="r_reply" name="re_content"></textarea>
-					<button type="button" onclick="reply()">댓글등록</button>
-				</form></td></tr>
-			
-					                    
-				
-			<%cnt++; %>
-			</c:forEach>	
-
-				<td><button type="button" id="bt">대댓달기</button></td>
-			</tr>	 
-							
-					                    
-					                    <tr><td><form id="replyform1" style="display:none">
-					<textarea id="r_reply" name="re_content"></textarea>
-					<button type="button" onclick="reply()">댓글등록</button>
-				</form></td></tr>
-			</table>
-				
 		</div>
 	</div>
-<script>
-	$(document).ready(function() {
-		$('#r_reply').summernote({
-			height : 100,
-			minHeight : 100,
-			maxHeight : 100,
-			focus : true,
-			airmode : true,
-			lang : 'ko-KR',
-			toolbar : false
+
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 댓글 작성
+작성자 : 남철
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+	<script>
+		$(document).ready(function() {
+			$('#r_reply').summernote({
+				height : 100,
+				minHeight : 100,
+				maxHeight : 100,				
+				airmode : true,
+				placeholder : ' 댓글 쓰기.. ',
+				lang : 'ko-KR',
+				toolbar : false
+			});
 		});
-	});
-	
-	$( '#bt' ).click(    //대댓글 토글
-		
-	        function(){
-	        $( '#replyform1' ).toggle();
-	});
 
-	$('.rere').click(function(){
-	    var bt_id = $(this).attr("id");
-	   $( "#b"+bt_id ).toggle();
-		       
-	});
-	
-	function reply() {
-		if ($("#r_reply").val() == "") {
-			alertify.alert("내용을 입력해주세요");
-			return;
-		};		
-		$.ajax({
-			type: 'GET',
-			url: 'Reply.do?b_seq=${vo.b_seq}',
-	        async: false,
-	        data : $("#replyform").serialize(),
-	        dataType: 'json',//동기 비동기 설정
-			 error : function(){
-	             alert("통신실패!!!!");
-	         },
-	         success : function(data){   
-	             var objRow = $("#reply_list").clone();  // 복사
-	          	 objRow.html('<td>' +data['re_content']+ '</td><td>'+data['re_seq']+'</td><td><button type="button" onclick="re_create()">대댓달기</button></td>');       
-	          	$("#replytable").append(objRow);
-	          
-	         }
-		});
-		
-	}
-</script>
-
-
-<script>
-	function vsVote(button_id) {
-		var vdata = {
-
-			"button_id" : button_id   //전자를 선택할경우 voteleft가 옴
-		};
-		jQuery.ajax({
-			type : "POST",
-			url : "Vote.do?b_seq=${vo.b_seq}",
-			data : vdata,
-			async : false,
-			success : function(data) {
-				if (data == "a") {
-					alertify.alert("투표 실패");
-				} 
-				else if(data == "c"){
-					alertify.alert("이미 투표하셨습니다.");
-				} else {
-					location.reload();
-				}
-			},
-			error : function(req, status, error) {
-				alertify.alert(req.status + "\nmessege" + req.responseTest);
+		function reply() {
+			if ($("#r_reply").val() == "") {
+				alertify.alert("내용을 입력해주세요");
+				return;
 			}
-		});
-	};
-</script>
+			;
+			$
+					.ajax({
+						type : 'GET',
+						url : 'Reply.do?b_seq=${vo.b_seq}',
+						async : false,
+						data : $("#replyform").serialize(),
+						dataType : 'json',//동기 비동기 설정
+						error : function() {
+							alert("통신실패!!!!");
+						},
+						success : function(data) {						
+							location.reload();
+						}
+					});
+
+		}
+	</script>
+
+
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 투표 하기
+작성자 : 동언
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+	<script>
+		function vsVote(button_id) {
+				var vdata = {
+					"button_id" : button_id
+				//전자를 선택할경우 voteleft가 옴
+				};
+				jQuery.ajax({
+					type : "POST",
+					url : "Vote.do?b_seq=${vo.b_seq}",
+					data : vdata,
+					async : false,
+					success : function(data) {
+						if (data == "a") {
+							alertify.alert("투표 실패");
+						} else if (data == "c") {
+							alertify.alert("이미 투표하셨습니다.");
+						} else {
+							location.reload();
+						}
+					},
+					error : function(req, status, error) {
+						alertify.alert(req.status + "\nmessege"
+								+ req.responseTest);
+					}
+				});
+			}
+		
+	</script>
 
 </body>
 

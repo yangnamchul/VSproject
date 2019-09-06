@@ -191,6 +191,7 @@ SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM vote;
 SELECT * FROM VSS;
+SELECT * FROM reply ; 
 
 
 create sequence board_sequence1;
@@ -213,5 +214,4 @@ where b_content is like(
     WHERE vss_seq=5;
     )
 
-
-
+SELECT count(*) FROM REPLY WHERE B_SEQ = 1 ;
