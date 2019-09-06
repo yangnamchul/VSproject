@@ -52,7 +52,7 @@
 								</select>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
-								<input type="text" name="" id="p_title" maxlength="40"
+								<input type="text" name="b_title" id="b_title" maxlength="40"
 									placeholder="제목" />
 
 							</div>
@@ -108,17 +108,17 @@
 			.ready(
 					function() {
 						$.ajax({
-							  url: 'https://api.github.com/emojis',
-							  async: false 
+							  url: 'getAllVSS.do',
+							  async: false ,
+							  dataType : 'json'
 							}).then(function(data) {
 								alert(data);
-								window.emojis = Object.keys(data);
-								window.emojiUrls = data; 
+								window.vss = Object.keys(data);
+								window.vss_seq = data; 
 						});
 						
 						/* 텍스트 에디터 설정 */
-						$('#b_content')
-								.summernote(
+						$('#b_content').summernote(
 										{
 											height : 300,
 											minHeight : null,
@@ -127,29 +127,10 @@
 											airmode : true,
 											lang : 'ko-KR',
 											placeholder : ' 내용을 입력하세요. ',
-											toolbar : [
-													[
-															'font',
-															[
-																	'bold',
-																	'underline',
-																	'clear' ] ],
-													[ 'fontname',
-															[ 'fontname' ] ],
-													[ 'fontsize',
-															[ 'fontsize' ] ],
-													[ 'color', [ 'color' ] ],
-													[ 'para', [ 'paragraph' ] ],
-													[
-															'insert',
-															[ 'link',
-																	'picture',
-																	'video' ] ],
-													[
-															'view',
-															[ 'fullscreen',
-																	'codeview',
-																	'help' ] ], ],
+											toolbar : [['font',['bold','underline','clear' ] ],[ 'fontname',[ 'fontname' ] ],
+												[ 'fontsize',[ 'fontsize' ] ],[ 'color', [ 'color' ] ],[ 'para', [ 'paragraph' ] ],
+												['insert',[ 'link','picture','video' ] ],
+													['view',[ 'fullscreen','codeview','help' ] ], ],
 											fontNames : [ 'DungGeunMo',
 													'Arial', 'Arial Black',
 													'Comic Sans MS',
@@ -162,22 +143,27 @@
 												}
 											},
 											hint: {
-											    match: /:([\-+\w]+)$/,
+											    match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)$/,
 											    search: function (keyword, callback) {
-											      callback($.grep(emojis, function (item) {
+											      callback($.grep(vss, function (item) {
 											        return item.indexOf(keyword)  === 0;
 											      }));
 											    },
 											    template: function (item) {
-											      var content = emojiUrls[item];
-											      return '<a href=' + item + ':';
+											    	var seq = vss_seq[item];
+											     	return '<a href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>';
 											    },
 											    content: function (item) {
-											      var url = emojiUrls[item];
-											      if (url) {
-											        return $('<img />').attr('src', url).css('width', 20)[0];
-											      }
-											      return '';
+											    	var seq = vss_seq[item];
+											    	if (seq) {
+// 											      	return '<a href="VSSBoard.do?VSS_seq=' + seq + '">' + item + '</a>';
+// 											      		'createLink', {
+// 											      			text: item,
+// 											      			url : "VSSBoard.do?VSS_seq=" + seq
+// 											      		}
+											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+											    	}
+											    	return '';
 											    }
 											  }
 										});

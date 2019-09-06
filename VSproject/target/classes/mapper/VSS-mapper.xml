@@ -5,12 +5,18 @@
 
 	<insert id="makeVSS">
 		INSERT INTO VSS
-		VALUES(VSS_sequence1.NEXTVAL,#{VSS_name},#{VSS_content})
+		VALUES(VSS_sequence1.NEXTVAL,#{vss_name},#{vss_content})
 	</insert>
 	
 	<select id="getAllVSS" resultType="VSS">
 		SELECT *
 		FROM VSS
+	</select>
+	
+	<select id="getOneVSS" resultType="VSS">
+		SELECT *
+		FROM VSS
+		WHERE vss_seq = #{VSS_seq}
 	</select>
 	
 </mapper>

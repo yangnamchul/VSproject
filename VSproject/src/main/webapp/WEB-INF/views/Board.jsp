@@ -29,6 +29,7 @@
 
 				<div class="col-xl-2" id="board-write" align="center">
 					<form action="BoardWriteData.do" method="post">
+						<input hidden="hidden" />
 						<button type="submit">글쓰기</button>
 					</form>
 				</div>

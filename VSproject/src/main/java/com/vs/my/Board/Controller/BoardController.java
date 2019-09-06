@@ -218,14 +218,21 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
-	public ModelAndView VSSBoard(@RequestParam int VSS_seq) {
+	public ModelAndView VSSBoard(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("VSSBoard");
 		
-		List<BoardVO> bvlist = bs.VSSBoard(VSS_seq);
+		String vss_seq1 = request.getParameter("vss_seq");
+		
+		int vss_seq = Integer.parseInt(vss_seq1);
+		
+		List<BoardVO> bvlist = bs.VSSBoard(vss_seq);
+		
+		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
 		
 		mv.addObject("bvlist", bvlist);
-		
+		mv.addObject("vssOne",vssOne);
+		mv.addObject("count", bvlist.size());
 		return mv;
 	}
 	

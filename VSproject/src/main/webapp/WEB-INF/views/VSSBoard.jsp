@@ -22,7 +22,7 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					[아무] 부스러기 (전체 글 : { 딸린 vss count}</div>
+					[${vssOne}] 부스러기 (전체 글 : ${count } })</div>
 
 				<div class="col-xl-10" id="board-menu">해당 부스러기 관련 링크 (정렬, 인기글,
 					공지 같은거 연결하기)</div>
@@ -46,7 +46,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="vo1" items="${boardlist}">
+							<c:forEach var="vo1" items="${bvlist}">
 								<tr>
 									<td>${vo1.b_seq}</td>
 									<td id="title"><a href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title} </a></td>
@@ -60,7 +60,7 @@
 						</tbody>
 					</table>
 
-					<!-- Paging 처리 -->
+					<%-- <!-- Paging 처리 -->
 					<%  /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
 		      
 		        int total =Integer.parseInt((request.getAttribute("ListCount")).toString()); 
@@ -80,7 +80,7 @@
 				<a href="Board.do?page=<%=i%>"> <%=i%></a>
 				<%
 				} %>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 	</div>
