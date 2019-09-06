@@ -43,6 +43,7 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		return vdao.RightCnt(vv);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public VoteVO VoteConfirm(VoteVO vv) {
@@ -55,6 +56,8 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		return vdao.VoteConfirm2(vv);
 	}
+=======
+>>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 	
 	
 	

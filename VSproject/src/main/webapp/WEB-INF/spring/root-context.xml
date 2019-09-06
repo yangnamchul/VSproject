@@ -19,11 +19,19 @@
 	
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<<<<<<< HEAD
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
           <property name="url" value="jdbc:oracle:thin:@DESKTOP-S1PLQAG:1521:xe" />
          <!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
          <property name="username" value="vss"/>
          <property name="password" value="vss"/>
+=======
+         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+         <!-- <property name="url" value="jdbc:oracle:thin:@DESKTOP-S1PLQAG:1521:xe" /> -->
+         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+         <property name="username" value="hr"/>
+         <property name="password" value="hr"/>
+>>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
          	</bean>
          	
          	

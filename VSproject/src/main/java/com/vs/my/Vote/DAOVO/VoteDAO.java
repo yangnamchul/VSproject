@@ -9,7 +9,10 @@ public interface VoteDAO {
 	public void Vote(VoteVO vv);
 	public int LeftCnt(VoteVO vv);
 	public int RightCnt(VoteVO vv);
+<<<<<<< HEAD
 	public VoteVO VoteConfirm(VoteVO vv);  //회원
 	public VoteVO VoteConfirm2(VoteVO vv);  //비회원
 	
+=======
+>>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 }

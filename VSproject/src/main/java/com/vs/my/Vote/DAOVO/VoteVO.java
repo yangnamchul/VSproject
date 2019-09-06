@@ -5,8 +5,11 @@ public class VoteVO {
 	private int b_seq;
 	private String u_id;
 	private int v_like;
+<<<<<<< HEAD
 	private String v_ip;
 
+=======
+>>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 	
 	public String getV_ip() {
 		return v_ip;

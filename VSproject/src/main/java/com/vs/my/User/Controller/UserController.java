@@ -52,6 +52,7 @@ public class UserController {
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
 	@RequestMapping(value="ip.do", method=RequestMethod.GET) //ip
+<<<<<<< HEAD
 	private String getIp(HttpServletRequest request, VoteVO vv) {
 		 System.out.println("들옴모모");
         String ip = request.getHeader("X-Forwarded-For");
@@ -87,6 +88,38 @@ public class UserController {
 			vs.Vote(vv);//투표 인설트
 		}
         */
+=======
+	private String getIp(HttpServletRequest request) {
+		 
+        String ip = request.getHeader("X-Forwarded-For");
+ 
+        logger.info(">>>> X-FORWARDED-FOR : " + ip);
+ 
+        if (ip == null) {
+            ip = request.getHeader("Proxy-Client-IP");
+            logger.info(">>>> Proxy-Client-IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
+            logger.info(">>>> WL-Proxy-Client-IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+            logger.info(">>>> HTTP_CLIENT_IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+            logger.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getRemoteAddr();
+        }
+        
+        logger.info(">>>> Result : IP Address : "+ip);
+        
+        System.out.println(ip);
+ 
+>>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
         return ip;
  
     }
