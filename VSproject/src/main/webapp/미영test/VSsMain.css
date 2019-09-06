@@ -286,7 +286,6 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 /* 팝 로그인 미영 */
-
 #pop_login {
 	position: fixed;
 	padding: 10px 21px;
@@ -345,7 +344,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	.id-check-text2 {
 		display: inline;
 	}
-	#JoinForm>div>li>div>div>button {
+	#JoinForm>ul>li>div>div>button {
 		float: right;
 		margin: 0.25rem 0.2rem 0 0;
 	}
@@ -367,7 +366,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	}
 }
 
-/* @media ( min-width :768px) {
+@media ( min-width :768px) {
 	.vss-join>li {
 		padding-left: 9rem;
 	}
@@ -383,7 +382,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	.vss-join>li {
 		padding-left: 20rem;
 	}
-} */
+}
 
 #Join {
 	margin-left: 0px;
@@ -406,20 +405,20 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	border-top: 4px solid white;
 	border-bottom: 4px solid white;
 	margin-top: 0.5rem;
-	padding-left: 0.2rem;
-	/* padding-left: 0; */
+	/* padding-left: 2rem; */
+	padding-left: 0;
 	padding-bottom: 1rem;
 }
 
 .vss-join>li {
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	background-color: #000084;
 	color: white;
 	list-style: none;
 	margin: 0.5rem;
 }
 
-#JoinForm>div>li>div>div>button {
+#JoinForm>ul>li>div>div>button {
 	color: white;
 	background-color: #ff4d00;
 	font-size: 1.2rem;
@@ -787,39 +786,3 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	/*     border: none !important; */
 	
 }
-
-/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : MyPage.jsp > 회원가입
-작성자 : 미영
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
-#mypageDiv{
-	padding: 1rem;
-	background-color: #000084;
-	color: white;
-	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
-	border:1px solid red;
-}
-
-.change-btn { display: inline; }
-.changebtn {
-    color: white;
-    background-color: #ff4d00;
-    font-size: 1.2rem;
-}
-
-.vss-title {
-	border-bottom: 2px solid #bbb;
-    text-align: left;
-    color: white;
-    font-size: 1.25em;
-    margin: 0.25rem 0.25rem;
-    padding: 0.2rem;
-    text-shadow: 1px 1px 2px #ff4d00;
-}
-
-@media ( max-width :768px) {
-	.change-btn { float:right; }
-}
-
-
-#my-info{border:1px solid black;}

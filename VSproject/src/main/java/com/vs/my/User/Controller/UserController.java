@@ -210,12 +210,25 @@ public class UserController {
 		
 		uv.setU_id(u_id);
 		
-		mv.addObject("rvlist", rs.UserReply(u_id));
-		mv.addObject("vvlist", vs.UserVote(u_id));
-		mv.addObject("bvlist", bs.UserBoard(u_id));
 		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}
+	
+	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
+	public  ModelAndView History(HttpSession hs, UserVO uv) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("History");
+		
+		UserVO uv2 = (UserVO) hs.getAttribute("uv");
+		String u_id = uv2.getU_id();
+		
+		uv.setU_id(u_id);
+		
+		mv.addObject("rvlist", rs.UserReply(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));
+		mv.addObject("bvlist", bs.UserBoard(u_id));
+		return mv;
+	} 
 	
 	@RequestMapping(value="UserAllData.do", method=RequestMethod.GET) //유저정보 전부보기
 	public ModelAndView UserAllData(HttpServletRequest req) {

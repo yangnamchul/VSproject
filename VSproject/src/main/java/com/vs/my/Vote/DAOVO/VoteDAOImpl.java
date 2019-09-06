@@ -50,5 +50,16 @@ public class VoteDAOImpl implements VoteDAO{
 		return sqlSession.selectList(namespace+".UserVote", u_id);
 	}
 	
+	@Override
+	public VoteVO VoteConfirm(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".VoteConfirm",vv);
+	}
+
+	@Override
+	public VoteVO VoteConfirm2(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".VoteConfirm2",vv);
+	}
 	
 }

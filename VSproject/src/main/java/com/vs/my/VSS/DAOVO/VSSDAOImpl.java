@@ -25,4 +25,10 @@ public class VSSDAOImpl implements VSSDAO {
 		return sqlSession.selectList(namespace+".getAllVSS");
 	}
 
+	@Override
+	public VSSVO getOneVSS(int vss_seq) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".getOneVSS",vss_seq);
+	}
+
 }

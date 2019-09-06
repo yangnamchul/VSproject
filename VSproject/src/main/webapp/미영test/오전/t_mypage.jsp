@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="t_Header.jsp"%>
+<%-- <%@ include file="t_Header.jsp"%> --%>
 </head>
 <body>
 	<div id="content-area">

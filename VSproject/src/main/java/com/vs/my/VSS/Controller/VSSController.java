@@ -1,7 +1,9 @@
 package com.vs.my.VSS.Controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,7 @@ public class VSSController {
 	VSSService vss;
 	
 	@RequestMapping(value = "makeVSS.do", method = RequestMethod.GET) //부스러기 만들기 페이지로
-	public ModelAndView makeVSSpage(HttpServletRequest req, VSSVO vssvo) {
+	public ModelAndView makeVSSpage(VSSVO vssvo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("makeVSS");
 		
@@ -29,7 +31,7 @@ public class VSSController {
 	
 	@RequestMapping(value = "makeVSS.do", method = RequestMethod.POST) //부스러기 만들기
 	@ResponseBody
-	public int makeVSS(HttpServletRequest req, VSSVO vssvo) {
+	public int makeVSS(VSSVO vssvo) {
 		
 		try {
 			vss.makeVSS(vssvo);
@@ -37,5 +39,25 @@ public class VSSController {
 			return 0;
 		}
 		return 1;
+	}
+	
+	@RequestMapping(value = "getAllVSS.do", method = RequestMethod.GET) //부스러기 만들기
+	@ResponseBody
+	public JSONObject getAllVSS() {
+		JSONObject json = new JSONObject() ;
+		
+		List<VSSVO> vsslist = vss.getAllVSS();
+		
+		JSONArray jsonarr = new JSONArray();
+		
+		for (int i = 0; i < vsslist.size(); i++) {
+			json.put(vsslist.get(i).getVSS_name(), vsslist.get(i).getVSS_seq());
+			
+			jsonarr.add(i,json);
+		}
+		
+		//json.put("vsslist", jsonarr);
+		
+		return json;
 	}
 }
