@@ -41,7 +41,7 @@
 				</div>
 
 
-	
+<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
 				<div class="col-12" id="content-vs">
 					<div class="col-5" id="vs-left">${vo.b_left }</div>
 					<div class="col-2" id="vs-vs">
@@ -100,13 +100,13 @@
 									    
 <!-- 									    이 댓글이 내가쓴글이면  hidden  or inline-->
 									    <span id="reply_hidden" style="display: hidden;">
-									    <button type="button" id="reply_del" value="삭제" > <span> 삭제 </span></button>
-									    <button type="button" id="reply_edit" > <span>수정</span> </button>
+									    <button type="button" id="reply_del"  > <span> 삭제 </span></button>
+									    <button type="button" id="reply_edit" onclick="edit()" data-toggle="button" > <span>수정</span> </button>
 									    </span>  
 										</span>
 
 									</div>
-									<div>${vo.re_content}</div>
+									<div id="reply_content_1">${vo.re_content}</div>
 								</div>
 							</li>
 
@@ -158,6 +158,10 @@
 				toolbar : false
 			});
 		});
+		
+		var edit = function() {
+			  $('#reply_content_1').summernote({focus: true});
+			};
 
 		function reply() {
 			if ($("#r_reply").val() == "") {
