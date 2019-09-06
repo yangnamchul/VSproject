@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org // DTD mapper 3.0 // en" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.Tag-mapper">
+
+
+	<insert id="makeTag">
+		<selectKey resultType="Integer" keyProperty="b_seq"  order="BEFORE">
+			SELECT MAX(b_seq)
+			FROM board
+		</selectKey>
+		INSERT INTO Tag
+		VALUES(#{b_seq},#{vss_seq})
+	</insert>
+	
+	<select id="getVSSBoard" resultType="Tag">
+		SELECT *
+		FROM Tag
+		WHERE vss_seq=#{vss_seq}
+		ORDER BY b_seq DESC
+	</select>
+	
+</mapper>

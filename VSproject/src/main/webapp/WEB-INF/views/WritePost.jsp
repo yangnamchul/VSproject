@@ -71,7 +71,7 @@
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
 							</div>
-
+							
 							<div id="write-submit">
 								<input type="submit" value="등록하기" id="write-btn-submit">
 							</div>
@@ -161,7 +161,9 @@
 // 											      			text: item,
 // 											      			url : "VSSBoard.do?VSS_seq=" + seq
 // 											      		}
+
 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
 											    	return '';
 											    }

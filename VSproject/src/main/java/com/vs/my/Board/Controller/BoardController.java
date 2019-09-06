@@ -1,6 +1,7 @@
 package com.vs.my.Board.Controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,8 @@ import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
 import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
+import com.vs.my.Tag.DAOVO.TagVO;
+import com.vs.my.Tag.Service.TagService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
 import com.vs.my.VSS.DAOVO.VSSVO;
@@ -40,6 +43,8 @@ public class BoardController {
 	ReplyService rs;
 	@Autowired
 	VSSService vss;
+	@Autowired
+	TagService ts;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -166,17 +171,32 @@ public class BoardController {
 		String vsleft = request.getParameter("vsleft");
 		String vsright = request.getParameter("vsright");
 		
+		List<VSSVO> vsslist = vss.getAllVSS();
 		
 		
+		
+	
 		
 		if (vsCheck != null) {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
+			for (int i = 0; i < vsslist.size(); i++) {
+				TagVO tv = new TagVO();
+				try {
+					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					tv.setVss_seq(vss_seq1);
+					ts.makeTag(tv);
+					System.out.println("들어옴");
+				} catch(Exception e) {
+					
+				}
+			}
 			
 			VoteVO vv = new VoteVO();
 			vv.setU_id(st);
+			
 			vs.FirstVote(vv);
 		} else {
 			vsleft = null;
@@ -184,6 +204,18 @@ public class BoardController {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
+			
+			for (int i = 0; i < vsslist.size(); i++) {
+				TagVO tv = new TagVO();
+				try {
+					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					tv.setVss_seq(vss_seq1);
+					ts.makeTag(tv);
+					System.out.println("들어옴");
+				} catch(Exception e) {
+					
+				}
+			}
 		}
 		
 		
@@ -226,9 +258,27 @@ public class BoardController {
 		
 		int vss_seq = Integer.parseInt(vss_seq1);
 		
-		List<BoardVO> bvlist = bs.VSSBoard(vss_seq);
+		List<BoardVO> bvlist = new ArrayList<BoardVO>() ;
 		
 		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
+		
+		TagVO tv = new TagVO();
+		
+		tv.setVss_seq(vss_seq);
+		
+		List<TagVO> tvlist = ts.getVSSBoard(tv);
+		
+		for (int i = 0; i < tvlist.size(); i++) {
+			
+			int b_seq = tvlist.get(i).getB_seq();
+			BoardVO bv = new BoardVO();
+			bv.setB_seq(b_seq);
+			
+			BoardVO bv1 = bs.Content(bv);
+			
+			bvlist.add(bv1);
+			
+		}
 		
 		mv.addObject("bvlist", bvlist);
 		mv.addObject("vssOne",vssOne);

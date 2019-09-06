@@ -51,7 +51,6 @@ public class VSSController {
 		JSONArray jsonarr = new JSONArray();
 		
 		for (int i = 0; i < vsslist.size(); i++) {
-			
 			json.put(vsslist.get(i).getVSS_name(), vsslist.get(i).getVSS_seq());
 			
 			jsonarr.add(i,json);
