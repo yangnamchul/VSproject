@@ -9,6 +9,7 @@ public class UserVO {
 	private String u_name;
 	private String u_email;
 	private Date u_date;
+	private boolean isUseCookie;
 	
 	public int getU_seq() {
 		return u_seq;
@@ -46,7 +47,10 @@ public class UserVO {
 	public void setU_date(Date u_date) {
 		this.u_date = u_date;
 	}
-	
-	
-	
+	public boolean isUseCookie() {
+		return isUseCookie;
+	}
+	public void setUseCookie(boolean isUseCookie) {
+		this.isUseCookie = isUseCookie;
+	}
 }

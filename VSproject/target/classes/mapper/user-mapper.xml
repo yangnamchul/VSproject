@@ -46,4 +46,12 @@
 		FROM USERS
 		WHERE u_id = #{u_id}
 	</select>
+	
+	 <update id="keepLogin">
+	update USERS set sessionKey = #{sessionId}, sessionLimit = #{next} where u_id=#{u_id}
+	</update>
+	
+	<select id="checkUserWithSessionKey" resultType="user">
+	select * from USERS WEHERE sessionKey = #{sessionId} and sessionLimit> now()
+	</select> 
 </mapper>

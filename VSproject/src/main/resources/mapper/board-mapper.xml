@@ -11,7 +11,7 @@
 	
 	<insert id="BoardInsertData"> <!-- resultType="user" user객체로 쿼리 실행 결과값을 받고자 할 때 -->
 		insert into board
-		values(board_sequence1.NEXTVAL, #{u_id},#{c_seq},#{b_title},#{b_content},1,sysdate,0,null,#{b_left, jdbcType=NULL},#{b_right, jdbcType=NULL})
+		values(board_sequence1.NEXTVAL, #{u_id},#{vss_seq},#{b_title},#{b_content},1,sysdate,0,null,#{b_left, jdbcType=NULL},#{b_right, jdbcType=NULL})
 	</insert>
 	
 	<select id="BoardOneView" resultType="board">
@@ -35,9 +35,20 @@
 	</select>
 	
 	<select id="BoardListCount" resultType="int">
-	
-   select count (*)
-   from board
+   		select count (*)
+   		from board
 	</select> 
+	
+	<select id="UserBoard" resultType="board">
+		SELECT *
+		FROM board
+		WHERE u_id = #{u_id}
+	</select>
+	
+	<select id="VSSBoard" resultType="board">
+		SELECT *
+		FROM board
+		WHERE vss_seq = #{VSS_seq}
+	</select>
 	
 </mapper>

@@ -1,6 +1,9 @@
 package com.vs.my.User.DAOVO;
 
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +64,17 @@ public class UserDAOImpl implements UserDAO{
 		return sqlSession.selectOne(namespace+".idCheck",uv);
 	}
 	
+	 public void keepLogin(String uid, String sessionId, Date next){
+		   
+	        Map<String, Object> map = new HashMap<String,Object>();
+	        map.put("userId", uid);
+	        map.put("sessionId", sessionId);
+	        map.put("next", next);
+		        sqlSession.update(namespace+".keepLogin",map);
+			}
+			public UserVO checkUserWithSessionKey(String sessionId) {
+				return sqlSession.selectOne(namespace+".checkUserWithSessonKey",sessionId);
+			}
 	
 
 }

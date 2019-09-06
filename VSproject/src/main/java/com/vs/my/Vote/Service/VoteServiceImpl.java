@@ -43,7 +43,23 @@ public class VoteServiceImpl implements VoteService {
 		// TODO Auto-generated method stub
 		return vdao.RightCnt(vv);
 	}
+
+	@Override
+	public List<VoteVO> UserVote(String u_id) {
+		// TODO Auto-generated method stub
+		return vdao.UserVote(u_id);
+	}
 	
-	
+	@Override
+	public VoteVO VoteConfirm(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return vdao.VoteConfirm(vv);
+	}
+
+	@Override
+	public VoteVO VoteConfirm2(VoteVO vv) {
+		// TODO Auto-generated method stub
+		return vdao.VoteConfirm2(vv);
+	}
 	
 }

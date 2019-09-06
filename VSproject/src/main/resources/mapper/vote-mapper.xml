@@ -15,12 +15,12 @@
 			FROM board
 		</selectKey>
 		INSERT INTO VOTE
-		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},0,sysdate)
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},0,sysdate,#{v_ip})
 	</insert>
 	
 	<insert id="Vote">
 		INSERT INTO VOTE
-		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},#{v_like},sysdate)
+		VALUES(Vote_sequence1.NEXTVAL,#{b_seq},#{u_id},#{v_like},sysdate,#{v_ip})
 	</insert>
 	
 	<select id="LeftCnt" resultType="Integer">
@@ -33,6 +33,24 @@
 		SELECT count(*)
 		FROM VOTE
 		WHERE b_seq=#{b_seq} and v_like=2
+	</select>
+	
+	<select id="UserVote" resultType="vote">
+		SELECT *
+		FROM VOTE
+		WHERE u_id = #{u_id}
+	</select>
+	
+	<select id="VoteConfirm" resultType="Vote">
+		SELECT *
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and u_id=#{u_id}
+	</select>
+	
+	<select id="VoteConfirm2" resultType="Vote">
+		SELECT *
+		FROM VOTE
+		WHERE b_seq=#{b_seq} and v_ip=#{v_ip}
 	</select>
 	
 </mapper>

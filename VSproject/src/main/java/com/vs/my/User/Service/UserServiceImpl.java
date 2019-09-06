@@ -1,6 +1,8 @@
 package com.vs.my.User.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
+import com.sun.javafx.collections.MappingChange.Map;
 import com.vs.my.User.DAOVO.UserDAO;
 import com.vs.my.User.DAOVO.UserVO;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -90,8 +94,28 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return dao.idCheck(uv);
 	}
-	
 
+	@Override
+	public UserVO login(UserVO uv) {
+		return null;
+	}
+
+	@Override
+	public void KeepLogin(String u_id, String sessionId, Date next) {
+		dao.keepLogin(u_id, sessionId, next);
+	}
+
+	@Override
+	public UserVO checkLoginBefore(String value) {
+	
+		return null;
+	}
+
+	@Override
+	public UserVO checkUserWithSessionKey(String sessionId) {
+		return dao.checkUserWithSessionKey(sessionId);
+	}
+	
 /*	@Override
 	public UserVO UserOneData(UserVO vo) {
 		// TODO Auto-generated method stub

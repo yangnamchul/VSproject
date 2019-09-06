@@ -1,6 +1,7 @@
 package com.vs.my.Board.Controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Reply.DAOVO.ReplyVO;
+import com.vs.my.Reply.Service.ReplyService;
+import com.vs.my.Tag.DAOVO.TagVO;
+import com.vs.my.Tag.Service.TagService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.VSS.DAOVO.VSSVO;
+import com.vs.my.VSS.Service.VSSService;
 import com.vs.my.Vote.DAOVO.VoteVO;
 import com.vs.my.Vote.Service.VoteService;
 
@@ -32,6 +39,12 @@ public class BoardController {
 	UserService us;
 	@Autowired
 	VoteService vs;
+	@Autowired
+	ReplyService rs;
+	@Autowired
+	VSSService vss;
+	@Autowired
+	TagService ts;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -117,9 +130,11 @@ public class BoardController {
 			mv.addObject("RightCnt", RightCnt);
 		}
 		
+//		댓글
+		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
 		
 		
-		
+		mv.addObject("ReplyList",replylist);
 		mv.addObject("data", data);
 		mv.addObject("vo",bv2);
 		mv.addObject("u_id", u_id);
@@ -130,12 +145,17 @@ public class BoardController {
 	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
 	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest req, HttpSession se){
 		ModelAndView mv = new ModelAndView();
-		
-		
+		mv.setViewName("WritePost");
+//		아이디 가져오기
         UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
 		bv.setU_id(st);
-		mv.setViewName("WritePost");
+		
+//		부스러기 전부 가져오기
+		List<VSSVO> vsslist = vss.getAllVSS();
+		mv.addObject("vsslist", vsslist);
+		mv.addObject("vssCnt", vsslist.size());
+		
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
@@ -144,24 +164,39 @@ public class BoardController {
 		
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
-		int c_seq=1;
+		int vss_seq=0;
 		bv.setU_id(st);
-		bv.setC_seq(c_seq);
+		bv.setVss_seq(vss_seq);
 		String[] vsCheck = request.getParameterValues("vsCheck");
 		String vsleft = request.getParameter("vsleft");
 		String vsright = request.getParameter("vsright");
 		
+		List<VSSVO> vsslist = vss.getAllVSS();
 		
 		
+		
+	
 		
 		if (vsCheck != null) {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
+			for (int i = 0; i < vsslist.size(); i++) {
+				TagVO tv = new TagVO();
+				try {
+					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					tv.setVss_seq(vss_seq1);
+					ts.makeTag(tv);
+					System.out.println("들어옴");
+				} catch(Exception e) {
+					
+				}
+			}
 			
 			VoteVO vv = new VoteVO();
 			vv.setU_id(st);
+			
 			vs.FirstVote(vv);
 		} else {
 			vsleft = null;
@@ -169,6 +204,18 @@ public class BoardController {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
+			
+			for (int i = 0; i < vsslist.size(); i++) {
+				TagVO tv = new TagVO();
+				try {
+					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					tv.setVss_seq(vss_seq1);
+					ts.makeTag(tv);
+					System.out.println("들어옴");
+				} catch(Exception e) {
+					
+				}
+			}
 		}
 		
 		
@@ -199,6 +246,43 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Search");
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
+	public ModelAndView VSSBoard(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("VSSBoard");
+		
+		String vss_seq1 = request.getParameter("vss_seq");
+		
+		int vss_seq = Integer.parseInt(vss_seq1);
+		
+		List<BoardVO> bvlist = new ArrayList<BoardVO>() ;
+		
+		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
+		
+		TagVO tv = new TagVO();
+		
+		tv.setVss_seq(vss_seq);
+		
+		List<TagVO> tvlist = ts.getVSSBoard(tv);
+		
+		for (int i = 0; i < tvlist.size(); i++) {
+			
+			int b_seq = tvlist.get(i).getB_seq();
+			BoardVO bv = new BoardVO();
+			bv.setB_seq(b_seq);
+			
+			BoardVO bv1 = bs.Content(bv);
+			
+			bvlist.add(bv1);
+			
+		}
+		
+		mv.addObject("bvlist", bvlist);
+		mv.addObject("vssOne",vssOne);
+		mv.addObject("count", bvlist.size());
 		return mv;
 	}
 	
