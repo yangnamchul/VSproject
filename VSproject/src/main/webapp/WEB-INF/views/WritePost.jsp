@@ -71,7 +71,6 @@
 							</div>
 						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -149,12 +148,6 @@
 											    content: function (item) {
 											    	var seq = vss_seq[item];
 											    	if (seq) {
-// 											      	return '<a href="VSSBoard.do?VSS_seq=' + seq + '">' + item + '</a>';
-// 											      		'createLink', {
-// 											      			text: item,
-// 											      			url : "VSSBoard.do?VSS_seq=" + seq
-// 											      		}
-
 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
 											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
@@ -191,9 +184,9 @@
 															[ 'picture',
 																	'video' ] ], ],
 											callbacks : {
-												onImageUpload : function(file,
-														editor, welEditable) {
+													onImageUpload : function(file,editor, welEditable) {
 													sendfile(file[0], this);
+													
 												}
 											}
 										});
