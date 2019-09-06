@@ -155,6 +155,7 @@ public class BoardController {
 		int vss_seq = Integer.parseInt(request.getParameter("vss_seq"));
 		VSSVO vssvo = vss.getOneVSS(vss_seq);
 		mv.addObject("vss_seq", vssvo.getVSS_seq());
+		mv.addObject("vssName", vssvo.getVSS_name());
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)

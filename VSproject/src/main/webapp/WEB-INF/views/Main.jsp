@@ -99,10 +99,9 @@ $(document).ready(function() {
              objRow.removeAttr("style");
           	 objRow.html('<li><a href="VSSBoard.do?vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vss_seq']+
           	'</a><span>▶  </span> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
-          	 
           	$("#board_ul").append(objRow);
-          }
-         }
+			}
+		}
 	});
 	
 });
