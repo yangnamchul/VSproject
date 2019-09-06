@@ -43,14 +43,6 @@
 								<!-- 										vs 유무 -->
 								<button type="button" id="btn_vschk">VS!</button>
 							</div>
-							<div>
-								<select name='VSS' size=${vssCnt }>
-									<option value='' selected>-- 선택 --</option>
-									<c:forEach var="vo1" items="${vsslist}">
-										<option value=${vo1.VSS_seq }>${vo1.VSS_name }</option>
-									</c:forEach>
-								</select>
-							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
 								<input type="text" name="b_title" id="b_title" maxlength="40"
 									placeholder="제목" />
@@ -63,13 +55,15 @@
 
 									<textarea name="vsleft" id="vsleft"></textarea>
 									
-						<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
+									<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
 				
 									<textarea name="vsright" id="vsright"></textarea>
 
 								</div>
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
+								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
+								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
 							</div>
 							
 							<div id="write-submit">

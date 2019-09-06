@@ -143,7 +143,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="BoardWriteData.do", method=RequestMethod.POST) //글 작성 화면
-	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest req, HttpSession se){
+	public ModelAndView BoardWriteData(BoardVO bv, HttpServletRequest request, HttpSession se){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WritePost");
 //		아이디 가져오기
@@ -151,11 +151,10 @@ public class BoardController {
         String st = uv.getU_id();
 		bv.setU_id(st);
 		
-//		부스러기 전부 가져오기
-		List<VSSVO> vsslist = vss.getAllVSS();
-		mv.addObject("vsslist", vsslist);
-		mv.addObject("vssCnt", vsslist.size());
-		
+//		부스러기 가져오기
+		int vss_seq = Integer.parseInt(request.getParameter("vss_seq"));
+		VSSVO vssvo = vss.getOneVSS(vss_seq);
+		mv.addObject("vss_seq", vssvo.getVSS_seq());
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
@@ -164,7 +163,8 @@ public class BoardController {
 		
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
-		int vss_seq=0;
+        
+		int vss_seq=Integer.parseInt(request.getParameter("vss_seq"));
 		bv.setU_id(st);
 		bv.setVss_seq(vss_seq);
 		String[] vsCheck = request.getParameterValues("vsCheck");
@@ -282,6 +282,7 @@ public class BoardController {
 		
 		mv.addObject("bvlist", bvlist);
 		mv.addObject("vssOne",vssOne);
+		mv.addObject("vss_seq",vss_seq);
 		mv.addObject("count", bvlist.size());
 		return mv;
 	}
