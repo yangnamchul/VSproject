@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org // DTD mapper 3.0 // en" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.VSS-mapper">
+
+
+	<insert id="makeVSS">
+		INSERT INTO VSS
+		VALUES(VSS_sequence1.NEXTVAL,#{vss_name},#{vss_content})
+	</insert>
+	
+	<select id="getAllVSS" resultType="VSS">
+		SELECT *
+		FROM VSS
+	</select>
+	
+	<select id="getOneVSS" resultType="VSS">
+		SELECT *
+		FROM VSS
+		WHERE vss_seq = #{VSS_seq}
+	</select>
+	
+</mapper>

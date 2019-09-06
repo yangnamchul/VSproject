@@ -43,6 +43,12 @@ private static final String namespace="mapper.reply-mapper";
 		return sqlSession.selectOne(namespace+".ReplyOneData",re_seq);
 	}
 
+	@Override
+	public List<ReplyVO> UserReply(String u_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".UserReply",u_id);
+	}
+
 	
 
 

@@ -1,24 +1,23 @@
 package com.vs.my.Vote.DAOVO;
 
+import java.util.Date;
+
 public class VoteVO {
 	private int v_seq;
 	private int b_seq;
 	private String u_id;
 	private int v_like;
-<<<<<<< HEAD
+	private Date v_date;
 	private String v_ip;
-
-=======
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 	
-	public String getV_ip() {
-		return v_ip;
-	}
-	public void setV_ip(String v_ip) {
-		this.v_ip = v_ip;
-	}
 	public int getV_seq() {
 		return v_seq;
+	}
+	public Date getV_date() {
+		return v_date;
+	}
+	public void setV_date(Date v_date) {
+		this.v_date = v_date;
 	}
 	public void setV_seq(int v_seq) {
 		this.v_seq = v_seq;
@@ -40,6 +39,12 @@ public class VoteVO {
 	}
 	public void setV_like(int v_like) {
 		this.v_like = v_like;
+	}
+	public String getV_ip() {
+		return v_ip;
+	}
+	public void setV_ip(String v_ip) {
+		this.v_ip = v_ip;
 	}
 	
 }

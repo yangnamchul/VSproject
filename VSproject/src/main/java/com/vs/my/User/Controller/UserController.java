@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
-import com.vs.my.Vote.DAOVO.VoteVO;
 import com.vs.my.Vote.Service.VoteService;
 
 /**
@@ -28,10 +29,15 @@ public class UserController {
 	
 	@Autowired
 	UserService us;
+	
 	@Autowired
-	HttpSession hs;
+	BoardService bs;
+	
 	@Autowired
 	VoteService vs;
+	
+	@Autowired
+	ReplyService rs;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -52,43 +58,6 @@ public class UserController {
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
 	@RequestMapping(value="ip.do", method=RequestMethod.GET) //ip
-<<<<<<< HEAD
-	private String getIp(HttpServletRequest request, VoteVO vv) {
-		 System.out.println("들옴모모");
-        String ip = request.getHeader("X-Forwarded-For");
- 
-        logger.info(">>>> X-FORWARDED-FOR : " + ip);
- 
-        if (ip == null) {
-            ip = request.getHeader("Proxy-Client-IP");
-            logger.info(">>>> Proxy-Client-IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
-            logger.info(">>>> WL-Proxy-Client-IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("HTTP_CLIENT_IP");
-            logger.info(">>>> HTTP_CLIENT_IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-            logger.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getRemoteAddr();
-        }
-        
-        logger.info(">>>> Result : IP Address : "+ip);
-        
-        System.out.println(ip);
- 
-        
-   /* 	if(vs.VoteConfirm(vv)==null) {           //투표 유효성 검사(비회원)
-			vs.Vote(vv);//투표 인설트
-		}
-        */
-=======
 	private String getIp(HttpServletRequest request) {
 		 
         String ip = request.getHeader("X-Forwarded-For");
@@ -119,7 +88,6 @@ public class UserController {
         
         System.out.println(ip);
  
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
         return ip;
  
     }
@@ -242,6 +210,9 @@ public class UserController {
 		
 		uv.setU_id(u_id);
 		
+		mv.addObject("rvlist", rs.UserReply(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));
+		mv.addObject("bvlist", bs.UserBoard(u_id));
 		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}

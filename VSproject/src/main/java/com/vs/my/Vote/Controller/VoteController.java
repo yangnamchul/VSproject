@@ -1,12 +1,9 @@
 package com.vs.my.Vote.Controller;
 
 
-<<<<<<< HEAD
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-=======
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,38 +47,6 @@ public class VoteController {
 		}
 		try {
 
-	@RequestMapping(value="Vote.do", method=RequestMethod.POST)
-	@ResponseBody
-	public int Vote(@RequestParam String button_id,@RequestParam int b_seq, HttpSession hs) {
-		
-		try {
-		UserVO uv = (UserVO) hs.getAttribute("uv");
-		
-		String u_id = uv.getU_id();
-		int v_like = 1;
-		
-		VoteVO vv = new VoteVO();
-		
-		if (button_id.equals("vsLeft")) {
-			v_like = 1;
-			
-		} else {
-			v_like = 2;
-		}
-		
-		vv.setV_like(v_like);
-		vv.setU_id(u_id);
-		vv.setB_seq(b_seq);
-		
-		vs.Vote(vv);
-		} catch(Exception e) {
-			e.printStackTrace();
-			return 0;
-		}
-		return 1;
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
-
-<<<<<<< HEAD
 		if(uv.getU_id()==null) {
 			
 			 String ip = request.getHeader("X-Forwarded-For");
@@ -148,8 +113,4 @@ public class VoteController {
 		return "b";      //정상적으로 투표가 되었을경우.
 
 	}
-		
-=======
-	}
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 }

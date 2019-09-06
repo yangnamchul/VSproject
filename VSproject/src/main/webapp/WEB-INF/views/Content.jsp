@@ -61,11 +61,7 @@
 						</div>
 						<div style="clear: both">
 							<ul>
-<<<<<<< HEAD
-								<li style="float: left;"><button type="button" id="vsLeft" onclick="vsVote(this.id)">전자+ ${uv.u_id}</button></li>
-=======
 								<li style="float: left;"><button type="button" id="vsLeft" onclick="vsVote(this.id)">전자</button></li>
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 								<li style="float: right;"><button type="button" id="vsRight" onclick="vsVote(this.id)">후자</button></li>
 							</ul>
 						</div>
@@ -80,15 +76,11 @@
 					</div>
 				</div>
 				<div id="content-content">${vo.b_content}</div>
-<<<<<<< HEAD
-                <a href="ip.do"> ip확인하기</a>
-=======
 
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
 
 			</div>
-			<!-- 			댓글입력창 (임시) -->
-			<%-- <div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
+	<%-- 		<!-- 			댓글입력창 (임시) -->
+			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
 				id="contentReply">
 				<form id="replyform">
 					<textarea id="r_reply" name="re_content"></textarea>
@@ -106,9 +98,10 @@
 									<td><button type="button" onclick="re_create()">대댓달기</button></td>
 								</tr>	                     
 			</c:forEach>					   
-			</table> 	 
+			</table> 
+			 
       	</div> --%>
-				 <!-- 			댓글 ( test) -->
+				<!-- 			댓글 ( test) -->
 				<div class="row col-12 col-sm-12 col-lg-12 col-xl-12"
 				id="contentReply">
 				<form id="replyform">
@@ -117,7 +110,7 @@
 				</form>
 			</div>
 			 
-			 <!-- 			댓글 (임시) -->
+			 <!-- 댓글 (임시) -->
 			 <div class="reply-css">
 			<table border="2" id="replytable">
 			<%int cnt=1; %>
@@ -126,7 +119,6 @@
 								<tr id="reply_list">
 									<td>${vo.re_content}</td>
 									<td>${vo.re_seq}</td>
-<<<<<<< HEAD
 									<td><button type="button" class="rere" id="bt<%=cnt%>">대댓달기</button></td>
 								</tr>	 
 							 <tr><td><form id="bbt<%=cnt%>" style="display:none">
@@ -138,30 +130,16 @@
 				
 			<%cnt++; %>
 			</c:forEach>	
-				                   
-=======
-									<td><button type="button" id="bt">대댓달기</button></td>
-								</tr>	 
+
+				<td><button type="button" id="bt">대댓달기</button></td>
+			</tr>	 
 							
 					                    
 					                    <tr><td><form id="replyform1" style="display:none">
 					<textarea id="r_reply" name="re_content"></textarea>
 					<button type="button" onclick="reply()">댓글등록</button>
 				</form></td></tr>
-			
-			
-			</c:forEach>	
-			
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
-			<!-- <tr><td><form id="replyform1" style="display:none">
-					<textarea id="r_reply" name="re_content"></textarea>
-					<button type="button" onclick="reply()">댓글등록</button>
-				</form></td></tr>
-			 -->
-			
-							   
-			</table> 	 
-      	</div> 
+			</table>
 				
 		</div>
 	</div>
@@ -177,7 +155,18 @@
 			toolbar : false
 		});
 	});
+	
+	$( '#bt' ).click(    //대댓글 토글
+		
+	        function(){
+	        $( '#replyform1' ).toggle();
+	});
 
+	$('.rere').click(function(){
+	    var bt_id = $(this).attr("id");
+	   $( "#b"+bt_id ).toggle();
+		       
+	});
 	
 	function reply() {
 		if ($("#r_reply").val() == "") {
@@ -202,64 +191,8 @@
 		});
 		
 	}
-	
-
-	$( '#bt' ).click(    //대댓글 토글
-		
-	        function(){
-	        $( '#replyform1' ).toggle();
-	       /*  var re_index=$("#reply_list1").lenghth;
-	        
-	        if(re_index>0){
-	        	       $("reply_list1").eq(-2).after('<tr><td><form id="replyform1" style="display:none"><textarea id="r_reply" name="re_content"></textarea><button type="button" onclick="reply()">댓글등록</button></form></td></tr> ')
-	        } */
-	       /*  else if(re_index==0){
-	        	
-	        	var re_index2=$("#reply_list2").lenghth;
-	        	if(re_index2>0){
-	        		if(re_index2>0){
-	    	        	$("#reply_list2").eq(-1).after('<tr><td><form id="replyform1" style="display:none"><textarea id="r_reply" name="re_content"></textarea><button type="button" onclick="reply()">댓글등록</button></form></td></tr> ')
-	    	        }
-	        		else{
-	        	        $("#reply_list3").eq(-1).after('<tr><td><form id="replyform1" style="display:none"><textarea id="r_reply" name="re_content"></textarea><button type="button" onclick="reply()">댓글등록</button></form></td></tr> ')   
-	        		}
-	        	}
-	        }//else if */
-	        
-	        });
-
-	$('.rere').click(function(){
-	    var bt_id = $(this).attr("id");
-	   $( "#b"+bt_id ).toggle();
-		       
-	});
-
-
-
-	       /*  var re_index=$("#reply_list1").lenghth;
-	        
-	        if(re_index>0){
-	        	       $("reply_list1").eq(-2).after('<tr><td><form id="replyform1" style="display:none"><textarea id="r_reply" name="re_content"></textarea><button type="button" onclick="reply()">댓글등록</button></form></td></tr> ')
-	        } */
-	       /*  else if(re_index==0){
-	        	
-	        	var re_index2=$("#reply_list2").lenghth;
-	        	if(re_index2>0){
-	        		if(re_index2>0){
-	    	        	$("#reply_list2").eq(-1).after('<tr><td><form id="replyform1" style="display:none"><textarea id="r_reply" name="re_content"></textarea><button type="button" onclick="reply()">댓글등록</button></form></td></tr> ')
-	    	        }
-	        		else{
-	        	        $("#reply_list3").eq(-1).after('<tr><td><form id="replyform1" style="display:none"><textarea id="r_reply" name="re_content"></textarea><button type="button" onclick="reply()">댓글등록</button></form></td></tr> ')   
-	        		}
-	        	}
-	        }//else if */
-	        
-	    
-	
-	
-	
-
 </script>
+
 
 <script>
 	function vsVote(button_id) {
@@ -278,21 +211,7 @@
 				} 
 				else if(data == "c"){
 					alertify.alert("이미 투표하셨습니다.");
-				}
-				else {
-
-			"button_id" : button_id
-		};
-		jQuery.ajax({
-			type : "POST",
-			url : "Vote.do?b_seq=${vo.b_seq}",
-			data : vdata,
-			async : false,
-			success : function(data) {
-				if (data == 0) {
-					alertify.alert("투표 실패");
 				} else {
-
 					location.reload();
 				}
 			},
@@ -300,7 +219,7 @@
 				alertify.alert(req.status + "\nmessege" + req.responseTest);
 			}
 		});
-	}
+	};
 </script>
 
 </body>

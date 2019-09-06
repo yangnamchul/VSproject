@@ -43,8 +43,12 @@ public class VoteDAOImpl implements VoteDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".RightCnt",vv);
 	}
-<<<<<<< HEAD
 
+	@Override
+	public List<VoteVO> UserVote(String u_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".UserVote", u_id);
+	}
 	
 	@Override
 	public VoteVO VoteConfirm(VoteVO vv) {
@@ -57,9 +61,5 @@ public class VoteDAOImpl implements VoteDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".VoteConfirm2",vv);
 	}
-
-=======
->>>>>>> branch 'ynag' of https://github.com/yangnamchul/VSproject.git
-	
 	
 }

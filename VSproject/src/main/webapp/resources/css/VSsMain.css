@@ -13,12 +13,19 @@
 내 용 : 부스러기 양식 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 #vss {
-	font-weight: font-weight: 500;
 	background-color: #ff4d00;
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
 	margin-right: 10px;
 	font-size: 1.25rem !important;
+	/* 	border-radius: 0.5rem; */
+	padding: 0.1rem;
+	box-shadow: 2px 2px 2px 0 #BBB, inset 1px 1px 2px #ffffff;
+}
+
+#vss>#a {
+	color: #BBB;
+	margin-right: 10px;
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -65,7 +72,7 @@ header #top-menu-right {
 	padding-right: 5px;
 }
 
-header #btn-search, #btn-login , #btn-logout {
+header #btn-search, #btn-login, #btn-logout {
 	cursor: pointer;
 	color: #000084;
 }
@@ -74,7 +81,6 @@ header #btn-search, #btn-login , #btn-logout {
 /* 	cursor: pointer; */
 /* 	color: #000084; */
 /* } */
-
 header .right-row {
 	display: table-row;
 	cursor: pointer;
@@ -86,7 +92,7 @@ header .right-col {
 	padding: 2px 5px;
 }
 
-header #btn-search:active,#btn-login:active, #btn-logout:active {
+header #btn-search:active, #btn-login:active, #btn-logout:active {
 	background-color: #555555;
 }
 
@@ -144,96 +150,43 @@ header #right-search-form>input[type=text] {
 	background-color: #555555;
 }
 
-/* 메뉴바 토글 추가메뉴 나중에 */
-}
-#header-bar a.dropdown-toggle {
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : Dropdown 
+작성자 : 기영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+.header-col {
+	position: relative;
 	display: inline-block;
-	color: #000;
+}
+
+.dropdown-content {
+	border: 1px solid black;
+	display: none;
+	position: absolute;
+	background-color: #BBBBBB;
+	width: 100%;
+	overflow: auto;
+	z-index: 1;
+}
+
+.dropdown-content a {
+	border: 1px solid black;
+	color: black;
+	padding: 12px 16px;
 	text-decoration: none;
-	padding: 0.3em 0
+	display: block;
 }
 
-#header-bar
-.dropdown {
-	display: inline-block
+.header-col a:hover {
+	background-color: #555555;
 }
 
-#header-bar #header-menu-left {
-	border-right: 1px solid #e2e2e2;
-	padding-right: 0
+.show {
+	display: block;
 }
 
-#header-bar #header-menu-left
-#favoriteDropdown {
-	padding-left: 0.7em;
-	padding-right: 0.7em
-}
-
-#header-bar #header-menu-left
-#playgroundDropdown {
-	padding-left: 0.7em;
-	padding-right: 0.7em
-}
-
-#header-bar #header-menu-right {
-	border-left: 1px solid #e2e2e2
-}
-
-#header-bar #header-menu-right
-#userDropdown {
-	padding-left: 0.7em;
-	padding-right: 0
-}
-
-#header-bar #header-menu-right #userDropdown img.profile-img {
-	width: 2em;
-	height: 2em;
-	margin-top: -0.5em;
-	margin-bottom: -0.5em
-}
-
-#header-bar #header-menu-right #userDropdown #notification-badge {
-	border-radius: 100px;
-	padding: 3px 6px;
-	background: #d80a0a
-}
-
-#header-bar #header-menu-right #note-notification-badge {
-	border-radius: 100px;
-	padding: 3px 6px;
-	background: #d80a0a
-}
-
-/* ■■■□ header-bar 내용   □■■■ */
-#header-bar #header-top-notice {
-	padding: 0em 0;
-	font-size: 2.0em;
-	height: 40px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	font-family: 'DungGeunMo';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
-	color: white;
-	/* 	font-family: 'Poor Story', cursive; */
-	/* 	font-weight: bold; */
-}
-
-#header-bar #header-top-notice
-a {
-	color: #000;
-	text-decoration: none
-}
-
-#header-bar #header-top-notice strong.notice-badge {
-	background: #ff4d00;
-	padding: 4px 8px;
-	color: #fff;
-	font-weight: bold
+#header-col .dropdown-content a:active {
+	background-color: #555555;
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -431,8 +384,6 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	}
 }
 
-
-
 #Join {
 	margin-left: 0px;
 	margin-right: 0px;
@@ -581,10 +532,15 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	background-color: #555555 !important;
 }
 
-#board-page {
+#paging\ board-page, #paging\ board-page>a {
 	color: white;
 	text-align: center;
 	margin: 0.25rem auto;
+	font-size: 1.25rem;
+}
+
+#paging\ board-page>a:hover {
+	color: #ff4d00;
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -628,8 +584,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	padding-top: 10%;
 }
 
-
-#vs-left img , #vs-right img, #vs-vs>img {
+#vs-left img, #vs-right img, #vs-vs>img {
 	width: 100% !important;
 	height: 100% !important;
 }
@@ -674,38 +629,202 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	text-align: right;
 }
 
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : WritePost.jsp > 글쓰기 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#writeDiv {
+	background-color: #000084;
+	/* 	background-color: #BBBBBB; */
+	margin: 0 auto;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+	width: 100%;
+	color: white;
+	font-size: 1.25em;
+	/* 	margin: 0.5em auto; */
+	/* 	padding: 0.5em;	 */
+}
+
+#write-info {
+	border-bottom: 2px solid #bbb;
+	text-align: left;
+	color: white;
+	font-size: 1.25em;
+	margin: 0.25rem 0.25rem;
+	padding: 0.2rem;
+	text-shadow: 1px 1px 2px #ff4d00;
+}
+
+#write-nickpw {
+	margin: 0.2em 0.2rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	border-top: 1px solid #BBB;
+	border-bottom: 1px solid #BBB;
+}
+
+#write-nickpw input {
+	width: 48%;
+	padding: 0px 3px;
+	margin: 0.1rem auto;
+	color: #000;
+	background: #bbbbbb;
+}
+
+#write-title {
+	margin: 0.2em 0.2rem;
+}
+
+#p_title {
+	width: 100%;
+	padding: 0px 3px;
+	margin: 0.1rem auto;
+	color: #000;
+	background: #bbbbbb;
+}
+
+#write-content {
+	position: relative;
+}
+
+@media ( max-width :576px) {
+	#write-nickpw {
+		border-top: none;
+	}
+	#write-nickpw input {
+		width: 48%;
+		padding: 0px 3px;
+		margin: 1px;
+		color: #000;
+		background: #bbbbbb;
+	}
+	#write-info {
+		border-bottom: 2px solid #BBB;
+		text-align: left;
+		color: white;
+		font-size: 1.25em;
+		margin: 0.25rem 0.25rem;
+		padding: 0.2rem;
+	}
+	#btn_vschk {
+		margin-right: 0.25rem !important;
+	}
+	#write-img-vs {
+		left: 45% !important;
+	}
+}
+
+#write-vscheck {
+	float: right;
+}
+
+#btn_vschk {
+	background-color: #ff0000;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	margin-right: 1rem;
+	font-size: 1.25rem !important;
+}
+
+#write-submit {
+	margin: 0.5rem;
+	text-align: center;
+}
+
+#write-btn-submit {
+	color: white;
+	background-color: #ff4d00;
+	font-size: 1.2rem;
+}
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 썸머노트 css 강제적용 > Summernote   
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.note-popover .note-popover-content, .note-toolbar, .note-editor.note-frame .note-editing-area .note-editable
+	{
+	background-color: #efefef !important;
+	font-size: 1rem !important;
+}
+
+#writeDiv>div>div>form>div.createForm>div.note-editor.note-frame>div.note-toolbar>div.note-btn-group.note-fontname>div>div
+	{
+	white-space: nowrap;
+}
+
+#write-vs {
+	width: 100%;
+	margin-bottom: 0.25rem;
+}
+
+#write-img-vs {
+	position: absolute;
+	top: 3%;
+	left: 48%;
+	opacity: 0.9;
+	z-index: 1;
+	height: 2.5rem;
+}
+
+#write-vs>div:nth-child(2), #write-vs>div:nth-child(5) {
+	width: 50%;
+	margin: 0 0.1rem;
+}
+
+#write-vs>div:nth-child(2)>div.note-editing-area>div.note-editable,
+	#write-vs>div:nth-child(5)>div.note-editing-area>div.note-editable {
+	height: 10rem !important;
+}
+
+#write-vs>div:nth-child(2)>div.note-editing-area>div.note-editable iframe,
+	#write-vs>div:nth-child(2)>div.note-editing-area>div.note-editable img,
+	#write-vs>div:nth-child(5)>div.note-editing-area>div.note-editable iframe,
+	#write-vs>div:nth-child(5)>div.note-editing-area>div.note-editable img
+	{
+	width: 100% !important;
+}
+
+#write-vs>div:nth-child(2)>div.note-toolbar, #write-vs>div:nth-child(5)>div.note-toolbar
+	{
+	text-align: center;
+	background-color: #000084 !important;
+}
+
+.note-editor.note-frame {
+	/*     border: none !important; */
+	
+}
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : Dropdown 
-작성자 : 기영
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
-
-.header-col{
-   position:relative;
-   display:inline-block;
-}
-.dropdown-content{
-   border:1px solid black;
-   display:none;
-   position:absolute;
-   background-color:#BBBBBB;
-   width:100%;
-   overflow:auto;
-   z-index: 1;
-}
-.dropdown-content a{
-   border:1px solid black;
-   color:black;
-   padding: 12px 16px;
-   text-decoration:none;
-   display:block;
-}
-.header-col a:hover{
-   background-color:#555555;
-   }
-.show {display:block;
+내 용 : Content.jsp > Reply 리플 부분  
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#replyDiv {
+	margin-top: 0.5rem;
+	background-color: #BBBBBB;
+	padding: 0.5rem;
+	color: black;
+	box-shadow: 0 2px 0 black;
 }
 
-#header-col .dropdown-content a:active{
-background-color:#555555;
+#commnet_li {
+	list-style: none;
+	border-top: 1px solid;
+}
+
+/* 모바일먼저 */
+#replyTitle {
+	margin-bottom: 0.25rem;
+	text-shadow: 1px 1px 2px #ff4d00;
+}
+
+#replyUlist {
+	padding: 0.25rem 0;
+	margin: 0.25rem auto;
+}
+
+#reply-info {
+	display: inline-flex;
+	padding: 0.25rem 0;
+}
+
+#reply-date, #reply-writer {
+	margin-left: 2.5rem;
+}
 }
