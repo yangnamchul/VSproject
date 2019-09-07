@@ -29,9 +29,9 @@
 					(추가정보는 관련meme정립글(링크)</div>
 
 				<div class="col-2 col-xl-2" id="board-write" align="center">
-					<form action="BoardWriteData.do?vss_seq=0" method="post">
-						<input hidden="hidden" />
-						<button type="submit">글쓰기</button>
+					<form action="BoardWriteData.do?vss_seq=0" method="post"
+						id="BoardWriteData">						
+						<button type="submit" id="btn_write">글쓰기</button>
 					</form>
 				</div>
 
@@ -40,20 +40,13 @@
 						id="board-table">
 						<thead class="board-thead">
 							<tr>
-								<th class="board-no">번호</th>
-								<th class="board-info">종류</th>
-								<th class="board-title">제목</th>
-								<th class="board-writer">작성자</th>
-								<th class="board-date">작성일</th>
-								<th class="board-cnt">조회</th>
-								<th class="board-like">추천</th>
-								<!-- 								<th class="board-no" width="2%">번호</th> -->
-								<!-- 								<th class="board-info" width="2%">종류</th> -->
-								<!-- 								<th class="board-title"width="50%">제목</th> -->
-								<!-- 								<th class="board-writer" width="10%">작성자</th> -->
-								<!-- 								<th class="board-date" width="2%">작성일</th> -->
-								<!-- 								<th class="board-cnt "width="2%">조회</th> -->
-								<!-- 								<th class="board-like" width="2%">추천</th> -->
+								<th class="board-no" width="5%">번호</th>
+								<th class="board-info" width="5%">종류</th>
+								<th class="board-title" >제목</th>
+								<th class="board-writer" width="10%">작성자</th>
+								<th class="board-date" width="5%">작성일</th>
+								<th class="board-cnt" width="5%">조회</th>
+								<th class="board-like" width="5%">추천</th>								
 							</tr>
 						</thead>
 						<tbody class="board-tbody">
@@ -75,19 +68,15 @@
 
 							<c:forEach var="vo1" items="${boardlist}">
 								<tr id="board-mb">
-									<td class="board-title col-12">
-									<a	href="Content.do?b_seq=${vo1.b_seq}">
-									<div class=col-12 id="board-mb-title">${vo1.b_title}</div>
+									<td class="board-title col-12"><a
+										href="Content.do?b_seq=${vo1.b_seq}">
+											<div class=col-12 id="board-mb-title">${vo1.b_title}</div>
 									</a>
 										<div class=col-12 id="board-mb-info">
-			<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | 
-			<span>조회_${vo1.b_cnt}</span> | 
-			<span>
-			<fmt:formatDate	value="${vo1.b_date}" pattern="MM-dd" /> |  
-			추천_<span id="vss_like">7</span> |
-			<span>댓글_0</span>
-										</div>
-									</td>
+											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
+											| <span> <fmt:formatDate value="${vo1.b_date}"
+													pattern="MM-dd" /> | 추천_<span id="vss_like">7</span> | <span>댓글_0</span>
+										</div></td>
 
 								</tr>
 							</c:forEach>
@@ -122,6 +111,25 @@
 				</div>
 			</div>
 		</div>
+		
 </body>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : submit 유효성 검사
+작성자 : 건영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script type="text/javascript">
+$('#BoardWriteData').submit(function () {
+	var isLogin = "<%=session.getAttribute("uv")%>";
+	if (isLogin == "null") {
+		alertify.error("먼저 로그인 해주세요.");
+		return false;
+	}
+});
+	
+</script>
+
+
+
 
 </html>
