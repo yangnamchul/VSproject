@@ -217,3 +217,5 @@ where b_content is like(
     )
 
 SELECT count(*) FROM REPLY WHERE B_SEQ = 1 ;
+
+SELECT u_name FROM users;		
