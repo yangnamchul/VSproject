@@ -24,7 +24,12 @@
 	<div id="content-area">
 		<div class="container" id="main">
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12" id="contentDiv">
-				<div class="" id="content-title">${vo.b_title }</div>
+				<div class="" id="content-title">${vo.b_title }
+				 
+				 
+				<span class="content_vss" id="vss"> 위치확인용 </span>
+				
+				</div>
 
 				<!-- 				모바일 화면에서 바꿀것 @media-->
 				<div class="" id="content-info">
@@ -42,7 +47,7 @@
 
 
 <!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
-				<div class="col-12" id="content-vs">
+				<div class="col-12" id="content-vs" >
 					<div class="col-5" id="vs-left">${vo.b_left }</div>
 					<div class="col-2" id="vs-vs">
 						<img src="resources/css/test/versus.png" alt="" />
@@ -152,10 +157,14 @@
 				height : 100,
 				minHeight : 100,
 				maxHeight : 100,				
-				airmode : true,
+				airmode : false,
+				toolbar : false,
+				disableDragAndDrop: true,
+				shortcuts: false,				 
+				
 				placeholder : ' 댓글 쓰기.. ',
-				lang : 'ko-KR',
-				toolbar : false
+				lang : 'ko-KR'
+				
 			});
 		});
 		

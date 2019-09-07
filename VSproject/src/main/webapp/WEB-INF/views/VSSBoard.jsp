@@ -19,10 +19,11 @@
 		<div class="container" id="main">
 			<div class="row" id="boardDiv">
 				<!-- 	글목록 보기 -->
+				
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					[${vssOne}] 부스러기 (전체 글 : ${count } })</div>
+					<a id="vss" href="VSSBoard.do?vss_seq=${vss_seq}">${vssOne}</a>(전체 글 : <strong>${count}</strong> )</div>
 
 				<div class="col-xl-10" id="board-menu">해당 부스러기 관련 링크 (정렬, 인기글,
 					공지 같은거 연결하기)</div>

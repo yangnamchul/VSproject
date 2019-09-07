@@ -193,6 +193,8 @@ SELECT * FROM vote;
 SELECT * FROM VSS;
 SELECT * FROM reply ; 
 
+SELECT * FROM vote where b_seq=63;
+SELECT * FROM Board where b_seq=41;
 
 create sequence board_sequence1;
 create sequence user_sequence1;
@@ -202,7 +204,7 @@ create sequence VSS_sequence1;
 
 insert into board
 values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
-
+1
 SELECT VSS_sequence1.NEXTVAL
 FROM DUAL;
 

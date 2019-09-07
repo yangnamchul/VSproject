@@ -26,7 +26,7 @@
 							<li><a href="">메인</a></li>
 							<li><a href="MyPage.do">마이페이지</a></li>
 							<li><a href="makeVSS.do">부스러기 만들기</a></li>
-							<li><a href="VSSBoard.do?VSS_seq=1">부스러기 보기</a></li>
+							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li>
 							<li><a href="ip.do">ip</a></li>
 						</ul>
 					</h3>

@@ -29,7 +29,7 @@
 							글쓰기
 						</div>
 						<!-- 										세션보고 비회원일때만 나오게  시작-->
-						<div class="col-12 col-sm-6 col-lg-6 col-xl-6" id="write-nickpw">
+						<div class="col-12 col-sm-6 col-lg-6 col-xl-6" id="write-nickpw" style="display: none;">
 							<input type="text" name="" id="p_id" maxlength="10"
 								placeholder="작성자" /> <input type="password" name="" id="p_pw"
 								maxlength="20" placeholder="암호" />
@@ -116,7 +116,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' 내용을 입력하세요. ',
 											toolbar : [['font',['bold','underline','clear' ] ],[ 'fontname',[ 'fontname' ] ],
@@ -175,7 +175,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' <span id="vss">전자(Left)</span> <br> 내용을 입력하시거나 해당 아이콘을 선택하세요.',
 											toolbar : [
@@ -198,7 +198,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' <span id="vss">후자(Right)</span> <br> 내용을 입력하시거나 해당 아이콘을 선택하세요.',
 											toolbar : [
