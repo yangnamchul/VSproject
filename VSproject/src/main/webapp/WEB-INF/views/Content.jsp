@@ -24,37 +24,39 @@
 	<div id="content-area">
 		<div class="container" id="main">
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12" id="contentDiv">
-				<div class="" id="content-title">${vo.b_title }
-				 
-				 
-				<span class="content_vss" id="vss"> 위치확인용 </span>
-				
-				</div>
+				<div class="" id="content-title">${vo.b_title }</div>
 
 				<!-- 				모바일 화면에서 바꿀것 @media-->
-				<div class="" id="content-info">
+				<div class="col-12" id="content-info">
 					<%-- 					<td>${vo.b_seq }보드시퀀스</td> --%>
 					<%-- 					<td>${vo.u_id }유저아이디</td> --%>
 					<%-- 					<td>${vo.b_date }보드작성일</td> --%>
 					<ul>
 						<li>번호_${vo.b_seq}</li>
-						<li>별명_${u_id}</li>
-						<li>날짜_<fmt:formatDate value="${vo.b_date}" pattern="MM-dd" />
+						<li>별명_<span id="vss_u_id">${u_id }</span></li>
+						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /></span>
 						<li>조회_${vo.b_cnt}</li>
-						<li>추천_{}</li>
+						<li>추천_<span id="vss_like">7</span>			</li>
 					</ul>
-				</div>
+				</div>				
+				
+				<div class=col-12 id="content-info-mb">		
+					<span id="vss_u_id">${u_id }</span> |   
+					<span>조회_${vo.b_cnt }</span> |					 
+					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /> </span> | 
+					추천_<span id="vss_like">7</span>			
+				</div>				
+				<div col-2></div>
 
-
-<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
-				<div class="col-12" id="content-vs" >
+				<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
+				<div class="col-12" id="content-vs" style="display: none">
 					<div class="col-5" id="vs-left">${vo.b_left }</div>
 					<div class="col-2" id="vs-vs">
 						<img src="resources/css/test/versus.png" alt="" />
 					</div>
 					<div class="col-5" id="vs-right">${vo.b_right }</div>
 				</div>
-				<div class="col-12" id="content-vote">
+				<div class="col-12" id="content-vote" style="display: none">
 					<div id="vote-title">
 						<div style="clear: both">
 							<ul>
@@ -80,7 +82,8 @@
 
 					</div>
 				</div>
-				
+
+
 				<div id="content-content">${vo.b_content}</div>
 
 
@@ -89,7 +92,9 @@
 
 			<div class="row">
 				<div class="col-12" id="replyDiv">
-					<div class=replyTitle>전체 댓글  <span id="reply-cnt">${ReplyCnt}</span>개</div>
+					<div class=replyTitle>
+						전체 댓글 <span id="reply-cnt">${ReplyCnt}</span>개
+					</div>
 
 
 					<ul class="replyUlist">
@@ -100,14 +105,17 @@
 									<div class="reply-info">
 										<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
-												value="${vo.re_date}" pattern="MM.dd HH:mm" /></span> 
-									    <span class="reply-vss"> <span id="vss">부스럭</span>
-									    
-<!-- 									    이 댓글이 내가쓴글이면  hidden  or inline-->
-									    <span id="reply_hidden" style="display: hidden;">
-									    <button type="button" id="reply_del"  > <span> 삭제 </span></button>
-									    <button type="button" id="reply_edit" onclick="edit()" data-toggle="button" > <span>수정</span> </button>
-									    </span>  
+												value="${vo.re_date}" pattern="MM.dd HH:mm" /></span> <span
+											class="reply-vss"> <span id="vss">부스럭</span> <!-- 									    이 댓글이 내가쓴글이면  hidden  or inline-->
+											<span id="reply_hidden" style="display: hidden;">
+												<button type="button" id="reply_del">
+													<span> 삭제 </span>
+												</button>
+												<button type="button" id="reply_edit" onclick="edit()"
+													data-toggle="button">
+													<span>수정</span>
+												</button>
+										</span>
 										</span>
 
 									</div>
@@ -156,21 +164,32 @@
 			$('#r_reply').summernote({
 				height : 100,
 				minHeight : 100,
-				maxHeight : 100,				
+				maxHeight : 100,
 				airmode : false,
 				toolbar : false,
-				disableDragAndDrop: true,
-				shortcuts: false,				 
-				
+				disableDragAndDrop : true,
+				shortcuts : false,
+
 				placeholder : ' 댓글 쓰기.. ',
 				lang : 'ko-KR'
-				
+
 			});
 		});
-		
+
 		var edit = function() {
-			  $('#reply_content_1').summernote({focus: true});
-			};
+			$('#reply_content_1').summernote({
+				height : 100,
+				minHeight : 100,
+				maxHeight : 100,				
+				focus : true,
+				airmode : false,
+				toolbar : false,
+				disableDragAndDrop : true,
+				shortcuts : false,
+				lang : 'ko-KR'
+
+			});
+		};
 
 		function reply() {
 			if ($("#r_reply").val() == "") {
@@ -178,20 +197,19 @@
 				return;
 			}
 			;
-			$
-					.ajax({
-						type : 'GET',
-						url : 'Reply.do?b_seq=${vo.b_seq}',
-						async : false,
-						data : $("#replyform").serialize(),
-						dataType : 'json',//동기 비동기 설정
-						error : function() {
-							alert("통신실패!!!!");
-						},
-						success : function(data) {						
-							location.reload();
-						}
-					});
+			$.ajax({
+				type : 'GET',
+				url : 'Reply.do?b_seq=${vo.b_seq}',
+				async : false,
+				data : $("#replyform").serialize(),
+				dataType : 'json',//동기 비동기 설정
+				error : function() {
+					alert("통신실패!!!!");
+				},
+				success : function(data) {
+					location.reload();
+				}
+			});
 
 		}
 	</script>
@@ -203,31 +221,31 @@
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
 		function vsVote(button_id) {
-				var vdata = {
-					"button_id" : button_id
-				//전자를 선택할경우 voteleft가 옴
-				};
-				jQuery.ajax({
-					type : "POST",
-					url : "Vote.do?b_seq=${vo.b_seq}",
-					data : vdata,
-					async : false,
-					success : function(data) {
-						if (data == "a") {
-							alertify.alert("투표 실패");
-						} else if (data == "c") {
-							alertify.alert("이미 투표하셨습니다.");
-						} else {
-							location.reload();
+			var vdata = {
+				"button_id" : button_id
+			//전자를 선택할경우 voteleft가 옴
+			};
+			jQuery
+					.ajax({
+						type : "POST",
+						url : "Vote.do?b_seq=${vo.b_seq}",
+						data : vdata,
+						async : false,
+						success : function(data) {
+							if (data == "a") {
+								alertify.alert("투표 실패");
+							} else if (data == "c") {
+								alertify.alert("이미 투표하셨습니다.");
+							} else {
+								location.reload();
+							}
+						},
+						error : function(req, status, error) {
+							alertify.alert(req.status + "\nmessege"
+									+ req.responseTest);
 						}
-					},
-					error : function(req, status, error) {
-						alertify.alert(req.status + "\nmessege"
-								+ req.responseTest);
-					}
-				});
-			}
-		
+					});
+		}
 	</script>
 
 </body>

@@ -44,7 +44,7 @@
 								<button type="button" id="btn_vschk">VS!</button>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
-								<input type="text" name="b_title" id="b_title" maxlength="40"
+								<input type="text" name="b_title" id="b_title" maxlength="35"
 									placeholder="제목" />
 
 							</div>
