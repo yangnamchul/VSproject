@@ -37,7 +37,12 @@ try {
 	<div id="content-area">
 		<div class="container" id="main">
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12" id="contentDiv">
-				<div class="" id="content-title">${vo.b_title }</div>
+				<div class="" id="content-title">
+					${vo.b_title }
+					<div>
+						<a href="VSSBoard.do?vss_seq=${vo.vss_seq}"><span id="vss" style="float: right">${vo.vssName } </span></a>
+					</div>
+				</div>
 
 				<!-- 				모바일 화면에서 바꿀것 @media-->
 				<div class="col-12" id="content-info">
