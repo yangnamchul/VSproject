@@ -25,11 +25,12 @@
 					<div class="frame">
 						<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="write-info">
 							<!-- 						최상위 부스러기일시 부모 표시 -->
-							<a href=""><span id="vss" style="float: right"> 무엇 </span></a>
-							글쓰기
+							<a href="VSSBoard.do?vss_seq=${vss_seq }"><span id="vss"
+								style="float: right">${vssName} </span></a> 글쓰기
 						</div>
 						<!-- 										세션보고 비회원일때만 나오게  시작-->
-						<div class="col-12 col-sm-6 col-lg-6 col-xl-6" id="write-nickpw" style="display: none;">
+						<div class="col-12 col-sm-6 col-lg-6 col-xl-6" id="write-nickpw"
+							style="display: none;">
 							<input type="text" name="" id="p_id" maxlength="10"
 								placeholder="작성자" /> <input type="password" name="" id="p_pw"
 								maxlength="20" placeholder="암호" />
@@ -41,7 +42,7 @@
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
 								<!-- 										vs 유무 -->
-								<button type="button" id="btn_vschk">VS!</button>
+								<button type="button" id="btn_vschk" onclick="vsCheck()">VS!</button>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
 								<input type="text" name="b_title" id="b_title" maxlength="35"
@@ -54,18 +55,19 @@
 								<div id="write-vs" style="display: none;">
 
 									<textarea name="vsleft" id="vsleft"></textarea>
-									
-									<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
-				
+
+									<img src="resources/css/test/versus.png" alt=""
+										id="write-img-vs" />
+
 									<textarea name="vsright" id="vsright"></textarea>
 
 								</div>
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
-								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
-								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
+								<input type="hidden" value="${vss_seq }" name="vss_seq" /> <input
+									type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
 							</div>
-							
+
 							<div id="write-submit">
 								<input type="submit" value="등록하기" id="write-btn-submit">
 							</div>
@@ -101,16 +103,17 @@
 			.ready(
 					function() {
 						$.ajax({
-							  url: 'getAllVSS.do',
-							  async: false ,
-							  dataType : 'json'
-							}).then(function(data) {
-								window.vss = Object.keys(data);
-								window.vss_seq = data; 
+							url : 'getAllVSS.do',
+							async : false,
+							dataType : 'json'
+						}).then(function(data) {
+							window.vss = Object.keys(data);
+							window.vss_seq = data;
 						});
-						
+
 						/* 텍스트 에디터 설정 */
-						$('#b_content').summernote(
+						$('#b_content')
+								.summernote(
 										{
 											height : 300,
 											minHeight : null,
@@ -119,10 +122,29 @@
 											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' 내용을 입력하세요. ',
-											toolbar : [['font',['bold','underline','clear' ] ],[ 'fontname',[ 'fontname' ] ],
-												[ 'fontsize',[ 'fontsize' ] ],[ 'color', [ 'color' ] ],[ 'para', [ 'paragraph' ] ],
-												['insert',[ 'link','picture','video' ] ],
-													['view',[ 'fullscreen','codeview','help' ] ], ],
+											toolbar : [
+													[
+															'font',
+															[
+																	'bold',
+																	'underline',
+																	'clear' ] ],
+													[ 'fontname',
+															[ 'fontname' ] ],
+													[ 'fontsize',
+															[ 'fontsize' ] ],
+													[ 'color', [ 'color' ] ],
+													[ 'para', [ 'paragraph' ] ],
+													[
+															'insert',
+															[ 'link',
+																	'picture',
+																	'video' ] ],
+													[
+															'view',
+															[ 'fullscreen',
+																	'codeview',
+																	'help' ] ], ],
 											fontNames : [ 'DungGeunMo',
 													'Arial', 'Arial Black',
 													'Comic Sans MS',
@@ -134,39 +156,59 @@
 													sendfile(file[0], this);
 												}
 											},
-											hint: {
-											    match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)$/,
-											    search: function (keyword, callback) {
-											      callback($.grep(vss, function (item) {
-											        return item.indexOf(keyword)  === 0;
-											      }));
-											    },
-											    template: function (item) {
-											    	var seq = vss_seq[item];
-											     	return item;
-											    },
-											    content: function (item) {
-											    	var seq = vss_seq[item];
-											    	if (seq) {
-											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
-											    	}
-											    	return '';
-											    }
-											  }
+											hint : {
+												match : /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)$/,
+												search : function(keyword,
+														callback) {
+													callback($
+															.grep(
+																	vss,
+																	function(
+																			item) {
+																		return item
+																				.indexOf(keyword) === 0;
+																	}));
+												},
+												template : function(item) {
+													var seq = vss_seq[item];
+													return item;
+												},
+												content : function(item) {
+													var seq = vss_seq[item];
+													if (seq) {
+														$('.note-editable')
+																.append(
+																		'<a id="vss" href="VSSBoard.do?vss_seq='
+																				+ seq
+																				+ '">'
+																				+ item
+																				+ '</a>');
+														$('.note-editable')
+																.append(
+																		'<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
+													}
+													return '';
+												}
+											}
 										});
 
-						$('#vsCheck').change(function() {
-							if ($('#vsCheck').is(':checked')) {
-								$('#write-vs').css('display', 'inline-flex');
-								$("#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable").focus();
-								// 								$('#write-msg').css('display', 'block');
-							} else {
-								$('#write-vs').css('display', 'none');
-								// 								$('#write-msg').css('display', 'none');
+						$('#vsCheck')
+								.change(
+										function() {
+											if ($('#vsCheck').is(':checked')) {
+												$('#write-vs').css('display',
+														'inline-flex');
+												$(
+														"#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable")
+														.focus();
+												// 								$('#write-msg').css('display', 'block');
+											} else {
+												$('#write-vs').css('display',
+														'none');
+												// 								$('#write-msg').css('display', 'none');
 
-							}
-						})
+											}
+										})
 
 						$('#vsleft')
 								.summernote(
@@ -184,9 +226,10 @@
 															[ 'picture',
 																	'video' ] ], ],
 											callbacks : {
-													onImageUpload : function(file,editor, welEditable) {
+												onImageUpload : function(file,
+														editor, welEditable) {
 													sendfile(file[0], this);
-													
+
 												}
 											}
 										});
@@ -217,4 +260,31 @@
 
 					});
 </script>
+
+<script type="text/javascript">
+	$('#vsCheck')
+			.change(
+					function() {
+						if ($('#vsCheck').is(':checked')) {
+							$('#write-vs').css('display', 'inline-flex');
+							$(
+									"#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable")
+									.focus();
+							//                         $('#write-msg').css('display', 'block');
+						} else {
+							$('#write-vs').css('display', 'none');
+							//                         $('#write-msg').css('display', 'none');
+
+						}
+					});
+
+	$('#btn_vschk').click(function() {
+		$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
+		$('#vsCheck').trigger('change');
+	});
+</script>
+
+
+
+
 </html>

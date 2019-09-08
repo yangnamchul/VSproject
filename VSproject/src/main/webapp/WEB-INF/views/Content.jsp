@@ -84,12 +84,15 @@
 				</div>
 
 
-				<div id="content-content">${vo.b_content}</div>
-
+				<div class="col-12" id="content-content">${vo.b_content}</div>
+				
+				<div class="offset-4 col-4 offset-xl-5 col-xl-2" id="content-like"> 
+				 <button type="button" id="btn_like"> 추천 </button>
+				 <button type="button" id="btn_dislike"> 비추 </button>
+				</div>
 
 			</div>
-			<!-- 			댓글입력창 (임시) -->
-
+			<!-- 			댓글입력창 -->
 			<div class="row">
 				<div class="col-12" id="replyDiv">
 					<div class=replyTitle>
@@ -123,22 +126,7 @@
 								</div>
 							</li>
 
-						</c:forEach>
-
-						<!-- 						<li id="" class="commnet_li"> -->
-						<!-- 							<div class="reply-grid"> -->
-						<!-- 								<div class="reply-info"> -->
-						<!-- 									<span class="reply-writer"> <span id="vss_u_id">작성자2222</span></span> -->
-						<!-- 									<span class="reply-date">19.08.20 21:52</span> <span -->
-						<!-- 										class="reply-vss"> <span id="vss">부스러기</span> -->
-						<!-- 									</span> -->
-
-						<!-- 								</div> -->
-						<!-- 								<div>댓글내용 아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 -->
-						<!-- 									아무말아무말 아무말아무말 아무말?</div> -->
-						<!-- 							</div> -->
-						<!-- 						</li> -->
-
+						</c:forEach>					
 
 					</ul>
 					<div id="reply-form">

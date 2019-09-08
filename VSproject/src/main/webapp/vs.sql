@@ -218,4 +218,5 @@ where b_content is like(
 
 SELECT count(*) FROM REPLY WHERE B_SEQ = 1 ;
 
-SELECT u_name FROM users;		
+select b_seq, vss_name from board b left outer join vss v on b.vss_seq = v.vss_seq ;
+
