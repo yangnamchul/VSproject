@@ -57,8 +57,9 @@
 								<tr id="board-pc">
 									<td class="board-no">${vo1.b_seq}</td>
 									<td class="board-info">VS</td>
-									<td class="board-title"><a
-										href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
+									<td class="board-title">
+									<div id="vss">${vo1.vssName }</div>
+									<a	href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
 									<td class="board-writer"><a href="#"><span
 											id="vss_u_id">${vo1.u_id}</span> </a></td>
 

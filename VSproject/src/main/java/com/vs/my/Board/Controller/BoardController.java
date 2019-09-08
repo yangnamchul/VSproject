@@ -68,6 +68,7 @@ public class BoardController {
 		int listcount=bs.BoardListCount();
 		
 		for (int i = 0; i < boardlist.size(); i++) {
+//			추천 수
 			LikeVO lv = new LikeVO();
 			LikeVO lv1 = new LikeVO();
 			lv.setB_seq(boardlist.get(i).getB_seq());
@@ -75,12 +76,19 @@ public class BoardController {
 			like_cnt = ls.LikeCnt(lv);
 			lv1.setL_like(like_cnt);
 			boardlist.get(i).setLv(lv1);
-			
+//			댓글 수
 			ReplyVO rv = new ReplyVO();
 			rv.setB_seq(boardlist.get(i).getB_seq());
 			int reply_cnt = 0;
 			reply_cnt = rs.ReplyCnt(rv.getB_seq());
 			boardlist.get(i).setReplyCnt(reply_cnt);
+			
+//			부스러기 보이기
+			String vssName = null;
+			VSSVO vssvo = new VSSVO();
+			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
+			vssName = vssvo.getVSS_name();
+			boardlist.get(i).setVssName(vssName);
 		}
 		
 		mv.addObject("ListCount", listcount);
@@ -305,6 +313,7 @@ public class BoardController {
 			
 			bvlist.add(bv1);
 			
+//			추천 수
 			LikeVO lv = new LikeVO();
 			LikeVO lv1 = new LikeVO();
 			lv.setB_seq(bvlist.get(i).getB_seq());
@@ -312,13 +321,18 @@ public class BoardController {
 			like_cnt = ls.LikeCnt(lv);
 			lv1.setL_like(like_cnt);
 			bvlist.get(i).setLv(lv1);
-			
+//			댓글 수
 			ReplyVO rv = new ReplyVO();
 			rv.setB_seq(bvlist.get(i).getB_seq());
 			int reply_cnt = 0;
 			reply_cnt = rs.ReplyCnt(rv.getB_seq());
 			bvlist.get(i).setReplyCnt(reply_cnt);
-			
+//			부스러기 보이기
+			String vssName = null;
+			VSSVO vssvo = new VSSVO();
+			vssvo = vss.getOneVSS(bvlist.get(i).getVss_seq());
+			vssName = vssvo.getVSS_name();
+			bvlist.get(i).setVssName(vssName);
 		}
 		
 		

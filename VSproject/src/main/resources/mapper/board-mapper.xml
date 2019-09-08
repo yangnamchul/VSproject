@@ -4,7 +4,7 @@
 
 
      <select id="BoardAllData" resultType="board">
-		SELECT b_seq, b_title,b_date,b_cnt, u_id
+		SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
 		FROM board
 		ORDER BY b_seq DESC
 	</select>
@@ -29,11 +29,11 @@
 	<select id="BoardAllDataPage" resultType="board">
 		<!-- SELECT b_seq, b_title,b_date,b_cnt
 		FROM board -->
-   select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id
+   select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id, X.vss_seq
    from 
-   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id
+   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id, A.vss_seq
    from 
-   (select b_seq, b_title,b_date,b_cnt,u_id
+   (select b_seq, b_title,b_date,b_cnt,u_id, vss_seq
    from board
    order by b_seq DESC) 
    A  where rownum <![CDATA[ < ]]> = #{page}*5)

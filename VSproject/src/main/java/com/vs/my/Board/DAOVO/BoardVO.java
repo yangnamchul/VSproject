@@ -19,7 +19,16 @@ public class BoardVO {
 	private String b_right;
 	private LikeVO lv;
 	private int replyCnt;
+	private String vssName;
 	
+	public String getVssName() {
+		return vssName;
+	}
+
+	public void setVssName(String vssName) {
+		this.vssName = vssName;
+	}
+
 	public int getReplyCnt() {
 		return replyCnt;
 	}
