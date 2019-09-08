@@ -171,6 +171,14 @@ public class BoardController {
 		int UnlikeCnt = ls.UnLikeCnt(lv);
 		mv.addObject("UnlikeCnt",UnlikeCnt);
 		
+//		부스러기 이름
+		String vssName = null;
+		VSSVO vssvo = new VSSVO();
+		vssvo = vss.getOneVSS(bv2.getVss_seq());
+		vssName = vssvo.getVSS_name();
+		bv2.setVssName(vssName);
+		
+		
 		mv.addObject("ReplyCnt",replylist.size()) ;	
 		mv.addObject("ReplyList",replylist);
 		mv.addObject("data", data);

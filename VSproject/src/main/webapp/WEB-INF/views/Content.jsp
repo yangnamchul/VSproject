@@ -1,3 +1,4 @@
+<%@page import="com.vs.my.User.DAOVO.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,6 +9,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="Header.jsp"%>
+
+<%
+request.setCharacterEncoding("UTF-8");
+response.setCharacterEncoding("UTF-8");
+UserVO uv = new UserVO();
+uv = (UserVO) session.getAttribute("uv");
+String u_id =null;
+try {
+	u_id = uv.getU_id();
+} catch (Exception e) {
+	u_id = "";
+}
+%>
+
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css"
 	rel="stylesheet">
@@ -24,7 +39,15 @@
 	<div id="content-area">
 		<div class="container" id="main">
 			<div class="row col-12 col-sm-12 col-lg-12 col-xl-12" id="contentDiv">
-				<div class="" id="content-title">${vo.b_title }</div>
+				<div class="" id="content-title">
+				${vo.b_title }				
+				<div id="content-vss" style="display: inline">
+						<a href="VSSBoard.do?vss_seq=${vo.vss_seq}">
+						<span id="vss" style="float: right">${vo.vssName } </span></a>
+					</div>
+				</div>
+				
+				
 
 				<!-- 				모바일 화면에서 바꿀것 @media-->
 				<div class="col-12" id="content-info">
@@ -51,7 +74,7 @@
 							pattern="MM-dd" /> </span> | 추천_<span id="vss_like">${LikeCnt}</span> |
 					비추_<span id="vss_dislike">${UnlikeCnt}</span>
 				</div>
-				<div col-2></div>
+			
 
 				<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
 				<div class="col-12" id="content-vs" style="display: inline-flex;">
@@ -109,7 +132,7 @@
 
 
 				<div class="col-12" id="content-del">
-					<button type="button" id="btn_del" onclick="delCon()">글삭제</button>
+					<button type="button" id="btn_del" onclick="delCon()" style="display:none">글삭제</button>
 				</div>
 				
 			</div>
@@ -367,7 +390,28 @@ $("#right-bar").text(vRight+" %");
 // }
 });
 	</script>
+	
+	<script>
+	$(document).ready(function() {
+		var u_id = '<%=u_id%>';
+		if (u_id ==${u_id}) {
+			$('#delbtn').css('display','block');
+		} else {
+			$('#delbtn').css('display','none');
+		}
+	});
+</script>
 
+<script>
+	$(document).ready(function() {
+		var u_id = '<%=u_id%>';
+		if (u_id ==${u_id}) {
+			$('#btn_del').css('display','block');
+		} else {
+			$('#btn_del').css('display','none');
+		}
+	});
+</script>
 
 </body>
 
