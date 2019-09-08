@@ -34,21 +34,23 @@
 					<ul>
 						<li>번호_${vo.b_seq}</li>
 						<li>별명_<span id="vss_u_id">${u_id }</span></li>
-						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm" /></span>
+						<li>날짜_<span id="vss_date"><fmt:formatDate
+									value="${vo.b_date}" pattern="MM-dd HH:mm" /></span>
 						<li>조회_${vo.b_cnt}</li>
-						<li>추천_<span id="vss_like">${LikeCnt }</span>			</li>
-						<li>비추_<span id="vss_dislike">${UnlikeCnt }</span>			</li>
-						
+						<li>추천_<span id="vss_like">${LikeCnt }</span>
+						</li>
+						<li>비추_<span id="vss_dislike">${UnlikeCnt }</span>
+						</li>
+
 					</ul>
-				</div>				
-				
-				<div class=col-12 id="content-info-mb">		
-					<span id="vss_u_id">${u_id }</span> |   
-					<span>조회_${vo.b_cnt }</span> |					 
-					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /> </span> | 
-					추천_<span id="vss_like">${LikeCnt}</span> | 
-					비추_<span id="vss_dislike">${UnlikeCnt}</span>			
-				</div>				
+				</div>
+
+				<div class=col-12 id="content-info-mb">
+					<span id="vss_u_id">${u_id }</span> | <span>조회_${vo.b_cnt }</span>
+					| <span id="vss_date"><fmt:formatDate value="${vo.b_date}"
+							pattern="MM-dd" /> </span> | 추천_<span id="vss_like">${LikeCnt}</span> |
+					비추_<span id="vss_dislike">${UnlikeCnt}</span>
+				</div>
 				<div col-2></div>
 
 				<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
@@ -61,18 +63,18 @@
 				</div>
 				<div class="col-12" id="content-vote" style="display: inline;">
 					<div id="vote-title">
-<!-- 						<div style="clear: both"> -->
-<!-- 							<ul> -->
-<!-- 								<li style="float: left;">갤럭시</li> -->
-<!-- 								<li style="float: right;">아이폰</li> -->
-<!-- 							</ul> -->
-<!-- 						</div> -->
+						<!-- 						<div style="clear: both"> -->
+						<!-- 							<ul> -->
+						<!-- 								<li style="float: left;">갤럭시</li> -->
+						<!-- 								<li style="float: right;">아이폰</li> -->
+						<!-- 							</ul> -->
+						<!-- 						</div> -->
 						<div style="clear: both">
 							<ul>
 								<li style="float: left;"><button type="button" id="vsLeft"
-										onclick="vsVote(this.id)">전자</button></li>
+										onclick="vsVote(this.id)">전</button></li>
 								<li style="float: right;"><button type="button"
-										id="vsRight" onclick="vsVote(this.id)">후자</button></li>
+										id="vsRight" onclick="vsVote(this.id)">후</button></li>
 							</ul>
 						</div>
 						<div style="clear: both" id="vs-count">
@@ -82,40 +84,36 @@
 							</ul>
 							<!-- 	한개 bar에 style width % 직접 값을 가져오는거 같음 -->
 						</div>
-						
-<div class="vs-bar" style="height: 30px;">   
-	<div id="left-bar" class="progress-bar " role="progressbar" style="width: 52.6%;">52.6%</div> 
-	<div id="right-bar" class="progress-bar " role="progressbar" style="width: 47.4%;">47.4%</div>
-</div>
+
+						<div class="vs-bar" style="height: 30px;">
+							<div id="left-bar" class="progress-bar" role="progressbar"></div>
+							<div id="right-bar" class="progress-bar" role="progressbar"></div>
+						</div>
 
 					</div>
 				</div>
 
 
 				<div class="col-12" id="content-content">${vo.b_content}</div>
-							
-				
-				
-				<div class="offset-4 col-4 offset-lg-5 offset-sm-5 col-sm-2 col-lg-2 offset-xl-5 col-xl-2" id="content-like"> 
-				 <button type="button" id="btn_like" onclick="like(this.id)"> 추천 </button>
-				 <button type="button" id="btn_dislike" onclick="like(this.id)"> 비추 </button>
+
+
+
+				<div
+					class="offset-4 col-4 offset-lg-5 offset-sm-5 col-sm-2 col-lg-2 offset-xl-5 col-xl-2"
+					id="content-like">
+					<button type="button" id="btn_like" onclick="like(this.id)">
+						추천</button>
+					<button type="button" id="btn_dislike" onclick="like(this.id)">
+						비추</button>
 				</div>
-				
-			
+
+
 				<div class="col-12" id="content-del">
 					<button type="button" id="btn_del" onclick="delCon()">글삭제</button>
 				</div>
 				
-<!-- 				동언 -->
-			<%-- 	<div>
-					<button type="button"  id="like" onclick="like(this.id)">추천 ${LikeCnt }</button>
-					
-					<button type="button"  id="unlike" onclick="like(this.id)">비추천 ${UnlikeCnt }</button>
-				</div> --%>
-<!-- 				ㅇㅇ -->
-
 			</div>
-			<!-- 			댓글입력창 (임시) -->
+		
 
 			<div class="row">
 				<div class="col-12" id="replyDiv">
@@ -133,8 +131,7 @@
 										<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
 												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> <span
-											class="reply-vss"> <span id="vss">부스럭</span> 
-											<!--이 댓글이 내가쓴글이면  hidden  or inline-->
+											class="reply-vss"> <span id="vss">부스럭</span> <!--이 댓글이 내가쓴글이면  hidden  or inline-->
 											<span id="reply_hidden" style="display: none;">
 												<button type="button" id="reply_del">
 													<span> 삭제 </span>
@@ -153,19 +150,6 @@
 
 						</c:forEach>
 
-						<!-- 						<li id="" class="commnet_li"> -->
-						<!-- 							<div class="reply-grid"> -->
-						<!-- 								<div class="reply-info"> -->
-						<!-- 									<span class="reply-writer"> <span id="vss_u_id">작성자2222</span></span> -->
-						<!-- 									<span class="reply-date">19.08.20 21:52</span> <span -->
-						<!-- 										class="reply-vss"> <span id="vss">부스러기</span> -->
-						<!-- 									</span> -->
-
-						<!-- 								</div> -->
-						<!-- 								<div>댓글내용 아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 아무말아무말 -->
-						<!-- 									아무말아무말 아무말아무말 아무말?</div> -->
-						<!-- 							</div> -->
-						<!-- 						</li> -->
 
 
 					</ul>
@@ -217,7 +201,7 @@
 					});
 		}
 	</script>
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 추천 하기
 작성자 : 동언
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
@@ -249,8 +233,8 @@
 						});
 		}
 	</script>
-	
-		<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 댓글 작성
 작성자 : 남철
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
@@ -308,12 +292,12 @@
 
 		}
 	</script>
-	
+
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 글 삭제 하기
 작성자 : 동언
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-<script>
+	<script>
 		function delCon() {
 			jQuery
 			.ajax({
@@ -334,18 +318,53 @@
 			});
 		}
 	</script>
-	
-	
-		<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 글 삭제 하기
-작성자 : 동언
+
+
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : VS 그래프
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-<script>
+	<script>
 $( document ).ready(function() {
+	var left = ${LeftCnt} ;
+	var right = ${RightCnt} ;
 var tot =  ${LeftCnt} + ${RightCnt} ;
-var vLeft = ${LeftCnt} / tot
-var vRight = ${RightCnt} / tot
-alertify.error(tot);
+var vLeft = (left/tot)*100 ;
+var vRight = (right/tot)*100 ;
+
+if(vLeft==0) {
+$("#left-bar").css("width",vLeft+"%");
+$("#left-bar").text('');
+$("#right-bar").css("width",vRight+"%");
+$("#right-bar").text(vRight+" %");
+}
+else if(vRight==0) {
+$("#left-bar").css("width",vLeft+"%");
+$("#left-bar").text(vLeft+" %");
+$("#right-bar").css("width",vRight+"%");
+$("#right-bar").text('');
+}
+else {
+$("#left-bar").css("width",vLeft+"%");
+$("#left-bar").text(vLeft+" %");
+$("#right-bar").css("width",vRight+"%");
+$("#right-bar").text(vRight+" %");
+}
+
+
+// if(vLeft != null){	
+// 	$("#left-bar").css("width",vLeft+"%");
+// 	$("#left-bar").text(vLeft+"%");
+// }else{
+// 	$("#left-bar").css("width","0%");
+// 	$("#left-bar").text("0%");  
+// }
+// if(vRight != null){	
+// 	$("#right-bar").css("width",vRight+"%");
+// 	$("#right-bar").text(vRight+"%");
+// }else{
+// 	$("#right-bar").css("width","0%");
+// 	$("#right-bar").text("0%");  
+// }
 });
 	</script>
 

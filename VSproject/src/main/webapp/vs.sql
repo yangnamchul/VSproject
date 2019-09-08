@@ -201,6 +201,7 @@ SELECT * FROM VSS;
 SELECT * FROM reply;
 SELECT * FROM like1;
 
+insert into vote values(VOTE_sequence1.NEXTVAL,  105, 123, 1, sysdate, null) ;
 
 create sequence board_sequence1;
 create sequence user_sequence1;
