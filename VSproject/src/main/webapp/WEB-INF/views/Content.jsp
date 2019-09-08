@@ -391,27 +391,25 @@ $("#right-bar").text(vRight+" %");
 });
 	</script>
 	
-	<script>
+<script>
 	$(document).ready(function() {
-		var u_id = '<%=u_id%>';
-		if (u_id ==${u_id}) {
-			$('#delbtn').css('display','block');
+		var u_id = '<%=u_id%>' ;
+		if (u_id ==${ u_id }) {
+			$('#btn_del').css('display','block');
+		} else
+			$('#btn_del').css('display','none');
+		
+		var data = ${data};
+		if (data != 0) {
+			$('#content-vs').css('display','inline-flex');
+			$('#content-vote').css('display','inline');
 		} else {
-			$('#delbtn').css('display','none');
+			$('#content-vs').css('display','none');
+			$('#content-vote').css('display','none');
 		}
 	});
 </script>
 
-<script>
-	$(document).ready(function() {
-		var u_id = '<%=u_id%>';
-		if (u_id ==${u_id}) {
-			$('#btn_del').css('display','block');
-		} else {
-			$('#btn_del').css('display','none');
-		}
-	});
-</script>
 
 </body>
 
