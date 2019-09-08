@@ -8,7 +8,7 @@
 	
 	<select id="UserInsertData"> <!-- resultType="user" user객체로 쿼리 실행 결과값을 받고자 할 때 -->
 	insert into users
-	values(user_sequence1.NEXTVAL, #{u_id},#{u_pw},#{u_name},#{u_email},sysdate)
+	values(user_sequence1.NEXTVAL, #{u_id},#{u_pw},#{u_name},#{u_email},sysdate,null,null)
 	</select>
 	
 	<select id="LoginAction"  resultType="user" >

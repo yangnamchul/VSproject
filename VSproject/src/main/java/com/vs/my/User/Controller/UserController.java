@@ -247,18 +247,17 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="UserInsertData.do", method=RequestMethod.GET) //유저정보 입력하기
-	public ModelAndView UserInsertData(UserVO vo,HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("UserAllData");
-
-		us.UserInsertData(vo);
+	@RequestMapping(value="UserInsertData.do", method=RequestMethod.POST) //유저정보 입력하기
+	@ResponseBody
+	public int UserInsertData(UserVO vo,HttpServletRequest req) {
+		try {
+			us.UserInsertData(vo);
+			return 1;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 		
-		List<UserVO> userlist = us.UserAllData();
-		
-		mv.addObject("userlist", userlist);
-		
-		return mv;
 	}
 
 }

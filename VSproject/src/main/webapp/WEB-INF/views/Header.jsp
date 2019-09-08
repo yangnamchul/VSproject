@@ -220,10 +220,10 @@ $( document ).ready(function() {
                   dataType : "json",
                   success : function(data) {
                      if (data == 0) {                      
-                        alertify.error('로그인 실패했습니다. 다시 로그인 해주시기 바랍니다');
-                        $("#u_id").val("");
-                        $("#u_pw").val("");
-                     } else {
+                        alertify.error('아이디 비밀번호를 확인해주세요.');
+//                         $("#u_id").val("");
+//                         $("#u_pw").val("");
+                     } else {                    	
                     	alertify.success('로그인 성공');
                         location.reload() ;
                      }
@@ -235,25 +235,30 @@ $( document ).ready(function() {
                });         
       }
       
-      function logout() {
-         jQuery.ajax({
-            type : "POST",
-            url : "LogOut.do",
-            async : false,
-            success : function(data) {
-               if (data == 0) {
-            	   alertify.error("로그아웃 실패");
-               } else {
-            	   alertify.success('로그아웃 성공');
-                  location.reload() ;
-               }
-            },
-            error : function(req, status, error) {
-               alertify.alert(req.status + "\nmessege"
-                     + req.responseTest);
-            }
-         });   
-      }
+      function logout() {      	  
+    	  if (confirm('로그아웃 하시겠습니까?')) {
+    		  alertify.success("로그아웃 완료");
+    		  jQuery.ajax({
+    	            type : "POST",
+    	            url : "LogOut.do",
+    	            async : false,
+    	            success : function(data) {
+    	               if (data == 0) {
+    	            	   alertify.error("로그아웃 실패");
+    	               } else {
+    	            	   alertify.success('로그아웃 성공');
+    	                  location.reload() ;
+    	               }
+    	            },
+    	            error : function(req, status, error) {
+    	               alertify.alert(req.status + "\nmessege"
+    	                     + req.responseTest);
+    	            }
+    	         });  
+    		} else {
+    			alertify.error("로그아웃 취소");
+    		}
+    	  }
    </script>
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■

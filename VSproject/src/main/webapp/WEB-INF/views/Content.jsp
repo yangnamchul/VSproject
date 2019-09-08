@@ -36,7 +36,9 @@
 						<li>별명_<span id="vss_u_id">${u_id }</span></li>
 						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm" /></span>
 						<li>조회_${vo.b_cnt}</li>
-						<li>추천_<span id="vss_like"> ${LikeCnt }</span>			</li>
+						<li>추천_<span id="vss_like">${LikeCnt }</span>			</li>
+						<li>비추_<span id="vss_dislike">${UnlikeCnt }</span>			</li>
+						
 					</ul>
 				</div>				
 				
@@ -44,7 +46,8 @@
 					<span id="vss_u_id">${u_id }</span> |   
 					<span>조회_${vo.b_cnt }</span> |					 
 					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /> </span> | 
-					추천_<span id="vss_like">${LikeCnt}</span>			
+					추천_<span id="vss_like">${LikeCnt}</span> | 
+					비추_<span id="vss_dislike">${UnlikeCnt}</span>			
 				</div>				
 				<div col-2></div>
 
@@ -95,6 +98,7 @@
 				<div>
 					<button type="button"  onclick="delCon()">삭제</button>
 				</div>
+				
 <!-- 				동언 -->
 			<%-- 	<div>
 					<button type="button"  id="like" onclick="like(this.id)">추천 ${LikeCnt }</button>
@@ -122,8 +126,9 @@
 										<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
 												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> <span
-											class="reply-vss"> <span id="vss">부스럭</span> <!-- 									    이 댓글이 내가쓴글이면  hidden  or inline-->
-											<span id="reply_hidden" style="display: hidden;">
+											class="reply-vss"> <span id="vss">부스럭</span> 
+											<!--이 댓글이 내가쓴글이면  hidden  or inline-->
+											<span id="reply_hidden" style="display: none;">
 												<button type="button" id="reply_del">
 													<span> 삭제 </span>
 												</button>
@@ -170,65 +175,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 댓글 작성
-작성자 : 남철
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-	<script>
-		$(document).ready(function() {
-			$('#r_reply').summernote({
-				height : 100,
-				minHeight : 100,
-				maxHeight : 100,
-				airmode : false,
-				toolbar : false,
-				disableDragAndDrop : true,
-				shortcuts : false,
-
-				placeholder : ' 댓글 쓰기.. ',
-				lang : 'ko-KR'
-
-			});
-		});
-
-		var edit = function() {
-			$('#reply_content_1').summernote({
-				height : 100,
-				minHeight : 100,
-				maxHeight : 100,				
-				focus : true,
-				airmode : false,
-				toolbar : false,
-				disableDragAndDrop : true,
-				shortcuts : false,
-				lang : 'ko-KR'
-
-			});
-		};
-
-		function reply() {
-			if ($("#r_reply").val() == "") {
-				alertify.error("내용을 입력해주세요");
-				return;
-			}
-			;
-			$.ajax({
-				type : 'GET',
-				url : 'Reply.do?b_seq=${vo.b_seq}',
-				async : false,
-				data : $("#replyform").serialize(),
-				dataType : 'json',//동기 비동기 설정
-				error : function() {
-					alertify.error('먼저 로그인 하세요.');
-				},
-				success : function(data) {
-					location.reload();
-				}
-			});
-
-		}
-	</script>
 
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -297,7 +243,71 @@
 		}
 	</script>
 	
+		<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 댓글 작성
+작성자 : 남철
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
+		$(document).ready(function() {
+			$('#r_reply').summernote({
+				height : 100,
+				minHeight : 100,
+				maxHeight : 100,
+				airmode : false,
+				toolbar : false,
+				disableDragAndDrop : true,
+				shortcuts : false,
+
+				placeholder : ' 댓글 쓰기.. ',
+				lang : 'ko-KR'
+
+			});
+		});
+
+		var edit = function() {
+			$('#reply_content_1').summernote({
+				height : 100,
+				minHeight : 100,
+				maxHeight : 100,				
+				focus : true,
+				airmode : false,
+				toolbar : false,
+				disableDragAndDrop : true,
+				shortcuts : false,
+				lang : 'ko-KR'
+
+			});
+		};
+
+		function reply() {
+			if ($("#r_reply").val() == "") {
+				alertify.error("내용을 입력해주세요");
+				return;
+			}
+			;
+			$.ajax({
+				type : 'GET',
+				url : 'Reply.do?b_seq=${vo.b_seq}',
+				async : false,
+				data : $("#replyform").serialize(),
+				dataType : 'json',//동기 비동기 설정
+				error : function() {
+					alertify.error('먼저 로그인 하세요.');
+				},
+				success : function(data) {
+					location.reload();
+				}
+			});
+
+		}
+	</script>
+	
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 글 삭제 하기
+작성자 : 동언
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+
+<script>
 		function delCon() {
 			jQuery
 			.ajax({
