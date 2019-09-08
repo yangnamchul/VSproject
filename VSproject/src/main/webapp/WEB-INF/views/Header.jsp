@@ -221,8 +221,8 @@ $( document ).ready(function() {
                   success : function(data) {
                      if (data == 0) {                      
                         alertify.error('아이디 비밀번호를 확인해주세요.');
-                        $("#u_id").val("");
-                        $("#u_pw").val("");
+//                         $("#u_id").val("");
+//                         $("#u_pw").val("");
                      } else {                    	
                     	alertify.success('로그인 성공');
                         location.reload() ;

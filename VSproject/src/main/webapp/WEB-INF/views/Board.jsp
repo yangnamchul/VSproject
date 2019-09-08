@@ -22,7 +22,7 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					전체글 보기 ((총 b_seq)개)</div>
+					전체글 보기 (전체 글 : <strong>${ListCount}</strong> )</div>
 
 
 				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
@@ -41,8 +41,9 @@
 						<thead class="board-thead">
 							<tr>
 								<th class="board-no" width="5%">번호</th>
-								<th class="board-info" width="5%">종류</th>
+<!-- 								<th class="board-info" width="5%">종류</th> -->
 								<th class="board-title" >제목</th>
+								<th class="board-re" width="5%">댓글</th> 
 								<th class="board-writer" width="10%">작성자</th>
 								<th class="board-date" width="5%">작성일</th>
 								<th class="board-cnt" width="5%">조회</th>
@@ -53,16 +54,19 @@
 							<c:forEach var="vo1" items="${boardlist}">
 								<tr id="board-pc">
 									<td class="board-no">${vo1.b_seq}</td>
-									<td class="board-info">VS</td>
-									<td class="board-title"><a
-										href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
+<!-- 									<td class="board-info"></td> -->
+									<td class="board-title">
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a
+										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
+									<td class="board-re">${vo1.replyCnt }</td>	
 									<td class="board-writer"><a href="#"><span
-											id="vss_u_id">${vo1.u_id}</span> </a></td>
+											id="vss_u_id">${vo1.u_id}</span> </a></td>								
 
 									<td class="board-date"><fmt:formatDate
 											value="${vo1.b_date}" pattern="MM-dd" /></td>
 									<td class="board-cnt">${vo1.b_cnt}</td>
-									<td class="board-like" id="vss_like">7</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
 								</tr>
 							</c:forEach>
 
@@ -70,12 +74,12 @@
 								<tr id="board-mb">
 									<td class="board-title col-12">
 										<a href="Content.do?b_seq=${vo1.b_seq}">
-											<div class=col-12 id="board-mb-title">${vo1.b_title}</div>
+											<div class=col-12 id="board-mb-title"><span id=vss>${vo1.vssName }</span> ${vo1.b_title}</div>
 										</a>
 										<div class=col-12 id="board-mb-info">
 											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
 											| <span> <fmt:formatDate value="${vo1.b_date}"
-													pattern="MM-dd" /> | 추천_<span id="vss_like">7</span> | <span>댓글_0</span>
+													pattern="MM-dd" /> | 추천_<span id="vss_like">${vo1.lv.l_like }</span> | <span>댓글_${vo1.replyCnt }</span>
 										</div></td>
 
 								</tr>
@@ -126,15 +130,6 @@ $('#BoardWriteData').submit(function () {
 		return false;
 	}
 });
-</script>
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 글 하나보기 post
-작성자 : 동언
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-<script>
-	function gePost() {
-		
-	}
 </script>
 
 

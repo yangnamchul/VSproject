@@ -41,30 +41,34 @@
 					<table class="table table-striped table-bordered table-hover"
 						id="board-table">
 						<thead class="board-thead">
-							<tr>
+													<tr>
 								<th class="board-no" width="5%">번호</th>
-								<th class="board-info" width="5%">종류</th>
+<!-- 								<th class="board-info" width="5%">종류</th> -->
 								<th class="board-title" >제목</th>
+								<th class="board-re" width="5%">댓글</th> 
 								<th class="board-writer" width="10%">작성자</th>
 								<th class="board-date" width="5%">작성일</th>
 								<th class="board-cnt" width="5%">조회</th>
-								<th class="board-like" width="5%">추천</th>	
+								<th class="board-like" width="5%">추천</th>								
 							</tr>
 						</thead>
 						<tbody class="board-tbody">
 							<c:forEach var="vo1" items="${bvlist}">
 								<tr id="board-pc">
 									<td class="board-no">${vo1.b_seq}</td>
-									<td class="board-info">VS</td>
-									<td class="board-title"><a
+<!-- 									<td class="board-info"></td> -->
+									<td class="board-title">
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a
 										href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
+									<td class="board-re">${vo1.replyCnt }</td>	
 									<td class="board-writer"><a href="#"><span
-											id="vss_u_id">${vo1.u_id}</span> </a></td>
+											id="vss_u_id">${vo1.u_id}</span> </a></td>								
 
 									<td class="board-date"><fmt:formatDate
 											value="${vo1.b_date}" pattern="MM-dd" /></td>
 									<td class="board-cnt">${vo1.b_cnt}</td>
-									<td class="board-like" id="vss_like">7</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
 								</tr>
 							</c:forEach>
 

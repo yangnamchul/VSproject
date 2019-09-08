@@ -15,9 +15,6 @@
             </selectKey> 
 	</insert>
 	
-	
-	
-	
 	<select id="ReplyOneData" resultType="Reply">
 		SELECT *
 		FROM Reply
@@ -28,6 +25,12 @@
 		SELECT *
 		FROM Reply
 		WHERE u_id = #{u_id}
+	</select>
+	
+	<select id="ReplyCnt" resultType="Integer">
+		SELECT count(*)
+		FROM Reply
+		WHERE b_seq = #{b_seq}
 	</select>
 
 	
