@@ -52,21 +52,21 @@
 				<div col-2></div>
 
 				<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
-				<div class="col-12" id="content-vs" style="display: none">
+				<div class="col-12" id="content-vs" style="display: inline-flex;">
 					<div class="col-5" id="vs-left">${vo.b_left }</div>
 					<div class="col-2" id="vs-vs">
 						<img src="resources/css/test/versus.png" alt="" />
 					</div>
 					<div class="col-5" id="vs-right">${vo.b_right }</div>
 				</div>
-				<div class="col-12" id="content-vote" style="display: none">
+				<div class="col-12" id="content-vote" style="display: inline;">
 					<div id="vote-title">
-						<div style="clear: both">
-							<ul>
-								<li style="float: left;">갤럭시</li>
-								<li style="float: right;">아이폰</li>
-							</ul>
-						</div>
+<!-- 						<div style="clear: both"> -->
+<!-- 							<ul> -->
+<!-- 								<li style="float: left;">갤럭시</li> -->
+<!-- 								<li style="float: right;">아이폰</li> -->
+<!-- 							</ul> -->
+<!-- 						</div> -->
 						<div style="clear: both">
 							<ul>
 								<li style="float: left;"><button type="button" id="vsLeft"
@@ -75,28 +75,35 @@
 										id="vsRight" onclick="vsVote(this.id)">후자</button></li>
 							</ul>
 						</div>
-						<div style="clear: both">
+						<div style="clear: both" id="vs-count">
 							<ul>
-								<li style="float: left;">${LeftCnt }</li>
-								<li style="float: right;">${RightCnt }</li>
+								<li id="cnt_left" style="float: left;">${LeftCnt }</li>
+								<li id="cnt_right" style="float: right;">${RightCnt }</li>
 							</ul>
 							<!-- 	한개 bar에 style width % 직접 값을 가져오는거 같음 -->
 						</div>
+						
+<div class="vs-bar" style="height: 30px;">   
+	<div id="left-bar" class="progress-bar " role="progressbar" style="width: 52.6%;">52.6%</div> 
+	<div id="right-bar" class="progress-bar " role="progressbar" style="width: 47.4%;">47.4%</div>
+</div>
 
 					</div>
 				</div>
 
 
 				<div class="col-12" id="content-content">${vo.b_content}</div>
+							
 				
 				
-				<div class="offset-4 col-4 offset-xl-5 col-xl-2" id="content-like"> 
+				<div class="offset-4 col-4 offset-lg-5 offset-sm-5 col-sm-2 col-lg-2 offset-xl-5 col-xl-2" id="content-like"> 
 				 <button type="button" id="btn_like" onclick="like(this.id)"> 추천 </button>
 				 <button type="button" id="btn_dislike" onclick="like(this.id)"> 비추 </button>
 				</div>
 				
-				<div>
-					<button type="button"  onclick="delCon()">삭제</button>
+			
+				<div class="col-12" id="content-del">
+					<button type="button" id="btn_del" onclick="delCon()">글삭제</button>
 				</div>
 				
 <!-- 				동언 -->
@@ -306,7 +313,6 @@
 내 용 : 글 삭제 하기
 작성자 : 동언
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-
 <script>
 		function delCon() {
 			jQuery
@@ -328,6 +334,21 @@
 			});
 		}
 	</script>
+	
+	
+		<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 글 삭제 하기
+작성자 : 동언
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script>
+$( document ).ready(function() {
+var tot =  ${LeftCnt} + ${RightCnt} ;
+var vLeft = ${LeftCnt} / tot
+var vRight = ${RightCnt} / tot
+alertify.error(tot);
+});
+	</script>
+
 
 </body>
 
