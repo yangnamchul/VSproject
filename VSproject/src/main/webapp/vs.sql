@@ -201,6 +201,7 @@ SELECT * FROM VSS;
 SELECT * FROM reply;
 SELECT * FROM like1;
 
+insert into vote values(VOTE_sequence1.NEXTVAL,  105, 123, 1, sysdate, null) ;
 
 create sequence board_sequence1;
 create sequence user_sequence1;
@@ -211,7 +212,8 @@ create sequence VSS_sequence1;
 insert into board
 values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
 
-select b_seq, vss_name from board b left outer join vss v on b.vss_seq = v.vss_seq ;
 
-select b.b_seq, l.L_like from board b left outer join like1 l on b.b_seq = l.b_seq ;
-select b_seq, vss_name from board b left outer join vss v on b.vss_seq = v.vss_seq ;
+SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
+		FROM board
+		WHERE NOT b_boolean IN ('1')
+ 		ORDER BY b_seq DESC ;

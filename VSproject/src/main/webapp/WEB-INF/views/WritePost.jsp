@@ -139,7 +139,10 @@
 											    template: function (item) {
 											    	var name1 = vss1[item];
 											    	var content1 = vss2[item];
-											     	return item + ":" + content1;
+// 											     	return item + " : " + content1;
+											     	return "<span id=vss>" + item + "</span>" + ": " + content1;
+											     
+											     	
 											    },
 											    content: function (item) {
 											    	var seq = vss1[item];

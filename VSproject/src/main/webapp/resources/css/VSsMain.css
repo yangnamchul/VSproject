@@ -58,6 +58,15 @@
 	font-size: 1rem;
 }
 
+#vss_title {
+	text-align: left;
+	color: white;
+	font-size: 1.3em;
+	margin: 0.25rem 0.25rem;
+	padding: 0.2rem;
+	text-shadow: 1px 1px 2px #ff4d00;
+}
+
 #vss>#a {
 	color: #BBB;
 	margin-right: 10px;
@@ -122,9 +131,10 @@ header .right-row {
 }
 
 header .right-col {
-	display: table-cell;
+	text-align: center; display : table-cell;
 	cursor: pointer;
 	padding: 2px 5px;
+	display: table-cell;
 }
 
 header #btn-search:active, #btn-login:active, #btn-logout:active {
@@ -626,7 +636,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : Content.jsp > 글 보기 
+내 용 : Content.jsp > 컨텐츠 글 보기 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #contentDiv {
 	background-color: #000084;
@@ -675,6 +685,45 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	height: 100% !important;
 }
 
+#vs-count {
+	
+}
+
+#cnt_left {
+	color: red;
+	font-size: 2rem;
+	text-shadow: 1px 1px 2px black;
+}
+
+#cnt_right {
+	color: #007bff;
+	font-size: 2rem;
+	text-shadow: 1px 1px 2px black;
+}
+
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+/* 내 용 : vs그래프  시작  */
+.vs-bar {
+	
+}
+
+#left-bar {
+	float: left;
+	background-color: red;
+	font-size: 1.25rem;
+	line-height: 30px;
+	box-shadow: 1px 1px 0 2px #bbb, inset 1px 1px 0 2px #bbb;
+}
+
+#right-bar {
+	float: left;
+	background-color: #007bff;;
+	font-size: 1.25rem;
+	line-height: 30px;
+	box-shadow: 1px 1px 0 2px #bbb, inset 1px 1px 0 2px #bbb;
+}
+
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #content-info>ul {
 	list-style: none;
 	padding: 0;
@@ -736,7 +785,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 #content-like {
-	margin: 1rem auto;
+	margin: 0.5rem auto;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	background-color: #BBBBBB;
@@ -759,6 +808,20 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	text-shadow: 1px 1px 1px #000;
 	font-size: 1rem;
 }
+
+#content-del {
+	padding: 0.1rem 0.1rem;
+	text-align: center;
+}
+
+#btn_del {
+	background-color: red;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1rem;
+	text-align: center;
+}
+
 /* pc > 글보기 제목 >  */
 @media ( min-width :768px) {
 	#contentDiv>#content-title {
@@ -1052,28 +1115,62 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 .note-hint-popover {
 	padding-top: 0.5em !important;
-	padding-bottom: 0.5em !important;	
+	padding-bottom: 0.5em !important;
 	box-shadow: 2px 2px 0 black !important;
 	background: #bbb !important;
 }
 
 .note-hint-item active {
 	background-color: #fff;
-	box-shadow: 1px 1px 1px black;	
+	box-shadow: 1px 1px 1px black;
 }
 
-.note-hint-popover .popover-content .note-hint-group .note-hint-item.active, .note-hint-popover .popover-content .note-hint-group .note-hint-item:hover {
-	
+.note-hint-popover .popover-content .note-hint-group .note-hint-item.active,
+	.note-hint-popover .popover-content .note-hint-group .note-hint-item:hover
+	{
 	clear: both;
-    font-weight: 400;
-    line-height: 1.4;  
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;    
-    background-color: #fff;
-	box-shadow: 1px 1px 1px black;	
-    outline: 0;
+	font-weight: 400;
+	line-height: 1.4;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	background-color: #fff;
+	box-shadow: 1px 1px 1px black;
+	outline: 0;
+	box-shadow: 1px 1px 1px black;
+}
 
-	}
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 부스러기 만들기 vss Make  
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.modal-vss>li {
+	width: 230px;
+	list-style: none;
+	margin: 1px;
+	color: #fff;
+	font-size: 1.25rem;
+	padding-left: 0.75rem;
+}
 
-	
+.modal-vss>li>input[type=text] {
+	width: 16rem;
+	padding: 0px 3px;
+	margin: 1px;
+	color: #000;
+	background: #bbbbbb;
+	font-size: 1rem;
+}
+
+#VSS_content {
+	background: #bbbbbb;
+	width: 16rem;
+	height: 8rem;
+	font-size: 1rem;
+}
+
+#pop_vss_btn, #pop_vssinfo_btn {
+	color: #fff;
+	background-color: #ff4d00;
+	margin-bottom: 5px;
+	font-size: 1.1rem;
+}

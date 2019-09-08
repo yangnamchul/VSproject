@@ -198,7 +198,7 @@ $( document ).ready( function() {
             $('.progress-bar_item-2').addClass('active').css('background-color','yellow');
             $('.progress-bar_item-3').removeClass('active').css('background-color','white');
             changeText(pbText, '좀 더 길게 해주세요');
-            pw1 = 0;
+            pw1 = 1;
           } else if (len > 8){
              $('.progress-bar_item').each(function() {
                 $('.progress-bar_item-3').addClass('active').css('background-color','green');
@@ -241,19 +241,19 @@ $( document ).ready( function() {
 <script>
 	function SignUp() {
 		if (login1 == 0) {
-			alert("아이디 똑바로해라");
+			alertify.error("아이디  중복검사를 해주세요.");			
 			return;
 		}
 		if (nick1 == 0 ) {
-			alert("닉 똑바로해라");
+			alertify.error("별명  중복검사를 해주세요.");
 			return;
 		}
 		if (pw1 == 0 ) {
-			alert("비번 똑디해라");
+			alertify.error("비밀번호를 더 안전하게 해주세요.");
 			return;
 		}
 		if (pw1 == 1) {
-			alert("비번 맞춰라")
+			alertify.error("비밀번호를 확인해주세요.");
 			return;
 		}
 		
@@ -265,7 +265,7 @@ $( document ).ready( function() {
 			dataType : "json",
 			success : function(data) {
 				if (data == 0) {
-					alertify.alert("회원가입 실패!");
+					alertify.error("회원가입 실패!");
 				} else {
 					location.href = "Main";
 				}
