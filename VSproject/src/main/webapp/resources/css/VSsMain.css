@@ -47,8 +47,14 @@
 }
 
 #vss_like {
-	color: #ffffff;
-	text-shadow: 1px 1px 2px #f0ff00, -1px -1px 2px #b9af0c;
+	color: #00ff97;
+	text-shadow: 1px 1px 2px #000000, -1px -1px 2px #212529;
+	font-size: 1rem;
+}
+
+#vss_dislike {
+	color: red;
+	text-shadow: 1px 1px 2px #000000, -1px -1px 2px #000000;
 	font-size: 1rem;
 }
 
@@ -677,7 +683,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 #content-info>ul>li {
 	float: left;
-	width: 20%;
+	width: 16.666667%;
 	text-align: center;
 	font-size: 1.1rem;
 	padding-bottom: 0.1rem;
@@ -1040,4 +1046,34 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 		font-size: 1.25rem;
 	}
 }
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 부스러기 쓰기 Vss  
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.note-hint-popover {
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;	
+	box-shadow: 2px 2px 0 black !important;
+	background: #bbb !important;
 }
+
+.note-hint-item active {
+	background-color: #fff;
+	box-shadow: 1px 1px 1px black;	
+}
+
+.note-hint-popover .popover-content .note-hint-group .note-hint-item.active, .note-hint-popover .popover-content .note-hint-group .note-hint-item:hover {
+	
+	clear: both;
+    font-weight: 400;
+    line-height: 1.4;  
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;    
+    background-color: #fff;
+	box-shadow: 1px 1px 1px black;	
+    outline: 0;
+
+	}
+
+	

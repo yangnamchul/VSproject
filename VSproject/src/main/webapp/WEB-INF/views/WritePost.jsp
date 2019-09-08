@@ -140,9 +140,14 @@
 											    },
 											    content: function (item) {
 											    	var seq = vss_seq[item];
-											    	if (seq) {
-											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
+											    	if (seq) {											    		
+											    		  $('.note-editable').append($('<a />', {
+											    		        id: 'vss',
+											    		        href: 'VssBoard.do?vss_seq=?' + seq ,
+											    		        text: item
+											    		    }));									    													    		
+// 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+// 											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
 											    	return '';
 											    }
