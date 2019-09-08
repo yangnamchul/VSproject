@@ -143,11 +143,10 @@
 											    },
 											    content: function (item) {
 											    	var seq = vss1[item];
-											    	alert(seq);
 											    	if (seq) {
 											    		  $('.note-editable').append($('<a />', {
 											    		        id: 'vss',
-											    		        href: 'VssBoard.do?vss_seq=?' + seq ,
+											    		        href: 'VSSBoard.do?vss_seq=' + seq ,
 											    		        text: item
 											    		    }));									    													    		
 // 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
