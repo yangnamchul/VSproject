@@ -169,3 +169,60 @@ COMMENT ON COLUMN Vote.V_like IS '1 : 전자
 
 
 
+
+
+
+insert into USERS
+values(1,'admin','admin','admin','admin',sysdate,null,null);
+
+insert into USERS
+values(2,'123','456','asd','asd',sysdate,null,null);
+
+SELECT u_id, u_pw
+FROM USERS 
+WHERE u_id='admin' and u_pw='admin' ;
+
+insert into VSS
+values(0,'없음',null);
+insert into VSS
+values(1,'테크','최신 기술');
+insert into VSS
+values(2,'스포츠','운동');
+insert into VSS
+values(3,'인물','사람들');
+
+insert into BOARD
+values(1,'123',1,'hello','hello11',1,sysdate,0,null,null,null);
+
+insert into reply
+values(1,1,'123','댓글입니다12333',sysdate,null,null);
+
+select *
+from users;
+SELECT * FROM tabs;
+SELECT * FROM Board;
+SELECT * FROM vote;
+SELECT * FROM VSS;
+SELECT * FROM reply;
+SELECT * FROM like1;
+
+
+create sequence board_sequence1;
+create sequence user_sequence1;
+create sequence Reply_sequence1;
+create sequence Vote_sequence1;
+create sequence VSS_sequence1;
+
+insert into board
+values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
+
+SELECT Reply_sequence1.NEXTVAL
+FROM DUAL;
+
+insert into like1
+values(1,null,2,TO_DATE(sysdate,'YYYY.MM.DD HH:MI:SS'),'123');
+
+SELECT b_seq,TO_CHAR(l_date,'YYYY.MM.DD HH:MI:SS')
+FROM like1;
+
+

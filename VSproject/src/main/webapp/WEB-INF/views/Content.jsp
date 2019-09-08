@@ -34,7 +34,7 @@
 					<ul>
 						<li>번호_${vo.b_seq}</li>
 						<li>별명_<span id="vss_u_id">${u_id }</span></li>
-						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /></span>
+						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm"  /></span>
 						<li>조회_${vo.b_cnt}</li>
 						<li>추천_<span id="vss_like">7</span>			</li>
 					</ul>
@@ -43,7 +43,7 @@
 				<div class=col-12 id="content-info-mb">		
 					<span id="vss_u_id">${u_id }</span> |   
 					<span>조회_${vo.b_cnt }</span> |					 
-					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /> </span> | 
+					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm" /> </span> | 
 					추천_<span id="vss_like">7</span>			
 				</div>				
 				<div col-2></div>

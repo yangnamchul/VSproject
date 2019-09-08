@@ -22,7 +22,7 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					전체글 보기 ((총 b_seq)개)</div>
+					전체글 보기 ((총 ${boardCount }개)</div>
 
 
 				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
@@ -126,15 +126,6 @@ $('#BoardWriteData').submit(function () {
 		return false;
 	}
 });
-</script>
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 글 하나보기 post
-작성자 : 동언
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-<script>
-	function gePost() {
-		
-	}
 </script>
 
 

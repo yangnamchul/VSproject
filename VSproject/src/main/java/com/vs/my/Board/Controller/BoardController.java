@@ -69,7 +69,7 @@ public class BoardController {
 		
 		mv.addObject("ListCount", listcount);
 		mv.addObject("boardlist", boardlist);
-		
+		mv.addObject("boardCount",boardlist.size());
 		
 		return mv;
 
