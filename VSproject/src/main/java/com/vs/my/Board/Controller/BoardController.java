@@ -88,10 +88,7 @@ public class BoardController {
 			VSSVO vssvo = new VSSVO();
 			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
-//			건영
-			boardlist.get(i).setVss_seq(vssvo.getVSS_seq());
 			boardlist.get(i).setVssName(vssName);
-			
 		}
 		
 		mv.addObject("ListCount", listcount);
@@ -344,6 +341,20 @@ public class BoardController {
 		mv.addObject("vss_seq",vss_seq);
 		mv.addObject("count", bvlist.size());
 		return mv;
+	}
+	
+	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //검색 결과
+	@ResponseBody
+	public int delCon(HttpServletRequest request) {
+		
+		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
+		
+		try {
+			bs.delCon(b_seq);
+			return 1;
+		} catch(Exception e) {
+			return 0;
+		}
 	}
 	
 }

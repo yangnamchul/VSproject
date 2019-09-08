@@ -6,6 +6,7 @@
      <select id="BoardAllData" resultType="board">
 		SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
 		FROM board
+		WHERE NOT b_boolean IN ('1')
 		ORDER BY b_seq DESC
 	</select>
 	
@@ -35,6 +36,7 @@
    from 
    (select b_seq, b_title,b_date,b_cnt,u_id, vss_seq
    from board
+   where NOT b_boolean IN ('1')
    order by b_seq DESC) 
    A  where rownum <![CDATA[ < ]]> = #{page}*5)
    X  where x.rum <![CDATA[ > ]]> = ((#{page}-1)*5)+1
@@ -43,7 +45,8 @@
 	<select id="BoardListCount" resultType="int">
    		select count (*)
    		from board
-	</select> 
+   		where NOT b_boolean IN ('1')
+	</select>
 	
 	<select id="UserBoard" resultType="board">
 		SELECT *
@@ -56,5 +59,11 @@
 		FROM board
 		WHERE vss_seq = #{VSS_seq}
 	</select>
+	
+	<update id="delCon" >
+		UPDATE board
+		SET b_boolean = 1
+		WHERE b_seq = #{b_seq}
+	</update>
 	
 </mapper>
