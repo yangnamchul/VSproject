@@ -95,6 +95,10 @@
 				 <button type="button" id="btn_dislike" onclick="like(this.id)"> 비추 </button>
 				</div>
 				
+				<div>
+					<button type="button"  onclick="delCon()">삭제</button>
+				</div>
+				
 <!-- 				동언 -->
 			<%-- 	<div>
 					<button type="button"  id="like" onclick="like(this.id)">추천 ${LikeCnt }</button>
@@ -295,6 +299,33 @@
 				}
 			});
 
+		}
+	</script>
+	
+	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 글 삭제 하기
+작성자 : 동언
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+
+<script>
+		function delCon() {
+			jQuery
+			.ajax({
+				type : "POST",
+				url : "delCon.do?b_seq=${vo.b_seq}",
+				async : false,
+				success : function(data) {
+					if (data == 0) {
+						alertify.error("삭제 실패");
+					} else {
+						location.href="Board.do?page=1";
+					}
+				},
+				error : function(req, status, error) {
+					alertify.alert(req.status + "\nmessege"
+							+ req.responseTest);
+				}
+			});
 		}
 	</script>
 
