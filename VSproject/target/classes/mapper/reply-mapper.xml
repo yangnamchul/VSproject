@@ -7,18 +7,15 @@
 		FROM reply where b_seq = #{b_seq}
 	</select> 
 	
-	
 	<insert id="ReplyInsertData" parameterType="Reply">
-
-    
 		insert into reply(re_seq, b_seq, u_id, re_content, re_date, re_parent, re_boolean)
 		values(Reply_sequence1.NEXTVAL, #{b_seq}, #{u_id}, #{re_content}, sysdate, 1, null)	
-		
 			<selectKey resultType="Integer" keyProperty="re_seq" order="AFTER">
             	select MAX(re_seq) from Reply
             </selectKey> 
-    
-	</insert>	
+	</insert>
+	
+	
 	
 	
 	<select id="ReplyOneData" resultType="Reply">

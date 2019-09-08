@@ -33,7 +33,4 @@ public interface UserDAO {
 	public UserVO MyPage(UserVO uv);
 	
 	public UserVO idCheck(UserVO uv);
-	
-	public UserVO nickCheck(UserVO uv);
-	
 }

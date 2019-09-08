@@ -90,12 +90,6 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return dao.idCheck(uv);
 	}
-
-	@Override
-	public UserVO nickCheck(UserVO uv) {
-		// TODO Auto-generated method stub
-		return dao.nickCheck(uv) ;
-	}
 	
 
 /*	@Override

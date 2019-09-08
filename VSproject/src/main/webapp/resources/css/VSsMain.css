@@ -48,8 +48,8 @@
 
 #vss_like {
 	color: #ffffff;
-    text-shadow: 1px 1px 2px #f0ff00, -1px -1px 2px #b9af0c;
-    font-size: 1rem;
+	text-shadow: 1px 1px 2px #f0ff00, -1px -1px 2px #b9af0c;
+	font-size: 1rem;
 }
 
 #vss>#a {
@@ -440,10 +440,22 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	text-shadow: 1px 1px 1px #ff4d00;
 }
 
-/* 가능시 */
+/* 유효성검사 */
+.chk-val {
+	color: rgb(255, 255, 0);
+	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+}
+
+/* 사용가능시 */
 .chk-val-ok {
 	color: rgb(7, 255, 6);
-	text-shadow: rgb(30, 41, 62) 1px 1px 1px;
+	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+}
+
+/* 중복 */
+.chk-val-error {
+	color: rgb(255, 0, 0);
+	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
 }
 
 .progress-bar_wrap {
@@ -717,12 +729,12 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	display: none;
 }
 
-#content-like {	
+#content-like {
 	margin: 1rem auto;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    background-color: #BBBBBB;
-    box-shadow: 2px 2px 0 black, -2px -2px 0 white;    
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 black, -2px -2px 0 white;
 	text-align: center;
 	padding: 0 0.25rem;
 	padding-bottom: 0.25rem;

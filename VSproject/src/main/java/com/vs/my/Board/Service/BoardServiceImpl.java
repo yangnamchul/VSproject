@@ -97,4 +97,10 @@ public class BoardServiceImpl implements BoardService
 		return bdao.VSSBoard(vss_seq);
 	}
 
+	@Override
+	public void BoardCnt(int b_seq) {
+		// TODO Auto-generated method stub
+		bdao.BoardCnt(b_seq);
+	}
+
 }

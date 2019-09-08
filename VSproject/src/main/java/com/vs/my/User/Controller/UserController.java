@@ -119,24 +119,6 @@ public class UserController {
 		return 0;
 	}
 	
-	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별
-	@ResponseBody
-	public int nickCheck(HttpServletRequest request, UserVO uv) {
-		
-		String u_name = request.getParameter("u_name");
-		uv.setU_name(u_name);
-		
-		UserVO uv2 = us.nickCheck(uv);
-		
-		try {
-			uv2.getU_name();
-			System.out.println(uv2.getU_name());
-		} catch (Exception e) {
-			return 1;
-		}
-		return 0;
-	}
-	
 	@RequestMapping(value="Terms.do", method=RequestMethod.GET) //약관 동의
 	public ModelAndView Terms(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();

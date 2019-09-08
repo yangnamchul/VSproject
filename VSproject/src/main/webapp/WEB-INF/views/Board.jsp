@@ -68,10 +68,10 @@
 
 							<c:forEach var="vo1" items="${boardlist}">
 								<tr id="board-mb">
-									<td class="board-title col-12"><a
-										href="Content.do?b_seq=${vo1.b_seq}">
+									<td class="board-title col-12">
+										<a href="Content.do?b_seq=${vo1.b_seq}">
 											<div class=col-12 id="board-mb-title">${vo1.b_title}</div>
-									</a>
+										</a>
 										<div class=col-12 id="board-mb-info">
 											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
 											| <span> <fmt:formatDate value="${vo1.b_date}"
@@ -126,9 +126,16 @@ $('#BoardWriteData').submit(function () {
 		return false;
 	}
 });
-	
 </script>
-
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 글 하나보기 post
+작성자 : 동언
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script>
+	function gePost() {
+		
+	}
+</script>
 
 
 
