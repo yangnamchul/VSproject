@@ -1,6 +1,7 @@
 
 /* Drop Tables */
 
+DROP TABLE Like1 CASCADE CONSTRAINTS;
 DROP TABLE Reply CASCADE CONSTRAINTS;
 DROP TABLE Tag CASCADE CONSTRAINTS;
 DROP TABLE Vote CASCADE CONSTRAINTS;
@@ -27,6 +28,16 @@ CREATE TABLE Board
 	B_left varchar2(4000),
 	B_right varchar2(4000),
 	PRIMARY KEY (B_seq)
+);
+
+
+CREATE TABLE Like1
+(
+	B_seq number NOT NULL,
+	U_id varchar2(4000),
+	L_like number,
+	L_date date,
+	L_ip varchar2(4000)
 );
 
 
@@ -90,6 +101,12 @@ CREATE TABLE VSS
 
 /* Create Foreign Keys */
 
+ALTER TABLE Like1
+	ADD FOREIGN KEY (B_seq)
+	REFERENCES Board (B_seq)
+;
+
+
 ALTER TABLE Reply
 	ADD FOREIGN KEY (B_seq)
 	REFERENCES Board (B_seq)
@@ -109,6 +126,12 @@ ALTER TABLE Vote
 
 
 ALTER TABLE Board
+	ADD FOREIGN KEY (U_id)
+	REFERENCES Users (U_id)
+;
+
+
+ALTER TABLE Like1
 	ADD FOREIGN KEY (U_id)
 	REFERENCES Users (U_id)
 ;
@@ -143,75 +166,6 @@ ALTER TABLE Tag
 
 COMMENT ON COLUMN Vote.V_like IS '1 : 전자
 2 : 후자';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-insert into USERS
-values(1,'admin','admin','admin','admin',sysdate,null,null);
-
-insert into USERS
-values(2,'123','456','asd','asd',sysdate,null,null);
-
-SELECT u_id, u_pw
-FROM USERS 
-WHERE u_id='admin' and u_pw='admin' ;
-
-insert into VSS
-values(0,'없음',null);
-insert into VSS
-values(1,'테크','최신 기술');
-insert into VSS
-values(2,'스포츠','운동');
-insert into VSS
-values(3,'인물','사람들');
-
-insert into BOARD
-values(1,'123',1,'hello','hello11',1,sysdate,0,null,null,null);
-
-insert into reply
-values(1,1,'123','댓글입니다12333',sysdate,null,null);
-
-select *
-from users;
-SELECT * FROM tabs;
-SELECT * FROM Board;
-SELECT * FROM vote;
-SELECT * FROM VSS;
-
-
-create sequence board_sequence1;
-create sequence user_sequence1;
-create sequence Reply_sequence1;
-create sequence Vote_sequence1;
-create sequence VSS_sequence1;
-
-insert into board
-values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
-
-SELECT VSS_sequence1.NEXTVAL
-FROM DUAL;
-
-select * 
-from board 
-where b_content is like(
-    SELECT vss_seq
-    FROM VSS
-    WHERE vss_seq=5;
-    )
 
 
 

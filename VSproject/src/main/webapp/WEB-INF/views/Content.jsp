@@ -85,7 +85,12 @@
 
 
 				<div id="content-content">${vo.b_content}</div>
-
+				
+				<div>
+					<button type="button"  id="like"onclick="like(this.id)">추천 ${LikeCnt }</button>
+					
+					<button type="button"  id="unlike"onclick="like(this.id)">비추천 ${UnlikeCnt }</button>
+				</div>
 
 			</div>
 			<!-- 			댓글입력창 (임시) -->
@@ -245,6 +250,38 @@
 									+ req.responseTest);
 						}
 					});
+		}
+	</script>
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 투표 하기
+작성자 : 동언
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+	<script>
+		function like(button_id) {
+			var vdata = {
+					"button_id" : button_id
+				//전자를 선택할경우 voteleft가 옴
+				};
+				jQuery
+						.ajax({
+							type : "POST",
+							url : "Like.do?b_seq=${vo.b_seq}",
+							data : vdata,
+							async : false,
+							success : function(data) {
+								if (data == 0) {
+									alertify.alert("추천 실패");
+								} else if (data == 1) {
+									alertify.alert("이미 투표하셨습니다.");
+								} else {
+									location.reload();
+								}
+							},
+							error : function(req, status, error) {
+								alertify.alert(req.status + "\nmessege"
+										+ req.responseTest);
+							}
+						});
 		}
 	</script>
 

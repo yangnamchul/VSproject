@@ -19,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Like.DAOVO.LikeVO;
+import com.vs.my.Like.Service.LikeService;
 import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.Tag.DAOVO.TagVO;
@@ -45,6 +47,8 @@ public class BoardController {
 	VSSService vss;
 	@Autowired
 	TagService ts;
+	@Autowired
+	LikeService ls;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -107,8 +111,6 @@ public class BoardController {
 //		content 내용 가져오기
 		bv.setB_seq(b_seq);
 		BoardVO bv2 = bs.Content(bv);
-		System.out.println(bv2.getB_seq());
-		System.out.println(bv2.getB_cnt());
 		
 //		u_id 값 가져오기
 		UserVO uv = new UserVO(); 
@@ -121,8 +123,8 @@ public class BoardController {
 		int data = 0;
 		VoteVO vv = new VoteVO();
 		vv.setB_seq(b_seq);
-		List<VoteVO> lv = vs.allVote(vv);
-		int vcount = lv.size();
+		List<VoteVO> vl = vs.allVote(vv);
+		int vcount = vl.size();
 		if (vcount < 1) { //vs게시물아님
 			data = 0;
 		} else { //vs게시물
@@ -137,7 +139,15 @@ public class BoardController {
 //		댓글
 		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
 		
-
+//		추천
+		LikeVO lv = new LikeVO();
+		lv.setB_seq(b_seq);
+		
+		int LikeCnt = ls.LikeCnt(lv);
+		mv.addObject("LikeCnt",LikeCnt);
+		int UnlikeCnt = ls.UnLikeCnt(lv);
+		mv.addObject("UnlikeCnt",UnlikeCnt);
+		
 		mv.addObject("ReplyCnt",replylist.size()) ;	
 		mv.addObject("ReplyList",replylist);
 		mv.addObject("data", data);
@@ -179,31 +189,29 @@ public class BoardController {
 		
 		List<VSSVO> vsslist = vss.getAllVSS();
 		
-		
-		
-	
-		
+//		vs게시물 체크
 		if (vsCheck != null) {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
+//			게시물 생성
 			bs.BoardInsertData(bv);
 			
+//			게시물에 포함된 부스러기 찾고 tag 생성
 			for (int i = 0; i < vsslist.size(); i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					tv.setVss_seq(vss_seq1);
 					ts.makeTag(tv);
-					System.out.println("들어옴");
 				} catch(Exception e) {
 					
 				}
 			}
-			
+//			투표 생성
 			VoteVO vv = new VoteVO();
 			vv.setU_id(st);
-			
 			vs.FirstVote(vv);
+			
 		} else {
 			vsleft = null;
 			vsright = null;
@@ -217,13 +225,11 @@ public class BoardController {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					tv.setVss_seq(vss_seq1);
 					ts.makeTag(tv);
-					System.out.println("들어옴");
 				} catch(Exception e) {
 					
 				}
 			}
 		}
-		
 		
 		
 		mv.setViewName("Main");
