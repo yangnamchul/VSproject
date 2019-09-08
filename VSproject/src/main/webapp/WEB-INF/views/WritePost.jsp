@@ -25,18 +25,26 @@
 					<div class="frame">
 						<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="write-info">
 							<!-- 						최상위 부스러기일시 부모 표시 -->
-							<a href="VSSBoard.do?vss_seq=${vss_seq }"><span id="vss" style="float: right">${vssName } </span></a>
+							<a href=""><span id="vss" style="float: right"> 무엇 </span></a>
 							글쓰기
 						</div>
+						<!-- 										세션보고 비회원일때만 나오게  시작-->
+						<div class="col-12 col-sm-6 col-lg-6 col-xl-6" id="write-nickpw" style="display: none;">
+							<input type="text" name="" id="p_id" maxlength="10"
+								placeholder="작성자" /> <input type="password" name="" id="p_pw"
+								maxlength="20" placeholder="암호" />
+						</div>
+						<!-- 						비회원 나오게 끝 -->
+
 						<form action="BoardInsertData.do" method="POST">
 							<div id="write-vscheck">
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
 								<!-- 										vs 유무 -->
-								<button type="button" id="btn_vschk" onclick="vsCheck()">VS!</button>
+								<button type="button" id="btn_vschk">VS!</button>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
-								<input type="text" name="b_title" id="b_title" maxlength="40"
+								<input type="text" name="b_title" id="b_title" maxlength="35"
 									placeholder="제목" />
 
 							</div>
@@ -108,13 +116,13 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' 내용을 입력하세요. ',
 											toolbar : [['font',['bold','underline','clear' ] ],[ 'fontname',[ 'fontname' ] ],
 												[ 'fontsize',[ 'fontsize' ] ],[ 'color', [ 'color' ] ],[ 'para', [ 'paragraph' ] ],
 												['insert',[ 'link','picture','video' ] ],
-													['view',[ 'fullscreen','codeview','help' ] ] ],
+													['view',[ 'fullscreen','codeview','help' ] ], ],
 											fontNames : [ 'DungGeunMo',
 													'Arial', 'Arial Black',
 													'Comic Sans MS',
@@ -167,7 +175,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' <span id="vss">전자(Left)</span> <br> 내용을 입력하시거나 해당 아이콘을 선택하세요.',
 											toolbar : [
@@ -190,7 +198,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' <span id="vss">후자(Right)</span> <br> 내용을 입력하시거나 해당 아이콘을 선택하세요.',
 											toolbar : [
@@ -205,15 +213,8 @@
 												}
 											}
 										});
-						
-						$('#btn_vschk').click(function() {
-							$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
-							$('#vsCheck').trigger('change');
-						});
-						// 						$("#write-vs > div:nth-child(2) > div.note-toolbar").prepend("내용을 추가하려면 해당 아이콘을 선택하세요. ▶ ");
+						// 						$("#write-vs > div:nth-child(2) > div.note-toolbar").prepend("내용을 추가하려면 해당 아이콘을 선택하세요. ▶ ") ;
 
 					});
-	
-		
 </script>
 </html>

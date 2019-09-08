@@ -101,10 +101,14 @@ public class BoardController {
 		
 		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
 		
+//		조회수
+		bs.BoardCnt(b_seq);
+		
 //		content 내용 가져오기
 		bv.setB_seq(b_seq);
 		BoardVO bv2 = bs.Content(bv);
-		
+		System.out.println(bv2.getB_seq());
+		System.out.println(bv2.getB_cnt());
 		
 //		u_id 값 가져오기
 		UserVO uv = new UserVO(); 
@@ -133,7 +137,8 @@ public class BoardController {
 //		댓글
 		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
 		
-		
+
+		mv.addObject("ReplyCnt",replylist.size()) ;	
 		mv.addObject("ReplyList",replylist);
 		mv.addObject("data", data);
 		mv.addObject("vo",bv2);

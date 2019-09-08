@@ -19,14 +19,14 @@
 				<div class="col-12 col-sm-12 col-lg-6 col-xl-4">
 					<h3>
 						<ul class="vss-a-menu">
-							<li><a href="Board.do?page=1"> 게시판 </a></li>
+							<li><a href="Board.do?page=1"> 전체게시판 </a></li>
 							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
 							<li><a href="SignUp.do">회원가입</a></li>
 							<li><a href="Login.do">로그인</a></li>
 							<li><a href="">메인</a></li>
 							<li><a href="MyPage.do">마이페이지</a></li>
 							<li><a href="makeVSS.do">부스러기 만들기</a></li>
-							<li><a href="VSSBoard.do?VSS_seq=1">부스러기 보기</a></li>
+							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li>
 							<li><a href="ip.do">ip</a></li>
 						</ul>
 					</h3>
@@ -99,9 +99,10 @@ $(document).ready(function() {
              objRow.removeAttr("style");
           	 objRow.html('<li><a href="VSSBoard.do?vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vss_seq']+
           	'</a><span>▶  </span> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
+          	 
           	$("#board_ul").append(objRow);
-			}
-		}
+          }
+         }
 	});
 	
 });

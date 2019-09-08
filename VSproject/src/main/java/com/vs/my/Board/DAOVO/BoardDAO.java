@@ -18,4 +18,6 @@ public interface BoardDAO {
 	public List<BoardVO> UserBoard(String u_id);
 	
 	public List<BoardVO> VSSBoard(int vss_seq); 
+	
+	public void BoardCnt(int b_seq);
 }
