@@ -67,9 +67,25 @@ public class BoardController {
 		List<BoardVO> boardlist = bs.BoardAllData(paging);
 		int listcount=bs.BoardListCount();
 		
+		for (int i = 0; i < boardlist.size(); i++) {
+			LikeVO lv = new LikeVO();
+			LikeVO lv1 = new LikeVO();
+			lv.setB_seq(boardlist.get(i).getB_seq());
+			int like_cnt = 0;
+			like_cnt = ls.LikeCnt(lv);
+			lv1.setL_like(like_cnt);
+			boardlist.get(i).setLv(lv1);
+			
+			ReplyVO rv = new ReplyVO();
+			rv.setB_seq(boardlist.get(i).getB_seq());
+			int reply_cnt = 0;
+			reply_cnt = rs.ReplyCnt(rv.getB_seq());
+			boardlist.get(i).setReplyCnt(reply_cnt);
+		}
+		
 		mv.addObject("ListCount", listcount);
 		mv.addObject("boardlist", boardlist);
-		mv.addObject("boardCount",boardlist.size());
+		
 		
 		return mv;
 
@@ -117,7 +133,6 @@ public class BoardController {
 		uv.setU_id(bv2.getU_id());
 		UserVO uv2 = us.MyPage(uv);
 		String u_id = uv2.getU_id();
-		
 		
 //		투표값 가져오기
 		int data = 0;
@@ -290,7 +305,22 @@ public class BoardController {
 			
 			bvlist.add(bv1);
 			
+			LikeVO lv = new LikeVO();
+			LikeVO lv1 = new LikeVO();
+			lv.setB_seq(bvlist.get(i).getB_seq());
+			int like_cnt = 0;
+			like_cnt = ls.LikeCnt(lv);
+			lv1.setL_like(like_cnt);
+			bvlist.get(i).setLv(lv1);
+			
+			ReplyVO rv = new ReplyVO();
+			rv.setB_seq(bvlist.get(i).getB_seq());
+			int reply_cnt = 0;
+			reply_cnt = rs.ReplyCnt(rv.getB_seq());
+			bvlist.get(i).setReplyCnt(reply_cnt);
+			
 		}
+		
 		
 		mv.addObject("bvlist", bvlist);
 		mv.addObject("vssOne",vssOne);

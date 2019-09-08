@@ -34,17 +34,17 @@
 					<ul>
 						<li>번호_${vo.b_seq}</li>
 						<li>별명_<span id="vss_u_id">${u_id }</span></li>
-						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm"  /></span>
+						<li>날짜_<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm" /></span>
 						<li>조회_${vo.b_cnt}</li>
-						<li>추천_<span id="vss_like">7</span>			</li>
+						<li>추천_<span id="vss_like"> ${LikeCnt }</span>			</li>
 					</ul>
 				</div>				
 				
 				<div class=col-12 id="content-info-mb">		
 					<span id="vss_u_id">${u_id }</span> |   
 					<span>조회_${vo.b_cnt }</span> |					 
-					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd HH:mm" /> </span> | 
-					추천_<span id="vss_like">7</span>			
+					<span id="vss_date"><fmt:formatDate value="${vo.b_date}" pattern="MM-dd" /> </span> | 
+					추천_<span id="vss_like">${LikeCnt}</span>			
 				</div>				
 				<div col-2></div>
 
@@ -84,13 +84,21 @@
 				</div>
 
 
-				<div id="content-content">${vo.b_content}</div>
+				<div class="col-12" id="content-content">${vo.b_content}</div>
 				
-				<div>
-					<button type="button"  id="like"onclick="like(this.id)">추천 ${LikeCnt }</button>
-					
-					<button type="button"  id="unlike"onclick="like(this.id)">비추천 ${UnlikeCnt }</button>
+				
+				<div class="offset-4 col-4 offset-xl-5 col-xl-2" id="content-like"> 
+				 <button type="button" id="btn_like" onclick="like(this.id)"> 추천 </button>
+				 <button type="button" id="btn_dislike" onclick="like(this.id)"> 비추 </button>
 				</div>
+				
+<!-- 				동언 -->
+			<%-- 	<div>
+					<button type="button"  id="like" onclick="like(this.id)">추천 ${LikeCnt }</button>
+					
+					<button type="button"  id="unlike" onclick="like(this.id)">비추천 ${UnlikeCnt }</button>
+				</div> --%>
+<!-- 				ㅇㅇ -->
 
 			</div>
 			<!-- 			댓글입력창 (임시) -->
@@ -110,7 +118,7 @@
 									<div class="reply-info">
 										<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
-												value="${vo.re_date}" pattern="MM.dd HH:mm" /></span> <span
+												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> <span
 											class="reply-vss"> <span id="vss">부스럭</span> <!-- 									    이 댓글이 내가쓴글이면  hidden  or inline-->
 											<span id="reply_hidden" style="display: hidden;">
 												<button type="button" id="reply_del">
@@ -198,7 +206,7 @@
 
 		function reply() {
 			if ($("#r_reply").val() == "") {
-				alertify.alert("내용을 입력해주세요");
+				alertify.error("내용을 입력해주세요");
 				return;
 			}
 			;
@@ -209,7 +217,7 @@
 				data : $("#replyform").serialize(),
 				dataType : 'json',//동기 비동기 설정
 				error : function() {
-					alert("통신실패!!!!");
+					alertify.error('먼저 로그인 하세요.');
 				},
 				success : function(data) {
 					location.reload();
@@ -238,10 +246,11 @@
 						async : false,
 						success : function(data) {
 							if (data == "a") {
-								alertify.alert("투표 실패");
+								alertify.error("투표 실패");
 							} else if (data == "c") {
-								alertify.alert("이미 투표하셨습니다.");
+								alertify.error("이미 투표하셨습니다.");
 							} else {
+								alertify.success('투표 하셨습니다.');
 								location.reload();
 							}
 						},
@@ -253,14 +262,13 @@
 		}
 	</script>
 <!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : 투표 하기
+내 용 : 추천 하기
 작성자 : 동언
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
 		function like(button_id) {
 			var vdata = {
-					"button_id" : button_id
-				//전자를 선택할경우 voteleft가 옴
+					"button_id" : button_id			
 				};
 				jQuery
 						.ajax({
@@ -270,10 +278,11 @@
 							async : false,
 							success : function(data) {
 								if (data == 0) {
-									alertify.alert("추천 실패");
+									alertify.error("추천 실패");
 								} else if (data == 1) {
-									alertify.alert("이미 투표하셨습니다.");
+									alertify.error("이미 추천하셨습니다.");
 								} else {
+									alertify.success('추천 하셨습니다.');
 									location.reload();
 								}
 							},

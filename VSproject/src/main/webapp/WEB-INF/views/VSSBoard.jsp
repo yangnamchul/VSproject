@@ -49,6 +49,7 @@
 								<th class="board-date" width="5%">작성일</th>
 								<th class="board-cnt" width="5%">조회</th>
 								<th class="board-like" width="5%">추천</th>	
+								<th class="board-like" width="5%">댓글</th>	
 							</tr>
 						</thead>
 						<tbody class="board-tbody">
@@ -64,7 +65,8 @@
 									<td class="board-date"><fmt:formatDate
 											value="${vo1.b_date}" pattern="MM-dd" /></td>
 									<td class="board-cnt">${vo1.b_cnt}</td>
-									<td class="board-like" id="vss_like">7</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
+									<td class="board-like" id="vss_like">${vo1.replyCnt }</td>
 								</tr>
 							</c:forEach>
 

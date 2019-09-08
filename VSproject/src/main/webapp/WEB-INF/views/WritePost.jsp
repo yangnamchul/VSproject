@@ -25,7 +25,7 @@
 					<div class="frame">
 						<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="write-info">
 							<!-- 						최상위 부스러기일시 부모 표시 -->
-							<a href="VSSBoard.do?vss_seq=${vss_seq }"><span id="vss" style="float: right">${vssName } </span></a>
+							<a href="VSSBoard.do?vss_seq=${vss_seq}"><span id="vss" style="float: right">${vssName } </span></a>
 							글쓰기
 						</div>
 
@@ -34,7 +34,7 @@
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
 								<!-- 										vs 유무 -->
-								<button type="button" id="btn_vschk" onclick="vsCheck()">VS!</button>
+								<button type="button" id="btn_vschk">VS!</button>
 							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
 								<input type="text" name="b_title" id="b_title" maxlength="35"
@@ -147,19 +147,7 @@
 											    	return '';
 											    }
 											  }
-										});
-
-						$('#vsCheck').change(function() {
-							if ($('#vsCheck').is(':checked')) {
-								$('#write-vs').css('display', 'inline-flex');
-								$("#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable").focus();
-								// 								$('#write-msg').css('display', 'block');
-							} else {
-								$('#write-vs').css('display', 'none');
-								// 								$('#write-msg').css('display', 'none');
-
-							}
-						})
+										});					
 
 						$('#vsleft')
 								.summernote(
@@ -205,12 +193,32 @@
 													sendfile(file[0], this);
 												}
 											}
-										});
-						// 						$("#write-vs > div:nth-child(2) > div.note-toolbar").prepend("내용을 추가하려면 해당 아이콘을 선택하세요. ▶ ") ;
-						$('#btn_vschk').click(function() {
-							$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
-							$('#vsCheck').trigger('change');
-						});
+										});					
+						
 					});
 </script>
+
+<script type="text/javascript">
+	$('#vsCheck')
+			.change(
+					function() {
+						if ($('#vsCheck').is(':checked')) {
+							$('#write-vs').css('display', 'inline-flex');
+							$(
+									"#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable")
+									.focus();
+							//                         $('#write-msg').css('display', 'block');
+						} else {
+							$('#write-vs').css('display', 'none');
+							//                         $('#write-msg').css('display', 'none');
+
+						}
+					});
+
+	$('#btn_vschk').click(function() {
+		$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
+		$('#vsCheck').trigger('change');
+	});
+</script>
+
 </html>

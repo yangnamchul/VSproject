@@ -22,7 +22,7 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					전체글 보기 ((총 ${boardCount }개)</div>
+					전체글 보기 ((총 b_seq)개)</div>
 
 
 				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
@@ -46,7 +46,8 @@
 								<th class="board-writer" width="10%">작성자</th>
 								<th class="board-date" width="5%">작성일</th>
 								<th class="board-cnt" width="5%">조회</th>
-								<th class="board-like" width="5%">추천</th>								
+								<th class="board-like" width="5%">추천</th>
+								<th class="board-like" width="5%">댓글</th>												
 							</tr>
 						</thead>
 						<tbody class="board-tbody">
@@ -62,7 +63,8 @@
 									<td class="board-date"><fmt:formatDate
 											value="${vo1.b_date}" pattern="MM-dd" /></td>
 									<td class="board-cnt">${vo1.b_cnt}</td>
-									<td class="board-like" id="vss_like">7</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
+									<td class="board-like" id="vss_like">${vo1.replyCnt }</td>
 								</tr>
 							</c:forEach>
 
@@ -73,11 +75,17 @@
 											<div class=col-12 id="board-mb-title">${vo1.b_title}</div>
 										</a>
 										<div class=col-12 id="board-mb-info">
-											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
-											| <span> <fmt:formatDate value="${vo1.b_date}"
-													pattern="MM-dd" /> | 추천_<span id="vss_like">7</span> | <span>댓글_0</span>
-										</div></td>
-
+											<a href="#">
+												<span id="vss_u_id">
+													${vo1.u_id}
+												</span>
+											</a> 
+											| <span>조회_${vo1.b_cnt}</span>
+											| <fmt:formatDate value="${vo1.b_date}" pattern="MM-dd" /> 
+											| 추천_<span id="vss_like">${vo1.lv.l_like }</span> 
+											| <span>댓글_0</span>
+										</div>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

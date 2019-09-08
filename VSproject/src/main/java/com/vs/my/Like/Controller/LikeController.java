@@ -32,7 +32,7 @@ public class LikeController {
 		LikeVO lv = new LikeVO();
 		int l_like = 1;
 		
-		if (button_id.equals("like")) {
+		if (button_id.equals("btn_like")) {
 			l_like = 1;
 		} else {
 			l_like = 2;
