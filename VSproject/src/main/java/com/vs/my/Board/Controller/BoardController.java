@@ -118,7 +118,6 @@ public class BoardController {
 		UserVO uv2 = us.MyPage(uv);
 		String u_id = uv2.getU_id();
 		
-		
 //		투표값 가져오기
 		int data = 0;
 		VoteVO vv = new VoteVO();
