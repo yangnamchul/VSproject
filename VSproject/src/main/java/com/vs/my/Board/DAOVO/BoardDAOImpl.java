@@ -55,4 +55,10 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.insert(namespace+".BoardCnt", b_seq);
 	}
 
+	@Override
+	public void delCon(int b_seq) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".delCon", b_seq);
+	}
+
 }

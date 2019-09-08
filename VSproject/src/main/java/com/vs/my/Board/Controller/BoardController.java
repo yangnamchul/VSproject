@@ -343,4 +343,18 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //검색 결과
+	@ResponseBody
+	public int delCon(HttpServletRequest request) {
+		
+		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
+		
+		try {
+			bs.delCon(b_seq);
+			return 1;
+		} catch(Exception e) {
+			return 0;
+		}
+	}
+	
 }

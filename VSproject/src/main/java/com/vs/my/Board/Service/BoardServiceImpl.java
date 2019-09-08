@@ -103,4 +103,10 @@ public class BoardServiceImpl implements BoardService
 		bdao.BoardCnt(b_seq);
 	}
 
+	@Override
+	public void delCon(int b_seq) {
+		// TODO Auto-generated method stub
+		bdao.delCon(b_seq);
+	}
+
 }

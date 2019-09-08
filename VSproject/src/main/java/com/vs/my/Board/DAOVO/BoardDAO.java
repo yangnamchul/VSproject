@@ -20,4 +20,6 @@ public interface BoardDAO {
 	public List<BoardVO> VSSBoard(int vss_seq); 
 	
 	public void BoardCnt(int b_seq);
+	
+	public void delCon(int b_seq);
 }
