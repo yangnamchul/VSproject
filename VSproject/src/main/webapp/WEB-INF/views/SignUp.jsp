@@ -260,7 +260,7 @@ $( document ).ready( function() {
 		jQuery.ajax({
 			type : "POST",
 			url : "UserInsertData.do",
-			data : $("#form1").serialize(),
+			data : $("#SignUp").serialize(),
 			async : false,
 			dataType : "json",
 			success : function(data) {

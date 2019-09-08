@@ -98,8 +98,10 @@
 							  async: false ,
 							  dataType : 'json'
 							}).then(function(data) {
-								window.vss = Object.keys(data);
-								window.vss_seq = data; 
+								window.vss1 = data[0];
+								window.vss = Object.keys(vss1);
+								window.vss2 = data[1]; 
+								console.log(vss);
 						});
 						
 						/* 텍스트 에디터 설정 */
@@ -135,12 +137,14 @@
 											      }));
 											    },
 											    template: function (item) {
-											    	var seq = vss_seq[item];
-											     	return item;
+											    	var name1 = vss1[item];
+											    	var content1 = vss2[item];
+											     	return item + ":" + content1;
 											    },
 											    content: function (item) {
-											    	var seq = vss_seq[item];
-											    	if (seq) {											    		
+											    	var seq = vss1[item];
+											    	alert(seq);
+											    	if (seq) {
 											    		  $('.note-editable').append($('<a />', {
 											    		        id: 'vss',
 											    		        href: 'VssBoard.do?vss_seq=?' + seq ,

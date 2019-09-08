@@ -137,14 +137,6 @@ public class UserController {
 		return 0;
 	}
 	
-	@RequestMapping(value="Terms.do", method=RequestMethod.GET) //약관 동의
-	public ModelAndView Terms(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Terms");
-		
-		return mv;
-	}
-	
 	@RequestMapping(value="Login.do", method=RequestMethod.GET) //로그인 페이지 이동
 	public ModelAndView Login(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -249,8 +241,9 @@ public class UserController {
 	
 	@RequestMapping(value="UserInsertData.do", method=RequestMethod.POST) //유저정보 입력하기
 	@ResponseBody
-	public int UserInsertData(UserVO vo,HttpServletRequest req) {
+	public int UserInsertData(UserVO vo) {
 		try {
+			vo.getU_id();
 			us.UserInsertData(vo);
 			return 1;
 		} catch(Exception e) {
