@@ -23,9 +23,7 @@ public class VSSController {
 	@RequestMapping(value = "makeVSS.do", method = RequestMethod.GET) //부스러기 만들기 페이지로
 	public ModelAndView makeVSSpage(VSSVO vssvo) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("makeVSS");
-		
-		
+		mv.setViewName("makeVSS");				
 		return mv;
 	}
 	

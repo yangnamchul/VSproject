@@ -58,6 +58,15 @@
 	font-size: 1rem;
 }
 
+#vss_title {
+	text-align: left;
+	color: white;
+	font-size: 1.3em;
+	margin: 0.25rem 0.25rem;
+	padding: 0.2rem;
+	text-shadow: 1px 1px 2px #ff4d00;
+}
+
 #vss>#a {
 	color: #BBB;
 	margin-right: 10px;
@@ -122,9 +131,10 @@ header .right-row {
 }
 
 header .right-col {
-	display: table-cell;
+	text-align: center; display : table-cell;
 	cursor: pointer;
 	padding: 2px 5px;
+	display: table-cell;
 }
 
 header #btn-search:active, #btn-login:active, #btn-logout:active {
@@ -1128,4 +1138,39 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	box-shadow: 1px 1px 1px black;
 	outline: 0;
 	box-shadow: 1px 1px 1px black;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 부스러기 만들기 vss Make  
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.modal-vss>li {
+	width: 230px;
+	list-style: none;
+	margin: 1px;
+	color: #fff;
+	font-size: 1.25rem;
+	padding-left: 0.75rem;
+}
+
+.modal-vss>li>input[type=text] {
+	width: 16rem;
+	padding: 0px 3px;
+	margin: 1px;
+	color: #000;
+	background: #bbbbbb;
+	font-size: 1rem;
+}
+
+#VSS_content {
+	background: #bbbbbb;
+	width: 16rem;
+	height: 8rem;
+	font-size: 1rem;
+}
+
+#pop_vss_btn, #pop_vssinfo_btn {
+	color: #fff;
+	background-color: #ff4d00;
+	margin-bottom: 5px;
+	font-size: 1.1rem;
 }

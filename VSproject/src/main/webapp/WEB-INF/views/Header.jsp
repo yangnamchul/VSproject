@@ -47,7 +47,7 @@
 								src="http://icons.iconarchive.com/icons/pixture/donuts/32/PowderSugared-icon.png"
 								alt="" />
 						</div>
-						<div class="right-row">검색</div>
+						<div class="right-row">부스러기</div>
 					</div>
 
 					<%
@@ -113,9 +113,9 @@
 								<li>암 호<br>
 								<input type="password" name="u_pw" id="u_pw"></li>
 								<div align="center" id="pop_login_btn">
-									<div class="auto-login">
-										<input type="checkbox" id="auto-login" /> 자동로그인
-									</div>
+<!-- 									<div class="auto-login"> -->
+<!-- 										<input type="checkbox" id="auto-login" /> 자동로그인 -->
+<!-- 									</div> -->
 									<button type="button" onclick="login()">로그인</button>
 								</div>
 							</form>
@@ -128,6 +128,39 @@
 								</div>
 								<span>아직 회원이 아니면??</span>
 								<button type="button" onclick="location.href = 'SignUp.do' ">회원가입</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<!--          부스러기 만들기 모달창  -->
+			<div class="modal fade" id="vssModal" data-backdrop="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span id="vss_title">부스러기 만들기</span>
+							<button class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+							<form class="modal-vss" id="makeVSS">
+								<li id="vss_title">부스러기 이름 <br>
+								<input type="text" name="VSS_name" id="VSS_name" maxlength="15" placeholder="부스러기 이름(15자 이내)" required="required"></li> <br>
+								<li>부스러기 설명 <br>								
+								<textarea rows="20" cols="10" name="VSS_content" id="VSS_content"
+									placeholder="부스러기 정의(최대 40자)" required="required"></textarea>							
+								</li>					
+								
+								<div align="center" >								
+									<button type="button" id="pop_vss_btn" onclick="makeVSS()">확인</button>
+								</div>
+							</form>
+							<!-- 여기 -->
+						</div>
+						<div class="modal-footer">
+							<div align="center">															
+								<button type="button" id="pop_vssinfo_btn" onclick="location.href = '#' ">부스러기란?</button>
 							</div>
 						</div>
 					</div>
@@ -196,7 +229,7 @@ $( document ).ready(function() {
 </script>
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : ajax 로그인
+내 용 : ajax 로그인, 로그아웃
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
       function login() {
@@ -260,6 +293,43 @@ $( document ).ready(function() {
     		}
     	  }
    </script>
+   	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 부스러기 만들기
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+   <script>
+		function makeVSS() {
+			if($("#VSS_name").val()=="") {
+				alertify.error("부스러기 이름을 입력해주세요");
+				return;
+			};
+			if($("#VSS_content").val()=="") {
+				alertify.error("부스러기 내용을 입력해주세요");
+				return;
+			};
+			if (confirm('부스러기를 만드시겠습니까?')) {
+			jQuery.ajax({
+				type:"POST",
+				url:"makeVSS.do",
+				data:$("#makeVSS").serialize(),
+				async : false,
+				success : function (data) {
+					if (data == 0) {
+						alertify.alert("이미 존재하는 부스러기 입니다");
+						$("#VSS_name").val("");
+					} else {
+						alertify.success("부스러기 만들기 성공");
+						location.href="Main";
+					}
+				},
+				error: function (req, status, error) {
+					alertify.alert(req.status+ "\nmessege"+ req.responseTest );
+				}
+			});
+		}else {
+			alertify.error("부스러기 취소");
+		}
+		}
+	</script>
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Top부분 스크롤 고정 
@@ -285,8 +355,8 @@ $( document ).ready( function() {
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 
 
-	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : header 아이콘 작동 부분 
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : header아이콘, 모달 작동 부분 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script type="text/javascript">
 
@@ -294,6 +364,7 @@ window.onclick = function(event) {
      if (event.target == myModal) {
         $('#myModal').modal('hide');           
      }
+     
    }
    
 $('#myModal').on('shown.bs.modal', function() {
@@ -309,9 +380,11 @@ $(document).ready(function() {
    $("[id='btn-login']").click(function() {
       $('#myModal').modal('show');
    });
-   $("[id='btn-login']").click(function() {
-      $('#myModal').modal('hide');
-   });
+   
+   $("[id='btn-search']").click(function() {
+	      $('#vssModal').modal('show');
+	   });
+  
    
 });
 </script>
