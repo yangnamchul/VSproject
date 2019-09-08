@@ -1,3 +1,4 @@
+<%@page import="com.vs.my.User.DAOVO.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,6 +9,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="Header.jsp"%>
+<%
+request.setCharacterEncoding("UTF-8");
+response.setCharacterEncoding("UTF-8");
+UserVO uv = new UserVO();
+uv = (UserVO) session.getAttribute("uv");
+String u_id =null;
+try {
+	u_id = uv.getU_id();
+} catch (Exception e) {
+	u_id = "";
+}
+%>
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css"
 	rel="stylesheet">
@@ -96,7 +109,7 @@
 				</div>
 				
 				<div>
-					<button type="button"  onclick="delCon()">삭제</button>
+					<button type="button"  id="delbtn" onclick="delCon()" style="display:none">삭제</button>
 				</div>
 				
 <!-- 				동언 -->
@@ -327,7 +340,18 @@
 				}
 			});
 		}
-	</script>
+</script>
+
+<script>
+	$(document).ready(function() {
+		var u_id = '<%=u_id%>';
+		if (u_id ==${u_id}) {
+			$('#delbtn').css('display','block');
+		} else {
+			$('#delbtn').css('display','none');
+		}
+	});
+</script>
 
 </body>
 
