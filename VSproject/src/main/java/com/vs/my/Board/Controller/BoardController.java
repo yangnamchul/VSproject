@@ -19,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Like.DAOVO.LikeVO;
+import com.vs.my.Like.Service.LikeService;
 import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.Tag.DAOVO.TagVO;
@@ -45,6 +47,8 @@ public class BoardController {
 	VSSService vss;
 	@Autowired
 	TagService ts;
+	@Autowired
+	LikeService ls;
 	
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
@@ -62,6 +66,30 @@ public class BoardController {
 		}
 		List<BoardVO> boardlist = bs.BoardAllData(paging);
 		int listcount=bs.BoardListCount();
+		
+		for (int i = 0; i < boardlist.size(); i++) {
+//			추천 수
+			LikeVO lv = new LikeVO();
+			LikeVO lv1 = new LikeVO();
+			lv.setB_seq(boardlist.get(i).getB_seq());
+			int like_cnt = 0;
+			like_cnt = ls.LikeCnt(lv);
+			lv1.setL_like(like_cnt);
+			boardlist.get(i).setLv(lv1);
+//			댓글 수
+			ReplyVO rv = new ReplyVO();
+			rv.setB_seq(boardlist.get(i).getB_seq());
+			int reply_cnt = 0;
+			reply_cnt = rs.ReplyCnt(rv.getB_seq());
+			boardlist.get(i).setReplyCnt(reply_cnt);
+			
+//			부스러기 보이기
+			String vssName = null;
+			VSSVO vssvo = new VSSVO();
+			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
+			vssName = vssvo.getVSS_name();
+			boardlist.get(i).setVssName(vssName);
+		}
 		
 		mv.addObject("ListCount", listcount);
 		mv.addObject("boardlist", boardlist);
@@ -101,10 +129,12 @@ public class BoardController {
 		
 		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
 		
+//		조회수
+		bs.BoardCnt(b_seq);
+		
 //		content 내용 가져오기
 		bv.setB_seq(b_seq);
 		BoardVO bv2 = bs.Content(bv);
-		
 		
 //		u_id 값 가져오기
 		UserVO uv = new UserVO(); 
@@ -112,13 +142,12 @@ public class BoardController {
 		UserVO uv2 = us.MyPage(uv);
 		String u_id = uv2.getU_id();
 		
-		
 //		투표값 가져오기
 		int data = 0;
 		VoteVO vv = new VoteVO();
 		vv.setB_seq(b_seq);
-		List<VoteVO> lv = vs.allVote(vv);
-		int vcount = lv.size();
+		List<VoteVO> vl = vs.allVote(vv);
+		int vcount = vl.size();
 		if (vcount < 1) { //vs게시물아님
 			data = 0;
 		} else { //vs게시물
@@ -133,7 +162,16 @@ public class BoardController {
 //		댓글
 		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
 		
+//		추천
+		LikeVO lv = new LikeVO();
+		lv.setB_seq(b_seq);
 		
+		int LikeCnt = ls.LikeCnt(lv);
+		mv.addObject("LikeCnt",LikeCnt);
+		int UnlikeCnt = ls.UnLikeCnt(lv);
+		mv.addObject("UnlikeCnt",UnlikeCnt);
+		
+		mv.addObject("ReplyCnt",replylist.size()) ;	
 		mv.addObject("ReplyList",replylist);
 		mv.addObject("data", data);
 		mv.addObject("vo",bv2);
@@ -155,6 +193,7 @@ public class BoardController {
 		int vss_seq = Integer.parseInt(request.getParameter("vss_seq"));
 		VSSVO vssvo = vss.getOneVSS(vss_seq);
 		mv.addObject("vss_seq", vssvo.getVSS_seq());
+		mv.addObject("vssName", vssvo.getVSS_name());
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
@@ -173,31 +212,29 @@ public class BoardController {
 		
 		List<VSSVO> vsslist = vss.getAllVSS();
 		
-		
-		
-	
-		
+//		vs게시물 체크
 		if (vsCheck != null) {
 			bv.setB_left(vsleft);
 			bv.setB_right(vsright);
+//			게시물 생성
 			bs.BoardInsertData(bv);
 			
+//			게시물에 포함된 부스러기 찾고 tag 생성
 			for (int i = 0; i < vsslist.size(); i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					tv.setVss_seq(vss_seq1);
 					ts.makeTag(tv);
-					System.out.println("들어옴");
 				} catch(Exception e) {
 					
 				}
 			}
-			
+//			투표 생성
 			VoteVO vv = new VoteVO();
 			vv.setU_id(st);
-			
 			vs.FirstVote(vv);
+			
 		} else {
 			vsleft = null;
 			vsright = null;
@@ -211,13 +248,11 @@ public class BoardController {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					tv.setVss_seq(vss_seq1);
 					ts.makeTag(tv);
-					System.out.println("들어옴");
 				} catch(Exception e) {
 					
 				}
 			}
 		}
-		
 		
 		
 		mv.setViewName("Main");
@@ -278,13 +313,48 @@ public class BoardController {
 			
 			bvlist.add(bv1);
 			
+//			추천 수
+			LikeVO lv = new LikeVO();
+			LikeVO lv1 = new LikeVO();
+			lv.setB_seq(bvlist.get(i).getB_seq());
+			int like_cnt = 0;
+			like_cnt = ls.LikeCnt(lv);
+			lv1.setL_like(like_cnt);
+			bvlist.get(i).setLv(lv1);
+//			댓글 수
+			ReplyVO rv = new ReplyVO();
+			rv.setB_seq(bvlist.get(i).getB_seq());
+			int reply_cnt = 0;
+			reply_cnt = rs.ReplyCnt(rv.getB_seq());
+			bvlist.get(i).setReplyCnt(reply_cnt);
+//			부스러기 보이기
+			String vssName = null;
+			VSSVO vssvo = new VSSVO();
+			vssvo = vss.getOneVSS(bvlist.get(i).getVss_seq());
+			vssName = vssvo.getVSS_name();
+			bvlist.get(i).setVssName(vssName);
 		}
+		
 		
 		mv.addObject("bvlist", bvlist);
 		mv.addObject("vssOne",vssOne);
 		mv.addObject("vss_seq",vss_seq);
 		mv.addObject("count", bvlist.size());
 		return mv;
+	}
+	
+	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //검색 결과
+	@ResponseBody
+	public int delCon(HttpServletRequest request) {
+		
+		int b_seq = Integer.parseInt(request.getParameter("b_seq"));
+		
+		try {
+			bs.delCon(b_seq);
+			return 1;
+		} catch(Exception e) {
+			return 0;
+		}
 	}
 	
 }

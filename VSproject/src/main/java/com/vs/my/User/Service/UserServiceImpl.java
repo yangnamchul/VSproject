@@ -77,6 +77,19 @@ public class UserServiceImpl implements UserService{
 		hs.removeAttribute("changPW");
 		return 1;
 	}
+	
+	@Override
+	public int ChangeNick(UserVO uv,HttpSession hs) {
+		// TODO Auto-generated method stub
+		
+		try {
+			dao.ChangeNick(uv);
+		} catch(Exception e) {
+			return 0;
+		}
+		hs.removeAttribute("changNick");
+		return 1;
+	}
 
 	@Override
 	public UserVO MyPage(UserVO uv) {
@@ -89,6 +102,12 @@ public class UserServiceImpl implements UserService{
 	public UserVO idCheck(UserVO uv) {
 		// TODO Auto-generated method stub
 		return dao.idCheck(uv);
+	}
+
+	@Override
+	public UserVO nickCheck(UserVO uv) {
+		// TODO Auto-generated method stub
+		return dao.nickCheck(uv) ;
 	}
 	
 

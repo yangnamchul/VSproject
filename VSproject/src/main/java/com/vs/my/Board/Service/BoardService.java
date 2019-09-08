@@ -27,4 +27,7 @@ public interface BoardService {
 	
 	public List<BoardVO> VSSBoard(int VSS_seq);
 	
+	public void BoardCnt(int b_seq);
+	
+	public void delCon(int b_seq);
 }

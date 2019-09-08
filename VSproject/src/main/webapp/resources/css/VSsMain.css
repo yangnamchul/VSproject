@@ -11,16 +11,51 @@
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 부스러기 양식 
+작성자: GuRem
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 #vss {
 	background-color: #ff4d00;
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
 	margin-right: 10px;
-	font-size: 1.25rem !important;
-	/* 	border-radius: 0.5rem; */
+	font-size: 1rem !important;
+	border-radius: 0.25rem;
 	padding: 0.1rem;
 	box-shadow: 2px 2px 2px 0 #BBB, inset 1px 1px 2px #ffffff;
+}
+
+/* @media ( min-width :768px) { */
+/* 	#vss { */
+/* 		font-size: 1.25rem !important; */
+/* 	} */
+/* } */
+#vss_u_id {
+	background-color: #000084;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1.25rem !important;
+	border-radius: 0.25rem;
+	padding: 0.1rem;
+	box-shadow: 2px 2px 2px 0 #BBB, inset 1px 1px 2px #ffffff;
+	line-height: normal;
+}
+
+#vss_date {
+	color: #36ff36;
+	text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+	font-size: 1rem;
+}
+
+#vss_like {
+	color: #00ff97;
+	text-shadow: 1px 1px 2px #000000, -1px -1px 2px #212529;
+	font-size: 1rem;
+}
+
+#vss_dislike {
+	color: red;
+	text-shadow: 1px 1px 2px #000000, -1px -1px 2px #000000;
+	font-size: 1rem;
 }
 
 #vss>#a {
@@ -333,95 +368,74 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	text-align: right;
 }
 
-/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : SignUp.jsp > 회원가입
-작성자 : 미영
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+내 용 : SignUp.jsp > 회원가입 
+작성자 : 미영 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 @media ( max-width :576px) {
-	.id-check-text {
-		display: none;
+	.vss-join>li>input[type=text], .vss-join>li>input[type=password],
+		.vss-join>li>input {
+		width: 10rem !important;
+		font-size: 1.1rem !important;
 	}
-	.id-check-text2 {
-		display: inline;
+	/* 이메일은 길어야해서 */
+	#user_email { 
+	    width: 15rem !important;
 	}
-	#JoinForm>ul>li>div>div>button {
+	.checkbtn {
 		float: right;
-		margin: 0.25rem 0.2rem 0 0;
 	}
 }
-
-@media ( min-width :576px) {
-	.id-check-text {
-		display: block;
-	}
-	.id-check-text2 {
-		display: none;
-	}
-	#JoinForm>ul>li>div>div>button {
-		float: none;
-		margin: 0.25rem 0.2rem 0 0;
-	}
-	#id-check-btn {
-		display: inline-grid;
-	}
-}
-
+@media ( min-width :576px) {}
 @media ( min-width :768px) {
-	.vss-join>li {
-		padding-left: 9rem;
+	#user_email { 
+    	width: 20rem !important;
 	}
 }
-
-@media ( min-width :992px) {
-	.vss-join>li {
-		padding-left: 18rem;
-	}
-}
-
 @media ( min-width :1024px) {
 	.vss-join>li {
-		padding-left: 20rem;
+		padding-left: 6rem !important;
 	}
 }
-
-#Join {
-	margin-left: 0px;
-	margin-right: 0px;
+@media ( min-width :1200px) {
+	.vss-join>li {
+		padding-left: 10rem !important;
+	}
 }
 
 #joinDiv {
-	padding: 1rem;
+	/* 	padding: 1rem; */
 	background-color: #000084;
 	color: white;
 	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
 
-#joinDiv>div>form>h1 {
+.vss-title {
+	text-align: left;
 	color: white;
-	font-size: 1.5rem;
+	font-size: 1.3em;
+	margin: 0.25rem 0.25rem;
+	padding: 0.2rem;
+	text-shadow: 1px 1px 2px #ff4d00;
 }
 
 .vss-join {
 	border-top: 4px solid white;
 	border-bottom: 4px solid white;
 	margin-top: 0.5rem;
-	/* padding-left: 2rem; */
 	padding-left: 0;
 	padding-bottom: 1rem;
 }
 
 .vss-join>li {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	background-color: #000084;
 	color: white;
 	list-style: none;
-	margin: 0.5rem;
-}
-
-#JoinForm>ul>li>div>div>button {
-	color: white;
-	background-color: #ff4d00;
-	font-size: 1.2rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	padding: 0 0.5rem;
 }
 
 .vss-join>li>input[type=text], .vss-join>li>input[type=password],
@@ -435,16 +449,35 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	background: #bbbbbb;
 }
 
-.vss-join>div>button {
+
+.vss-join>div>button, .vss-join>li>button{
 	color: white;
 	background-color: #ff4d00;
 	font-size: 1.2rem;
 }
 
 .progress-bar_text, .progress-bar_re_text, .id-check-text,
-	.id-check-text2 {
+	.nick-check-text {
 	color: #f9ff00;
 	text-shadow: 1px 1px 1px #ff4d00;
+}
+
+/* 유효성검사 */
+.chk-val {
+	color: rgb(255, 255, 0);
+	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+}
+
+/* 사용가능시 */
+.chk-val-ok {
+	color: rgb(7, 255, 6);
+	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+}
+
+/* 중복 */
+.chk-val-error {
+	color: rgb(255, 0, 0);
+	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
 }
 
 .progress-bar_wrap {
@@ -468,6 +501,98 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	transition: background-color .2s, visisility .1s;
 }
 
+.progress-bar_item, .progress-bar_re_item {
+	display: inline-block;
+	height: 100%;
+	width: 32.5%;
+	margin-right: .8%;
+	border-radius: 5px;
+	float: left;
+	transition: background-color .2s, visisility .1s;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+내 용 : MyPage.jsp > 내정보 
+작성자 : 미영 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+@media ( max-width :576px) {
+	.vss-myinfo>li>input[type=text], .vss-myinfo>li>input[type=password],
+		.vss-myinfo>li>input {
+		width: 10rem !important;
+		font-size: 1.1rem !important;
+	}
+	/* 이메일은 길어야해서 */
+	#user_email { 
+	    width: 15rem !important;
+	}
+	#btn-changeNick {
+		float: right;
+	}
+}
+@media ( min-width :576px) {}
+@media ( min-width :768px) {
+	#user_email { 
+    	width: 20rem !important;
+	}
+	.vss-myinfo>li{
+		margin-top: 1rem !important;
+    	margin-bottom: 1rem !important;
+	}
+}
+@media ( min-width :1024px) {
+	.vss-myinfo>li {
+		padding-left: 6rem !important;
+	}
+}
+@media ( min-width :1200px) {
+	.vss-myinfo>li {
+		padding-left: 10rem !important;
+	}
+}
+
+#mypageDiv {
+	/* 	padding: 1rem; */
+	background-color: #000084;
+	color: white;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+
+.vss-myinfo {
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+	margin-top: 0.5rem;
+	padding-left: 0;
+	padding-bottom: 1rem;
+}
+
+.vss-myinfo>li {
+	font-size: 1.3rem;
+	background-color: #000084;
+	color: white;
+	list-style: none;
+	margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+	padding: 0 0.5rem;
+}
+
+.vss-myinfo>li>input[type=text], .vss-myinfo>li>input[type=password],
+	.vss-myinfo>li>input {
+	width: 13rem;
+	height: 2rem;
+	font-size: 1.5rem;
+	padding: 0 3px;
+	margin: 1px;
+	color: black;
+	background: #bbbbbb;
+}
+
+
+.vss-myinfo>li>button{
+	color: white;
+	background-color: #ff4d00;
+	font-size: 1.2rem;
+}
+
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : board.jsp > 글 목록 보기 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
@@ -478,22 +603,21 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 #boardDiv>#board-inner {
-	width: 100%;
 	border-top: 3px solid blue;
 	border-bottom: 3px solid black;
 	text-align: center;
 	color: white;
 	font-size: 1.25em;
-	margin: 0.5em auto;
-	padding: 0.5em;
-	white-space: nowrap;
+	margin: 0.25em auto;
+	padding: 0.25em;
 }
 
 #boardDiv>#board-menu {
 	border: 1px solid #ff4d00;
 	color: white;
-	padding: 0.5em;
+	padding: 0.25em;
 	text-align: center;
+	line-height: normal;
 }
 
 #boardDiv>#board-write {
@@ -504,9 +628,10 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: white;
 	background-color: #ff4d00;
 	text-shadow: 1px 1px 1px #000;
-	font-size: 1.25em !important;
+	font-size: 1rem !important;
 	padding: 0.1em;
 	text-align: center;
+	padding: 0.1em;
 }
 
 #board-list {
@@ -519,9 +644,15 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 }
 
 /* 게시글 head */
-#board-list>table>thead {
+#board-table>thead {
 	background-color: #BBBBBB;
 	white-space: nowrap;
+	text-align: center;
+}
+
+#board-table>tbody {
+	text-align: center;
+	word-break: break-all;
 }
 
 #board-list>table>tbody>tr {
@@ -543,27 +674,80 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: #ff4d00;
 }
 
+/* 글 제목 */
+#board-table>tbody>tr>td.board-title {
+	text-align: left;
+}
+
+#board-mb>td {
+	padding: 0.5rem !important;
+}
+
+#board-mb-info {
+	font-size: 0.9rem !important;
+}
+
+/* 글작성자 */
+#board-table>tbody>tr>td.board-writer {
+	word-break: break-all !important;
+	white-space: nowrap !important;
+}
+
+#board-pc {
+	display: none;
+}
+
+.board-thead {
+	display: none;
+}
+
+/* board.jsp > PC */
+@media ( min-width :768px) {
+	#boardDiv>#board-menu {
+		line-height: inherit;
+	}
+	#boardDiv>#board-write>form>button {
+		font-size: 1.25rem !important;
+	}
+	#board-pc>td {
+		display: table-cell;
+	}
+	.board-thead {
+		display: table-row-group;
+	}
+	#board-mb {
+		display: none
+	}
+	#board-pc {
+		display: table-row;
+	}
+}
+
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-내 용 : Content.jsp > 글 보기 
+내 용 : Content.jsp > 컨텐츠 글 보기 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #contentDiv {
 	background-color: #000084;
 	margin: 0 auto;
 	color: white;
-	font-size: 1rem;
+	font-size: 1.25rem;
 
 	/* 	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00; */
 }
 
+/* 글보기 제목 */
 #contentDiv>#content-title {
 	width: 100%;
 	border-top: 3px solid blue;
 	border-bottom: 3px solid black;
 	text-align: center;
-	/* 	color: white ; */
-	font-size: 1.25em !important;
+	font-size: 1.1rem !important;
 	margin: 0.25em auto;
-	padding: 0.5rem;
+	padding: 0.25rem;
+}
+
+.content_vss {
+	float: right;
 }
 
 #contentDiv>#content-info {
@@ -589,6 +773,35 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	height: 100% !important;
 }
 
+#vs-count {
+	font-size: 2rem;
+	color: #ff4d00;
+	text-shadow: 1px 1px 2px black;
+}
+
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+/* 내 용 : vs그래프  시작  */
+.vs-bar {
+	
+}
+
+#left-bar {
+	float:left ;
+	background-color: #f14b4b;
+	font-size: 14px;
+	line-height: 30px;
+	
+}
+
+#right-bar {
+	float:left ;
+	background-color: #315ec3;
+	font-size: 14px;
+	line-height: 30px;
+	
+}
+
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #content-info>ul {
 	list-style: none;
 	padding: 0;
@@ -597,7 +810,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 #content-info>ul>li {
 	float: left;
-	width: 20%;
+	width: 16.666667%;
 	text-align: center;
 	font-size: 1.1rem;
 	padding-bottom: 0.1rem;
@@ -627,6 +840,77 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 
 #vote-title>div>ul>li:nth-child(2) {
 	text-align: right;
+}
+
+#content-content {
+	margin: 1rem 0.75rem;
+	word-break: break-all;
+}
+
+#content-info {
+	display: none;
+}
+
+#content-info-mb {
+	font-size: 1rem;
+	border-bottom: 1px solid;
+	padding: 0 0.25rem;
+	padding-bottom: 0.25rem;
+}
+
+.ci_n, .ci_w, .ci_c, .ci_d, .ci_l {
+	display: none;
+}
+
+#content-like {
+	margin: 0.5rem auto;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: #BBBBBB;
+	box-shadow: 2px 2px 0 black, -2px -2px 0 white;
+	text-align: center;
+	padding: 0 0.25rem;
+	padding-bottom: 0.25rem;
+}
+
+#btn_like {
+	background-color: blue;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1rem;
+}
+
+#btn_dislike {
+	background-color: #2b2b2b;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1rem;
+}
+
+#content-del {
+	padding: 0.1rem 0.1rem;
+	text-align: center;
+}
+
+#btn_del {
+	background-color: red;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1rem;
+	text-align: center;
+}
+
+/* pc > 글보기 제목 >  */
+@media ( min-width :768px) {
+	#contentDiv>#content-title {
+		font-size: 1.5rem !important;
+	}
+	#content-info-mb {
+		display: none;
+	}
+	#content-info {
+		display: inline;
+	}
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -674,7 +958,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	margin: 0.2em 0.2rem;
 }
 
-#p_title {
+#b_title {
 	width: 100%;
 	padding: 0px 3px;
 	margin: 0.1rem auto;
@@ -738,6 +1022,17 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 썸머노트 css 강제적용 > Summernote   
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+
+/* 스팬 글짜 복붙 하얘지는거  */
+#content-content>p span {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+#write-content>div.note-editor.note-frame>div.note-editing-area>div.note-editable>p span
+	{
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
 .note-popover .note-popover-content, .note-toolbar, .note-editor.note-frame .note-editing-area .note-editable
 	{
 	background-color: #efefef !important;
@@ -803,28 +1098,122 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	box-shadow: 0 2px 0 black;
 }
 
-#commnet_li {
+.comment_li {
 	list-style: none;
 	border-top: 1px solid;
 }
 
+/* 리플 내용 */
+#reply_content_1 {
+	margin: 0.5rem 0.5rem;
+}
+
 /* 모바일먼저 */
-#replyTitle {
+.replyTitle {
 	margin-bottom: 0.25rem;
 	text-shadow: 1px 1px 2px #ff4d00;
 }
 
-#replyUlist {
+.replyUlist {
 	padding: 0.25rem 0;
 	margin: 0.25rem auto;
+	word-break: break-all;
 }
 
-#reply-info {
-	display: inline-flex;
+.reply-info {
+	display: contents;
 	padding: 0.25rem 0;
+	align-items: flex-start;
+	width: 100%;
 }
 
-#reply-date, #reply-writer {
-	margin-left: 2.5rem;
+.reply-vss {
+	float: right;
 }
+
+.reply-date {
+	color: #36ff36;
+	text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+	font-size: 1rem;
+}
+
+#replyform>div>div.note-editing-area>div.note-editable {
+	background-color: #BBBBBB !important;
+	border: 1px solid black;
+}
+
+#replyform>div.note-editor.note-frame>div.note-editing-area>div.note-editable>p
+	{
+	margin: 0 auto;
+}
+
+#replyform>div>div.note-statusbar {
+	display: none;
+}
+
+#reply-submit {
+	float: right;
+	padding: 0.1rem 0.1rem;
+}
+
+#reply-btn {
+	color: white;
+	background-color: #ff4d00;
+}
+
+/* 버튼부분 */
+#reply_del {
+	background-color: #cc0a30;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1rem;
+	float: right;
+}
+
+#reply_edit {
+	background-color: #2034b7;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	font-size: 1rem;
+	float: right;
+}
+
+/* 모바일 제외 댓글 타이틀 글씨크기  */
+@media ( min-width :768px) {
+	#replyDiv {
+		box-shadow: 2px 2px 0 black;
+	}
+	.replyTitle {
+		font-size: 1.25rem;
+	}
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 부스러기 쓰기 Vss  
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+.note-hint-popover {
+	padding-top: 0.5em !important;
+	padding-bottom: 0.5em !important;
+	box-shadow: 2px 2px 0 black !important;
+	background: #bbb !important;
+}
+
+.note-hint-item active {
+	background-color: #fff;
+	box-shadow: 1px 1px 1px black;
+}
+
+.note-hint-popover .popover-content .note-hint-group .note-hint-item.active,
+	.note-hint-popover .popover-content .note-hint-group .note-hint-item:hover
+	{
+	clear: both;
+	font-weight: 400;
+	line-height: 1.4;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	background-color: #fff;
+	box-shadow: 1px 1px 1px black;
+	outline: 0;
+	box-shadow: 1px 1px 1px black;
 }

@@ -396,6 +396,11 @@ button {
 	border-radius: 0
 }
 
+/* 버튼 부분 포인터 */
+button:hover {	
+	cursor: pointer;
+}
+
 button:focus {
 	outline: 1px dotted;
 	outline: 5px auto -webkit-focus-ring-color
@@ -8181,7 +8186,10 @@ margin-bottom
 	border: 1px solid rgba(0, 0, 0, .2);
 }
 
-/* 모달컨텐츠 안 양식 */
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 모달컨텐츠 안 양식 (회원가입) 
+작성자 : 미영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 .modal-login>li {
     width: 230px;
     list-style: none;
@@ -8228,7 +8236,33 @@ margin-bottom
     font-size: 1.3rem;
     text-align: center;  
 }
-/* --------------------- */
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 모달컨텐츠 안 양식 (닉네임, 암호변경) 
+작성자 : 미영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+.modal-change>div>li {
+    width: 230px;
+    list-style: none;
+    margin: 1px;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.ch-nick, .ch-pw, .ch-re-pw{
+	width: 230px;
+    padding: 0px 3px;
+    margin: 1px;
+    color: #000;
+    background: #bbbbbb;
+}
+.checkbtn, #change-nickbtn,#change-pwbtn{
+	color: white;
+    background-color: #ff4d00;
+    font-size: 1.2rem;
+}
+
+/*---------------------------*/
+
 .modal-backdrop {
 	position: fixed;
 	top: 0;

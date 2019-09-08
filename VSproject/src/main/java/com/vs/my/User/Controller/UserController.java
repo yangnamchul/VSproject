@@ -102,7 +102,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="idCheck.do", method=RequestMethod.POST) //회원가입
+	@RequestMapping(value="idCheck.do", method=RequestMethod.POST) //회원가입 아이디
 	@ResponseBody
 	public int idCheck(HttpServletRequest request, UserVO uv) {
 		
@@ -113,6 +113,24 @@ public class UserController {
 		
 		try {
 			uv2.getU_id();
+		} catch (Exception e) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별명
+	@ResponseBody
+	public int nickCheck(HttpServletRequest request, UserVO uv) {
+		
+		String u_name = request.getParameter("u_name");
+		uv.setU_name(u_name);
+		
+		UserVO uv2 = us.nickCheck(uv);
+		
+		try {
+			uv2.getU_name();
+			System.out.println(uv2.getU_name());
 		} catch (Exception e) {
 			return 1;
 		}
@@ -191,7 +209,7 @@ public class UserController {
 		return us.FindPW(uv,hs);
 	}
 	
-	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 찾기
+	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 변경
 	@ResponseBody
 	public int ChangePWAction(HttpSession hs, UserVO uv) {
 		
@@ -200,22 +218,26 @@ public class UserController {
 		return us.ChangePW(uv,hs);
 	}
 	
-	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
+	@RequestMapping(value="ChangeNick.do", method=RequestMethod.POST) //닉네임 변경
+	@ResponseBody
+	public int ChangeNickAction(HttpSession hs, UserVO uv) {
+		
+		uv.setU_name((String)hs.getAttribute("changNick"));
+		
+		return us.ChangeNick(uv,hs);
+	}
+	
+	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지 내정보
 	public ModelAndView MyPage(HttpSession hs, UserVO uv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
-		
-		UserVO uv2 = (UserVO) hs.getAttribute("uv");
-		String u_id = uv2.getU_id();
-		
-		uv.setU_id(u_id);
 		
 		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}
 	
 	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
-	public  ModelAndView History(HttpSession hs, UserVO uv) {
+	public ModelAndView History(HttpSession hs, UserVO uv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("History");
 		
@@ -228,7 +250,7 @@ public class UserController {
 		mv.addObject("vvlist", vs.UserVote(u_id));
 		mv.addObject("bvlist", bs.UserBoard(u_id));
 		return mv;
-	} 
+	}
 	
 	@RequestMapping(value="UserAllData.do", method=RequestMethod.GET) //유저정보 전부보기
 	public ModelAndView UserAllData(HttpServletRequest req) {
