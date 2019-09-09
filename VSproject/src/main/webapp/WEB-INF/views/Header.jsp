@@ -185,10 +185,10 @@
 						alt="" width="32px" />
 					<!-- Dropdown -->
 					<div id="dropdown" class="dropdown-content">
-						<a href="Board.do?page=1" style="padding: inherit;">최신글보기</a> 
-						<a href="#" style="padding: inherit;">들어간페이지(1)</a>
-						<a href="#" style="padding: inherit;">들어간페이지(2)</a>
-						<a href="#" style="padding: inherit;">들어간페이지(3)</a>
+						<a href="Board.do?page=1">최신글보기</a> 
+						<a href="#">들어간페이지(1)</a>
+						<a href="#">들어간페이지(2)</a>
+						<a href="#">들어간페이지(3)</a>
 					</div>
 				</div>
 
@@ -197,10 +197,10 @@
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown2" class="dropdown-content2">
-						<a href="#" style="padding: inherit;">즐찾1</a>
-						<a href="#" style="padding: inherit;">즐찾2</a>
-						<a href="#" style="padding: inherit;">즐찾3</a>
-						<a href="#" style="padding: inherit;">즐찾4</a>
+						<a href="#">즐찾1</a>
+						<a href="#">즐찾2</a>
+						<a href="#">즐찾3</a>
+						<a href="#">즐찾4</a>
 						</div>
 				</div>
 
@@ -209,8 +209,8 @@
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown3" class="dropdown-content3">
-						<a href="MyPage.do" style="padding: inherit;">마이페이지</a>
-						<a href="History.do" style="padding: inherit;">히스토리</a>
+						<a href="MyPage.do">마이페이지</a>
+						<a href="History.do">히스토리</a>
 						</div>
 				</div>
 
@@ -219,7 +219,7 @@
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown4" class="dropdown-content4">
-						<a href="#" style="padding: inherit;">게시물(댓글)</a>
+						<a href="#">게시물(댓글)</a>
 						</div>
 				</div>
 
@@ -428,7 +428,7 @@ window.onclick = function(event){
 }
 </script>
 
-<script>
+ <script>
 function dropdown2(){
    $("#dropdown2").toggle();
 }
@@ -478,6 +478,6 @@ window.onclick = function(event){
        }
      }
 }
-</script>
+</script> 
 </body>
 </html>
