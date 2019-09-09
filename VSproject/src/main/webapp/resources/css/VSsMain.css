@@ -501,15 +501,6 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	transition: background-color .2s, visisility .1s;
 }
 
-.progress-bar_item, .progress-bar_re_item {
-	display: inline-block;
-	height: 100%;
-	width: 32.5%;
-	margin-right: .8%;
-	border-radius: 5px;
-	float: left;
-	transition: background-color .2s, visisility .1s;
-}
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 내 용 : MyPage.jsp > 내정보 
@@ -586,11 +577,49 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	background: #bbbbbb;
 }
 
-
 .vss-myinfo>li>button{
 	color: white;
 	background-color: #ff4d00;
 	font-size: 1.2rem;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+내 용 : History.jsp > 히스토리 수정부분
+작성자 : 미영 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#historyDiv {
+    background-color: #00008b !important;
+    padding:1rem;
+    color: white;
+    box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+#my-board-list, #my-reply-list, #my-like-list { margin: 0.25rem auto; }
+
+/*-----------my작성글-------------*/
+#my-board-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#my-board-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
+}
+
+/*------------my작성댓글---------------*/
+#my-reply-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#my-reply-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
+}
+
+/*-----------my추천글----------------*/
+#my-like-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#my-like-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
 }
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■

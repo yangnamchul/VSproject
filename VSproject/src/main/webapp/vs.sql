@@ -192,8 +192,7 @@ values(1,'123',1,'hello','hello11',1,sysdate,0,null,null,null);
 insert into reply
 values(1,1,'123','댓글입니다12333',sysdate,null,null);
 
-select *
-from users;
+select * from users;
 SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM vote;
@@ -211,7 +210,10 @@ create sequence VSS_sequence1;
 insert into board
 values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
 
-select b_seq, vss_name from board b left outer join vss v on b.vss_seq = v.vss_seq ;
+select b_seq, vss_name 
+from board b left outer join vss v on b.vss_seq = v.vss_seq ;
 
-select b.b_seq, l.L_like from board b left outer join like1 l on b.b_seq = l.b_seq ;
-select b_seq, vss_name from board b left outer join vss v on b.vss_seq = v.vss_seq ;
+select b.b_seq, l.L_like 
+from board b left outer join like1 l on b.b_seq = l.b_seq ;
+select b_seq, vss_name 
+from board b left outer join vss v on b.vss_seq = v.vss_seq ;

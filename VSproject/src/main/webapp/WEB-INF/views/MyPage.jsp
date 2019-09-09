@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,10 +31,10 @@
 						<li>이메일&nbsp;&nbsp; 
 							<input type="email" name="u_email" id="user_email" value="${uv.u_email }" readonly="readonly">
 						</li>
-						<li>가입일&nbsp;&nbsp; <input type ="text" name="u_date" readonly="readonly" value="${uv.u_date }">
+						<li>가입일&nbsp;&nbsp; 
+							<input type ="text" name="u_date" readonly="readonly" value="<fmt:formatDate value="${uv.u_date }" pattern="yyyy년 MM월 dd일" />" />
 						</li>								
 					</ul>
-<%-- 							<input type="text" name="u_date" readonly="readonly" value="<fmt:formatDate value="${uv.u_date }" pattern="yyyy년 MM월 dd일" />" /> --%>
 <!-- 				</div> -->
 			</div>
 		</div>
@@ -126,7 +126,7 @@ $(document).ready(function() {
 <script type="text/javascript">
 	function ChangeNick() {  	  
          if ($("#user_nick").val() == "") {
-        	 alertify.error("별명을 입력해주세요");
+        	 alertify.warning("별명을 입력해주세요");
             return;
          };
          
@@ -164,7 +164,7 @@ $( document ).ready( function() {
              $('.progress-bar_item').each(function() {
               $(this).removeClass('active').css('background-color','white');
             });
-            changeText(pbText, '비밀번호를 입력해주세요');
+            changeText(pbText, '비밀번호 입력해주세요');
           } else if (len > 0 && len <= 4) {
             $('.progress-bar_item-1').addClass('active').css('background-color','red');
             $('.progress-bar_item-2').removeClass('active').css('background-color','white');
@@ -189,7 +189,7 @@ $( document ).ready( function() {
                  $('.progress-bar_re_item').each(function() {
                    $(this).removeClass('active').css('background-color','white');
                  });
-                 changeText(pbText, '비밀번호를 입력해주세요');
+                 changeText(pbText, '비밀번호 입력해주세요');
                } else if ($('.ch-pw').val() != $('.ch-re-pw').val()) {
                 $(' .progress-bar_re_item-1').addClass('active').css('background-color','red');
                 $(' .progress-bar_re_item-2').removeClass('active').css('background-color','red');
