@@ -66,4 +66,9 @@
 		WHERE b_seq = #{b_seq}
 	</update>
 	
+	<select id="maxBoard" resultType="Integer">
+		SELECT max(b_seq)
+		FROM BOARD
+	</select>
+	
 </mapper>

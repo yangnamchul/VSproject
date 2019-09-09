@@ -61,4 +61,10 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update(namespace+".delCon", b_seq);
 	}
 
+	@Override
+	public int maxBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".maxBoard");
+	}
+
 }

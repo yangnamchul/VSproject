@@ -29,7 +29,7 @@
 							글쓰기
 						</div>
 
-						<form action="BoardInsertData.do" method="POST">
+						<form id="writepost">
 							<div id="write-vscheck">
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
@@ -60,7 +60,7 @@
 							</div>
 							
 							<div id="write-submit">
-								<input type="submit" value="등록하기" id="write-btn-submit">
+								<input type="button" value="등록하기" id="write-btn-submit">
 							</div>
 						</form>
 					</div>
@@ -234,6 +234,26 @@
 		$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
 		$('#vsCheck').trigger('change');
 	});
+	
+	$('#write-btn-submit').click(function() {
+		jQuery.ajax({
+			type : "POST",
+			url : "BoardInsertData.do",
+			data : $("#writepost").serialize(),
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					alertify.alert("글쓰기 실패");
+				} else {
+					location.href = "Content.do?b_seq=" + data;
+				}
+			},
+			error : function(req, status, error) {
+				alertify.alert(req.status + "\nmessege" + req.responseTest);
+			}
+		});
+	})
 </script>
 
 </html>

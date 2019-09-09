@@ -205,9 +205,10 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
 		
+		try {
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
         
@@ -261,11 +262,12 @@ public class BoardController {
 				}
 			}
 		}
+		} catch(Exception e) {
+			return 0;
+		}
 		
 		
-		mv.setViewName("Main");
-		
-		return mv;
+		return bs.maxBoard();
 	}
 	
 	@RequestMapping(value="BoardInsertFile.do", method=RequestMethod.POST) //이미지 저장 메소드
@@ -284,13 +286,13 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
-	public ModelAndView Search(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Search");
-		
-		return mv;
-	}
+//	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
+//	public ModelAndView Search(HttpServletRequest req) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("Search");
+//		
+//		return mv;
+//	}
 	
 	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
 	public ModelAndView VSSBoard(HttpServletRequest request) {
@@ -351,7 +353,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //검색 결과
+	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //글 삭제
 	@ResponseBody
 	public int delCon(HttpServletRequest request) {
 		
