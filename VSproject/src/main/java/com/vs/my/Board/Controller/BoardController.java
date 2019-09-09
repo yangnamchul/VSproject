@@ -66,7 +66,7 @@ public class BoardController {
 			page=1;
 		}
 		List<BoardVO> boardlist = bs.BoardAllData(page);
-		int listcount=bs.BoardListCount();
+		int listcount=bs.BoardListCount();		
 		
 		for (int i = 0; i < boardlist.size(); i++) {
 //			추천 수
@@ -339,7 +339,7 @@ public class BoardController {
 		
 		List<TagVO> tvlist = ts.getVSSBoard(tv);
 		
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < 4000; i++) {
 			try {
 			int b_seq = tvlist.get(i).getB_seq();
 			BoardVO bv = new BoardVO();

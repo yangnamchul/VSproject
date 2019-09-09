@@ -16,7 +16,48 @@
 	<div id="content-area">
 		<div class="container" id="main">
 			<div class="row">
-				<div class="col-12 col-sm-12 col-lg-6 col-xl-4">
+			
+			<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="main_img"> 
+			
+			<img src="resources/css/test/Main.png" alt="" width="70%" />
+				</div>										
+
+				<div class="col-12 col-sm-6 col-lg-6 col-xl-6">
+					
+					<ul class="vss-hot">
+					<li> <h5>
+						<a id="vss_title" href="#" style="color:black !important">부스러기 인기글</a>
+					</h5>
+					</li>
+
+						<li><a href="#" id="vss">부스러기</a>  <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" id="vss">부스러기</a>  <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" id="vss">부스러기</a>  <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" id="vss">부스러기</a>  <a
+							href="#">아무내용링크1</a></li>
+						<li><a href="#" id="vss">부스러기</a>  <a
+							href="#">아무내용링크1</a></li>
+							
+					</ul>
+
+				</div>
+				
+				<div class="col-12 col-sm-6 col-lg-6 col-xl-6">					
+
+					<ul class="vss-hot" id="board_ul">
+					<li> <h5>
+						<a id="vss_title" href="Board.do?pg=1" style="color:black !important">부스러기 최신글</a>
+					</h5>
+					</li>					
+						<li id="board_list" style="display: none;">
+						<a href=" " id="vss"></a> <a href=" ">ㄹㄹ</a></li>
+					</ul>					
+				</div>
+				
+				<div class="col-12 col-sm-12 col-lg-6 col-xl-4" id="main_list">
 					<h3>
 						<ul class="vss-a-menu">
 							<li><a href="Board.do?pg=1"> 전체게시판 </a></li>
@@ -30,51 +71,7 @@
 							<li><a href="AllVss.do">부스러기 전부 보기</a></li>
 						</ul>
 					</h3>
-				</div>
-
-				<img
-					src="https://characterdevteam.files.wordpress.com/2016/04/pce18490e185a9e186bce18489e185b5e186ab__hitel_plaza.jpg"
-					alt="" width="100%" />
-
-
-				<div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-					<h3>
-						<a href="#">부스러기 인기글</a>
-					</h3>
-					<ul class="vss-hot">
-
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-					</ul>
-
-				</div>
-
-				<!-- 				중복 -->
-				<div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-
-					<h3>
-						<a href="#">부스러기 최신글</a>
-					</h3>
-
-					<ul class="vss-hot" id="board_ul">
-
-						<li id="board_list" style="display: none;">
-						<a href=" " class="board-name"></a> <span>▶ </span> <a href=" ">ㄹㄹ</a></li>
-
-					</ul>
-
-					<a href="Board.do?pg=1"><span id="MoreALL" class="">+1111더보기</span></a>
-				</div>
+				</div>		
 			</div>
 		</div>
 	</div>
@@ -97,8 +94,8 @@ $(document).ready(function() {
           for(var i=0; i<5;i++){	
              var objRow = $("#board_list").clone();  //li 복사
              objRow.removeAttr("style");
-          	 objRow.html('<li><a href="VSSBoard.do?pg=1&vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vssName']+
-          	'</a><span>▶  </span> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
+          	 objRow.html('<li><a href="VSSBoard.do?pg=1&vss_seq=' +data[i]['vss_seq']+ ' " id="vss">'+data[i]['vssName']+
+          	'</a> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
           	 
           	$("#board_ul").append(objRow);
           }

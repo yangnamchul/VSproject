@@ -125,6 +125,7 @@ $(document).ready(function() {
 </script>	
 
 <script type="text/javascript">
+window.pwReturn = 0;
 
 $( document ).ready( function() {
      const changeText = function (el, text, color) {
@@ -180,7 +181,18 @@ $( document ).ready( function() {
 });
 </script>
 <script>
+
 	function ChangePW() {
+		if ($(".ch-pw").val() == "") {
+       	 alertify.warning("암호를 입력해주세요");
+           return;
+        };
+		 if ($(".ch-re-pw").val() == "") {
+        	 alertify.warning("암호확인을 입력해주세요");
+            return;
+         };        
+         
+		
 		jQuery.ajax({
 			type : "POST",
 			url : "ChangePW.do",
@@ -202,7 +214,7 @@ $( document ).ready( function() {
 		});
 	}
 </script>
-<!-- 별땅 -->
+
 <script>			
 window.nickReturn = 0;
 var changeText = function (el, text, color) {
@@ -256,7 +268,7 @@ var changeText = function (el, text, color) {
         	 alertify.warning("별명을 입력해주세요");
             return;
          };
-         
+         if (confirm('정말 변경 하시겠습니까?')) {
          jQuery.ajax({
                   type : "POST",
                   url : "ChangeNick.do",
@@ -275,7 +287,10 @@ var changeText = function (el, text, color) {
                   error : function(req, status, error) {
                      alertify.alert(req.status + "\nmessege" + req.responseTest);
                   }
-               });         
+               });   
+         } else {
+				alertify.error("별명 변경 취소");
+			}
       }
 </script>
 

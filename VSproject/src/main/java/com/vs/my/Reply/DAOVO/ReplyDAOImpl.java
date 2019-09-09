@@ -53,6 +53,12 @@ private static final String namespace="mapper.reply-mapper";
 		return sqlSession.selectOne(namespace+".ReplyCnt", b_seq);
 	}
 
+	@Override
+	public void delReply(int re_seq) {
+		// TODO Auto-generated method stub
+		sqlSession.selectOne(namespace+".delReply",re_seq);
+	}
+
 	
 
 

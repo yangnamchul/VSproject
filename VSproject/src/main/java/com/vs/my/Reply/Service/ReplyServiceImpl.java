@@ -58,6 +58,11 @@ public class ReplyServiceImpl implements ReplyService{
 		// TODO Auto-generated method stub
 		return rdao.ReplyCnt(b_seq);
 	}
+	@Override
+	public void delReply(int re_seq) {
+		// TODO Auto-generated method stub
+		rdao.delReply(re_seq);
+	}
 	
 
 
