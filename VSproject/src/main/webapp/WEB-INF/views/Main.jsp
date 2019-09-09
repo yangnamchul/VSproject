@@ -97,7 +97,7 @@ $(document).ready(function() {
           for(var i=0; i<5;i++){	
              var objRow = $("#board_list").clone();  //li 복사
              objRow.removeAttr("style");
-          	 objRow.html('<li><a href="VSSBoard.do?vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vssName']+
+          	 objRow.html('<li><a href="VSSBoard.do?pg=1&vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vssName']+
           	'</a><span>▶  </span> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
           	 
           	$("#board_ul").append(objRow);

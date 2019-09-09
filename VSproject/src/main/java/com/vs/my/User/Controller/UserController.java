@@ -57,43 +57,6 @@ public class UserController {
 	
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
-	@RequestMapping(value="ip.do", method=RequestMethod.GET) //ip
-	private String getIp(HttpServletRequest request) {
-		 
-        String ip = request.getHeader("X-Forwarded-For");
- 
-        logger.info(">>>> X-FORWARDED-FOR : " + ip);
- 
-        if (ip == null) {
-            ip = request.getHeader("Proxy-Client-IP");
-            logger.info(">>>> Proxy-Client-IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
-            logger.info(">>>> WL-Proxy-Client-IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("HTTP_CLIENT_IP");
-            logger.info(">>>> HTTP_CLIENT_IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-            logger.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getRemoteAddr();
-        }
-        
-        logger.info(">>>> Result : IP Address : "+ip);
-        
-        System.out.println(ip);
- 
-        return ip;
- 
-    }
-
-	
-	
 	@RequestMapping(value="SignUp.do", method=RequestMethod.GET) //회원가입
 	public ModelAndView SignUp(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -224,6 +187,22 @@ public class UserController {
 		mv.addObject("vvlist", vs.UserVote(u_id));
 		mv.addObject("bvlist", bs.UserBoard(u_id));
 		mv.addObject("uv",us.MyPage(uv));
+		return mv;
+	}
+	
+	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
+	public ModelAndView History(HttpSession hs, UserVO uv) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("History");
+		
+		UserVO uv2 = (UserVO) hs.getAttribute("uv");
+		String u_id = uv2.getU_id();
+		
+		uv.setU_id(u_id);
+		
+		mv.addObject("rvlist", rs.UserReply(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));
+		mv.addObject("bvlist", bs.UserBoard(u_id));
 		return mv;
 	}
 	
