@@ -24,7 +24,7 @@
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
 					<a id="vss" href="VSSBoard.do?vss_seq=${vss_seq}">${vssOne}</a>(전체
-					글 : <strong>${count}</strong> )
+					글 : <strong>${ListCount}</strong> )
 				</div>
 
 				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
@@ -124,8 +124,8 @@
 						<%
 							if (pg > BLOCK) {
 						%>
-						[<a href="VSSBoard.do?pg=1">◀◀</a>] [<a
-							href="VSSBoard.do?pg=<%=startPage - 1%>">◀</a>]
+						[<a href="VSSBoard.do?vss_seq=${vss_seq}&pg=1">◀◀</a>] [<a
+							href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=startPage - 1%>">◀</a>]
 						<%
 							}
 						%>
@@ -133,12 +133,11 @@
 							for (int i = startPage; i <= endPage; i++) {
 								if (i == pg) {
 						%>
-						<U><B> [<%=i%>]
-						</B></U>
+						<U><B> [<%=i%>]</B></U>
 						<%
 							} else {
 						%>
-						[<a href="VSSBoard.do?pg=<%=i%>"><%=i%></a>]
+						[<a href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=i%>"><%=i%></a>]
 						<%
 							}
 							}
@@ -146,8 +145,8 @@
 						<%
 							if (endPage < allPage) {
 						%>
-						[<a href="VSSBoard.do?pg=<%=endPage + 1%>">▶</a>] [<a
-							href="VSSBoard.do?pg=<%=allPage %>">▶▶</a>]
+						[<a href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=endPage + 1%>">▶</a>] [<a
+							href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=allPage %>">▶▶</a>]
 						<%
  							 }
  						%>
@@ -155,14 +154,14 @@
 				</div>
 			</div>
 		</div>
-
+</body>
 
 
 		<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : submit 유효성 검사
 작성자 : 건영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-		<script type="text/javascript">
+<script type="text/javascript">
 $('#BoardWriteData').submit(function () {
 	var isLogin = "<%=session.getAttribute("uv")%>";
 	if (isLogin == "null") {
@@ -172,5 +171,5 @@ $('#BoardWriteData').submit(function () {
 });
 	
 </script>
-</body>
+
 </html>

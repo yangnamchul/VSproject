@@ -25,7 +25,7 @@ public interface BoardDAO {
 	
 	public int maxBoard();
 	
-	public List<BoardVO> VSSBoardAllData(int page);
+	public List<BoardVO> VSSBoardAllData(BoardVO bv);
 	
-	public int VSSBoardListCount();
+	public int VSSBoardListCount(int vss_seq);
 }

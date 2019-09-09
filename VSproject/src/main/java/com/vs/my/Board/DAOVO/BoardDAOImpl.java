@@ -68,15 +68,15 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> VSSBoardAllData(int page) {
+	public List<BoardVO> VSSBoardAllData(BoardVO bv) {
 		// TODO Auto-generated method stub
-		return  sqlSession.selectList(namespace+".VSSBoardAllDataPage", page);
+		return  sqlSession.selectList(namespace+".VSSBoardAllDataPage", bv);
 	}
 
 	@Override
-	public int VSSBoardListCount() {
+	public int VSSBoardListCount(int vss_seq) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace+".VSSBoardListCount");
+		return sqlSession.selectOne(namespace+".VSSBoardListCount", vss_seq);
 	}
 
 }

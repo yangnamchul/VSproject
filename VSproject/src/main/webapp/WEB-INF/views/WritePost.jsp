@@ -56,7 +56,9 @@
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
 								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
-								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
+<%-- 								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" /> --%>
+									<div id="inputTag">
+									</div>
 							</div>
 							
 							<div id="write-submit">
@@ -146,11 +148,12 @@
 											     	
 											    },
 											    content: function (item) {
+											    	
 											    	var seq = vss1[item];
 											    	if (seq) {
 // 											    		document.getElementsByClassName('note-editable')[2].innerHTML += '<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>';
-											      		$('#b_content1').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-											      		$('#b_content1').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
+											      		$('#b_content1').append('<a id="vss" href="VSSBoard.do?pg=1&vss_seq=' + seq + '">' + item + '</a>');
+											      		$('#inputTag').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
 // 											    	return $('.note-editable').focus().val("") ;
 											    	return '' ;

@@ -229,7 +229,7 @@ public class BoardController {
 			bs.BoardInsertData(bv);
 			
 //			게시물에 포함된 부스러기 찾고 tag 생성
-			for (int i = 0; i < vsslist.size(); i++) {
+			for (int i = 0; i < 4000; i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
@@ -251,10 +251,11 @@ public class BoardController {
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
-			for (int i = 0; i < vsslist.size(); i++) {
+			for (int i = 0; i < 4000; i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					System.out.println(vss_seq1 + "asdfasdf");
 					tv.setVss_seq(vss_seq1);
 					ts.makeTag(tv);
 				} catch(Exception e) {
@@ -263,6 +264,7 @@ public class BoardController {
 			}
 		}
 		} catch(Exception e) {
+			
 			return 0;
 		}
 		
@@ -301,9 +303,10 @@ public class BoardController {
 		
 		String vss_seq1 = request.getParameter("vss_seq");
 		int vss_seq = Integer.parseInt(vss_seq1);
+		System.out.println(vss_seq + "vss_seq");
 //		List<BoardVO> bvlist = new ArrayList<BoardVO>();
 		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
-		
+		System.out.println(pg+"pgggggggg");
 		int page=0;
 		if(pg>1) {
 			page=pg;
@@ -311,28 +314,34 @@ public class BoardController {
 		else {
 			page=1;
 		}
-		List<BoardVO> boardlist = bs.VSSBoardAllData(page);
-		int listcount=bs.VSSBoardListCount();
+		
+		BoardVO bv3 = new BoardVO();
+		
+		bv3.setPage(page);
+		
+		System.out.println(page+"pgggg");
+		bv3.setVss_seq(vss_seq);
+		
+		List<BoardVO> boardlist = bs.VSSBoardAllData(bv3);
+		int listcount=bs.VSSBoardListCount(vss_seq);
 		
 		
 		TagVO tv = new TagVO();
 		tv.setVss_seq(vss_seq);
+		tv.setPage(page);
 		
-		//List<TagVO> tvlist = ts.getVSSBoard(tv);
+		List<TagVO> tvlist = ts.getVSSBoard(tv);
 		
 		for (int i = 0; i < boardlist.size(); i++) {
 			
-			int b_seq = boardlist.get(i).getB_seq();
-			System.out.println(b_seq + "b_seq");
+			int b_seq = tvlist.get(i).getB_seq();
 			BoardVO bv = new BoardVO();
 			bv.setB_seq(b_seq);
 			
 			
 			
 			BoardVO bv1 = bs.Content(bv);
-			System.out.println(bv1.getVss_seq() + "vss_seq");
 			boardlist.set(i, bv1);
-			System.out.println(boardlist.get(i).getVss_seq() + "list vss_seq");
 //			bvlist.add(bv1);
 			
 //			추천 수
@@ -362,7 +371,6 @@ public class BoardController {
 		mv.addObject("bvlist", boardlist);
 		mv.addObject("vssOne",vssOne);
 		mv.addObject("vss_seq",vss_seq);
-		mv.addObject("count", boardlist.size());
 		return mv;
 	}
 	

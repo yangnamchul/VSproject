@@ -116,15 +116,15 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public List<BoardVO> VSSBoardAllData(int page) {
+	public List<BoardVO> VSSBoardAllData(BoardVO bv) {
 		// TODO Auto-generated method stub
-		return bdao.VSSBoardAllData(page);
+		return bdao.VSSBoardAllData(bv);
 	}
 
 	@Override
-	public int VSSBoardListCount() {
+	public int VSSBoardListCount(int vss_seq) {
 		// TODO Auto-generated method stub
-		return bdao.VSSBoardListCount();
+		return bdao.VSSBoardListCount(vss_seq);
 	}
 
 }
