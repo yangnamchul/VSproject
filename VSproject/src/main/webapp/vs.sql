@@ -230,3 +230,19 @@ SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
       select * from vote v left outer join board b on b.b_seq = v.b_seq WHERE v.u_id = 123 ;
       
       select * from like1 l left outer join board b on b.b_seq = l.b_seq ;
+      
+         
+      SELECT b.b_seq, b.u_id, b.vss_Seq, b.b_title, b.b_cnt, b.b_date, b.b_boolean, v.vss_name, count(*)
+      FROM board b 
+      left outer join vss v on b.vss_seq = v.vss_seq
+      left outer join reply r on b.b_seq = r.b_seq
+	  WHERE b.u_id = 123 ;
+	  
+	  SELECT count(*)
+		FROM Reply
+		WHERE b_seq = #{b_seq}
+	  
+	   SELECT  b.b_seq, b.u_id, b.vss_Seq, b.b_title, b.b_cnt, b.b_date, b.b_boolean, v.vss_name, r.count(b.b_seq) as ReplyCnt
+      FROM board b 
+      left outer join vss v on b.vss_seq = v.vss_seq     
+	  WHERE u_id = 123 ;

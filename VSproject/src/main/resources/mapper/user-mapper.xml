@@ -35,6 +35,13 @@
 		WHERE u_id = #{u_id}
 	</update>
 	
+<!-- 추가 -->
+	<update id="ChangeNick" >
+		UPDATE USERS
+		SET u_name = #{u_name}
+		WHERE u_id = #{u_id}
+	</update>
+	
 	<select id="MyPage" resultType="user">
 		SELECT *
 		FROM USERS

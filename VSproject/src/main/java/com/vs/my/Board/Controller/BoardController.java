@@ -117,7 +117,7 @@ public class BoardController {
 	public ModelAndView Category(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("Category");
-		
+		*
 		return mv;
 	}
 	

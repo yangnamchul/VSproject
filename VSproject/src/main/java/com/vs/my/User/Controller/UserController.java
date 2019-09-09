@@ -212,8 +212,8 @@ public class UserController {
 	@RequestMapping(value="ChangeNick.do", method=RequestMethod.POST) //닉네임 변경
 	@ResponseBody
 	public int ChangeNickAction(HttpSession hs, UserVO uv) {
-		
-		uv.setU_name((String)hs.getAttribute("changNick"));
+		System.out.println((String)hs.getAttribute("u_name"));
+		uv.setU_name((String)hs.getAttribute("u_name"));
 		
 		return us.ChangeNick(uv,hs);
 	}

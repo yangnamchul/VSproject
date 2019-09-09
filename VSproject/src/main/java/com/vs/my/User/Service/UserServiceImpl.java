@@ -81,13 +81,13 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int ChangeNick(UserVO uv,HttpSession hs) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(uv.getU_name());
 		try {
 			dao.ChangeNick(uv);
 		} catch(Exception e) {
 			return 0;
 		}
-		hs.removeAttribute("changNick");
+		hs.removeAttribute("u_name");
 		return 1;
 	}
 
