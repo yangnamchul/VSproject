@@ -92,7 +92,7 @@ CREATE TABLE Vote
 CREATE TABLE VSS
 (
 	VSS_seq number NOT NULL,
-	VSS_name varchar2(20) NOT NULL,
+	VSS_name varchar2(4000) NOT NULL,
 	VSS_content varchar2(4000),
 	PRIMARY KEY (VSS_seq)
 );
@@ -242,3 +242,7 @@ where NOT b_boolean IN ('1');
 SELECT *
 FROM VSS
 WHERE b_seq = 1;
+
+SELECT max(b_seq)
+FROM BOARD;
+

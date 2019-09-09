@@ -318,16 +318,16 @@ $( document ).ready(function() {
 						$("#VSS_name").val("");
 					} else {
 						alertify.success("부스러기 만들기 성공");
-						location.href="Main";
+						location.href="VSSBoard.do?vss_seq="+ data;
 					}
 				},
 				error: function (req, status, error) {
 					alertify.alert(req.status+ "\nmessege"+ req.responseTest );
 				}
 			});
-		}else {
+		} else {
 			alertify.error("부스러기 취소");
-		}
+			}
 		}
 	</script>
 
