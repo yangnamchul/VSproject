@@ -407,6 +407,10 @@ $("#right-bar").text(vRight+" %");
 		} else {
 			$('#btn_del').css('display','none');
 		}
+	});
+</script>
+<script>
+	$(document).ready(function() {
 		var data = ${data};
 		if (data != 0) {
 			$('#content-vs').css('display','inline-flex');
@@ -417,7 +421,6 @@ $("#right-bar").text(vRight+" %");
 		}
 	});
 </script>
-
 
 </body>
 
