@@ -11,4 +11,5 @@ public interface ReplyService {
 	public int ReplyInsertData(ReplyVO rv);
 	public ReplyVO ReplyOneData(int re_seq);
 	public List<ReplyVO> UserReply(String u_id);
+	public int ReplyCnt(int b_seq);
 }

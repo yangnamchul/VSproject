@@ -119,12 +119,22 @@ public class UserController {
 		return 0;
 	}
 	
-	@RequestMapping(value="Terms.do", method=RequestMethod.GET) //약관 동의
-	public ModelAndView Terms(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Terms");
+	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별
+	@ResponseBody
+	public int nickCheck(HttpServletRequest request, UserVO uv) {
 		
-		return mv;
+		String u_name = request.getParameter("u_name");
+		uv.setU_name(u_name);
+		
+		UserVO uv2 = us.nickCheck(uv);
+		
+		try {
+			uv2.getU_name();
+			System.out.println(uv2.getU_name());
+		} catch (Exception e) {
+			return 1;
+		}
+		return 0;
 	}
 	
 	@RequestMapping(value="Login.do", method=RequestMethod.GET) //로그인 페이지 이동
@@ -229,18 +239,17 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="UserInsertData.do", method=RequestMethod.GET) //유저정보 입력하기
-	public ModelAndView UserInsertData(UserVO vo,HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("UserAllData");
-
-		us.UserInsertData(vo);
-		
-		List<UserVO> userlist = us.UserAllData();
-		
-		mv.addObject("userlist", userlist);
-		
-		return mv;
+	@RequestMapping(value="UserInsertData.do", method=RequestMethod.POST) //유저정보 입력하기
+	@ResponseBody
+	public int UserInsertData(UserVO vo) {
+		try {
+			vo.getU_id();
+			us.UserInsertData(vo);
+			return 1;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 }

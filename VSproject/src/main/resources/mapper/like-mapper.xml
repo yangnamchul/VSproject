@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org // DTD mapper 3.0 // en" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.like-mapper">
+
+	<insert id="FirstLike">
+		INSERT INTO Like1
+		VALUES(#{b_seq},#{u_id},#{l_like},sysdate,#{l_ip})
+	</insert>
+	
+	<select id="LikeConfirm" resultType="Like">
+		SELECT *
+		FROM Like1
+		WHERE b_seq=#{b_seq} and u_id=#{u_id}
+	</select>
+	
+	<select id="LikeConfirm2" resultType="Like">
+		SELECT *
+		FROM Like1
+		WHERE b_seq=#{b_seq} and l_ip=#{l_ip}
+	</select>
+	
+	<select id="LikeCnt" resultType="Integer">
+		SELECT count(*)
+		FROM Like1
+		WHERE b_seq=#{b_seq} and l_like=1
+	</select>
+	
+	<select id="UnlikeCnt" resultType="Integer">
+		SELECT count(*)
+		FROM Like1
+		WHERE b_seq=#{b_seq} and l_like=2
+	</select>
+	
+</mapper>

@@ -14,10 +14,9 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<BoardVO> BoardAllData() {
+	public List<BoardVO> BoardAllData(int page) {
 		// TODO Auto-generated method stub
-		System.out.println("boardAlldata~");
-		return  sqlSession.selectList(namespace+".BoardAllData");
+		return  sqlSession.selectList(namespace+".BoardAllDataPage", page);
 	}
 
 	@Override
@@ -48,6 +47,18 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> VSSBoard(int VSS_seq) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".VSSBoard",VSS_seq);
+	}
+
+	@Override
+	public void BoardCnt(int b_seq) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".BoardCnt", b_seq);
+	}
+
+	@Override
+	public void delCon(int b_seq) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".delCon", b_seq);
 	}
 
 }

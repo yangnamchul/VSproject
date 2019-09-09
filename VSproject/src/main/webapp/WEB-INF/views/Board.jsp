@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%-- 		<%@ include file="t_Header.jsp"%> --%>
+	<%-- 		<%@ include file="t_Header.jsp"%> --%>
 	<%@ include file="Header.jsp"%>
 
 	<div id="content-area">
@@ -22,272 +22,159 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					[아무]의 부스러기 (전체 글 : { 딸린 vss count}</div>
+					전체글 보기 (전체 글 : <strong>${ListCount}</strong> )</div>
 
-				<div class="col-xl-10" id="board-menu">해당 부스러기 관련 링크 (정렬, 인기글,
-					공지 같은거 연결하기)</div>
 
-				<div class="col-xl-2" id="board-write" align="center">
-					<form action="BoardWriteData.do" method="post">
-						<input hidden="hidden" />
-						<button type="submit">글쓰기</button>
+				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
+					(추가정보는 관련meme정립글(링크)</div>
+
+				<div class="col-2 col-xl-2" id="board-write" align="center">
+					<form action="BoardWriteData.do?vss_seq=0" method="post"
+						id="BoardWriteData">						
+						<button type="submit" id="btn_write">글쓰기</button>
 					</form>
 				</div>
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-list">
 					<table class="table table-striped table-bordered table-hover"
 						id="board-table">
-						<thead>
+						<thead class="board-thead">
 							<tr>
-								<th width="10%">번호</th>
-								<th width="50%">제목</th>
-								<th width="10%">작성자</th>
-								<th width="20%">작성일</th>
-								<th width="10%">조회</th>
+								<th class="board-no" width="5%">번호</th>
+<!-- 								<th class="board-info" width="5%">종류</th> -->
+								<th class="board-title" >제목</th>
+								<th class="board-re" width="5%">댓글</th> 
+								<th class="board-writer" width="10%">작성자</th>
+								<th class="board-date" width="5%">작성일</th>
+								<th class="board-cnt" width="5%">조회</th>
+								<th class="board-like" width="5%">추천</th>								
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="board-tbody">
 							<c:forEach var="vo1" items="${boardlist}">
-								<tr>
-									<td>${vo1.b_seq}</td>
-									<td id="title"><a href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title} </a></td>
-									<td>${vo1.u_id}</td>
-									<td><fmt:formatDate value="${vo1.b_date}" pattern="MM-dd" />
-									</td>
-									<td>${vo1.b_cnt}</td>
+								<tr id="board-pc">
+									<td class="board-no">${vo1.b_seq}</td>
+<!-- 									<td class="board-info"></td> -->
+									<td class="board-title">
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a
+										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
+									<td class="board-re">${vo1.replyCnt }</td>	
+									<td class="board-writer"><a href="#"><span
+											id="vss_u_id">${vo1.u_id}</span> </a></td>								
+
+									<td class="board-date"><fmt:formatDate
+											value="${vo1.b_date}" pattern="MM-dd" /></td>
+									<td class="board-cnt">${vo1.b_cnt}</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
 								</tr>
 							</c:forEach>
 
+							<c:forEach var="vo1" items="${boardlist}">
+								<tr id="board-mb">
+									<td class="board-title col-12">
+										<a href="Content.do?b_seq=${vo1.b_seq}">
+											<div class=col-12 id="board-mb-title"><span id=vss>${vo1.vssName }</span> ${vo1.b_title}</div>
+										</a>
+										<div class=col-12 id="board-mb-info">
+											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
+											| <span> <fmt:formatDate value="${vo1.b_date}"
+													pattern="MM-dd" /> | 추천_<span id="vss_like">${vo1.lv.l_like }</span> | <span>댓글_${vo1.replyCnt }</span>
+										</div></td>
+
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 
 					<!-- Paging 처리 -->
-		<%-- 			<%  /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
-		      
-		        int total =Integer.parseInt((request.getAttribute("ListCount")).toString()); 
-				int p=0;
-				if(total%5==0){
-					p=total/5;
-				}
-				else{
-					p=(total/5)+1;
-				}
-				%> --%>
-        <%--  		<div class="col-xs-12" id="paging">
+					<%
+			
+					 final int ROWSIZE = 5; //한페이지에 보일 게시물 수
+					 final int BLOCK = 5;   //아래에 보일 페이지 최대 개수
+					 
+					 int pg = 1; //기본 페이지 값
+					 if(request.getParameter("pg")!= null){
+						 pg = Integer.parseInt(request.getParameter("pg"));
+					 }
+					
+					 /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */	
+					 int total = Integer.parseInt((request.getAttribute("ListCount")).toString());
+					 int allPage = 0; //전체 페이지 수
+					 
+					 int start = (pg*ROWSIZE)-(ROWSIZE-1); //해당 페이지에서 시작번호
+					 int end = (pg*ROWSIZE); //해당 페이지에서 끝 번호
+					 
+					 int startPage = ((pg-1)/BLOCK*BLOCK)+1; //시작 블럭 숫자
+					 int endPage = ((pg-1)/BLOCK*BLOCK)+BLOCK; //끝 블럭 숫자
+					
+
+					 allPage = (int)Math.ceil(total/(double)ROWSIZE);
+					  
+					  if(endPage > allPage){
+					   endPage = allPage;
+					  }
+					  out.print("총 게시물 :" +total +"개");
+	
 				
-				<button type="button" id="before_bt">   <   </button>  
-				<%
-				
-				
-				for (int i=1; i<=p; i++){
-				%>
-				  <a href="Board.do?page=<%=i%>"> <%=i%></a>
-				
-				<%
-	                     } %>
-				<button type="button" id="after_bt">     >    </button>  
-				</div> --%>
-				<!--현재는 페이징 영역 ID "paging" 으로 고정 -->
-            <ul id="paging">11111</ul>
+					%>
+					<div class="col-xs-12" id="paging board-page">
+					<%
+  if(pg>BLOCK){
+ %>
+  [<a href="Board.do?pg=1">◀◀</a>]
+  [<a href="Board.do?pg=<%=startPage-1%>">◀</a>]
+ <%
+  }
+ %>
+ <%
+  for(int i=startPage; i<=endPage; i++){
+   if(i==pg){
+ %>
+  <U><B> 	[<%=i %>]</B></U>
+ <%
+   }else{
+ %>
+  [<a href="Board.do?pg=<%=i %>"><%=i %></a>]
+ <%
+   }
+  }
+ %>
+ <%
+  if(endPage<allPage){
+ %>
+  [<a href="Board.do?pg=<%=endPage+1 %>">▶</a>]
+  [<a href="Board.do?pg=<%=allPage %>">▶▶</a>]
+ <%
+  }
+ %>
+					
 
 
-				
+
+					
+					
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-
+		
 </body>
-<script>
 
-
-var pager = function(options) {
-
-    var defaults = {
-        currentPage : 1 // 현재페이지    
-        ,pageSize : 5 // 페이지 사이즈 (화면 출력 페이지 수)
-        ,maxListCount : 10 // (보여질)최대 리스트 수 (한페이지 출력될 항목 갯수)
-        ,startnum : 1 // 시작 글번호
-        ,lastnum : 10 // 마지막 글번호
-        ,totalCnt : 0 // 전체 글의 갯수.
-        ,totalPageCnt : 0 // 전체 페이지 수
-        
-    };
-    
-    this.buttonClickCallback = null;
-    this.opts = $.extend({}, defaults, options);
-    
-};
-
-pager.prototype = {
-
-    "renderpager" : function(totalCnt, buttonClickCallback) {
-
-        //console.log(this);
-        //console.log(this.opts);
-        var _ = this;
-        alert("prototype");
-        _.opts.totalCnt = totalCnt; //토탈 카운트 객체 멤버변수에 저장.
-        
-        var pageSize = this.opts.pageSize;
-        var maxListCount = this.opts.maxListCount;
-        var currentPage = this.opts.currentPage;
-        
-        if (totalCnt == 0) {
-            return "";
-        }
-        
-        //총페이지수 구하기 : 페이지 출력 범위 (1|2|3|4|5)
-        var totalPageCnt = Math.ceil(totalCnt / maxListCount);
-    
-        //현재 블럭 구하기 
-        var n_block = Math.ceil(currentPage / pageSize);
-
-        //페이징의 시작페이지와 끝페이지 구하기
-        var s_page = (n_block - 1) * pageSize + 1; // 현재블럭의 시작 페이지
-        var e_page = n_block * pageSize; // 현재블럭의 끝 페이지
-
-        // setup $pager to hold render
-        var $pager = $('#paging'); // TODO: 페이지를 출력할 영역. ( 출력할 영역의 ID를 인자로..  )
-        $pager.empty(); //영역에 기존에 있던 내용 제거
-
-
-        //처음, 이전 버튼 추가
-        $pager.append(this.renderButton('first', totalPageCnt, _.buttonClickCallback))
-              .append(this.renderButton('prev', totalPageCnt,    _.buttonClickCallback));
-
-        //페이지 나열
-        for (var j = s_page; j <= e_page; j++) {
-            if (j > totalPageCnt)    break;
-            
-            var currentButton = $('<li >' + (j) + '</li>');
-            
-            //현재 페이지일경우 select 클래스 추가. 
-            if (j == currentPage)    currentButton.addClass('selected');
-            else currentButton.click(function() {
-                                _.initNum(parseInt(this.firstChild.data));
-                                _.buttonClickCallback(this.firstChild.data);
-                            });
-        
-            currentButton.appendTo($pager); //페이징 영역에 버튼 추가            
-        }
-
-        //다음, 마지막 버튼 추가
-        $pager.append(this.renderButton('next', totalPageCnt,    _.buttonClickCallback))
-              .append(this.renderButton('last', totalPageCnt,    _.buttonClickCallback));
-
-        return $pager;
-    },
-    
-    
-    "initNum" : function(cp) {
-
-        this.opts.currentPage = cp;
-
-        //시작 글번호
-        this.opts.startnum = (cp - 1) * this.opts.maxListCount + 1;
-
-        // 마지막 글번호
-        var tmp = cp * this.opts.maxListCount;
-        this.opts.lastnum = (tmp > this.opts.totalCnt ? this.opts.totalCnt
-                : tmp);
-
-        console.log("P:"+cp+"/startnum:"+this.opts.startnum+"/lastnum:"+this.opts.lastnum);
-
-    },
-
-    "renderButton" : function(buttonLabel, totalPageCnt,
-            buttonClickCallback) {
-        var _ = this;
-        var currentPage = this.opts.currentPage;
-        //var totalPageCnt = this.opts.totalPageCnt;
-
-        var $Button = $('<li >' + buttonLabel + '</li>');
-        var destPage = 1;
-
-        // work out destination page for required button type
-        switch (buttonLabel) {
-        case "first":
-            destPage = 1;
-            $Button.addClass('active');
-            $Button.html('처음');
-            break;
-
-        case "prev":
-            destPage = currentPage - 1;
-            $Button.addClass('active');
-            $Button.html('이전');
-            break;
-
-        case "next":
-            destPage = currentPage + 1;
-            $Button.addClass('active');
-            $Button.html('다음');
-            break;
-
-        case "last":
-            destPage = totalPageCnt;
-            $Button.addClass('active');
-            $Button.html('마지막');
-            break;
-        }
-
-        // disable and 'grey' out buttons if not needed.
-        if (buttonLabel == "first" || buttonLabel == "prev") { //1페이지에서는 처음, 이전 버튼 안보이게 
-
-            if(    currentPage <= 1 ) $Button.addClass('pgEmpty').css("display", "none") 
-            else $Button.click(function() {    _.initNum(destPage); buttonClickCallback(); });
-        } else {
-            if( currentPage >= totalPageCnt) $Button.addClass('pgEmpty').css("display", "none")
-            else $Button.click(function() { _.initNum(destPage); buttonClickCallback();    });
-        }
-        return $Button; //생성된 버튼 반환
-    }
-};
-
-})
-</script>
-<script>
-
-//pager객체 생성
-$(document).ready(function(){
-
-var page = new pager();
-
-//클릭했을때 사용할 콜백함수 지정. 
-//여기서는 테스트용함수 지정.
-//게시판 같은경우 리스트를 호출하는 함수 지정하면된다.
-page.buttonClickCallback = listContent;
-
-//최초 로딩시 실행.
-listContent();
-})
-
-
-
-//테스트용.
-
-function listContent() {
-    //console.log(pageCurrent);
-    //alert(pageCurrent);        
-    
-    //Ajax 작업 (S)
-$.ajax({
-			type: 'GET',
-			url: 'BoardListCount.do',
-	        async: false,
-	 /*        data : $("#replyform").serialize(), */
-	      /*   dataType: 'json',//동기 비동기 설정 */
-			 error : function(){
-	             alert("통신실패!!!!");
-	         },
-	         success : function(data){  
-	        	   alert(data);
-	        	 page.renderpager(data);   //페이징 처리를 위해 총레코드수를 매개변수로 전달해야함.
-	         }
-
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : submit 유효성 검사
+작성자 : 건영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script type="text/javascript">
+$('#BoardWriteData').submit(function () {
+	var isLogin = "<%=session.getAttribute("uv")%>";
+	if (isLogin == "null") {
+		alertify.error("먼저 로그인 해주세요.");
+		return false;
+	}
 });
-
-}
 </script>
+
+
 
 </html>

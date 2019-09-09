@@ -13,8 +13,8 @@ import com.vs.my.Board.DAOVO.BoardVO;
 @Service
 public interface BoardService {
 	
-	public List<BoardVO> BoardAllData();
-	
+	public List<BoardVO> BoardAllData(int page);
+
 	public void BoardInsertData(BoardVO vo);
 	
 	public void BoardFileSave(MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception;
@@ -27,4 +27,7 @@ public interface BoardService {
 	
 	public List<BoardVO> VSSBoard(int VSS_seq);
 	
+	public void BoardCnt(int b_seq);
+	
+	public void delCon(int b_seq);
 }

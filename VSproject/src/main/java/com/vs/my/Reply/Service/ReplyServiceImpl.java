@@ -53,6 +53,11 @@ public class ReplyServiceImpl implements ReplyService{
 		// TODO Auto-generated method stub
 		return rdao.UserReply(u_id);
 	}
+	@Override
+	public int ReplyCnt(int b_seq) {
+		// TODO Auto-generated method stub
+		return rdao.ReplyCnt(b_seq);
+	}
 	
 
 

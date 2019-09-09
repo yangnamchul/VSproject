@@ -25,16 +25,9 @@
 					<div class="frame">
 						<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="write-info">
 							<!-- 						최상위 부스러기일시 부모 표시 -->
-							<a href=""><span id="vss" style="float: right"> 무엇 </span></a>
+							<a href="VSSBoard.do?vss_seq=${vss_seq}"><span id="vss" style="float: right">${vssName } </span></a>
 							글쓰기
 						</div>
-						<!-- 										세션보고 비회원일때만 나오게  시작-->
-						<div class="col-12 col-sm-6 col-lg-6 col-xl-6" id="write-nickpw">
-							<input type="text" name="" id="p_id" maxlength="10"
-								placeholder="작성자" /> <input type="password" name="" id="p_pw"
-								maxlength="20" placeholder="암호" />
-						</div>
-						<!-- 						비회원 나오게 끝 -->
 
 						<form action="BoardInsertData.do" method="POST">
 							<div id="write-vscheck">
@@ -43,16 +36,8 @@
 								<!-- 										vs 유무 -->
 								<button type="button" id="btn_vschk">VS!</button>
 							</div>
-							<div>
-								<select name='VSS' size=${vssCnt }>
-									<option value='' selected>-- 선택 --</option>
-									<c:forEach var="vo1" items="${vsslist}">
-										<option value=${vo1.VSS_seq }>${vo1.VSS_name }</option>
-									</c:forEach>
-								</select>
-							</div>
 							<div class="col-12 col-sm-8 col-lg-6 col-xl-6" id="write-title">
-								<input type="text" name="b_title" id="b_title" maxlength="40"
+								<input type="text" name="b_title" id="b_title" maxlength="35"
 									placeholder="제목" />
 
 							</div>
@@ -63,13 +48,15 @@
 
 									<textarea name="vsleft" id="vsleft"></textarea>
 									
-						<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
+									<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
 				
 									<textarea name="vsright" id="vsright"></textarea>
 
 								</div>
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
+								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
+								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
 							</div>
 							
 							<div id="write-submit">
@@ -77,7 +64,6 @@
 							</div>
 						</form>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -112,8 +98,10 @@
 							  async: false ,
 							  dataType : 'json'
 							}).then(function(data) {
-								window.vss = Object.keys(data);
-								window.vss_seq = data; 
+								window.vss1 = data[0];
+								window.vss = Object.keys(vss1);
+								window.vss2 = data[1]; 
+								console.log(vss);
 						});
 						
 						/* 텍스트 에디터 설정 */
@@ -123,7 +111,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' 내용을 입력하세요. ',
 											toolbar : [['font',['bold','underline','clear' ] ],[ 'fontname',[ 'fontname' ] ],
@@ -149,37 +137,32 @@
 											      }));
 											    },
 											    template: function (item) {
-											    	var seq = vss_seq[item];
-											     	return item;
+											    	var name1 = vss1[item];
+											    	var content1 = vss2[item];
+// 											     	return item + " : " + content1;
+											     	return "<span id=vss>" + item + "</span>" + ": " + content1;
+											     
+											     	
 											    },
 											    content: function (item) {
-											    	var seq = vss_seq[item];
+											    	var seq = vss1[item];
 											    	if (seq) {
-// 											      	return '<a href="VSSBoard.do?VSS_seq=' + seq + '">' + item + '</a>';
-// 											      		'createLink', {
-// 											      			text: item,
-// 											      			url : "VSSBoard.do?VSS_seq=" + seq
-// 											      		}
-
-											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
+											    		  $('.note-editable').append($('<a />', {
+											    		        id: 'vss',
+											    		        href: 'VSSBoard.do?vss_seq=' + seq ,
+											    		        text: item
+											    		    }));									    													    		
+// 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+// 											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');											    		  
 											    	}
-											    	return '';
+											    	return $('.note-editable').focus().val('') ;
 											    }
+											    
+											    
 											  }
-										});
-
-						$('#vsCheck').change(function() {
-							if ($('#vsCheck').is(':checked')) {
-								$('#write-vs').css('display', 'inline-flex');
-								$("#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable").focus();
-								// 								$('#write-msg').css('display', 'block');
-							} else {
-								$('#write-vs').css('display', 'none');
-								// 								$('#write-msg').css('display', 'none');
-
-							}
-						})
+											
+											
+										});					
 
 						$('#vsleft')
 								.summernote(
@@ -188,7 +171,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' <span id="vss">전자(Left)</span> <br> 내용을 입력하시거나 해당 아이콘을 선택하세요.',
 											toolbar : [
@@ -197,9 +180,9 @@
 															[ 'picture',
 																	'video' ] ], ],
 											callbacks : {
-												onImageUpload : function(file,
-														editor, welEditable) {
+													onImageUpload : function(file,editor, welEditable) {
 													sendfile(file[0], this);
+													
 												}
 											}
 										});
@@ -211,7 +194,7 @@
 											minHeight : null,
 											maxHeight : null,
 											focus : true,
-											airmode : true,
+											airmode : false,
 											lang : 'ko-KR',
 											placeholder : ' <span id="vss">후자(Right)</span> <br> 내용을 입력하시거나 해당 아이콘을 선택하세요.',
 											toolbar : [
@@ -225,9 +208,32 @@
 													sendfile(file[0], this);
 												}
 											}
-										});
-						// 						$("#write-vs > div:nth-child(2) > div.note-toolbar").prepend("내용을 추가하려면 해당 아이콘을 선택하세요. ▶ ") ;
-
+										});					
+						
 					});
 </script>
+
+<script type="text/javascript">
+	$('#vsCheck')
+			.change(
+					function() {
+						if ($('#vsCheck').is(':checked')) {
+							$('#write-vs').css('display', 'inline-flex');
+							$(
+									"#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable")
+									.focus();
+							//                         $('#write-msg').css('display', 'block');
+						} else {
+							$('#write-vs').css('display', 'none');
+							//                         $('#write-msg').css('display', 'none');
+
+						}
+					});
+
+	$('#btn_vschk').click(function() {
+		$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
+		$('#vsCheck').trigger('change');
+	});
+</script>
+
 </html>

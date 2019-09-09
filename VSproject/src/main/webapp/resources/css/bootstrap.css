@@ -396,6 +396,11 @@ button {
 	border-radius: 0
 }
 
+/* 버튼 부분 포인터 */
+button:hover {	
+	cursor: pointer;
+}
+
 button:focus {
 	outline: 1px dotted;
 	outline: 5px auto -webkit-focus-ring-color

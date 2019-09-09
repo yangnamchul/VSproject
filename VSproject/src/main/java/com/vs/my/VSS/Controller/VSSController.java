@@ -43,21 +43,26 @@ public class VSSController {
 	
 	@RequestMapping(value = "getAllVSS.do", method = RequestMethod.GET) //부스러기 만들기
 	@ResponseBody
-	public JSONObject getAllVSS() {
+	public JSONArray getAllVSS() {
 		JSONObject json = new JSONObject() ;
-		
+		JSONObject json2 = new JSONObject() ;
 		List<VSSVO> vsslist = vss.getAllVSS();
 		
 		JSONArray jsonarr = new JSONArray();
 		
 		for (int i = 0; i < vsslist.size(); i++) {
 			json.put(vsslist.get(i).getVSS_name(), vsslist.get(i).getVSS_seq());
-			
-			jsonarr.add(i,json);
+			json2.put(vsslist.get(i).getVSS_name(),vsslist.get(i).getVSS_content());
 		}
+		System.out.println(json);
+		System.out.println(json2);
+		//json.put("vsslist", vsslist);
+		jsonarr.add(json);
+		jsonarr.add(json2);
 		
+		System.out.println(jsonarr);
 		//json.put("vsslist", jsonarr);
 		
-		return json;
+		return jsonarr;
 	}
 }

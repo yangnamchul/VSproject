@@ -27,9 +27,9 @@ public class BoardServiceImpl implements BoardService
    	UserDAO udao;
 	
     @Override
-	public List<BoardVO> BoardAllData() {
+	public List<BoardVO> BoardAllData(int page) {
 		// TODO Auto-generated method stub
-		return bdao.BoardAllData();
+		return bdao.BoardAllData(page);
 	}
 
 	@Override
@@ -95,6 +95,18 @@ public class BoardServiceImpl implements BoardService
 	public List<BoardVO> VSSBoard(int vss_seq) {
 		// TODO Auto-generated method stub
 		return bdao.VSSBoard(vss_seq);
+	}
+
+	@Override
+	public void BoardCnt(int b_seq) {
+		// TODO Auto-generated method stub
+		bdao.BoardCnt(b_seq);
+	}
+
+	@Override
+	public void delCon(int b_seq) {
+		// TODO Auto-generated method stub
+		bdao.delCon(b_seq);
 	}
 
 }

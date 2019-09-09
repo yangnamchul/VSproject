@@ -1,8 +1,6 @@
 package com.vs.my.Reply.DAOVO;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +45,12 @@ private static final String namespace="mapper.reply-mapper";
 	public List<ReplyVO> UserReply(String u_id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".UserReply",u_id);
+	}
+
+	@Override
+	public int ReplyCnt(int b_seq) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".ReplyCnt", b_seq);
 	}
 
 	
