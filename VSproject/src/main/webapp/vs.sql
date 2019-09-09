@@ -90,7 +90,7 @@ CREATE TABLE Vote
 CREATE TABLE VSS
 (
 	VSS_seq number NOT NULL,
-	VSS_name varchar2(20) NOT NULL,
+	VSS_name varchar2(4000) NOT NULL,
 	VSS_content varchar2(4000),
 	PRIMARY KEY (VSS_seq)
 );
@@ -200,6 +200,7 @@ SELECT * FROM vote;
 SELECT * FROM VSS;
 SELECT * FROM reply;
 SELECT * FROM like1;
+SELECT * FROM tag;
 
 insert into vote values(VOTE_sequence1.NEXTVAL,  105, 123, 1, sysdate, null) ;
 
@@ -217,3 +218,26 @@ SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
 		FROM board
 		WHERE NOT b_boolean IN ('1')
  		ORDER BY b_seq DESC ;
+        
+SELECT X.b_seq, X.vss_seq
+   		FROM 
+		(SELECT rownum as rum, A.b_seq, A.vss_seq
+		FROM 
+   			(SELECT b_seq, vss_seq
+			FROM Tag
+			WHERE vss_seq = 22
+			ORDER BY b_seq DESC) 
+		A  where rownum <= 1*5)
+   		X  where x.rum >= ((1-1)*5)+1;
+        
+UPDATE reply
+SET re_boolean = 0
+WHERE re_boolean is null;
+
+SELECT count(*)
+FROM Reply
+WHERE b_seq = 44 and re_boolean = 0;
+        
+SELECT count(*)
+FROM Like1
+WHERE b_seq=43 and l_like=1;

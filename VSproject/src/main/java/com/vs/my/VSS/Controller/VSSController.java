@@ -41,6 +41,17 @@ public class VSSController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "newVSS.do", method = RequestMethod.GET) //부스러기 전부 보기
+	@ResponseBody
+	public List<VSSVO> newVSS(VSSVO vssvo) {
+		
+		
+		
+		List<VSSVO> lv = vss.newVSS();
+		
+		return lv;
+	}
+	
 	@RequestMapping(value = "makeVSS.do", method = RequestMethod.POST) //부스러기 만들기
 	@ResponseBody
 	public int makeVSS(VSSVO vssvo) {

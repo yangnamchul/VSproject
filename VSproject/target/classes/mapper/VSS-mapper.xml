@@ -24,4 +24,11 @@
 		FROM VSS
 	</select>
 	
+	<select id="newVSS" resultType="VSS">
+		SELECT *
+		FROM VSS
+		WHERE ROWNUM <![CDATA[ < ]]>= 5
+		ORDER BY vss_seq desc
+	</select>
+	
 </mapper>

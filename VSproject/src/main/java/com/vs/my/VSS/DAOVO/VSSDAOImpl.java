@@ -37,4 +37,10 @@ public class VSSDAOImpl implements VSSDAO {
 		return sqlSession.selectOne(namespace+".maxVSS");
 	}
 
+	@Override
+	public List<VSSVO> newVSS() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".newVSS");
+	}
+
 }

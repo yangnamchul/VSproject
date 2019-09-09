@@ -41,20 +41,11 @@
 					<h3>
 						<a href="#">부스러기 인기글</a>
 					</h3>
-					<ul class="vss-hot">
-
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
-						<li><a href="#" class="board-name">부스러기</a> <span>▶</span> <a
-							href="#">아무내용링크1</a></li>
+					<ul class="vss-hot" id="board_ul1">
+						
+						<li id="board_list1" style="display: none;">
+						<a href=" " class="board-name"></a> <span>▶ </span> <a href=" ">ㄹㄹ</a></li>
+						
 					</ul>
 
 				</div>
@@ -105,6 +96,32 @@ $(document).ready(function() {
          }
 	});
 	
+});
+</script>
+
+<script>
+$(document).ready(function() { 
+	
+	$.ajax({
+		type: 'GET',
+		url: 'newVSS.do',
+        async: false,
+        dataType: 'json',//동기 비동기 설정
+		 error : function(){
+//              alert("통신실패!!!!");
+         },
+         success : function(data){
+          /* alert("통신 데이터 값 : " + data[0]["b_title"]); */
+          for(var i=0; i<5;i++){	
+             var objRow = $("#board_list1").clone();  //li 복사
+             objRow.removeAttr("style");
+          	 objRow.html('<li><a href="VSSBoard.do?pg=1&vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vss_name']+
+          	'</a><span>▶  </span> <a href="VSSBoard.do?pg=1&vss_seq=' +data[i]['vss_seq']+ ' ">'+data[i]['vss_content']+'</a></li>');
+          	 
+          	$("#board_ul1").append(objRow);
+          }
+         }
+	});
 });
 </script>
 </html>

@@ -9,4 +9,5 @@ public interface VSSService {
 	public List<VSSVO> getAllVSS();
 	public VSSVO getOneVSS(int vss_seq);
 	public int maxVSS();
+	public List<VSSVO> newVSS();
 }
