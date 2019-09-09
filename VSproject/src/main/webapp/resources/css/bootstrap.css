@@ -172,6 +172,7 @@ a:focus, a:hover {
 	/* 	color: #23527c; */
 	color: #fff;
 	text-decoration: underline;
+	cursor: pointer;
 }
 
 a

@@ -22,13 +22,10 @@
 <script src="resources/js/alertify.min.js"></script>
 <script src="resources/js/bootstrap.js"></script>
 
-
-
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
 %>
-
 </head>
 <body>
 	<header>
@@ -84,8 +81,6 @@
 			</div>
 		</div>
 
-
-
 		<div class="frm-search" style="display: none;">
 			<form action="#" method="get" id="right-search-form">
 				<input type="text" placeholder="부스러기 검색" value=""
@@ -118,15 +113,14 @@
 									<!-- 									</div> -->
 									<button type="button" onclick="login()">로그인</button>
 								</div>
-							</form>
-							<!-- 여기 -->
+							</form>						
 						</div>
 						<div class="modal-footer">
 							<div align="center" id="pop_join_btn">
 								<div class="find-id-pw">
 									<a id="btn_findIdModal">아이디찾기</a> / <a id="btn_findPwModal">암호찾기</a>
 								</div>
-								<span>아직 회원이 아니면??</span>
+								<span id="vss_title">부스러기에 가입하세요.</span>
 								<button type="button" onclick="location.href = 'SignUp.do' ">회원가입</button>
 							</div>
 						</div>
@@ -257,8 +251,8 @@
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown3" class="dropdown-content3">
-						<a href="MyPage.do" style="padding: inherit;">마이페이지</a>
-						<a href="History.do" style="padding: inherit;">히스토리</a>
+						<a href="MyPage.do" style="padding: inherit;" id="btn_mypage">마이페이지</a>
+						<a href="History.do" style="padding: inherit;" id="btn_history">히스토리</a>
 						</div>
 				</div>
 
@@ -278,7 +272,7 @@
 	<!-- row end -->
 
 	<script>
-		//아이디 찾기 ajax
+//아이디 찾기 ajax
 		function FindID() {
 			if ($("#u_email").val() == "") {
 				alertify.warning("이메일을 입력해주세요");
@@ -296,6 +290,7 @@
 								alertify.error("아이디 정보가 없습니다.");								
 							} else {
 								alertify.success("당신의 아이디는 " + data + "입니다")
+								$('#findIdModal').modal('hide');
 							}
 						},
 						error : function(req, status, error) {
@@ -603,6 +598,24 @@ window.onclick = function(event){
        }
      }
 }
+</script>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 링크 로그인 검사
+작성자 : 건영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+
+
+<script type="text/javascript">
+
+
+$("[id='btn_mypage'],[id='btn_history']").click(function () {
+	var isLogin = "<%=session.getAttribute("uv")%>";
+	if (isLogin == "null") {
+		alertify.error("먼저 로그인 해주세요.");
+		return false;
+	}
+});
 </script>
 
 </body>
