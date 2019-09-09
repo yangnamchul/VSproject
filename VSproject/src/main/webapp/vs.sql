@@ -10,8 +10,6 @@ DROP TABLE Users CASCADE CONSTRAINTS;
 DROP TABLE VSS CASCADE CONSTRAINTS;
 
 
-
-
 /* Create Tables */
 
 CREATE TABLE Board
@@ -92,7 +90,7 @@ CREATE TABLE Vote
 CREATE TABLE VSS
 (
 	VSS_seq number NOT NULL,
-	VSS_name varchar2(4000) NOT NULL,
+	VSS_name varchar2(20) NOT NULL,
 	VSS_content varchar2(4000),
 	PRIMARY KEY (VSS_seq)
 );
@@ -169,9 +167,6 @@ COMMENT ON COLUMN Vote.V_like IS '1 : 전자
 
 
 
-
-
-
 insert into USERS
 values(1,'admin','admin','admin','admin',sysdate,null,null);
 
@@ -206,6 +201,7 @@ SELECT * FROM VSS;
 SELECT * FROM reply;
 SELECT * FROM like1;
 
+insert into vote values(VOTE_sequence1.NEXTVAL,  105, 123, 1, sysdate, null) ;
 
 create sequence board_sequence1;
 create sequence user_sequence1;
@@ -216,33 +212,8 @@ create sequence VSS_sequence1;
 insert into board
 values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
 
-SELECT Reply_sequence1.NEXTVAL
-FROM DUAL;
 
-insert into like1
-values(1,null,2,TO_DATE(sysdate,'YYYY.MM.DD HH:MI:SS'),'123');
-
-SELECT b_seq,TO_CHAR(l_date,'YYYY.MM.DD HH:MI:SS')
-FROM like1;
-
-select b.b_seq, l.L_like
-from board b 
-left outer join like1 l 
-on b.b_seq = l.b_seq 
-WHERE l.b_seq = 24 and l.l_like = 2; 
-
-SELECT count(*)
-FROM Reply
-WHERE b_seq = 1;
-
-select count (*)
-from board
-where NOT b_boolean IN ('1');
-
-SELECT *
-FROM VSS
-WHERE b_seq = 1;
-
-SELECT max(b_seq)
-FROM BOARD;
-
+SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
+		FROM board
+		WHERE NOT b_boolean IN ('1')
+ 		ORDER BY b_seq DESC ;

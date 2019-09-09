@@ -33,7 +33,6 @@ try {
 </head>
 
 <body>
-
 	<%-- 	<%@ include file="t_Header.jsp"%> --%>
 
 	<div id="content-area">
@@ -318,10 +317,12 @@ try {
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 글 삭제 하기
-작성자 : 동언
+작성자 : 동언 
+수정 :건영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
-		function delCon() {
+	function delCon() {
+	if (confirm('글을 삭제 하시겠습니까?')) {		
 			jQuery
 			.ajax({
 				type : "POST",
@@ -339,7 +340,12 @@ try {
 							+ req.responseTest);
 				}
 			});
+		} else {
+			alertify.error("글 삭제 취소") ;
 		}
+		}
+		
+		
 	</script>
 
 

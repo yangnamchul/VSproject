@@ -46,15 +46,14 @@
 
 								<div id="write-vs" style="display: none;">
 
-									<textarea name="vsleft" id="vsleft"></textarea>
+									<textarea name="vsleft" id="vsleft" class="vsleft"></textarea>
 									
 									<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
 				
-									<textarea name="vsright" id="vsright"></textarea>
+									<textarea name="vsright" id="vsright" class="vsright"></textarea>
 
 								</div>
-								<textarea rows="10" cols="50" name="b_content" id="b_content"
-									placeholder="게시판 내용"></textarea>
+								<div id="b_content" class="b_content"></div>
 								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
 								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
 							</div>
@@ -93,6 +92,7 @@
 	$(document)
 			.ready(
 					function() {
+						
 						$.ajax({
 							  url: 'getAllVSS.do',
 							  async: false ,
@@ -147,15 +147,12 @@
 											    content: function (item) {
 											    	var seq = vss1[item];
 											    	if (seq) {
-											    		 /*  $('.note-editable').append($('<a />', {
-											    		        id: 'vss',
-											    		        href: 'VSSBoard.do?vss_seq=' + seq ,
-											    		        text: item
-											    		    }));		 */							    													    		
-											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');											    		  
+// 											    		document.getElementsByClassName('note-editable')[2].innerHTML += '<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>';
+											      		$('#b_content1').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+											      		$('#b_content1').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
-											    	return $('.note-editable').focus().val('') ;
+// 											    	return $('.note-editable').focus().val("") ;
+											    	return '' ;
 											    }
 											    
 											    
@@ -208,9 +205,10 @@
 													sendfile(file[0], this);
 												}
 											}
-										});					
-						
+										});		
+						$('.note-editable').eq(2).attr('id', 'b_content1');
 					});
+	
 </script>
 
 <script type="text/javascript">
@@ -218,6 +216,7 @@
 			.change(
 					function() {
 						if ($('#vsCheck').is(':checked')) {
+							$('#vsleft').summernote('enable');
 							$('#write-vs').css('display', 'inline-flex');
 							$(
 									"#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable")
@@ -225,6 +224,7 @@
 							//                         $('#write-msg').css('display', 'block');
 						} else {
 							$('#write-vs').css('display', 'none');
+							$('#vsleft').summernote('disable');
 							//                         $('#write-msg').css('display', 'none');
 
 						}
@@ -253,7 +253,9 @@
 				alertify.alert(req.status + "\nmessege" + req.responseTest);
 			}
 		});
-	})
+	});
+	
+	
 </script>
 
 </html>
