@@ -242,6 +242,3 @@ where NOT b_boolean IN ('1');
 SELECT *
 FROM VSS
 WHERE b_seq = 1;
-
-
-

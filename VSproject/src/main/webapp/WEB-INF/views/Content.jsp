@@ -11,16 +11,16 @@
 <%@ include file="Header.jsp"%>
 
 <%
-	request.setCharacterEncoding("UTF-8");
-	response.setCharacterEncoding("UTF-8");
-	UserVO uv = new UserVO();
-	uv = (UserVO) session.getAttribute("uv");
-	String u_id = null;
-	try {
-		u_id = uv.getU_id();
-	} catch (Exception e) {
-		u_id = "";
-	}
+request.setCharacterEncoding("UTF-8");
+response.setCharacterEncoding("UTF-8");
+UserVO uv = new UserVO();
+uv = (UserVO) session.getAttribute("uv");
+String u_id =null;
+try {
+	u_id = uv.getU_id();
+} catch (Exception e) {
+	u_id = "";
+}
 %>
 
 <link
@@ -77,7 +77,6 @@
 			
 
 				<!-- 	이 게시물(b_seq)이 vs_seq를 가지고 있는가? -->
-				
 				<div class="col-12" id="content-vs" style="display: inline-flex;">
 					<div class="col-5" id="vs-left">${vo.b_left }</div>
 					<div class="col-2" id="vs-vs">
@@ -113,9 +112,10 @@
 							<div id="left-bar" class="progress-bar" role="progressbar"></div>
 							<div id="right-bar" class="progress-bar" role="progressbar"></div>
 						</div>
+
 					</div>
 				</div>
-				
+
 
 				<div class="col-12" id="content-content">${vo.b_content}</div>
 
@@ -394,15 +394,17 @@ $("#right-bar").text(vRight+" %");
 <script>
 	$(document).ready(function() {
 		var u_id = '<%=u_id%>' ;
-		if (u_id ==${ u_id }) {
+		if (u_id == '${ u_id }') {
 			$('#btn_del').css('display','block');
-		} else
+		} else if (u_id == ${u_id}) {
+			$('#btn_del').css('display','block');
+		} else {
 			$('#btn_del').css('display','none');
-		
+		}
 		var data = ${data};
 		if (data != 0) {
-			$('#content-vs').css('display','block');
-			$('#content-vote').css('display','block');
+			$('#content-vs').css('display','inline-flex');
+			$('#content-vote').css('display','inline');
 		} else {
 			$('#content-vs').css('display','none');
 			$('#content-vote').css('display','none');
