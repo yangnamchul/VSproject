@@ -157,14 +157,30 @@
 					 if(request.getParameter("pg")!= null){
 						 pg = Integer.parseInt(request.getParameter("pg"));
 					 }
-					
+					 int total=0;
+					 int total1=0;
+					 int total2=0;
+					 int total3=0;
 					 /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */	%>
-					 
-					 <span id="test"></span>
+					 <div id="test">
+					 <span id="test1"><%=total1=3%></span>
+					 <span id="test2"><%=total2=3%></span>
+					 <span id="test3"><%=total3=3%></span>
 					
 					 <%  
-					 int total = Integer.parseInt((request.getAttribute("BoardListCount")).toString()); %>
 					 
+					 
+					 if(total1==3){
+					 total = Integer.parseInt((request.getAttribute("BoardListCount")).toString()); 
+					 }else if(total2==3){
+					 total = Integer.parseInt((request.getAttribute("BoardListCount")).toString());
+					 }
+				     total = Integer.parseInt((request.getAttribute("BoardListCount")).toString()); 
+					 
+					 
+					 
+					 %>
+					 </div>
 					 <% 
 					 int allPage = 0; //전체 페이지 수
 					 
@@ -253,12 +269,17 @@ $.ajax({
 		alert(data+"a실패");
      },
      success : function(data){
-  	     var objRow=$("#test").clone();
- /*    	objRow.html('<input type="hidden" id="num" name="num" value="'+data+'">');   */	 
-    	if(data==0){
-    		objRow.remove
-    		
-    	}
+  	   
+    	 if(data==1){
+    		var objRow=$("#test1").clone();
+    	 }
+    	
+    	 else if(data==2){
+    		 var objRow=$("#test2").clone();
+    		 objRow.removeAttr("style");
+    	 }
+   	    objRow.html('<input type="hidden" id="num" name="num" value="'+data+'">');  
+    	
        	objRow.html(data);  	
        	
       	$("#numburing").append(objRow);

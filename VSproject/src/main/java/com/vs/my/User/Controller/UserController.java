@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
@@ -287,12 +288,21 @@ public class UserController {
 
 	@RequestMapping(value="History1.do", method=RequestMethod.GET) //ajax 토글숫자넘기기
 	@ResponseBody
-	public int History1(HttpServletRequest req, @RequestParam String num) {
+	public ModelAndView History1(HttpServletRequest req, @RequestParam String num) {
 		
-	    int nn=Integer.parseInt(num);
+		ModelAndView mv = new ModelAndView();
+		int nn=Integer.parseInt(num);
+	
+		/*if(nn==1) {
+			mv.setView(new RedirectView("History.do?pg=1&num=1",true));
+		}
+		else if(nn==2) {
+			mv.setView(new RedirectView("History.do?pg=1&num=2",true));
+		}
+		mv.setView(new RedirectView("History.do?pg=1&num=3",true));*/
 		
-	    
-	    return nn;
+		mv.addObject("num", nn);
+		return mv;
 		
 	}
 	
