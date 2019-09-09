@@ -7,9 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>부스러기 게시판 : ${vo. b_title }</title>
-<%@ include file="Header.jsp"%>
-
+<title>${vo.vssName } : ${vo. b_title }</title>
 <%
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
@@ -22,7 +20,7 @@ try {
 	u_id = "";
 }
 %>
-
+<%@ include file="Header.jsp"%>
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css"
 	rel="stylesheet">

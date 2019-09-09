@@ -160,7 +160,9 @@
 						</div>
 						<div class="modal-footer">
 							<div align="center">															
-								<button type="button" id="pop_vssinfo_btn" onclick="location.href = '#' ">부스러기란?</button>
+								<button type="button" class="pop_vssinfo_btn" id="pop_vssinfo_btn" onclick="location.href = '#' ">부스러기란?
+								<span class="tooltip">부스럭 부스럭</span>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -208,7 +210,7 @@
 						alt="" width="32px" />
 						<div id="dropdown3" class="dropdown-content3">
 						<a href="MyPage.do" style="padding: inherit;">마이페이지</a>
-						<a href="history.do" style="padding: inherit;">히스토리</a>
+						<a href="History.do" style="padding: inherit;">히스토리</a>
 						</div>
 				</div>
 
