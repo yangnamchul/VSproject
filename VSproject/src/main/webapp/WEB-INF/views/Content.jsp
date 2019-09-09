@@ -144,13 +144,16 @@ try {
 					</div>
 
 
-					<ul class="replyUlist">
+					<ul id ="replyUlist" class="replyUlist">
 						<!-- 						list 반복 -->
-						<c:forEach var="vo" items="${ReplyList}">
-							<li id="" class="comment_li">
+						<c:forEach var="vo" items="${ReplyList}" varStatus="status">
+						  <c:if test="${not loop_flag }">
+                          
+						
+							<li id="comment_li" class="comment_li">
 								<div class="reply-grid">
 									<div class="reply-info">
-										<span class="reply-writer"> <span id="vss_u_id">${vo.u_id}</span></span>
+										<span class="reply-writer"> <span id="vss_u_id"> ${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
 												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> <span
 											class="reply-vss"> <span id="vss">부스럭</span> <!--이 댓글이 내가쓴글이면  hidden  or inline-->
@@ -169,12 +172,20 @@ try {
 									<div id="reply_content_1">${vo.re_content}</div>
 								</div>
 							</li>
-
+	                                   <c:if test="${status.count==5}">  <!-- 맨처음 보이는 댓글갯수 -->
+                                        <c:set var="loop_flag" value="true" />
+                                        </c:if>
+                                          </c:if>
+	                       
 						</c:forEach>
 
 
 
 					</ul>
+				<!-- 	댓글더보기 -->
+						<div class="col-12" id="content-del">
+					<button type="button" id="re_plus">더보기</button>
+				</div>
 					<div id="reply-form">
 						<form id="replyform">
 							<textarea id="r_reply" name="re_content" maxlength="250"></textarea>
@@ -188,7 +199,6 @@ try {
 			</div>
 		</div>
 	</div>
-
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 투표 하기
@@ -417,7 +427,85 @@ $("#right-bar").text(vRight+" %");
 		}
 	});
 </script>
+<script>
 
+Date.prototype.format = function(f) {
+    if (!this.valueOf()) return " ";
+ 
+    var weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    var d = this;
+     
+    return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
+        switch ($1) {
+            case "yyyy": return d.getFullYear();
+            case "yy": return (d.getFullYear() % 1000).zf(2);
+            case "MM": return (d.getMonth() + 1).zf(2);
+            case "dd": return d.getDate().zf(2);
+            case "E": return weekName[d.getDay()];
+            case "HH": return d.getHours().zf(2);
+            case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
+            case "mm": return d.getMinutes().zf(2);
+            case "ss": return d.getSeconds().zf(2);
+            case "a/p": return d.getHours() < 12 ? "오전" : "오후";
+            default: return $1;
+        }
+    });
+};
+ 
+String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s += this; } return s;};
+String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
+Number.prototype.zf = function(len){return this.toString().zf(len);};
+
+
+var cnt=0;   //re_plus클릭시마다 증가(댓글5개씩 순차적으로 가져오기위함.)
+$("#re_plus").click(function() { 
+	cnt++;
+	$.ajax({
+		type: 'GET',
+		url: 'Reply1.do?b_seq=${vo.b_seq}',
+        async: false,
+		error : function(){
+         },
+         success : function(data){
+          var date=new Date();
+          console.log(date.format('MM-dd HH:mm')); /*  테스트 */
+          for(var i=(cnt*5)+1; i<(cnt+1)*5  ;i++){	
+        	 
+        	/*   if(data[i]==null){		 
+         		 alert("더이상 댓글이 존재하지 않습니다.");
+         	 }; */
+             date = new Date(data[i]['re_date']);
+             var objRow = $("#comment_li").clone();  //li 복사
+          	 objRow.html('<li id="comment_li" class="comment_li">'
+						+'<div class="reply-grid">'
+						+'<div class="reply-info">'
+						+'<span class="reply-writer"> <span id="vss_u_id">' +data[i]['u_id']+'</span></span>'
+						+'<span class="reply-date">'+date.format('MM-dd HH:mm')+'</span> '
+							+'	<span class="reply-vss"> <span id="vss">부스럭</span>'
+								+'	<span id="reply_hidden" style="display: none;">'
+								+'	<button type="button" id="reply_del">'
+								+'		<span> 삭제 </span>'
+								+'	</button>'
+								+'	<button type="button" id="reply_edit" onclick="edit()"'
+								+'		data-toggle="button">'
+								+'		<span>수정</span>'
+								+'	</button>'
+								+'</span>'
+								+'	</span>'
+								+'</div>'
+								+'	<div id="reply_content_1">'+data[i]['re_content']+'</div>'
+								+'	</div>'
+								+'</li>');
+          	 
+          	$("#replyUlist").append(objRow);
+          
+          }
+         }
+         
+	});
+	
+});
+</script>
 
 </body>
 

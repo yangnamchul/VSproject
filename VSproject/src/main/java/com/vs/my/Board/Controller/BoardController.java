@@ -53,18 +53,18 @@ public class BoardController {
 	//////////////////////////// 게시판 관련 ////////////////////////////////"
 	
 	@RequestMapping(value="Board.do", method=RequestMethod.GET) //게시판
-	public ModelAndView Board2(@RequestParam int page, HttpServletRequest req) {
+	public ModelAndView Board2(@RequestParam int pg, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();	
 		mv.setViewName("Board");
 
-		int paging=0;
-		if(page>1) {
-			paging=page;
+		int page=0;
+		if(pg>1) {
+			page=pg;
 		}
 		else {
-			paging=1;
+			page=1;
 		}
-		List<BoardVO> boardlist = bs.BoardAllData(paging);
+		List<BoardVO> boardlist = bs.BoardAllData(page);
 		int listcount=bs.BoardListCount();
 		
 		for (int i = 0; i < boardlist.size(); i++) {

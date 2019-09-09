@@ -53,7 +53,8 @@
 									<textarea name="vsright" id="vsright" class="vsright"></textarea>
 
 								</div>
-								<div id="b_content" class="b_content"></div>
+								<textarea rows="10" cols="50" name="b_content" id="b_content"
+									placeholder="게시판 내용"></textarea>
 								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
 								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
 							</div>
@@ -158,8 +159,7 @@
 											    
 											  }
 											
-											
-										});					
+										});
 
 						$('#vsleft')
 								.summernote(

@@ -19,7 +19,7 @@
 				<div class="col-12 col-sm-12 col-lg-6 col-xl-4">
 					<h3>
 						<ul class="vss-a-menu">
-							<li><a href="Board.do?page=1"> 전체게시판 </a></li>
+							<li><a href="Board.do?pg=1"> 전체게시판 </a></li>
 							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
 							<li><a href="SignUp.do">회원가입</a></li>
 							<li><a href="Login.do">로그인</a></li>
@@ -73,7 +73,7 @@
 
 					</ul>
 
-					<a href="Board.do?page=1"><span id="MoreALL" class="">+1111더보기</span></a>
+					<a href="Board.do?pg=1"><span id="MoreALL" class="">+1111더보기</span></a>
 				</div>
 			</div>
 		</div>
