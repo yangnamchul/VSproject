@@ -1,3 +1,4 @@
+<%@page import="com.vs.my.User.DAOVO.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,6 +26,13 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
+	String u_id = null;
+	if (session.getAttribute("uv") == null ) {
+		u_id = "";
+	} else {
+		UserVO uv = (UserVO) session.getAttribute("uv");
+		u_id = uv.getU_id();
+	}
 %>
 </head>
 <body>
@@ -252,7 +260,7 @@
 						alt="" width="32px" />
 						<div id="dropdown3" class="dropdown-content3">
 						<a href="MyPage.do" style="padding: inherit;" id="btn_mypage">마이페이지</a>
-						<a href="History.do" style="padding: inherit;" id="btn_history">히스토리</a>
+						<a href="History.do?u_id=<%= u_id %>" style="padding: inherit;" id="btn_history">히스토리</a>
 						</div>
 				</div>
 

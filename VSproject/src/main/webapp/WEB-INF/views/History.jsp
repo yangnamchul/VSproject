@@ -92,7 +92,7 @@
                         <c:forEach var="vo3" items="${vvlist}">
                            <tr id="board-pc">
                               <td class="board-no">${vo3.v_seq}</td>
-                              <td class="board-title" id="title"><a href="Content.do?b_seq=${vo3.b_seq}">${vo3.b_title}
+                              <td class="board-title" id="title"><a href="Content.do?b_seq=${vo3.b_seq}">
                               </a></td>
                               <td class="board-writer">${vo3.u_id}</td>
                               <td class="board-date"><fmt:formatDate value="${vo3.v_date}" pattern="MM-dd" /></td>

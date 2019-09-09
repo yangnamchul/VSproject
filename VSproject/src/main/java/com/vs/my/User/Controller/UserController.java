@@ -191,13 +191,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
-	public ModelAndView History(HttpSession hs, UserVO uv) {
+	public ModelAndView History(HttpSession hs, UserVO uv, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("History");
+		String u_id = null;
 		
-		UserVO uv2 = (UserVO) hs.getAttribute("uv");
-		String u_id = uv2.getU_id();
-		
+		u_id = request.getParameter("u_id");
 		uv.setU_id(u_id);
 		
 		mv.addObject("rvlist", rs.UserReply(u_id));
