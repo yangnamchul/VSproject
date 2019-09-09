@@ -24,7 +24,7 @@
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
 					<a id="vss" href="VSSBoard.do?vss_seq=${vss_seq}">${vssOne}</a>(전체
-					글 : <strong>${count}</strong> )
+					글 : <strong>${ListCount}</strong> )
 				</div>
 
 				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
@@ -89,43 +89,79 @@
 						</tbody>
 					</table>
 
-					<%-- <!-- Paging 처리 -->
+					<!-- Paging 처리 -->
 					<%
-						/* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
+			
+					 final int ROWSIZE = 5; //한페이지에 보일 게시물 수
+					 final int BLOCK = 5;   //아래에 보일 페이지 최대 개수
+					 
+					 int pg = 1; //기본 페이지 값
+					 if(request.getParameter("pg")!= null){
+						 pg = Integer.parseInt(request.getParameter("pg"));
+					 }
+					
+					 /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */	
+					 int total = Integer.parseInt((request.getAttribute("ListCount")).toString());
+					 int allPage = 0; //전체 페이지 수
+					 
+					 int start = (pg*ROWSIZE)-(ROWSIZE-1); //해당 페이지에서 시작번호
+					 int end = (pg*ROWSIZE); //해당 페이지에서 끝 번호
+					 
+					 int startPage = ((pg-1)/BLOCK*BLOCK)+1; //시작 블럭 숫자
+					 int endPage = ((pg-1)/BLOCK*BLOCK)+BLOCK; //끝 블럭 숫자
+					
 
-						int total =  Integer.parseInt((request.getAttribute("ListCount")).toString());
-						int p = 0;
-						if (total % 5 == 0) {
-							p = total / 5;
-						} else {
-							p = (total / 5) + 1;
-						}
+					 allPage = (int)Math.ceil(total/(double)ROWSIZE);
+					  
+					  if(endPage > allPage){
+					   endPage = allPage;
+					  }
+					  out.print("총 게시물 :" +total +"개");
+	
+				
 					%>
-
-
-
-
 					<div class="col-xs-12" id="paging board-page">
 						<%
-							for (int i = 1; i <= p; i++) {
+							if (pg > BLOCK) {
 						%>
-						<a href="Board.do?page=<%=i%>"> <%=i%></a>
+						[<a href="VSSBoard.do?vss_seq=${vss_seq}&pg=1">◀◀</a>] [<a
+							href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=startPage - 1%>">◀</a>]
 						<%
 							}
 						%>
-					</div> --%>
+						<%
+							for (int i = startPage; i <= endPage; i++) {
+								if (i == pg) {
+						%>
+						<U><B> [<%=i%>]</B></U>
+						<%
+							} else {
+						%>
+						[<a href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=i%>"><%=i%></a>]
+						<%
+							}
+							}
+						%>
+						<%
+							if (endPage < allPage) {
+						%>
+						[<a href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=endPage + 1%>">▶</a>] [<a
+							href="VSSBoard.do?vss_seq=${vss_seq}&pg=<%=allPage %>">▶▶</a>]
+						<%
+ 							 }
+ 						%>
+					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-
+</body>
 
 
 		<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : submit 유효성 검사
 작성자 : 건영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
-		<script type="text/javascript">
+<script type="text/javascript">
 $('#BoardWriteData').submit(function () {
 	var isLogin = "<%=session.getAttribute("uv")%>";
 	if (isLogin == "null") {
@@ -135,5 +171,5 @@ $('#BoardWriteData').submit(function () {
 });
 	
 </script>
-</body>
+
 </html>

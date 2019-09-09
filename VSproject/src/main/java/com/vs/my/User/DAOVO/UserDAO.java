@@ -30,12 +30,9 @@ public interface UserDAO {
 	
 	public void ChangePW(UserVO uv);
 	
-	public void ChangeNick(UserVO uv);
-	
 	public UserVO MyPage(UserVO uv);
 	
 	public UserVO idCheck(UserVO uv);
 
 	public UserVO nickCheck(UserVO uv);
-	
 }

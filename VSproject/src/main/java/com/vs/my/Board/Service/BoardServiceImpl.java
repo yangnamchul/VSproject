@@ -115,4 +115,16 @@ public class BoardServiceImpl implements BoardService
 		return bdao.maxBoard();
 	}
 
+	@Override
+	public List<BoardVO> VSSBoardAllData(BoardVO bv) {
+		// TODO Auto-generated method stub
+		return bdao.VSSBoardAllData(bv);
+	}
+
+	@Override
+	public int VSSBoardListCount(BoardVO bv) {
+		// TODO Auto-generated method stub
+		return bdao.VSSBoardListCount(bv);
+	}
+
 }

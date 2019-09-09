@@ -18,7 +18,6 @@ public interface UserService {
 	public UserVO FindID(UserVO uv);
 	public int FindPW(UserVO uv, HttpSession hs);
 	public int ChangePW(UserVO uv,HttpSession hs);
-	public int ChangeNick(UserVO uv, HttpSession hs);
 	public UserVO MyPage(UserVO uv);
 	public UserVO idCheck(UserVO uv);
 	public UserVO nickCheck(UserVO uv);
