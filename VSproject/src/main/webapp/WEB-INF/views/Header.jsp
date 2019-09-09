@@ -450,7 +450,7 @@
 							alertify.alert("이미 존재하는 부스러기 입니다");
 						} else {
 							alertify.success("부스러기 만들기 성공");
-							location.href = "VSSBoard.do?vss_seq=" + data;
+							location.href = "VSSBoard.do?pg=1&vss_seq=" + data;
 						}
 					},
 					error : function(req, status, error) {

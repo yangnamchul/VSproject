@@ -21,31 +21,12 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public int ReplyInsertData(ReplyVO rv) {
 		// TODO Auto-generated method stub
-		
-		System.out.println("replyService -insert");
-		System.out.println(rv.getB_seq());
-		System.out.println(rv.getU_id());
-		System.out.println(rv.getRe_content());
-		
-		
 		int re_seq=rdao.ReplyInsertData(rv);
-		
-	    
-		
-		/*int b_seq2=rv.getB_seq();
-		
-		rdao.ReplyAllData(b_seq2);
-		*/
 		return re_seq;
-				
-			
 	}
 	@Override
 	public ReplyVO ReplyOneData(int re_seq) {
 		// TODO Auto-generated method stub
-		
-		System.out.println("replyService -onedata");
-		System.out.println(re_seq);
 		return rdao.ReplyOneData(re_seq);
 	}
 	@Override
@@ -56,7 +37,8 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public int ReplyCnt(int b_seq) {
 		// TODO Auto-generated method stub
-		return rdao.ReplyCnt(b_seq);
+		int aa = rdao.ReplyCnt(b_seq);
+		return aa;
 	}
 	@Override
 	public void delReply(int re_seq) {
