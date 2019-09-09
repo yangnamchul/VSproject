@@ -3,14 +3,7 @@ package com.vs.my.Tag.DAOVO;
 public class TagVO {
 	private int b_seq;
 	private int vss_seq;
-	private int page;
 	
-	public int getPage() {
-		return page;
-	}
-	public void setPage(int page) {
-		this.page = page;
-	}
 	public int getB_seq() {
 		return b_seq;
 	}

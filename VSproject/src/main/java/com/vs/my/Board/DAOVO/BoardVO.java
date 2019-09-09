@@ -20,16 +20,7 @@ public class BoardVO {
 	private LikeVO lv;
 	private int replyCnt;
 	private String vssName;
-	private int page;
 	
-	public int getPage() {
-		return page;
-	}
-
-	public void setPage(int page) {
-		this.page = page;
-	}
-
 	public String getVssName() {
 		return vssName;
 	}

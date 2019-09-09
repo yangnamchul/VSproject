@@ -32,6 +32,4 @@ public interface BoardService {
 	public void delCon(int b_seq);
 	
 	public int maxBoard();
-	public List<BoardVO> VSSBoardAllData(BoardVO bv);
-	public int VSSBoardListCount(int vss_seq);
 }

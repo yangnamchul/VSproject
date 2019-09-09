@@ -13,19 +13,10 @@
 	</insert>
 	
 	<select id="getVSSBoard" resultType="Tag">
-		SELECT X.b_seq, X.vss_seq
-   		FROM 
-		(SELECT rownum as rum, A.b_seq, A.vss_seq
-		FROM 
-   			(SELECT b_seq, vss_seq
-			FROM Tag
-			WHERE vss_seq = #{vss_seq}
-			ORDER BY b_seq DESC) 
-		A  where rownum <![CDATA[ < ]]> = #{page}*5)
-   		X  where x.rum <![CDATA[ > ]]> = ((#{page}-1)*5)+1
+		SELECT *
+		FROM Tag
+		WHERE vss_seq=#{vss_seq}
+		ORDER BY b_seq DESC
 	</select>
-	
-	
-	
 	
 </mapper>

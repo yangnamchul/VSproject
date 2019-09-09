@@ -119,7 +119,7 @@ public class UserController {
 		return 0;
 	}
 	
-	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별
+	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별명
 	@ResponseBody
 	public int nickCheck(HttpServletRequest request, UserVO uv) {
 		
@@ -201,7 +201,7 @@ public class UserController {
 		return us.FindPW(uv,hs);
 	}
 	
-	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 찾기
+	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 변경
 	@ResponseBody
 	public int ChangePWAction(HttpSession hs, UserVO uv) {
 		
@@ -210,10 +210,28 @@ public class UserController {
 		return us.ChangePW(uv,hs);
 	}
 	
-	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
+	@RequestMapping(value="ChangeNick.do", method=RequestMethod.POST) //닉네임 변경
+	@ResponseBody
+	public int ChangeNickAction(HttpSession hs, UserVO uv) {
+		
+		uv.setU_name((String)hs.getAttribute("changNick"));
+		
+		return us.ChangeNick(uv,hs);
+	}
+	
+	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지 내정보
 	public ModelAndView MyPage(HttpSession hs, UserVO uv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
+		
+		mv.addObject("uv",us.MyPage(uv));
+		return mv;
+	}
+	
+	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
+	public ModelAndView History(HttpSession hs, UserVO uv) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("History");
 		
 		UserVO uv2 = (UserVO) hs.getAttribute("uv");
 		String u_id = uv2.getU_id();
@@ -223,7 +241,6 @@ public class UserController {
 		mv.addObject("rvlist", rs.UserReply(u_id));
 		mv.addObject("vvlist", vs.UserVote(u_id));
 		mv.addObject("bvlist", bs.UserBoard(u_id));
-		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}
 	

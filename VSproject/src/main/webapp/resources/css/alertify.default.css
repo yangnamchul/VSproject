@@ -3,7 +3,10 @@
  */
 .alertify,
 .alertify-log {
-	font-family: sans-serif;
+	font-family: 'DungGeunMo';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff')
+		format('woff');
 }
 .alertify {
 	background: #FFF;
@@ -72,6 +75,7 @@
 	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
 }
 	.alertify-log-error {
+	
 		background: #FE1A00;
 		background: rgba(254,26,0,.9);
 	}
@@ -79,3 +83,9 @@
 		background: #5CB811;
 		background: rgba(92,184,17,.9);
 	}
+	
+	.alertify-log-warning {
+      background: #ffff00;
+      background: rgba(255,255,17,.9);
+      color: #ff4d00;
+   }

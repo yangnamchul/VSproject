@@ -5,7 +5,6 @@
   <select id="ReplyAllData" resultType="Reply">
 		SELECT *
 		FROM reply where b_seq = #{b_seq}
-		ORDER BY re_seq desc
 	</select> 
 	
 	<insert id="ReplyInsertData" parameterType="Reply">
