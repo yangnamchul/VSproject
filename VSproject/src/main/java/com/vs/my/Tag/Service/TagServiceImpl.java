@@ -16,6 +16,7 @@ public class TagServiceImpl implements TagService{
 	@Override
 	public void makeTag(TagVO tv) {
 		// TODO Auto-generated method stub
+		System.out.println("maketag "+ tv.getVss_seq());
 		tdao.makeTag(tv);
 	}
 

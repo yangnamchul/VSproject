@@ -38,7 +38,7 @@ public class VSSController {
 		} catch(Exception e) {
 			return 0;
 		}
-		return 1;
+		return vss.maxVSS();
 	}
 	
 	@RequestMapping(value = "getAllVSS.do", method = RequestMethod.GET) //부스러기 만들기
@@ -54,14 +54,8 @@ public class VSSController {
 			json.put(vsslist.get(i).getVSS_name(), vsslist.get(i).getVSS_seq());
 			json2.put(vsslist.get(i).getVSS_name(),vsslist.get(i).getVSS_content());
 		}
-		System.out.println(json);
-		System.out.println(json2);
-		//json.put("vsslist", vsslist);
 		jsonarr.add(json);
 		jsonarr.add(json2);
-		
-		System.out.println(jsonarr);
-		//json.put("vsslist", jsonarr);
 		
 		return jsonarr;
 	}

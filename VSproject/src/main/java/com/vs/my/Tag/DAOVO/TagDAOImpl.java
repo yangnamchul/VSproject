@@ -16,6 +16,7 @@ public class TagDAOImpl implements TagDAO{
 	public void makeTag(TagVO tv) {
 		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".makeTag",tv);
+		System.out.println("maketag "+ tv.getVss_seq());
 	}
 
 	@Override

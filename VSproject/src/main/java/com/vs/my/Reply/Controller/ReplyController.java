@@ -65,7 +65,7 @@ public class ReplyController {
 	
 		int b_seq=Integer.parseInt(req.getParameter("b_seq"));  //b_seq		
 		
-        System.out.println("replycontroller");
+        System.out.println("replycontroller1");
 
 		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
 

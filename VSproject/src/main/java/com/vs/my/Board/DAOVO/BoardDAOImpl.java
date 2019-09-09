@@ -38,9 +38,9 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> UserBoard(String u_id) {
+	public List<BoardVO> UserBoard(BoardVO bv) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".UserBoard", u_id);
+		return sqlSession.selectList(namespace+".UserBoard", bv);
 	}
 
 	@Override
@@ -59,6 +59,30 @@ public class BoardDAOImpl implements BoardDAO {
 	public void delCon(int b_seq) {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace+".delCon", b_seq);
+	}
+
+	@Override
+	public int maxBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".maxBoard");
+	}
+
+	@Override
+	public List<BoardVO> VSSBoardAllData(BoardVO bv) {
+		// TODO Auto-generated method stub
+		return  sqlSession.selectList(namespace+".VSSBoardAllDataPage", bv);
+	}
+
+	@Override
+	public int VSSBoardListCount(int vss_seq) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".VSSBoardListCount", vss_seq);
+	}
+
+	@Override
+	public int UserBoardList(String u_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".UserBoardList", u_id);
 	}
 
 }

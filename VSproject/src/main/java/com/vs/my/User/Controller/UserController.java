@@ -10,13 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vs.my.Board.DAOVO.BoardVO;
 import com.vs.my.Board.Service.BoardService;
+import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 import com.vs.my.User.Service.UserService;
+import com.vs.my.VSS.DAOVO.VSSVO;
+import com.vs.my.VSS.Service.VSSService;
 import com.vs.my.Vote.Service.VoteService;
 
 /**
@@ -38,6 +43,9 @@ public class UserController {
 	
 	@Autowired
 	ReplyService rs;
+	
+	@Autowired
+	VSSService vss;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET) //메인페이지
 	public ModelAndView Main(HttpServletRequest req) {
@@ -211,7 +219,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
-	public ModelAndView MyPage(HttpSession hs, UserVO uv) {
+	public ModelAndView MyPage(HttpSession hs, UserVO uv, BoardVO bv ) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
 		
@@ -222,10 +230,72 @@ public class UserController {
 		
 		mv.addObject("rvlist", rs.UserReply(u_id));
 		mv.addObject("vvlist", vs.UserVote(u_id));
-		mv.addObject("bvlist", bs.UserBoard(u_id));
+		mv.addObject("bvlist", bs.UserBoard(bv));
 		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}
+	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
+	public ModelAndView History(HttpSession hs, UserVO uv, @RequestParam int pg, BoardVO bv, ReplyVO rv) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("History");
+		
+		int page=0;
+		if(pg>1) {
+			page=pg;
+		}
+		else {
+			page=1;
+		}	
+		System.out.println(page + "페이지");
+		UserVO uv2 = (UserVO) hs.getAttribute("uv");
+		String u_id = uv2.getU_id();
+		bv.setU_id(u_id);
+		bv.setPage(page);
+		System.out.println(page + "페이지");
+	    System.out.println(u_id + "u_id");
+		List<BoardVO> boardlist=bs.UserBoard(bv);
+	
+		System.out.println(boardlist.size()+"size");
+		
+		for(int i=0; i<boardlist.size(); i++){
+		String vssName = null;
+		VSSVO vssvo = new VSSVO();
+		vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
+		vssName = vssvo.getVSS_name();
+		boardlist.get(i).setVssName(vssName);
+		}
+		
+		int listcount=bs.UserBoardList(u_id);
+		System.out.println(listcount);
+		
+		mv.addObject("bvlist", boardlist);
+		mv.addObject("BoardListCount", listcount);  //게시물수
+		
+		
+		
+		
+		mv.addObject("rvlist", rs.UserReply(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));		
+	
+		
+	
+	
+		
+		
+		return mv;
+	}
+
+	@RequestMapping(value="History1.do", method=RequestMethod.GET) //ajax 토글숫자넘기기
+	@ResponseBody
+	public int History1(HttpServletRequest req, @RequestParam String num) {
+		
+	    int nn=Integer.parseInt(num);
+		
+	    
+	    return nn;
+		
+	}
+	
 	
 	@RequestMapping(value="UserAllData.do", method=RequestMethod.GET) //유저정보 전부보기
 	public ModelAndView UserAllData(HttpServletRequest req) {

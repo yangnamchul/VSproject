@@ -89,6 +89,7 @@ public class BoardController {
 			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
 			boardlist.get(i).setVssName(vssName);
+			
 		}
 		
 		mv.addObject("ListCount", listcount);
@@ -205,13 +206,15 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
 		
+		try {
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
         
 		int vss_seq=Integer.parseInt(request.getParameter("vss_seq"));
+		System.out.println(vss_seq+"테그만들러옴");
 		bv.setU_id(st);
 		bv.setVss_seq(vss_seq);
 		String[] vsCheck = request.getParameterValues("vsCheck");
@@ -228,7 +231,7 @@ public class BoardController {
 			bs.BoardInsertData(bv);
 			
 //			게시물에 포함된 부스러기 찾고 tag 생성
-			for (int i = 0; i < vsslist.size(); i++) {
+			for (int i = 0; i < 4000; i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
@@ -250,10 +253,12 @@ public class BoardController {
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
-			for (int i = 0; i < vsslist.size(); i++) {
+			for (int i = 0; i < 4000; i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
+					System.out.println(vss_seq1 + "asdfasdf");
+			
 					tv.setVss_seq(vss_seq1);
 					ts.makeTag(tv);
 				} catch(Exception e) {
@@ -261,11 +266,13 @@ public class BoardController {
 				}
 			}
 		}
+		} catch(Exception e) {
+			
+			return 0;
+		}
 		
 		
-		mv.setViewName("Main");
-		
-		return mv;
+		return bs.maxBoard();
 	}
 	
 	@RequestMapping(value="BoardInsertFile.do", method=RequestMethod.POST) //이미지 저장 메소드
@@ -284,74 +291,96 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
-	public ModelAndView Search(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Search");
-		
-		return mv;
-	}
+//	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
+//	public ModelAndView Search(HttpServletRequest req) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("Search");
+//		
+//		return mv;
+//	}
 	
 	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
-	public ModelAndView VSSBoard(HttpServletRequest request) {
+	public ModelAndView VSSBoard(HttpServletRequest request ,@RequestParam int pg) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("VSSBoard");
 		
 		String vss_seq1 = request.getParameter("vss_seq");
-		
+		System.out.println(vss_seq1+"sdsd");
 		int vss_seq = Integer.parseInt(vss_seq1);
-		
-		List<BoardVO> bvlist = new ArrayList<BoardVO>() ;
-		
+		System.out.println(vss_seq + "vss_seq");
+//		List<BoardVO> bvlist = new ArrayList<BoardVO>();
 		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
+	
+		int page=0;
+		if(pg>1) {
+			page=pg;
+		}
+		else {
+			page=1;
+		}
+		
+		BoardVO bv3 = new BoardVO();
+		System.out.println(page+"pgggg");
+		
+		bv3.setPage(page);
+		bv3.setVss_seq(vss_seq);
+		
+		List<BoardVO> boardlist = bs.VSSBoardAllData(bv3);
+		System.out.println(boardlist+"  =boardlist");
+		
+		int listcount=bs.VSSBoardListCount(vss_seq);
+		
 		
 		TagVO tv = new TagVO();
-		
+		System.out.println(vss_seq+"     --    "+page+"    d"+"");
 		tv.setVss_seq(vss_seq);
+		tv.setPage(page);
 		
 		List<TagVO> tvlist = ts.getVSSBoard(tv);
 		
-		for (int i = 0; i < tvlist.size(); i++) {
+		for (int i = 0; i < boardlist.size(); i++) {
 			
 			int b_seq = tvlist.get(i).getB_seq();
 			BoardVO bv = new BoardVO();
 			bv.setB_seq(b_seq);
 			
-			BoardVO bv1 = bs.Content(bv);
 			
-			bvlist.add(bv1);
+			
+			BoardVO bv1 = bs.Content(bv);
+			boardlist.set(i, bv1);
+//			bvlist.add(bv1);
 			
 //			추천 수
 			LikeVO lv = new LikeVO();
 			LikeVO lv1 = new LikeVO();
-			lv.setB_seq(bvlist.get(i).getB_seq());
+			lv.setB_seq(boardlist.get(i).getB_seq());
 			int like_cnt = 0;
 			like_cnt = ls.LikeCnt(lv);
 			lv1.setL_like(like_cnt);
-			bvlist.get(i).setLv(lv1);
+			boardlist.get(i).setLv(lv1);
 //			댓글 수
 			ReplyVO rv = new ReplyVO();
-			rv.setB_seq(bvlist.get(i).getB_seq());
+			rv.setB_seq(boardlist.get(i).getB_seq());
 			int reply_cnt = 0;
 			reply_cnt = rs.ReplyCnt(rv.getB_seq());
-			bvlist.get(i).setReplyCnt(reply_cnt);
+			boardlist.get(i).setReplyCnt(reply_cnt);
 //			부스러기 보이기
 			String vssName = null;
 			VSSVO vssvo = new VSSVO();
-			vssvo = vss.getOneVSS(bvlist.get(i).getVss_seq());
+			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
-			bvlist.get(i).setVssName(vssName);
+			boardlist.get(i).setVssName(vssName);
 		}
 		
 		
-		mv.addObject("bvlist", bvlist);
+		mv.addObject("ListCount", listcount); //vss 개수
+		mv.addObject("bvlist", boardlist);
 		mv.addObject("vssOne",vssOne);
 		mv.addObject("vss_seq",vss_seq);
-		mv.addObject("count", bvlist.size());
 		return mv;
 	}
 	
-	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //검색 결과
+	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //글 삭제
 	@ResponseBody
 	public int delCon(HttpServletRequest request) {
 		

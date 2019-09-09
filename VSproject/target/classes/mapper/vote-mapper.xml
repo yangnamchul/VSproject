@@ -53,4 +53,5 @@
 		WHERE b_seq=#{b_seq} and v_ip=#{v_ip}
 	</select>
 	
+	
 </mapper>

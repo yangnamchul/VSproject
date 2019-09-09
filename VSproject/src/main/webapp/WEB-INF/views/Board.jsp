@@ -56,7 +56,7 @@
 									<td class="board-no">${vo1.b_seq}</td>
 <!-- 									<td class="board-info"></td> -->
 									<td class="board-title">
-									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}&pg=1">${vo1.vssName}</a>
 									<a
 										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
 									<td class="board-re">${vo1.replyCnt }</td>	

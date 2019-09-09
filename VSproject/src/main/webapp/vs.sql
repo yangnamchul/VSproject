@@ -25,6 +25,7 @@ CREATE TABLE Board
 	B_parent number,
 	B_left varchar2(4000),
 	B_right varchar2(4000),
+	page number ,
 	PRIMARY KEY (B_seq)
 );
 
@@ -55,7 +56,8 @@ CREATE TABLE Reply
 CREATE TABLE Tag
 (
 	B_seq number NOT NULL,
-	VSS_seq number NOT NULL
+	VSS_seq number NOT NULL,
+	page number
 );
 
 
@@ -200,6 +202,7 @@ SELECT * FROM vote;
 SELECT * FROM VSS;
 SELECT * FROM reply;
 SELECT * FROM like1;
+SELECT * FROM tag;
 
 insert into vote values(VOTE_sequence1.NEXTVAL,  105, 123, 1, sysdate, null) ;
 
@@ -217,3 +220,96 @@ SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
 		FROM board
 		WHERE NOT b_boolean IN ('1')
  		ORDER BY b_seq DESC ;
+ 		
+ 		
+ 		  select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id, X.vss_seq
+   from 
+   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id, A.vss_seq
+   from 
+   (select b_seq, b_title,b_date,b_cnt,u_id, vss_seq
+   from board
+   where NOT b_boolean IN ('1') and vss_seq = 2
+   order by b_seq DESC) 
+   A  where rownum <= 5)
+   X  where x.rum > = 1;
+   
+   SELECT * FROM tag;
+   
+   
+   
+   
+   
+      select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id, X.vss_seq
+   from 
+   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id, A.vss_seq
+   from 
+   (select b_seq, b_title,b_date,b_cnt,u_id, vss_seq
+   from board
+   where NOT b_boolean IN ('1'))
+   order by b_seq DESC) 
+   A  where rownum > = 5)
+   X  where x.rum > = 1;
+   
+   
+   
+   	SELECT X.b_seq, X.vss_seq
+   		FROM 
+		(SELECT rownum as rum, A.b_seq, A.vss_seq
+		FROM 
+   			(SELECT b_seq, vss_seq
+			FROM Tag
+			WHERE vss_seq =0
+			ORDER BY b_seq DESC) 
+		A  where rownum  <  =5)
+   		X  where x.rum >  = 1;
+   		
+   		
+   		
+   			SELECT MAX(b_seq)
+			FROM board
+	
+		INSERT INTO Tag
+		VALUES(200,2,null)
+		
+		INSERT INTO Tag
+		VALUES(200,0)
+		
+		
+ select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id, X.vss_seq
+   from 
+   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id, A.vss_seq
+   from 
+   (select b_seq, b_title,b_date,b_cnt,u_id, vss_seq
+   from board
+   where NOT b_boolean IN ('1') and u_id = 123
+   order by b_seq DESC) 
+   A  where rownum > = 5)
+   X  where x.rum > = 1;
+   
+   	SELECT * 
+		FROM board
+		WHERE NOT b_boolean IN ('1') and u_id = 123
+		ORDER BY b_seq DESC 
+	
+		
+		ALTER TABLE board
+DROP COLUMN page;
+select count (*)
+   		from board
+   		where NOT b_boolean IN ('1') and u_id =123
+
+	SELECT *
+		FROM Reply
+		WHERE u_id = 123
+
+
+	 select X.b_seq, X.b_title, X.b_date, X.b_cnt , X.u_id, X.vss_seq
+   from 
+   (select rownum as rum, A.b_seq, A.b_title, A.b_date, A.b_cnt, A.u_id, A.vss_seq
+   from 
+   (select b_seq, b_title,b_date,b_cnt,u_id, vss_seq
+   from board
+   where NOT b_boolean IN ('1') and u_id = 123
+   order by b_seq DESC) 
+   A  where rownum  <= 8)
+   X  where x.rum  > = 1;

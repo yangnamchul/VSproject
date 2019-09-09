@@ -73,7 +73,7 @@
 
 					</ul>
 
-					<a href="Board.do?page=1"><span id="MoreALL" class="">+1111더보기</span></a>
+					<a href="Board.do?pg=1"><span id="MoreALL" class="">+1111더보기</span></a>
 				</div>
 			</div>
 		</div>

@@ -33,7 +33,6 @@ try {
 </head>
 
 <body>
-
 	<%-- 	<%@ include file="t_Header.jsp"%> --%>
 
 	<div id="content-area">
@@ -201,7 +200,6 @@ try {
 		</div>
 	</div>
 
-
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 투표 하기
 작성자 : 동언
@@ -329,10 +327,12 @@ try {
 
 	<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 글 삭제 하기
-작성자 : 동언
+작성자 : 동언 
+수정 :건영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
-		function delCon() {
+	function delCon() {
+	if (confirm('글을 삭제 하시겠습니까?')) {		
 			jQuery
 			.ajax({
 				type : "POST",
@@ -350,7 +350,12 @@ try {
 							+ req.responseTest);
 				}
 			});
+		} else {
+			alertify.error("글 삭제 취소") ;
 		}
+		}
+		
+		
 	</script>
 
 
@@ -403,13 +408,15 @@ $("#right-bar").text(vRight+" %");
 	</script>
 	
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
 		var u_id = '<%=u_id%>' ;
-		if (u_id ==${ u_id }) {
+		if (u_id == '${ u_id }') {
 			$('#btn_del').css('display','block');
-		} else
+		} else if (u_id == ${u_id}) {
+			$('#btn_del').css('display','block');
+		} else {
 			$('#btn_del').css('display','none');
-		
+		}
 		var data = ${data};
 		if (data != 0) {
 			$('#content-vs').css('display','inline-flex');
@@ -418,10 +425,8 @@ $(document).ready(function() {
 			$('#content-vs').css('display','none');
 			$('#content-vote').css('display','none');
 		}
-});
+	});
 </script>
-
-
 <script>
 
 Date.prototype.format = function(f) {
@@ -462,8 +467,7 @@ $("#re_plus").click(function() {
 		error : function(){
          },
          success : function(data){
-       
-           var date=new Date();
+          var date=new Date();
           console.log(date.format('MM-dd HH:mm')); /*  테스트 */
           for(var i=(cnt*5)+1; i<(cnt+1)*5  ;i++){	
         	 
@@ -502,6 +506,7 @@ $("#re_plus").click(function() {
 	
 });
 </script>
+
 </body>
 
 </html>

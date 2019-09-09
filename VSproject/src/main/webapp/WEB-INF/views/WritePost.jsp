@@ -29,7 +29,7 @@
 							글쓰기
 						</div>
 
-						<form action="BoardInsertData.do" method="POST">
+						<form id="writepost">
 							<div id="write-vscheck">
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
@@ -46,21 +46,23 @@
 
 								<div id="write-vs" style="display: none;">
 
-									<textarea name="vsleft" id="vsleft"></textarea>
+									<textarea name="vsleft" id="vsleft" class="vsleft"></textarea>
 									
 									<img src="resources/css/test/versus.png" alt="" id="write-img-vs"/>
 				
-									<textarea name="vsright" id="vsright"></textarea>
+									<textarea name="vsright" id="vsright" class="vsright"></textarea>
 
 								</div>
 								<textarea rows="10" cols="50" name="b_content" id="b_content"
 									placeholder="게시판 내용"></textarea>
 								<input type="hidden" value="${vss_seq }" name="vss_seq"/>
-								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" />
+<%-- 								<input type="hidden" value="${vss_seq }" name="vss_seq_${vss_seq }" /> --%>
+									<div id="inputTag">
+									</div>
 							</div>
 							
 							<div id="write-submit">
-								<input type="submit" value="등록하기" id="write-btn-submit">
+								<input type="button" value="등록하기" id="write-btn-submit">
 							</div>
 						</form>
 					</div>
@@ -93,6 +95,7 @@
 	$(document)
 			.ready(
 					function() {
+						
 						$.ajax({
 							  url: 'getAllVSS.do',
 							  async: false ,
@@ -145,24 +148,21 @@
 											     	
 											    },
 											    content: function (item) {
+											    	
 											    	var seq = vss1[item];
 											    	if (seq) {
-											    		  $('.note-editable').append($('<a />', {
-											    		        id: 'vss',
-											    		        href: 'VSSBoard.do?vss_seq=' + seq ,
-											    		        text: item
-											    		    }));									    													    		
-// 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-// 											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');											    		  
+// 											    		document.getElementsByClassName('note-editable')[2].innerHTML += '<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>';
+											      		$('#b_content1').append('<a id="vss" href="VSSBoard.do?pg=1&vss_seq=' + seq + '">' + item + '</a>');
+											      		$('#inputTag').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
-											    	return $('.note-editable').focus().val('') ;
+// 											    	return $('.note-editable').focus().val("") ;
+											    	return '' ;
 											    }
 											    
 											    
 											  }
 											
-											
-										});					
+										});
 
 						$('#vsleft')
 								.summernote(
@@ -208,9 +208,10 @@
 													sendfile(file[0], this);
 												}
 											}
-										});					
-						
+										});		
+						$('.note-editable').eq(2).attr('id', 'b_content1');
 					});
+	
 </script>
 
 <script type="text/javascript">
@@ -218,6 +219,7 @@
 			.change(
 					function() {
 						if ($('#vsCheck').is(':checked')) {
+							$('#vsleft').summernote('enable');
 							$('#write-vs').css('display', 'inline-flex');
 							$(
 									"#write-vs > div:nth-child(2) > div.note-editing-area > div.note-editable")
@@ -225,6 +227,7 @@
 							//                         $('#write-msg').css('display', 'block');
 						} else {
 							$('#write-vs').css('display', 'none');
+							$('#vsleft').summernote('disable');
 							//                         $('#write-msg').css('display', 'none');
 
 						}
@@ -234,6 +237,28 @@
 		$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
 		$('#vsCheck').trigger('change');
 	});
+	
+	$('#write-btn-submit').click(function() {
+		jQuery.ajax({
+			type : "POST",
+			url : "BoardInsertData.do",
+			data : $("#writepost").serialize(),
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					alertify.alert("글쓰기 실패");
+				} else {
+					location.href = "Content.do?b_seq=" + data;
+				}
+			},
+			error : function(req, status, error) {
+				alertify.alert(req.status + "\nmessege" + req.responseTest);
+			}
+		});
+	});
+	
+	
 </script>
 
 </html>
