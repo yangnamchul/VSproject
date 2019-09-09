@@ -295,61 +295,74 @@ public class BoardController {
 //	}
 	
 	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
-	public ModelAndView VSSBoard(HttpServletRequest request) {
+	public ModelAndView VSSBoard(HttpServletRequest request ,@RequestParam int pg) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("VSSBoard");
 		
 		String vss_seq1 = request.getParameter("vss_seq");
-		
 		int vss_seq = Integer.parseInt(vss_seq1);
-		
-		List<BoardVO> bvlist = new ArrayList<BoardVO>() ;
-		
+//		List<BoardVO> bvlist = new ArrayList<BoardVO>();
 		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
 		
-		TagVO tv = new TagVO();
+		int page=0;
+		if(pg>1) {
+			page=pg;
+		}
+		else {
+			page=1;
+		}
+		List<BoardVO> boardlist = bs.VSSBoardAllData(page);
+		int listcount=bs.VSSBoardListCount();
 		
+		
+		TagVO tv = new TagVO();
 		tv.setVss_seq(vss_seq);
 		
-		List<TagVO> tvlist = ts.getVSSBoard(tv);
+		//List<TagVO> tvlist = ts.getVSSBoard(tv);
 		
-		for (int i = 0; i < tvlist.size(); i++) {
+		for (int i = 0; i < boardlist.size(); i++) {
 			
-			int b_seq = tvlist.get(i).getB_seq();
+			int b_seq = boardlist.get(i).getB_seq();
+			System.out.println(b_seq + "b_seq");
 			BoardVO bv = new BoardVO();
 			bv.setB_seq(b_seq);
 			
-			BoardVO bv1 = bs.Content(bv);
 			
-			bvlist.add(bv1);
+			
+			BoardVO bv1 = bs.Content(bv);
+			System.out.println(bv1.getVss_seq() + "vss_seq");
+			boardlist.set(i, bv1);
+			System.out.println(boardlist.get(i).getVss_seq() + "list vss_seq");
+//			bvlist.add(bv1);
 			
 //			추천 수
 			LikeVO lv = new LikeVO();
 			LikeVO lv1 = new LikeVO();
-			lv.setB_seq(bvlist.get(i).getB_seq());
+			lv.setB_seq(boardlist.get(i).getB_seq());
 			int like_cnt = 0;
 			like_cnt = ls.LikeCnt(lv);
 			lv1.setL_like(like_cnt);
-			bvlist.get(i).setLv(lv1);
+			boardlist.get(i).setLv(lv1);
 //			댓글 수
 			ReplyVO rv = new ReplyVO();
-			rv.setB_seq(bvlist.get(i).getB_seq());
+			rv.setB_seq(boardlist.get(i).getB_seq());
 			int reply_cnt = 0;
 			reply_cnt = rs.ReplyCnt(rv.getB_seq());
-			bvlist.get(i).setReplyCnt(reply_cnt);
+			boardlist.get(i).setReplyCnt(reply_cnt);
 //			부스러기 보이기
 			String vssName = null;
 			VSSVO vssvo = new VSSVO();
-			vssvo = vss.getOneVSS(bvlist.get(i).getVss_seq());
+			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
-			bvlist.get(i).setVssName(vssName);
+			boardlist.get(i).setVssName(vssName);
 		}
 		
 		
-		mv.addObject("bvlist", bvlist);
+		mv.addObject("ListCount", listcount); //vss 개수
+		mv.addObject("bvlist", boardlist);
 		mv.addObject("vssOne",vssOne);
 		mv.addObject("vss_seq",vss_seq);
-		mv.addObject("count", bvlist.size());
+		mv.addObject("count", boardlist.size());
 		return mv;
 	}
 	

@@ -24,4 +24,8 @@ public interface BoardDAO {
 	public void delCon(int b_seq);
 	
 	public int maxBoard();
+	
+	public List<BoardVO> VSSBoardAllData(int page);
+	
+	public int VSSBoardListCount();
 }

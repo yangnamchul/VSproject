@@ -67,4 +67,16 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne(namespace+".maxBoard");
 	}
 
+	@Override
+	public List<BoardVO> VSSBoardAllData(int page) {
+		// TODO Auto-generated method stub
+		return  sqlSession.selectList(namespace+".VSSBoardAllDataPage", page);
+	}
+
+	@Override
+	public int VSSBoardListCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".VSSBoardListCount");
+	}
+
 }
