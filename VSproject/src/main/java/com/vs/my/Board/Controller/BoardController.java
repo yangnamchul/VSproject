@@ -56,7 +56,8 @@ public class BoardController {
 	public ModelAndView Board2(@RequestParam int pg, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();	
 		mv.setViewName("Board");
-
+		
+		
 		int page=0;
 		if(pg>1) {
 			page=pg;
@@ -311,6 +312,7 @@ public class BoardController {
 		System.out.println(vss_seq + "vss_seq");
 //		List<BoardVO> bvlist = new ArrayList<BoardVO>();
 		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
+		String vssContent = vss.getOneVSS(vss_seq).getVSS_content();
 		System.out.println(pg+"pgggggggg");
 		int page=0;
 		if(pg>1) {
@@ -374,7 +376,7 @@ public class BoardController {
 			}
 		}
 		
-		
+		mv.addObject("vssContent", vssContent);
 		mv.addObject("ListCount", listcount); //vss 개수
 		mv.addObject("bvlist", boardlist);
 		mv.addObject("vssOne",vssOne);

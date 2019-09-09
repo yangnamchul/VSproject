@@ -27,8 +27,7 @@
 					글 : <strong>${ListCount}</strong> )
 				</div>
 
-				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
-					(추가정보는 관련meme정립글(링크)</div>
+				<div class="col-10 col-xl-10" id="board-menu">${vssContent}</div>
 
 				<div class="col-2 col-xl-2" id="board-write" align="center">
 					<form action="BoardWriteData.do?vss_seq=${vss_seq}" method="post"

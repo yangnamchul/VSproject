@@ -235,7 +235,7 @@
 						alt="" width="32px" />
 					<!-- Dropdown -->
 					<div id="dropdown" class="dropdown-content">
-						<a href="Board.do?page=1" style="padding: inherit;">최신글보기</a> 
+						<a href="Board.do?pg=1" style="padding: inherit;">최신글보기</a> 
 						<a href="#" style="padding: inherit;">들어간페이지(1)</a>
 						<a href="#" style="padding: inherit;">들어간페이지(2)</a>
 						<a href="#" style="padding: inherit;">들어간페이지(3)</a>
