@@ -60,7 +60,7 @@
 											<span class="nick-check-text"> 별명을 입력해주세요 </span>
 										</div>
 									<div class="mx-auto" align="center">
-										<button type="button" id="change-pwbtn" onclick="ChangeNick()">변경하기</button>
+										<button type="button" id="change-nickbtn" onclick="ChangeNick()">변경하기</button>
 									</div>
 								</div>
 							</form>							
@@ -124,6 +124,7 @@ $(document).ready(function() {
 });
 </script>	
 
+<!-- 비밀번호 변경 유효성 검사 -->
 <script type="text/javascript">
 window.pwReturn = 0;
 
@@ -140,20 +141,24 @@ $( document ).ready( function() {
               $(this).removeClass('active').css('background-color','white');
             });
             changeText(pbText, '비밀번호 입력해주세요');
+            pwReturn = 0 ;
           } else if (len > 0 && len <= 4) {
             $('.progress-bar_item-1').addClass('active').css('background-color','red');
             $('.progress-bar_item-2').removeClass('active').css('background-color','white');
             $('.progress-bar_item-3').removeClass('active').css('background-color','white'); 
             changeText(pbText, '비밀번호가 너무 짧습니다');
+            pwReturn = 0 ;
           } else if (len > 4 && len <= 8) {
             $('.progress-bar_item-2').addClass('active').css('background-color','yellow');
             $('.progress-bar_item-3').removeClass('active').css('background-color','white');
             changeText(pbText, '좀 더 길게 해주세요');
+            pwReturn = 1 ;
           } else if (len > 8){
              $('.progress-bar_item').each(function() {
                 $('.progress-bar_item-3').addClass('active').css('background-color','green');
             }); 
             changeText(pbText, '안정적이군요');
+            pwReturn = 1 ;
           } 
      });
      $('.ch-re-pw').keyup(function(){
@@ -165,54 +170,23 @@ $( document ).ready( function() {
                    $(this).removeClass('active').css('background-color','white');
                  });
                  changeText(pbText, '비밀번호 입력해주세요');
+                 pwReturn = 0 ;
                } else if ($('.ch-pw').val() != $('.ch-re-pw').val()) {
                 $(' .progress-bar_re_item-1').addClass('active').css('background-color','red');
                 $(' .progress-bar_re_item-2').removeClass('active').css('background-color','red');
                 $(' .progress-bar_re_item-3').removeClass('active').css('background-color','red');
                  changeText(pbText, '비밀번호가 다릅니다.');
+                 pwReturn = 0 ;
                } else {
                  $('.progress-bar_re_item').each(function() {
                    $(this).addClass('active').css('background-color','green');
                  });
                  changeText(pbText, '비밀번호가 같습니다');
+                 pwReturn = 1 ;
                }
    });
 
 });
-</script>
-<script>
-
-	function ChangePW() {
-		if ($(".ch-pw").val() == "") {
-       	 alertify.warning("암호를 입력해주세요");
-           return;
-        };
-		 if ($(".ch-re-pw").val() == "") {
-        	 alertify.warning("암호확인을 입력해주세요");
-            return;
-         };        
-         
-		
-		jQuery.ajax({
-			type : "POST",
-			url : "ChangePW.do",
-			data : $("#ChangePWForm").serialize(),
-			async : false,
-			dataType : "json",
-			success : function(data) {
-				if (data == 0) {
-					alertify.error('비밀번호 변경 실패');
-					$("#user_nick").val("");
-				} else {
-					alertify.success('비밀번호 변경 성공');
-					location.href = "Main";
-				}
-			},
-			error : function(req, status, error) {
-				alertify.alert(req.status + "\nmessege" + req.responseTest);
-			}
-		});
-	}
 </script>
 
 <script>			
@@ -229,6 +203,7 @@ var changeText = function (el, text, color) {
 	    			$('.nick-check-text').removeClass('chk-val-error');    			 
 	    			$('.nick-check-text').addClass('chk-val');
 					changeText(nickChkText, '별명은 2~6자리로 입력해주세요.');
+					nickReturn = 0;
 					$('#user_nick').focus();
 					return;
 					}
@@ -262,12 +237,63 @@ var changeText = function (el, text, color) {
 		
 </script>
 
+<script>
+
+	function ChangePW() {
+		if ($(".ch-pw").val() == "") {
+       	 alertify.warning("암호를 입력해주세요");
+           return;
+        };
+		 if ($(".ch-re-pw").val() == "") {
+        	 alertify.warning("암호확인을 입력해주세요");
+            return;
+         };        
+         
+         if (pwReturn == 0) {
+  			alertify.error("비밀번호 검사를 제대로해주세요.");			
+  			return;
+  		};
+         
+         if (confirm('정말 변경 하시겠습니까?')) {
+		jQuery.ajax({
+			type : "POST",
+			url : "ChangePW.do",
+			data : $("#ChangePWForm").serialize(),
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					alertify.error('비밀번호 변경 실패');
+					
+				} else {
+					alertify.success('비밀번호 변경 성공');
+					location.href = "MyPage.do";
+				}
+			},		
+				error : function(req, status, error) {
+					alertify.alert(req.status + "\nmessege" + req.responseTest);
+				
+			}
+		});
+         }else {alertify.error("비밀번호 변경 취소");
+	}
+	}
+</script>
+
+
+
 <script type="text/javascript">
 	function ChangeNick() {  	  
          if ($("#user_nick").val() == "") {
         	 alertify.warning("별명을 입력해주세요");
             return;
          };
+         
+         if (nickReturn == 0) {
+ 			alertify.error("별명 중복검사를 해주세요.");			
+ 			return;
+ 		};
+         
          if (confirm('정말 변경 하시겠습니까?')) {
          jQuery.ajax({
                   type : "POST",
@@ -281,7 +307,7 @@ var changeText = function (el, text, color) {
                         $("#user_nick").val("");
                      } else {
                     	alertify.success('별명 변경 성공');
-                    	location.href="Main";
+                    	location.href="MyPage.do";
                      }
                   },
                   error : function(req, status, error) {
@@ -291,7 +317,7 @@ var changeText = function (el, text, color) {
          } else {
 				alertify.error("별명 변경 취소");
 			}
-      }
+	};
 </script>
 
 </div>
