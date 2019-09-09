@@ -22,7 +22,7 @@
 							<input type="text" name="u_id" id="user_id" value="${uv.u_id }" readonly="readonly">
 						</li>
 						<li>별&nbsp;&nbsp;명&nbsp;&nbsp; 
-							<input type="text" name="u_name" id="user_nick" value="${uv.u_name }" readonly="readonly">
+							<input type="text" name="u_name" id="out_user_nick" value="${uv.u_name }" readonly="readonly">
 							<button type="button" id="btn-changeNick">별명변경</button>
 						</li>
 						<li>암&nbsp;&nbsp;호&nbsp;&nbsp; 
@@ -54,7 +54,7 @@
 										<input type="text" id="u_name" class="ch-nick" value="${uv.u_name }" readonly="readonly">
 									</li>
 									<li class="mx-auto">변경할 별명
-										<input type="text" id="user_nick" class="ch-nick">
+										<input type="text" name="u_name" id="user_nick" class="ch-nick">
 										<button type="button" class="checkbtn" onclick="nickCheck()">검사</button>
 										<div id="nick-check-btn">										
 											<span class="nick-check-text"> 별명을 입력해주세요 </span>
@@ -123,34 +123,7 @@ $(document).ready(function() {
 	   });   
 });
 </script>	
-<script type="text/javascript">
-	function ChangeNick() {  	  
-         if ($("#user_nick").val() == "") {
-        	 alertify.warning("별명을 입력해주세요");
-            return;
-         };
-         
-         jQuery.ajax({
-                  type : "POST",
-                  url : "ChangeNick.do",
-                  data : $("#ChangeNick").serialize(),
-                  async : false,
-                  dataType : "json",
-                  success : function(data) {
-                     if (data == 0) {                      
-                        alertify.error('별명 변경 실패');
-                        $("#user_nick").val("");
-                     } else {
-                    	alertify.success('별명 변경 성공');
-                    	location.href="Main";
-                     }
-                  },
-                  error : function(req, status, error) {
-                     alertify.alert(req.status + "\nmessege" + req.responseTest);
-                  }
-               });         
-      }
-</script>
+
 <script type="text/javascript">
 $( document ).ready( function() {
      const changeText = function (el, text, color) {
@@ -204,8 +177,9 @@ $( document ).ready( function() {
    });
 });
 </script>
+<!-- 별땅 -->
 <script>			
-
+window.nickReturn = 0;
 var changeText = function (el, text, color) {
     el.text(text).css('color', color);
   };
@@ -232,13 +206,15 @@ var changeText = function (el, text, color) {
 	    					$('.nick-check-text').removeClass('chk-val');
 	    					$('.nick-check-text').removeClass('chk-val-ok');
 	    					$('.nick-check-text').addClass('chk-val-error'); 
-	    					changeText(nickChkText, '중복된 별명 입니다.');	    				  	
+	    					changeText(nickChkText, '중복된 별명 입니다.');	
+	    					nickReturn = 0;
 	    				}
 	    				if (data !== 0){
 	    					$('.nick-check-text').removeClass('chk-val');
 	    					$('.nick-check-text').removeClass('chk-val-error');
 	    					$('.nick-check-text').addClass('chk-val-ok');  	
 	    					changeText(nickChkText, '사용가능한 별명 입니다.');
+	    					nickReturn = 1 ;
 	    				}
 	    			},
 	    			error : function(req, status, error) {
@@ -248,6 +224,36 @@ var changeText = function (el, text, color) {
 	    	}					
 		
 </script>
+
+<script type="text/javascript">
+	function ChangeNick() {  	  
+         if ($("#user_nick").val() == "") {
+        	 alertify.warning("별명을 입력해주세요");
+            return;
+         };
+         
+         jQuery.ajax({
+                  type : "POST",
+                  url : "ChangeNick.do",
+                  data : $("#ChangeNick").serialize(),
+                  async : false,
+                  dataType : "json",
+                  success : function(data) {
+                     if (data == 0) {                      
+                        alertify.error('별명 변경 실패');
+                        $("#user_nick").val("");
+                     } else {
+                    	alertify.success('별명 변경 성공');
+                    	location.href="Main";
+                     }
+                  },
+                  error : function(req, status, error) {
+                     alertify.alert(req.status + "\nmessege" + req.responseTest);
+                  }
+               });         
+      }
+</script>
+
 </div>
 </body>
 </html>

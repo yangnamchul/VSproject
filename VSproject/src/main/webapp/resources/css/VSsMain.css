@@ -458,18 +458,21 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 .chk-val {
 	color: rgb(255, 255, 0);
 	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+	white-space: nowrap;
 }
 
 /* 사용가능시 */
 .chk-val-ok {
 	color: rgb(7, 255, 6);
 	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+	white-space: nowrap;
 }
 
 /* 중복 */
 .chk-val-error {
 	color: rgb(255, 0, 0);
 	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
+	white-space: nowrap;
 }
 
 .progress-bar_wrap {

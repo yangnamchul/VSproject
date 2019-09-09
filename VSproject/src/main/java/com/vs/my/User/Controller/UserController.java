@@ -129,8 +129,7 @@ public class UserController {
 		UserVO uv2 = us.nickCheck(uv);
 		
 		try {
-			uv2.getU_name();
-			System.out.println(uv2.getU_name());
+			uv2.getU_name();			
 		} catch (Exception e) {
 			return 1;
 		}
