@@ -27,7 +27,7 @@
 							<li><a href="MyPage.do">마이페이지</a></li>
 							<li><a href="makeVSS.do">부스러기 만들기</a></li>
 							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li>
-							<li><a href="ip.do">ip</a></li>
+							<li><a href="AllVss.do">부스러기 전부 보기</a></li>
 						</ul>
 					</h3>
 				</div>
