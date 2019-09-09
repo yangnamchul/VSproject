@@ -19,15 +19,15 @@
 				<div class="col-12 col-sm-12 col-lg-6 col-xl-4">
 					<h3>
 						<ul class="vss-a-menu">
-							<li><a href="Board.do?page=1"> 전체게시판 </a></li>
-							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
+							<li><a href="Board.do?pg=1"> 전체게시판 </a></li>
+<!-- 							<li><a href="UserAllData.do">유저정보 전부보기</a></li> -->
 							<li><a href="SignUp.do">회원가입</a></li>
-							<li><a href="Login.do">로그인</a></li>
+<!-- 							<li><a href="Login.do">로그인</a></li> -->
 							<li><a href="">메인</a></li>
-							<li><a href="MyPage.do">마이페이지</a></li>
-							<li><a href="makeVSS.do">부스러기 만들기</a></li>
-							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li>
-							<li><a href="ip.do">ip</a></li>
+<!-- 							<li><a href="MyPage.do">마이페이지</a></li> -->
+<!-- 							<li><a href="makeVSS.do">부스러기 만들기</a></li> -->
+<!-- 							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li> -->
+							<li><a href="AllVss.do">부스러기 전부 보기</a></li>
 						</ul>
 					</h3>
 				</div>
@@ -73,7 +73,7 @@
 
 					</ul>
 
-					<a href="Board.do?page=1"><span id="MoreALL" class="">+1111더보기</span></a>
+					<a href="Board.do?pg=1"><span id="MoreALL" class="">+1111더보기</span></a>
 				</div>
 			</div>
 		</div>
@@ -97,7 +97,7 @@ $(document).ready(function() {
           for(var i=0; i<5;i++){	
              var objRow = $("#board_list").clone();  //li 복사
              objRow.removeAttr("style");
-          	 objRow.html('<li><a href="VSSBoard.do?vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vss_seq']+
+          	 objRow.html('<li><a href="VSSBoard.do?pg=1&vss_seq=' +data[i]['vss_seq']+ ' " class="board-name">'+data[i]['vssName']+
           	'</a><span>▶  </span> <a href="Content.do?b_seq=' +data[i]['b_seq']+ ' ">'+data[i]['b_title']+'</a></li>');
           	 
           	$("#board_ul").append(objRow);

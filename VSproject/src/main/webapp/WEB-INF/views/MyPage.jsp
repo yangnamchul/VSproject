@@ -22,7 +22,7 @@
 							<input type="text" name="u_id" id="user_id" value="${uv.u_id }" readonly="readonly">
 						</li>
 						<li>별&nbsp;&nbsp;명&nbsp;&nbsp; 
-							<input type="text" name="out_u_name" id="out_user_nick" value="${uv.u_name }" readonly="readonly">
+							<input type="text" name="u_name" id="out_user_nick" value="${uv.u_name }" readonly="readonly">
 							<button type="button" id="btn-changeNick">별명변경</button>
 						</li>
 						<li>암&nbsp;&nbsp;호&nbsp;&nbsp; 
@@ -51,10 +51,10 @@
 							<form class="modal-change" id="ChangeNickForm">
 								<div>
 									<li class="mx-auto">원래 별명<br>
-										<input type="text" id="ori_u_name" class="ch-nick" value="${uv.u_name }" readonly="readonly">
+										<input type="text" id="u_name" class="ch-nick" value="${uv.u_name }" readonly="readonly">
 									</li>
 									<li class="mx-auto">변경할 별명
-										<input type="text" name="re_u_name" id="user_nick" class="ch-nick">
+										<input type="text" name="u_name" id="user_nick" class="ch-nick">
 										<button type="button" class="checkbtn" onclick="nickCheck()">검사</button>
 										<div id="nick-check-btn">										
 											<span class="nick-check-text"> 별명을 입력해주세요 </span>
@@ -101,7 +101,7 @@
 						               <span class="progress-bar_re_text">칸이 비어있습니다</span>
 						            </li>
 						            <div class="mx-auto" align="center">
-										<button type="button" id="change-pwbtn" onclick="ChangePw()">변경하기</button>
+										<button type="button" id="change-pwbtn" onclick="ChangePW()">변경하기</button>
 									</div>
 								</div>
 							</form>
@@ -175,7 +175,31 @@ $( document ).ready( function() {
                  changeText(pbText, '비밀번호가 같습니다');
                }
    });
+
 });
+</script>
+<script>
+	function ChangePW() {
+		jQuery.ajax({
+			type : "POST",
+			url : "ChangePW.do",
+			data : $("#ChangePWForm").serialize(),
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					alertify.error('비밀번호 변경 실패');
+					$("#user_nick").val("");
+				} else {
+					alertify.success('비밀번호 변경 성공');
+					location.href = "Main";
+				}
+			},
+			error : function(req, status, error) {
+				alertify.alert(req.status + "\nmessege" + req.responseTest);
+			}
+		});
+	}
 </script>
 <!-- 별땅 -->
 <script>			
@@ -227,19 +251,15 @@ var changeText = function (el, text, color) {
 
 <script type="text/javascript">
 	function ChangeNick() {  	  
-         if ($("#user_nick").val() == "") {        	 
-        	 alertify.warning("별명을 입력해주세요");        	 
-            return;            
-         };         
-        
-        var re_userName = $("#user_nick").val();
- 		var name_data = { "u_name" : re_userName };
- 	
- 		
+         if ($("#user_nick").val() == "") {
+        	 alertify.warning("별명을 입력해주세요");
+            return;
+         };
+         
          jQuery.ajax({
                   type : "POST",
                   url : "ChangeNick.do",
-                  data : name_data,
+                  data : $("#ChangeNickForm").serialize(),
                   async : false,
                   dataType : "json",
                   success : function(data) {
@@ -247,7 +267,8 @@ var changeText = function (el, text, color) {
                         alertify.error('별명 변경 실패');
                         $("#user_nick").val("");
                      } else {
-                    	alertify.success('별명 변경 성공');                    	
+                    	alertify.success('별명 변경 성공');
+                    	location.href="Main";
                      }
                   },
                   error : function(req, status, error) {

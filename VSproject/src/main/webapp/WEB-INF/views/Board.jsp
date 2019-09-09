@@ -25,8 +25,7 @@
 					전체글 보기 (전체 글 : <strong>${ListCount}</strong> )</div>
 
 
-				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
-					(추가정보는 관련meme정립글(링크)</div>
+				<div class="col-10 col-xl-10" id="board-menu">${vssN }</div>
 
 				<div class="col-2 col-xl-2" id="board-write" align="center">
 					<form action="BoardWriteData.do?vss_seq=0" method="post"
@@ -56,11 +55,11 @@
 									<td class="board-no">${vo1.b_seq}</td>
 <!-- 									<td class="board-info"></td> -->
 									<td class="board-title">
-									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}&pg=1">${vo1.vssName}</a>
 									<a
 										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
 									<td class="board-re">${vo1.replyCnt }</td>	
-									<td class="board-writer"><a href="#"><span
+									<td class="board-writer"><a href="History.do?u_id=${vo1.u_id }"><span
 											id="vss_u_id">${vo1.u_id}</span> </a></td>								
 
 									<td class="board-date"><fmt:formatDate
@@ -89,28 +88,70 @@
 
 					<!-- Paging 처리 -->
 					<%
-						/* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
+			
+					 final int ROWSIZE = 5; //한페이지에 보일 게시물 수
+					 final int BLOCK = 5;   //아래에 보일 페이지 최대 개수
+					 
+					 int pg = 1; //기본 페이지 값
+					 if(request.getParameter("pg")!= null){
+						 pg = Integer.parseInt(request.getParameter("pg"));
+					 }
+					
+					 /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */	
+					 int total = Integer.parseInt((request.getAttribute("ListCount")).toString());
+					 int allPage = 0; //전체 페이지 수
+					 
+					 int start = (pg*ROWSIZE)-(ROWSIZE-1); //해당 페이지에서 시작번호
+					 int end = (pg*ROWSIZE); //해당 페이지에서 끝 번호
+					 
+					 int startPage = ((pg-1)/BLOCK*BLOCK)+1; //시작 블럭 숫자
+					 int endPage = ((pg-1)/BLOCK*BLOCK)+BLOCK; //끝 블럭 숫자
+					
 
-						int total = Integer.parseInt((request.getAttribute("ListCount")).toString());
-						int p = 0;
-						if (total % 5 == 0) {
-							p = total / 5;
-						} else {
-							p = (total / 5) + 1;
-						}
+					 allPage = (int)Math.ceil(total/(double)ROWSIZE);
+					  
+					  if(endPage > allPage){
+					   endPage = allPage;
+					  }					  
+	
+				
 					%>
-
-
-
-
 					<div class="col-xs-12" id="paging board-page">
-						<%
-							for (int i = 1; i <= p; i++) {
-						%>
-						<a href="Board.do?page=<%=i%>"> <%=i%></a>
-						<%
-							}
-						%>
+					<%
+  if(pg>BLOCK){
+ %>
+  [<a href="Board.do?pg=1">◀◀</a>]
+  [<a href="Board.do?pg=<%=startPage-1%>">◀</a>]
+ <%
+  }
+ %>
+ <%
+  for(int i=startPage; i<=endPage; i++){
+   if(i==pg){
+ %>
+  <U><B> 	[<%=i %>]</B></U>
+ <%
+   }else{
+ %>
+  [<a href="Board.do?pg=<%=i %>"><%=i %></a>]
+ <%
+   }
+  }
+ %>
+ <%
+  if(endPage<allPage){
+ %>
+  [<a href="Board.do?pg=<%=endPage+1 %>">▶</a>]
+  [<a href="Board.do?pg=<%=allPage %>">▶▶</a>]
+ <%
+  }
+ %>
+					
+
+
+
+					
+					
 					</div>
 				</div>
 			</div>

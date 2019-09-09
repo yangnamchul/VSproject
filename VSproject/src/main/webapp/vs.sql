@@ -90,7 +90,7 @@ CREATE TABLE Vote
 CREATE TABLE VSS
 (
 	VSS_seq number NOT NULL,
-	VSS_name varchar2(4000) NOT NULL,
+	VSS_name varchar2(20) NOT NULL,
 	VSS_content varchar2(4000),
 	PRIMARY KEY (VSS_seq)
 );
@@ -217,32 +217,3 @@ SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
 		FROM board
 		WHERE NOT b_boolean IN ('1')
  		ORDER BY b_seq DESC ;
- 		
- 		select b.b_seq, l.L_like
-      from board b 
-      left outer join like1 l 
-      on b.b_seq = l.b_seq 
-      WHERE l.b_seq = #{b_seq} and l.l_like = #{l_like};
-      
-      SELECT *
-		FROM VOTE
-      
-      select * from vote v left outer join board b on b.b_seq = v.b_seq WHERE v.u_id = 123 ;
-      
-      select * from like1 l left outer join board b on b.b_seq = l.b_seq ;
-      
-         
-      SELECT b.b_seq, b.u_id, b.vss_Seq, b.b_title, b.b_cnt, b.b_date, b.b_boolean, v.vss_name, count(*)
-      FROM board b 
-      left outer join vss v on b.vss_seq = v.vss_seq
-      left outer join reply r on b.b_seq = r.b_seq
-	  WHERE b.u_id = 123 ;
-	  
-	  SELECT count(*)
-		FROM Reply
-		WHERE b_seq = #{b_seq}
-	  
-	   SELECT  b.b_seq, b.u_id, b.vss_Seq, b.b_title, b.b_cnt, b.b_date, b.b_boolean, v.vss_name, r.count(b.b_seq) as ReplyCnt
-      FROM board b 
-      left outer join vss v on b.vss_seq = v.vss_seq     
-	  WHERE u_id = 123 ;

@@ -9,14 +9,7 @@ public class VoteVO {
 	private int v_like;
 	private Date v_date;
 	private String v_ip;
-	private String b_title;
 	
-	public String getB_title() {
-		return b_title;
-	}
-	public void setB_title(String b_title) {
-		this.b_title = b_title;
-	}
 	public int getV_seq() {
 		return v_seq;
 	}

@@ -66,29 +66,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int ChangePW(UserVO uv,HttpSession hs) {
+	public void ChangePW(UserVO uv) {
 		// TODO Auto-generated method stub
 		
-		try {
-			dao.ChangePW(uv);
-		} catch(Exception e) {
-			return 0;
-		}
-		hs.removeAttribute("changPW");
-		return 1;
-	}
-	
-	@Override
-	public int ChangeNick(UserVO uv,HttpSession hs) {
-		// TODO Auto-generated method stub
-		System.out.println(uv.getU_name());
-		try {
-			dao.ChangeNick(uv);
-		} catch(Exception e) {
-			return 0;
-		}
-		hs.removeAttribute("u_name");
-		return 1;
+		dao.ChangePW(uv);
+		
 	}
 
 	@Override
@@ -109,7 +91,12 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return dao.nickCheck(uv) ;
 	}
-	
+
+	@Override
+	public void ChangeNick(UserVO uv) {
+		// TODO Auto-generated method stub
+		dao.ChangeNick(uv);
+	}
 	
 
 /*	@Override

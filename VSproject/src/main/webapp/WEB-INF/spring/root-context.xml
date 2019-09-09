@@ -24,7 +24,7 @@
          <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
          <property name="username" value="hr"/>
          <property name="password" value="hr"/>
-         	</bean>
+    </bean>
          	
          	
          	<!--  sqlSessionFactory :Sql실행시 객체 생성 -->

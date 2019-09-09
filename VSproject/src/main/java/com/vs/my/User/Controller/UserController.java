@@ -57,43 +57,6 @@ public class UserController {
 	
 	///////////////////////////// 회원 관련 ///////////////////////////////////
 	
-	@RequestMapping(value="ip.do", method=RequestMethod.GET) //ip
-	private String getIp(HttpServletRequest request) {
-		 
-        String ip = request.getHeader("X-Forwarded-For");
- 
-        logger.info(">>>> X-FORWARDED-FOR : " + ip);
- 
-        if (ip == null) {
-            ip = request.getHeader("Proxy-Client-IP");
-            logger.info(">>>> Proxy-Client-IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
-            logger.info(">>>> WL-Proxy-Client-IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("HTTP_CLIENT_IP");
-            logger.info(">>>> HTTP_CLIENT_IP : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-            logger.info(">>>> HTTP_X_FORWARDED_FOR : " + ip);
-        }
-        if (ip == null) {
-            ip = request.getRemoteAddr();
-        }
-        
-        logger.info(">>>> Result : IP Address : "+ip);
-        
-        System.out.println(ip);
- 
-        return ip;
- 
-    }
-
-	
-	
 	@RequestMapping(value="SignUp.do", method=RequestMethod.GET) //회원가입
 	public ModelAndView SignUp(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -119,7 +82,7 @@ public class UserController {
 		return 0;
 	}
 	
-	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별명
+	@RequestMapping(value="nickCheck.do", method=RequestMethod.POST) //회원가입 별
 	@ResponseBody
 	public int nickCheck(HttpServletRequest request, UserVO uv) {
 		
@@ -129,7 +92,8 @@ public class UserController {
 		UserVO uv2 = us.nickCheck(uv);
 		
 		try {
-			uv2.getU_name();			
+			uv2.getU_name();
+			System.out.println(uv2.getU_name());
 		} catch (Exception e) {
 			return 1;
 		}
@@ -185,6 +149,29 @@ public class UserController {
 		}
 		return vo.getU_id();
 	}
+	
+	@RequestMapping(value="ChangeNick.do", method=RequestMethod.POST)// 아이디 찾기
+	@ResponseBody
+	public int ChangeNick(HttpServletRequest request, HttpSession hs) {
+		
+		
+		UserVO uv = (UserVO) hs.getAttribute("uv");
+		String u_id = uv.getU_id();
+		String u_name = request.getParameter("u_name");
+		
+		UserVO uv1 = new UserVO();
+		uv1.setU_id(u_id);
+		uv1.setU_name(u_name);
+		
+		try {
+			us.ChangeNick(uv1);
+			return 1;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
 	@RequestMapping(value="FindPW.do", method=RequestMethod.GET) //비밀번호 재설정페이지로 이동
 	public ModelAndView FindPW(HttpSession hs) {
 		ModelAndView mv = new ModelAndView();
@@ -200,45 +187,57 @@ public class UserController {
 		return us.FindPW(uv,hs);
 	}
 	
-	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 변경
+	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 찾기
 	@ResponseBody
-	public int ChangePWAction(HttpSession hs, UserVO uv) {
+	public int ChangePWAction(HttpServletRequest request,HttpSession hs) {
 		
-		uv.setU_id((String)hs.getAttribute("changPW"));
+		UserVO uv = (UserVO) hs.getAttribute("uv");
+		String u_id = uv.getU_id();
+		String u_pw = request.getParameter("u_pw");
 		
-		return us.ChangePW(uv,hs);
+		UserVO uv1 = new UserVO();
+		uv1.setU_id(u_id);
+		uv1.setU_pw(u_pw);
+		try {
+			us.ChangePW(uv1);
+			return 1;
+		} catch(Exception e) {
+			return 0;
+		}
 	}
 	
-	@RequestMapping(value="ChangeNick.do", method=RequestMethod.POST) //닉네임 변경
-	@ResponseBody
-	public int ChangeNickAction(HttpSession hs, UserVO uv) {
-		System.out.println((String)hs.getAttribute("u_name"));
-		uv.setU_name((String)hs.getAttribute("u_name"));
-		
-		return us.ChangeNick(uv,hs);
-	}
-	
-	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지 내정보
+	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
 	public ModelAndView MyPage(HttpSession hs, UserVO uv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
+		String u_id = null;
+		try {
+			UserVO uv2 = (UserVO) hs.getAttribute("uv");
+			u_id = uv2.getU_id();
+		} catch (Exception e) {
+			mv.setViewName("Main");
+			return mv;
+		}
+		uv.setU_id(u_id);
 		
+		mv.addObject("rvlist", rs.UserReply(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));
+		mv.addObject("bvlist", bs.UserBoard(u_id));
 		mv.addObject("uv",us.MyPage(uv));
 		return mv;
 	}
 	
 	@RequestMapping(value="History.do", method=RequestMethod.GET) //히스토리
-	public ModelAndView History(HttpSession hs, UserVO uv) {
+	public ModelAndView History(HttpSession hs, UserVO uv, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("History");
+		String u_id = null;
 		
-		UserVO uv2 = (UserVO) hs.getAttribute("uv");
-		String u_id = uv2.getU_id();
-		
+		u_id = request.getParameter("u_id");
 		uv.setU_id(u_id);
 		
 		mv.addObject("rvlist", rs.UserReply(u_id));
-		mv.addObject("vvlist", vs.UserVote(u_id));		
+		mv.addObject("vvlist", vs.UserVote(u_id));
 		mv.addObject("bvlist", bs.UserBoard(u_id));
 		return mv;
 	}

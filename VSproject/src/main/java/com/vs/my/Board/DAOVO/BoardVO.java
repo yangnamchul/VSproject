@@ -19,19 +19,15 @@ public class BoardVO {
 	private String b_right;
 	private LikeVO lv;
 	private int replyCnt;
-	private String vssName;	
+	private String vssName;
+	private int page;
 	
-	private int l_like;
-	
-	
-	
-	
-	public int getL_like() {
-		return l_like;
+	public int getPage() {
+		return page;
 	}
 
-	public void setL_like(int l_like) {
-		this.l_like = l_like;
+	public void setPage(int page) {
+		this.page = page;
 	}
 
 	public String getVssName() {

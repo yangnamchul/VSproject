@@ -29,6 +29,18 @@ public class VSSController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "AllVss.do", method = RequestMethod.GET) //부스러기 전부 보기
+	public ModelAndView AllVss(VSSVO vssvo) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("AllVss");
+		
+		List<VSSVO> lv = vss.getAllVSS();
+		
+		mv.addObject("vsslist", lv);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "makeVSS.do", method = RequestMethod.POST) //부스러기 만들기
 	@ResponseBody
 	public int makeVSS(VSSVO vssvo) {
@@ -54,15 +66,11 @@ public class VSSController {
 			json.put(vsslist.get(i).getVSS_name(), vsslist.get(i).getVSS_seq());
 			json2.put(vsslist.get(i).getVSS_name(),vsslist.get(i).getVSS_content());
 		}
-		System.out.println(json);
-		System.out.println(json2);
-		//json.put("vsslist", vsslist);
 		jsonarr.add(json);
 		jsonarr.add(json2);
 		
-		System.out.println(jsonarr);
-		//json.put("vsslist", jsonarr);
-		
 		return jsonarr;
 	}
+	
+	
 }

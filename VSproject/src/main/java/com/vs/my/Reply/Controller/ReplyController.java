@@ -57,4 +57,21 @@ public class ReplyController {
 		return rv2;
 
 	}
+	
+	@RequestMapping(value="Reply1.do", method=RequestMethod.GET) //ajax 댓글더보기
+	@ResponseBody
+	public List<ReplyVO> Reply1( HttpServletRequest req, ReplyVO rv, HttpSession hs) {
+	
+	
+		int b_seq=Integer.parseInt(req.getParameter("b_seq"));  //b_seq		
+		
+        System.out.println("replycontroller1");
+
+		List<ReplyVO> replylist=rs.ReplyAllData(b_seq);
+
+
+		
+		return replylist;
+
+	}
 }
