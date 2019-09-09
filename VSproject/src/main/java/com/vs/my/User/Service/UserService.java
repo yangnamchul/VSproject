@@ -1,6 +1,5 @@
 package com.vs.my.User.Service;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,8 +20,5 @@ public interface UserService {
 	public int ChangePW(UserVO uv,HttpSession hs);
 	public UserVO MyPage(UserVO uv);
 	public UserVO idCheck(UserVO uv);
-	public void KeepLogin(String u_id, String sessionId, Date next);
-	public UserVO checkLoginBefore(String value);
-	public UserVO checkUserWithSessionKey(String sessionId);
-	public UserVO login(UserVO uv);
+	public UserVO nickCheck(UserVO uv);
 }

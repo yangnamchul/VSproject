@@ -8,11 +8,11 @@
 <head>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Insert title here</title>
+<title>부스러기 : 게시판</title>
 </head>
 <body>
 
-<%-- 		<%@ include file="t_Header.jsp"%> --%>
+	<%-- 		<%@ include file="t_Header.jsp"%> --%>
 	<%@ include file="Header.jsp"%>
 
 	<div id="content-area">
@@ -22,70 +22,116 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					[아무]의 부스러기 (전체 글 : { 딸린 vss count}</div>
+					전체글 보기 (전체 글 : <strong>${ListCount}</strong> )</div>
 
-				<div class="col-xl-10" id="board-menu">해당 부스러기 관련 링크 (정렬, 인기글,
-					공지 같은거 연결하기)</div>
 
-				<div class="col-xl-2" id="board-write" align="center">
-					<form action="BoardWriteData.do" method="post">
-						<input hidden="hidden" />
-						<button type="submit">글쓰기</button>
+				<div class="col-10 col-xl-10" id="board-menu">vss_content쓰고
+					(추가정보는 관련meme정립글(링크)</div>
+
+				<div class="col-2 col-xl-2" id="board-write" align="center">
+					<form action="BoardWriteData.do?vss_seq=0" method="post"
+						id="BoardWriteData">						
+						<button type="submit" id="btn_write">글쓰기</button>
 					</form>
 				</div>
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-list">
 					<table class="table table-striped table-bordered table-hover"
 						id="board-table">
-						<thead>
+						<thead class="board-thead">
 							<tr>
-								<th width="10%">번호</th>
-								<th width="50%">제목</th>
-								<th width="10%">작성자</th>
-								<th width="20%">작성일</th>
-								<th width="10%">조회</th>
+								<th class="board-no" width="5%">번호</th>
+<!-- 								<th class="board-info" width="5%">종류</th> -->
+								<th class="board-title" >제목</th>
+								<th class="board-re" width="5%">댓글</th> 
+								<th class="board-writer" width="10%">작성자</th>
+								<th class="board-date" width="5%">작성일</th>
+								<th class="board-cnt" width="5%">조회</th>
+								<th class="board-like" width="5%">추천</th>								
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="board-tbody">
 							<c:forEach var="vo1" items="${boardlist}">
-								<tr>
-									<td>${vo1.b_seq}</td>
-									<td id="title"><a href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title} </a></td>
-									<td>${vo1.u_id}</td>
-									<td><fmt:formatDate value="${vo1.b_date}" pattern="MM-dd" />
-									</td>
-									<td>${vo1.b_cnt}</td>
+								<tr id="board-pc">
+									<td class="board-no">${vo1.b_seq}</td>
+<!-- 									<td class="board-info"></td> -->
+									<td class="board-title">
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a
+										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
+									<td class="board-re">${vo1.replyCnt }</td>	
+									<td class="board-writer"><a href="#"><span
+											id="vss_u_id">${vo1.u_id}</span> </a></td>								
+
+									<td class="board-date"><fmt:formatDate
+											value="${vo1.b_date}" pattern="MM-dd" /></td>
+									<td class="board-cnt">${vo1.b_cnt}</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
 								</tr>
 							</c:forEach>
 
+							<c:forEach var="vo1" items="${boardlist}">
+								<tr id="board-mb">
+									<td class="board-title col-12">
+										<a href="Content.do?b_seq=${vo1.b_seq}">
+											<div class=col-12 id="board-mb-title"><span id=vss>${vo1.vssName }</span> ${vo1.b_title}</div>
+										</a>
+										<div class=col-12 id="board-mb-info">
+											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
+											| <span> <fmt:formatDate value="${vo1.b_date}"
+													pattern="MM-dd" /> | 추천_<span id="vss_like">${vo1.lv.l_like }</span> | <span>댓글_${vo1.replyCnt }</span>
+										</div></td>
+
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 
 					<!-- Paging 처리 -->
-					<%  /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
-		      
-		        int total =Integer.parseInt((request.getAttribute("ListCount")).toString()); 
-				int p=0;
-				if(total%5==0){
-					p=total/5;
-				}
-				else{
-					p=(total/5)+1;
-				}
-				%>
-				
-				
-				<div class="col-xs-12" id="paging">
-				<%for (int i=1; i<=p; i++){
-				%>
-				<a href="Board.do?page=<%=i%>"> <%=i%></a>
-				<%
-				} %>
+					<%
+						/* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */
+
+						int total = Integer.parseInt((request.getAttribute("ListCount")).toString());
+						int p = 0;
+						if (total % 5 == 0) {
+							p = total / 5;
+						} else {
+							p = (total / 5) + 1;
+						}
+					%>
+
+
+
+
+					<div class="col-xs-12" id="paging board-page">
+						<%
+							for (int i = 1; i <= p; i++) {
+						%>
+						<a href="Board.do?page=<%=i%>"> <%=i%></a>
+						<%
+							}
+						%>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
+		
 </body>
+
+<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : submit 유효성 검사
+작성자 : 건영
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<script type="text/javascript">
+$('#BoardWriteData').submit(function () {
+	var isLogin = "<%=session.getAttribute("uv")%>";
+	if (isLogin == "null") {
+		alertify.error("먼저 로그인 해주세요.");
+		return false;
+	}
+});
+</script>
+
+
 
 </html>

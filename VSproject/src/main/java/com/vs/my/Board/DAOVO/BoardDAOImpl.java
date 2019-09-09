@@ -49,4 +49,22 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace+".VSSBoard",VSS_seq);
 	}
 
+	@Override
+	public void BoardCnt(int b_seq) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".BoardCnt", b_seq);
+	}
+
+	@Override
+	public void delCon(int b_seq) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".delCon", b_seq);
+	}
+
+	@Override
+	public int maxBoard() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".maxBoard");
+	}
+
 }

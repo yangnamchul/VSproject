@@ -1,14 +1,13 @@
 
 /* Drop Tables */
 
+DROP TABLE Like1 CASCADE CONSTRAINTS;
 DROP TABLE Reply CASCADE CONSTRAINTS;
 DROP TABLE Tag CASCADE CONSTRAINTS;
 DROP TABLE Vote CASCADE CONSTRAINTS;
 DROP TABLE Board CASCADE CONSTRAINTS;
 DROP TABLE Users CASCADE CONSTRAINTS;
 DROP TABLE VSS CASCADE CONSTRAINTS;
-
-
 
 
 /* Create Tables */
@@ -27,6 +26,16 @@ CREATE TABLE Board
 	B_left varchar2(4000),
 	B_right varchar2(4000),
 	PRIMARY KEY (B_seq)
+);
+
+
+CREATE TABLE Like1
+(
+	B_seq number NOT NULL,
+	U_id varchar2(4000),
+	L_like number,
+	L_date date,
+	L_ip varchar2(4000)
 );
 
 
@@ -90,6 +99,12 @@ CREATE TABLE VSS
 
 /* Create Foreign Keys */
 
+ALTER TABLE Like1
+	ADD FOREIGN KEY (B_seq)
+	REFERENCES Board (B_seq)
+;
+
+
 ALTER TABLE Reply
 	ADD FOREIGN KEY (B_seq)
 	REFERENCES Board (B_seq)
@@ -109,6 +124,12 @@ ALTER TABLE Vote
 
 
 ALTER TABLE Board
+	ADD FOREIGN KEY (U_id)
+	REFERENCES Users (U_id)
+;
+
+
+ALTER TABLE Like1
 	ADD FOREIGN KEY (U_id)
 	REFERENCES Users (U_id)
 ;
@@ -146,20 +167,6 @@ COMMENT ON COLUMN Vote.V_like IS '1 : 전자
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 insert into USERS
 values(1,'admin','admin','admin','admin',sysdate,null,null);
 
@@ -191,7 +198,10 @@ SELECT * FROM tabs;
 SELECT * FROM Board;
 SELECT * FROM vote;
 SELECT * FROM VSS;
+SELECT * FROM reply;
+SELECT * FROM like1;
 
+insert into vote values(VOTE_sequence1.NEXTVAL,  105, 123, 1, sysdate, null) ;
 
 create sequence board_sequence1;
 create sequence user_sequence1;
@@ -202,16 +212,8 @@ create sequence VSS_sequence1;
 insert into board
 values(board_sequence1.NEXTVAL, '123',1,'1234','4321',1,sysdate,0,null,'123','321');
 
-SELECT VSS_sequence1.NEXTVAL
-FROM DUAL;
 
-select * 
-from board 
-where b_content is like(
-    SELECT vss_seq
-    FROM VSS
-    WHERE vss_seq=5;
-    )
-
-
-
+SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
+		FROM board
+		WHERE NOT b_boolean IN ('1')
+ 		ORDER BY b_seq DESC ;

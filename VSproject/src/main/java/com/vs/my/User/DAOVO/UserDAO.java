@@ -1,6 +1,5 @@
 package com.vs.my.User.DAOVO;
 
-import java.sql.Date;
 import java.util.List;
 
 public interface UserDAO {
@@ -34,8 +33,6 @@ public interface UserDAO {
 	public UserVO MyPage(UserVO uv);
 	
 	public UserVO idCheck(UserVO uv);
-	
-	public void keepLogin(String u_id, String sessionId, Date next);
-	
-	public UserVO checkUserWithSessionKey(String sessionId);
+
+	public UserVO nickCheck(UserVO uv);
 }

@@ -2,6 +2,8 @@ package com.vs.my.Board.DAOVO;
 
 import java.util.Date;
 
+import com.vs.my.Like.DAOVO.LikeVO;
+
 public class BoardVO {
 	
 	private int b_seq;
@@ -15,6 +17,33 @@ public class BoardVO {
 	private int b_parent;
 	private String b_left;
 	private String b_right;
+	private LikeVO lv;
+	private int replyCnt;
+	private String vssName;
+	
+	public String getVssName() {
+		return vssName;
+	}
+
+	public void setVssName(String vssName) {
+		this.vssName = vssName;
+	}
+
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+
+	public void setReplyCnt(int replycnt) {
+		replyCnt = replycnt;
+	}
+
+	public LikeVO getLv() {
+		return lv;
+	}
+
+	public void setLv(LikeVO lv) {
+		this.lv = lv;
+	}
 
 	public String getB_left() {
 		return b_left;
