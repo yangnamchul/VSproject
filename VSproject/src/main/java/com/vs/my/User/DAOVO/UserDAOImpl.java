@@ -66,6 +66,12 @@ public class UserDAOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".nickCheck",uv);
 	}
+
+	@Override
+	public void ChangeNick(UserVO uv) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".ChangeNick",uv);
+	}
 	
 	
 

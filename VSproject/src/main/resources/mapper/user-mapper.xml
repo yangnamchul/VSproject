@@ -53,4 +53,10 @@
 		WHERE u_name = #{u_name}		
 	</select>
 	
+	<update id="ChangeNick">
+		UPDATE USERS
+		SET u_name = #{u_name}
+		WHERE u_id = #{u_id}
+	</update>
+	
 </mapper>

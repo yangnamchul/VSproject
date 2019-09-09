@@ -35,4 +35,6 @@ public interface UserDAO {
 	public UserVO idCheck(UserVO uv);
 
 	public UserVO nickCheck(UserVO uv);
+	
+	public void ChangeNick(UserVO uv);
 }

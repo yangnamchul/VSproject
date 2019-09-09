@@ -101,7 +101,7 @@
 						               <span class="progress-bar_re_text">칸이 비어있습니다</span>
 						            </li>
 						            <div class="mx-auto" align="center">
-										<button type="button" id="change-pwbtn" onclick="ChangeNick()">변경하기</button>
+										<button type="button" id="change-pwbtn" onclick="ChangePW()">변경하기</button>
 									</div>
 								</div>
 							</form>
@@ -175,7 +175,31 @@ $( document ).ready( function() {
                  changeText(pbText, '비밀번호가 같습니다');
                }
    });
+
 });
+</script>
+<script>
+	function ChangePW() {
+		jQuery.ajax({
+			type : "POST",
+			url : "ChangePW.do",
+			data : $("#ChangePWForm").serialize(),
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					alertify.error('비밀번호 변경 실패');
+					$("#user_nick").val("");
+				} else {
+					alertify.success('비밀번호 변경 성공');
+					location.href = "Main";
+				}
+			},
+			error : function(req, status, error) {
+				alertify.alert(req.status + "\nmessege" + req.responseTest);
+			}
+		});
+	}
 </script>
 <!-- 별땅 -->
 <script>			
@@ -235,7 +259,7 @@ var changeText = function (el, text, color) {
          jQuery.ajax({
                   type : "POST",
                   url : "ChangeNick.do",
-                  data : $("#ChangeNick").serialize(),
+                  data : $("#ChangeNickForm").serialize(),
                   async : false,
                   dataType : "json",
                   success : function(data) {

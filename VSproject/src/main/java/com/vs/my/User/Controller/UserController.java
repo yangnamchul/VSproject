@@ -149,6 +149,29 @@ public class UserController {
 		}
 		return vo.getU_id();
 	}
+	
+	@RequestMapping(value="ChangeNick.do", method=RequestMethod.POST)// 아이디 찾기
+	@ResponseBody
+	public int ChangeNick(HttpServletRequest request, HttpSession hs) {
+		
+		
+		UserVO uv = (UserVO) hs.getAttribute("uv");
+		String u_id = uv.getU_id();
+		String u_name = request.getParameter("u_name");
+		
+		UserVO uv1 = new UserVO();
+		uv1.setU_id(u_id);
+		uv1.setU_name(u_name);
+		
+		try {
+			us.ChangeNick(uv1);
+			return 1;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}
 	@RequestMapping(value="FindPW.do", method=RequestMethod.GET) //비밀번호 재설정페이지로 이동
 	public ModelAndView FindPW(HttpSession hs) {
 		ModelAndView mv = new ModelAndView();
@@ -166,21 +189,35 @@ public class UserController {
 	
 	@RequestMapping(value="ChangePW.do", method=RequestMethod.POST) //비밀번호 찾기
 	@ResponseBody
-	public int ChangePWAction(HttpSession hs, UserVO uv) {
+	public int ChangePWAction(HttpServletRequest request,HttpSession hs) {
 		
-		uv.setU_id((String)hs.getAttribute("changPW"));
+		UserVO uv = (UserVO) hs.getAttribute("uv");
+		String u_id = uv.getU_id();
+		String u_pw = request.getParameter("u_pw");
 		
-		return us.ChangePW(uv,hs);
+		UserVO uv1 = new UserVO();
+		uv1.setU_id(u_id);
+		uv1.setU_pw(u_pw);
+		try {
+			us.ChangePW(uv1);
+			return 1;
+		} catch(Exception e) {
+			return 0;
+		}
 	}
 	
 	@RequestMapping(value="MyPage.do", method=RequestMethod.GET) //마이페이지
 	public ModelAndView MyPage(HttpSession hs, UserVO uv) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("MyPage");
-		
-		UserVO uv2 = (UserVO) hs.getAttribute("uv");
-		String u_id = uv2.getU_id();
-		
+		String u_id = null;
+		try {
+			UserVO uv2 = (UserVO) hs.getAttribute("uv");
+			u_id = uv2.getU_id();
+		} catch (Exception e) {
+			mv.setViewName("Main");
+			return mv;
+		}
 		uv.setU_id(u_id);
 		
 		mv.addObject("rvlist", rs.UserReply(u_id));
