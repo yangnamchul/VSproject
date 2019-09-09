@@ -45,8 +45,6 @@ public class VSSController {
 	@ResponseBody
 	public List<VSSVO> newVSS(VSSVO vssvo) {
 		
-		
-		
 		List<VSSVO> lv = vss.newVSS();
 		
 		return lv;

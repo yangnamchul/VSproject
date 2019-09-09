@@ -23,7 +23,7 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					<a id="vss" href="VSSBoard.do?vss_seq=${vss_seq}">${vssOne}</a>(전체
+					<a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vss_seq}">${vssOne}</a>(전체
 					글 : <strong>${ListCount}</strong> )
 				</div>
 
@@ -57,7 +57,7 @@
 									<td class="board-no">${vo1.b_seq}</td>
 <!-- 									<td class="board-info"></td> -->
 									<td class="board-title">
-									<a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vo1.vss_seq}">${vssOne}</a>
+									<a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
 									<a
 										href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
 									<td class="board-re">${vo1.replyCnt }</td>	

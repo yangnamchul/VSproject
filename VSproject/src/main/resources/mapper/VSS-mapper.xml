@@ -17,6 +17,7 @@
 		SELECT *
 		FROM VSS
 		WHERE vss_seq = #{VSS_seq}
+		ORDER BY vss_seq desc
 	</select>
 	
 	<select id="maxVSS" resultType="Integer">

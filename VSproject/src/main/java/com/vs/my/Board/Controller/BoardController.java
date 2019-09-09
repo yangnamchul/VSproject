@@ -236,7 +236,7 @@ public class BoardController {
 			bs.BoardInsertData(bv);
 			
 //			게시물에 포함된 부스러기 찾고 tag 생성
-			for (int i = 0; i < 4000; i++) {
+			for (int i = 0; i < 200; i++) {
 				
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
@@ -258,7 +258,7 @@ public class BoardController {
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
-			for (int i = 0; i < 4000; i++) {
+			for (int i = 0; i < 200; i++) {
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					System.out.println(vss_seq1 + "asdfasdf");
