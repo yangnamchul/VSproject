@@ -204,7 +204,7 @@ header #right-search-form>input[type=text] {
 	display: inline-block;
 }
 
-.dropdown-content {
+.dropdown-content, .dropdown-content2, .dropdown-content3, .dropdown-content4   {
 	border: 1px solid black;
 	display: none;
 	position: absolute;
@@ -214,7 +214,7 @@ header #right-search-form>input[type=text] {
 	z-index: 1;
 }
 
-.dropdown-content a {
+.dropdown-content a ,.dropdown-content2 a ,.dropdown-content3 a, .dropdown-content4 a{
 	border: 1px solid black;
 	color: black;
 	padding: 12px 16px;
@@ -230,9 +230,7 @@ header #right-search-form>input[type=text] {
 	display: block;
 }
 
-#header-col .dropdown-content a:active {
-	background-color: #555555;
-}
+
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : content-area > container 본문  
@@ -1173,4 +1171,135 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	background-color: #ff4d00;
 	margin-bottom: 5px;
 	font-size: 1.1rem;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+내 용 : 아이디 비번찾기 modal (미영)  
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+
+#findId_btn, #findPw_btn
+{
+	text-align: center;
+	margin: 0.5rem auto;
+}
+
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+내 용 : MyPage.jsp > 내정보 
+작성자 : 미영 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+@media ( max-width :576px) {
+	.vss-myinfo>li>input[type=text], .vss-myinfo>li>input[type=password],
+		.vss-myinfo>li>input {
+		width: 10rem !important;
+		font-size: 1.1rem !important;
+	}
+	/* 이메일은 길어야해서 */
+	#user_email { 
+	    width: 15rem !important;
+	}
+	#btn-changeNick {
+		float: right;
+	}
+}
+@media ( min-width :576px) {}
+@media ( min-width :768px) {
+	#user_email { 
+    	width: 20rem !important;
+	}
+	.vss-myinfo>li{
+		margin-top: 1rem !important;
+    	margin-bottom: 1rem !important;
+	}
+}
+@media ( min-width :1024px) {
+	.vss-myinfo>li {
+		padding-left: 6rem !important;
+	}
+}
+@media ( min-width :1200px) {
+	.vss-myinfo>li {
+		padding-left: 10rem !important;
+	}
+}
+
+#mypageDiv {
+	/* 	padding: 1rem; */
+	background-color: #000084;
+	color: white;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+
+.vss-myinfo {
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+	margin-top: 0.5rem;
+	padding-left: 0;
+	padding-bottom: 1rem;
+}
+
+.vss-myinfo>li {
+	font-size: 1.3rem;
+	background-color: #000084;
+	color: white;
+	list-style: none;
+	margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+	padding: 0 0.5rem;
+}
+
+.vss-myinfo>li>input[type=text], .vss-myinfo>li>input[type=password],
+	.vss-myinfo>li>input {
+	width: 13rem;
+	height: 2rem;
+	font-size: 1.5rem;
+	padding: 0 3px;
+	margin: 1px;
+	color: black;
+	background: #bbbbbb;
+}
+
+.vss-myinfo>li>button{
+	color: white;
+	background-color: #ff4d00;
+	font-size: 1.2rem;
+}
+
+/*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+내 용 : History.jsp > 히스토리 수정부분
+작성자 : 미영 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+#historyDiv {
+    background-color: #00008b !important;
+    padding:1rem;
+    color: white;
+    box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
+#my-board-list, #my-reply-list, #my-like-list { margin: 0.25rem auto; }
+
+/*-----------my작성글-------------*/
+#my-board-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#my-board-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
+}
+
+/*------------my작성댓글---------------*/
+#my-reply-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#my-reply-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
+}
+
+/*-----------my추천글----------------*/
+#my-like-list>table>tbody>tr {
+	background-color: #BBBBBB !important;
+}
+
+#my-like-list>table>tbody>tr:hover {
+	background-color: #555555 !important;
 }

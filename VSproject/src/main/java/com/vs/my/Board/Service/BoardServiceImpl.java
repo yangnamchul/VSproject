@@ -109,4 +109,10 @@ public class BoardServiceImpl implements BoardService
 		bdao.delCon(b_seq);
 	}
 
+	@Override
+	public int maxBoard() {
+		// TODO Auto-generated method stub
+		return bdao.maxBoard();
+	}
+
 }

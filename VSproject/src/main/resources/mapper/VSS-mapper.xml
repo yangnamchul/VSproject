@@ -19,4 +19,9 @@
 		WHERE vss_seq = #{VSS_seq}
 	</select>
 	
+	<select id="maxVSS" resultType="Integer">
+		SELECT max(VSS_seq)
+		FROM VSS
+	</select>
+	
 </mapper>

@@ -38,7 +38,7 @@ public class VSSController {
 		} catch(Exception e) {
 			return 0;
 		}
-		return 1;
+		return vss.maxVSS();
 	}
 	
 	@RequestMapping(value = "getAllVSS.do", method = RequestMethod.GET) //부스러기 만들기

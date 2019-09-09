@@ -106,7 +106,7 @@ public class BoardController {
 			
 			int page=1;
 			List<BoardVO> boardlist = bs.BoardAllData(page);
-
+			
 		
 			return boardlist;
 			
@@ -205,9 +205,10 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value="BoardInsertData.do", method=RequestMethod.POST) //글 작성 후 등록(Insert)
-	public ModelAndView BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int BoardInsertData(BoardVO bv, HttpServletRequest request, HttpSession se) throws UnsupportedEncodingException {
 		
+		try {
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
         
@@ -228,7 +229,7 @@ public class BoardController {
 			bs.BoardInsertData(bv);
 			
 //			게시물에 포함된 부스러기 찾고 tag 생성
-			for (int i = 0; i < vsslist.size(); i++) {
+			for (int i = 0; i < 200; i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
@@ -250,7 +251,7 @@ public class BoardController {
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
-			for (int i = 0; i < vsslist.size(); i++) {
+			for (int i = 0; i < 200; i++) {
 				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
@@ -261,11 +262,12 @@ public class BoardController {
 				}
 			}
 		}
+		} catch(Exception e) {
+			return 0;
+		}
 		
 		
-		mv.setViewName("Main");
-		
-		return mv;
+		return bs.maxBoard();
 	}
 	
 	@RequestMapping(value="BoardInsertFile.do", method=RequestMethod.POST) //이미지 저장 메소드
@@ -284,13 +286,13 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
-	public ModelAndView Search(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Search");
-		
-		return mv;
-	}
+//	@RequestMapping(value="Search.do", method=RequestMethod.POST) //검색 결과
+//	public ModelAndView Search(HttpServletRequest req) {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("Search");
+//		
+//		return mv;
+//	}
 	
 	@RequestMapping(value="VSSBoard.do", method=RequestMethod.GET) //검색 결과
 	public ModelAndView VSSBoard(HttpServletRequest request) {
@@ -351,7 +353,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //검색 결과
+	@RequestMapping(value="delCon.do", method=RequestMethod.POST) //글 삭제
 	@ResponseBody
 	public int delCon(HttpServletRequest request) {
 		

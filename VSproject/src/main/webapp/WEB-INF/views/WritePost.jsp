@@ -29,7 +29,7 @@
 							글쓰기
 						</div>
 
-						<form action="BoardInsertData.do" method="POST">
+						<form id="writepost">
 							<div id="write-vscheck">
 								<input type="checkbox" name="vsCheck" id="vsCheck"
 									value="vsCheck">
@@ -60,7 +60,7 @@
 							</div>
 							
 							<div id="write-submit">
-								<input type="submit" value="등록하기" id="write-btn-submit">
+								<input type="button" value="등록하기" id="write-btn-submit">
 							</div>
 						</form>
 					</div>
@@ -92,7 +92,12 @@
 
 	$(document)
 			.ready(
-					function() {
+					function() {					
+					
+// 						document.getElementsByClassName('.note-editable')[1].append('여기가 1번 배열');
+// 						document.getElementsByClassName('.note-editable')[2].append('여기가 2번 배열');
+						
+						
 						$.ajax({
 							  url: 'getAllVSS.do',
 							  async: false ,
@@ -147,15 +152,15 @@
 											    content: function (item) {
 											    	var seq = vss1[item];
 											    	if (seq) {
-											    		  $('.note-editable').append($('<a />', {
+											    		 /*  $('.note-editable').append($('<a />', {
 											    		        id: 'vss',
 											    		        href: 'VSSBoard.do?vss_seq=' + seq ,
 											    		        text: item
-											    		    }));									    													    		
-// 											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
-// 											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');											    		  
+											    		    }));		 */							    													    		
+											      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>');
+											      		$('.note-editable').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');											    		  
 											    	}
-											    	return $('.note-editable').focus().val('') ;
+											    	return '' ;
 											    }
 											    
 											    
@@ -234,6 +239,26 @@
 		$('#vsCheck').prop('checked', !$('#vsCheck').prop('checked'));
 		$('#vsCheck').trigger('change');
 	});
+	
+	$('#write-btn-submit').click(function() {
+		jQuery.ajax({
+			type : "POST",
+			url : "BoardInsertData.do",
+			data : $("#writepost").serialize(),
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data == 0) {
+					alertify.alert("글쓰기 실패");
+				} else {
+					location.href = "Content.do?b_seq=" + data;
+				}
+			},
+			error : function(req, status, error) {
+				alertify.alert(req.status + "\nmessege" + req.responseTest);
+			}
+		});
+	})
 </script>
 
 </html>
