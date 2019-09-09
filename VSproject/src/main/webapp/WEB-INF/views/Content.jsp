@@ -139,7 +139,7 @@
 							<li id="comment_li" class="comment_li">
 								<div class="reply-grid">
 									<div class="reply-info">
-										<span class="reply-writer"> <span id="vss_u_id"> ${vo.u_id}</span></span>
+										<span class="reply-writer"> <span id="vss_u_id" class="${vo.u_id}"> ${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
 												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> 
 <!-- 												<span class="reply-vss" > <span id="vss">부스럭</span> 이 댓글이 내가쓴글이면  hidden  or inline -->
@@ -465,7 +465,7 @@ $("#re_plus").click(function() {
           	 objRow.html('<li id="comment_li" class="comment_li">'
 						+'<div class="reply-grid">'
 						+'<div class="reply-info">'
-						+'<span class="reply-writer"> <span id="vss_u_id">' +data[i]['u_id']+'</span></span>'
+						+'<span class="reply-writer"> <span id="vss_u_id" class="'+ data[i]['u_id'] +'">' +data[i]['u_id']+'</span></span>'
 						+'<span class="reply-date">'+date.format('MM-dd HH:mm')+'</span> '
 								+'	<button type="button" id="reply_del" class="' + data[i]['re_seq'] + '" onclick="delReply(this.className)">'
 								+'		<span> 삭제 </span>'
@@ -486,22 +486,8 @@ $("#re_plus").click(function() {
 </script>
 
 <script>
-$(document).ready(function() {
-	var u_id = '<%=u_id%>' ;
-	if (u_id == '${ u_id }') {
-		$('#reply_del').css('display','block');
-	} else if (u_id == ${u_id}) {
-		$('#reply_del').css('display','block');
-	} else {
-		$('#reply_del').css('display','none');
-	}
-});
-</script>
-
-<script>
 	function delReply(button_class) {
 		var re_seq = button_class;
-		console.log(re_seq);
 		if (confirm('댓글을 삭제 하시겠습니까?')) {		
 			jQuery
 			.ajax({
@@ -511,6 +497,8 @@ $(document).ready(function() {
 				success : function(data) {
 					if (data == 0) {
 						alertify.error("삭제 실패");
+					} else if (data == 1) {
+						alertify.error("본인만 삭제 가능합니다.");
 					} else {
 						location.href="Content.do?b_seq=${vo.b_seq}";
 					}

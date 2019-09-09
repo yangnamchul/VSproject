@@ -16,6 +16,8 @@ import com.vs.my.Reply.DAOVO.ReplyVO;
 import com.vs.my.Reply.Service.ReplyService;
 import com.vs.my.User.DAOVO.UserVO;
 
+import oracle.net.aso.r;
+
 
 @Controller
 public class ReplyController {
@@ -76,18 +78,26 @@ public class ReplyController {
 	
 	@RequestMapping(value="delReply.do", method=RequestMethod.POST) //ajax 댓글 삭제
 	@ResponseBody
-	public int delReply(HttpServletRequest request) {
+	public int delReply(HttpServletRequest request, HttpSession hs) {
 		
 		try {
-			int re_seq = Integer.parseInt(request.getParameter("re_seq"));
-		
-			rs.delReply(re_seq);
+			UserVO uv = (UserVO) hs.getAttribute("uv");
+			String u_id = uv.getU_id();
 			
+			int re_seq = Integer.parseInt(request.getParameter("re_seq"));
+			
+			ReplyVO rv = rs.ReplyOneData(re_seq);
+			
+			if (rv.getU_id().equals(u_id)) {
+				rs.delReply(re_seq);
+				return 2;
+			} else {
+				return 0;
+			}
+		} catch(Exception e) {
 			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return 0;
 		}
+	
 		
 	}
 }
