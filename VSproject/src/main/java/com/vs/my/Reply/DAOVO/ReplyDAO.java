@@ -13,5 +13,7 @@ public interface ReplyDAO {
 	public List<ReplyVO> UserReply(String u_id);
 	
 	public int ReplyCnt(int b_seq);
+	
+	public void delReply(int re_seq);
 }
 

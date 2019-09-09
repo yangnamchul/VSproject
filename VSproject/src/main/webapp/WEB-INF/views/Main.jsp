@@ -20,13 +20,13 @@
 					<h3>
 						<ul class="vss-a-menu">
 							<li><a href="Board.do?pg=1"> 전체게시판 </a></li>
-							<li><a href="UserAllData.do">유저정보 전부보기</a></li>
+<!-- 							<li><a href="UserAllData.do">유저정보 전부보기</a></li> -->
 							<li><a href="SignUp.do">회원가입</a></li>
-							<li><a href="Login.do">로그인</a></li>
+<!-- 							<li><a href="Login.do">로그인</a></li> -->
 							<li><a href="">메인</a></li>
-							<li><a href="MyPage.do">마이페이지</a></li>
-							<li><a href="makeVSS.do">부스러기 만들기</a></li>
-							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li>
+<!-- 							<li><a href="MyPage.do">마이페이지</a></li> -->
+<!-- 							<li><a href="makeVSS.do">부스러기 만들기</a></li> -->
+<!-- 							<li><a href="VSSBoard.do?vss_seq=1">부스러기 보기</a></li> -->
 							<li><a href="AllVss.do">부스러기 전부 보기</a></li>
 						</ul>
 					</h3>

@@ -125,6 +125,7 @@ $(document).ready(function() {
 </script>	
 
 <script type="text/javascript">
+
 $( document ).ready( function() {
      const changeText = function (el, text, color) {
        el.text(text).css('color', color);

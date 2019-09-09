@@ -114,8 +114,7 @@
 					  
 					  if(endPage > allPage){
 					   endPage = allPage;
-					  }
-					  out.print("총 게시물 :" +total +"개");
+					  }				
 	
 				
 					%>

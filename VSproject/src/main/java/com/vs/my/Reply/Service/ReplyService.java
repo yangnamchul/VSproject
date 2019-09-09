@@ -12,4 +12,5 @@ public interface ReplyService {
 	public ReplyVO ReplyOneData(int re_seq);
 	public List<ReplyVO> UserReply(String u_id);
 	public int ReplyCnt(int b_seq);
+	public void delReply(int re_seq);
 }

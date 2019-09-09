@@ -9,20 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="Header.jsp"%>
-
-<%
-request.setCharacterEncoding("UTF-8");
-response.setCharacterEncoding("UTF-8");
-UserVO uv = new UserVO();
-uv = (UserVO) session.getAttribute("uv");
-String u_id =null;
-try {
-	u_id = uv.getU_id();
-} catch (Exception e) {
-	u_id = "";
-}
-%>
-
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css"
 	rel="stylesheet">
@@ -155,18 +141,14 @@ try {
 									<div class="reply-info">
 										<span class="reply-writer"> <span id="vss_u_id"> ${vo.u_id}</span></span>
 										<span class="reply-date"><fmt:formatDate
-												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> <span
-											class="reply-vss"> <span id="vss">부스럭</span> <!--이 댓글이 내가쓴글이면  hidden  or inline-->
-											<span id="reply_hidden" style="display: none;">
-												<button type="button" id="reply_del">
+												value="${vo.re_date}" pattern="MM-dd HH:mm" /></span> 
+<!-- 												<span class="reply-vss" > <span id="vss">부스럭</span> 이 댓글이 내가쓴글이면  hidden  or inline -->
+<!-- 											<span id="reply_hidden"> -->
+												<button type="button" id="reply_del"  class="${vo.re_seq }" onclick="delReply(this.className)">
 													<span> 삭제 </span>
 												</button>
-												<button type="button" id="reply_edit" onclick="edit()"
-													data-toggle="button">
-													<span>수정</span>
-												</button>
-										</span>
-										</span>
+<!-- 										</span> -->
+<!-- 										</span> -->
 
 									</div>
 									<div id="reply_content_1">${vo.re_content}</div>
@@ -192,7 +174,6 @@ try {
 							<div id="reply-submit">
 								<button type="button" onclick="reply()" id="reply-btn">등록</button>
 							</div>
-
 						</form>
 					</div>
 				</div>
@@ -342,7 +323,7 @@ try {
 					if (data == 0) {
 						alertify.error("삭제 실패");
 					} else {
-						location.href="Board.do?page=1";
+						location.href="Board.do?pg=1";
 					}
 				},
 				error : function(req, status, error) {
@@ -475,7 +456,7 @@ $("#re_plus").click(function() {
           var date=new Date();
           console.log(date.format('MM-dd HH:mm')); /*  테스트 */
           for(var i=(cnt*5)+1; i<(cnt+1)*5  ;i++){	
-        	 
+        	 console.log( data[i]['re_seq'] );
         	/*   if(data[i]==null){		 
          		 alert("더이상 댓글이 존재하지 않습니다.");
          	 }; */
@@ -486,17 +467,9 @@ $("#re_plus").click(function() {
 						+'<div class="reply-info">'
 						+'<span class="reply-writer"> <span id="vss_u_id">' +data[i]['u_id']+'</span></span>'
 						+'<span class="reply-date">'+date.format('MM-dd HH:mm')+'</span> '
-							+'	<span class="reply-vss"> <span id="vss">부스럭</span>'
-								+'	<span id="reply_hidden" style="display: none;">'
-								+'	<button type="button" id="reply_del">'
+								+'	<button type="button" id="reply_del" class="' + data[i]['re_seq'] + '" onclick="delReply(this.className)">'
 								+'		<span> 삭제 </span>'
 								+'	</button>'
-								+'	<button type="button" id="reply_edit" onclick="edit()"'
-								+'		data-toggle="button">'
-								+'		<span>수정</span>'
-								+'	</button>'
-								+'</span>'
-								+'	</span>'
 								+'</div>'
 								+'	<div id="reply_content_1">'+data[i]['re_content']+'</div>'
 								+'	</div>'
@@ -510,6 +483,47 @@ $("#re_plus").click(function() {
 	});
 	
 });
+</script>
+
+<script>
+$(document).ready(function() {
+	var u_id = '<%=u_id%>' ;
+	if (u_id == '${ u_id }') {
+		$('#reply_del').css('display','block');
+	} else if (u_id == ${u_id}) {
+		$('#reply_del').css('display','block');
+	} else {
+		$('#reply_del').css('display','none');
+	}
+});
+</script>
+
+<script>
+	function delReply(button_class) {
+		var re_seq = button_class;
+		console.log(re_seq);
+		if (confirm('댓글을 삭제 하시겠습니까?')) {		
+			jQuery
+			.ajax({
+				type : "POST",
+				url : "delReply.do?re_seq="+re_seq,
+				async : false,
+				success : function(data) {
+					if (data == 0) {
+						alertify.error("삭제 실패");
+					} else {
+						location.href="Content.do?b_seq=${vo.b_seq}";
+					}
+				},
+				error : function(req, status, error) {
+					alertify.alert(req.status + "\nmessege"
+							+ req.responseTest);
+				}
+			});
+		} else {
+			alertify.error("댓글 삭제 취소") ;
+		}
+	}
 </script>
 
 </body>

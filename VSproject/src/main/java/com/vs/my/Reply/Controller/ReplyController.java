@@ -72,6 +72,22 @@ public class ReplyController {
 
 		
 		return replylist;
-
+	}
+	
+	@RequestMapping(value="delReply.do", method=RequestMethod.POST) //ajax 댓글 삭제
+	@ResponseBody
+	public int delReply(HttpServletRequest request) {
+		
+		try {
+			int re_seq = Integer.parseInt(request.getParameter("re_seq"));
+		
+			rs.delReply(re_seq);
+			
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 }
