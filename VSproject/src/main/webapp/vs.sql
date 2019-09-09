@@ -217,3 +217,16 @@ SELECT b_seq, b_title,b_date,b_cnt, u_id,vss_seq
 		FROM board
 		WHERE NOT b_boolean IN ('1')
  		ORDER BY b_seq DESC ;
+ 		
+ 		select b.b_seq, l.L_like
+      from board b 
+      left outer join like1 l 
+      on b.b_seq = l.b_seq 
+      WHERE l.b_seq = #{b_seq} and l.l_like = #{l_like};
+      
+      SELECT *
+		FROM VOTE
+      
+      select * from vote v left outer join board b on b.b_seq = v.b_seq WHERE v.u_id = 123 ;
+      
+      select * from like1 l left outer join board b on b.b_seq = l.b_seq ;

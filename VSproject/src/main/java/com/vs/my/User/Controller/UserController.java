@@ -239,7 +239,7 @@ public class UserController {
 		uv.setU_id(u_id);
 		
 		mv.addObject("rvlist", rs.UserReply(u_id));
-		mv.addObject("vvlist", vs.UserVote(u_id));
+		mv.addObject("vvlist", vs.UserVote(u_id));		
 		mv.addObject("bvlist", bs.UserBoard(u_id));
 		return mv;
 	}

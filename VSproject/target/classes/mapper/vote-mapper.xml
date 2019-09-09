@@ -37,14 +37,16 @@
 	
 	<select id="UserVote" resultType="vote">
 		SELECT *
-		FROM VOTE
-		WHERE u_id = #{u_id}
+		FROM VOTE v
+		LEFT OUTER JOIN board b on b.b_seq = v.b_seq 
+		WHERE v.u_id = #{u_id}
 	</select>
 	
 	<select id="VoteConfirm" resultType="Vote">
 		SELECT *
-		FROM VOTE
-		WHERE b_seq=#{b_seq} and u_id=#{u_id}
+		FROM VOTE V		
+		WHERE b_seq=#{b_seq} and u_id=#{u_id}		
+		
 	</select>
 	
 	<select id="VoteConfirm2" resultType="Vote">
