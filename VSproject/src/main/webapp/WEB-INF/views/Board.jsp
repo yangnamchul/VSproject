@@ -25,7 +25,7 @@
 					전체글 보기 (전체 글 : <strong>${ListCount}</strong> )</div>
 
 
-				<div class="col-10 col-xl-10" id="board-menu">${vssN }</div>
+				<div class="col-10 col-xl-10" id="board-menu">모든 부스러기를 찾을수 있는 곳</div>
 
 				<div class="col-2 col-xl-2" id="board-write" align="center">
 					<form action="BoardWriteData.do?vss_seq=0" method="post"
