@@ -116,8 +116,7 @@ public class BoardController {
 	@RequestMapping(value="Category.do",method=RequestMethod.GET) // 카테고리
 	public ModelAndView Category(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("Category");
-		*
+		mv.setViewName("Category");		
 		return mv;
 	}
 	
