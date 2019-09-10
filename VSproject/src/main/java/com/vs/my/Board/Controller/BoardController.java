@@ -66,7 +66,7 @@ public class BoardController {
 			page=1;
 		}
 		List<BoardVO> boardlist = bs.BoardAllData(page);
-		int listcount=bs.BoardListCount();		
+		int listcount=bs.BoardListCount();
 		
 		for (int i = 0; i < boardlist.size(); i++) {
 //			추천 수
@@ -217,6 +217,7 @@ public class BoardController {
 		try {
 		UserVO uv= (UserVO) se.getAttribute("uv");
         String st = uv.getU_id();
+        TagVO tv = new TagVO();
         
 		int vss_seq=Integer.parseInt(request.getParameter("vss_seq"));
 		bv.setU_id(st);
@@ -236,7 +237,7 @@ public class BoardController {
 			
 //			게시물에 포함된 부스러기 찾고 tag 생성
 			for (int i = 0; i < 4000; i++) {
-				TagVO tv = new TagVO();
+				
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					tv.setVss_seq(vss_seq1);
@@ -258,7 +259,6 @@ public class BoardController {
 			bs.BoardInsertData(bv);
 			
 			for (int i = 0; i < 4000; i++) {
-				TagVO tv = new TagVO();
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					System.out.println(vss_seq1 + "asdfasdf");
@@ -268,11 +268,14 @@ public class BoardController {
 					
 				}
 			}
+			tv.setVss_seq(vss_seq);
+			ts.makeTag(tv);
 		}
 		} catch(Exception e) {
 			
 			return 0;
 		}
+		
 		
 		
 		return bs.maxBoard();
@@ -313,7 +316,6 @@ public class BoardController {
 //		List<BoardVO> bvlist = new ArrayList<BoardVO>();
 		String vssOne = vss.getOneVSS(vss_seq).getVSS_name();
 		String vssContent = vss.getOneVSS(vss_seq).getVSS_content();
-		System.out.println(pg+"pgggggggg");
 		int page=0;
 		if(pg>1) {
 			page=pg;
@@ -326,7 +328,6 @@ public class BoardController {
 		
 		bv3.setPage(page);
 		
-		System.out.println(page+"pgggg");
 		bv3.setVss_seq(vss_seq);
 		
 		List<BoardVO> boardlist = bs.VSSBoardAllData(bv3);
@@ -339,7 +340,7 @@ public class BoardController {
 		
 		List<TagVO> tvlist = ts.getVSSBoard(tv);
 		
-		for (int i = 0; i < 4000; i++) {
+		for (int i = 0; i < 200; i++) {
 			try {
 			int b_seq = tvlist.get(i).getB_seq();
 			BoardVO bv = new BoardVO();
@@ -353,17 +354,13 @@ public class BoardController {
 //			추천 수
 			LikeVO lv = new LikeVO();
 			LikeVO lv1 = new LikeVO();
-			lv.setB_seq(boardlist.get(i).getB_seq());
+			lv.setB_seq(b_seq);
 			int like_cnt = 0;
 			like_cnt = ls.LikeCnt(lv);
 			lv1.setL_like(like_cnt);
 			boardlist.get(i).setLv(lv1);
 //			댓글 수
-			ReplyVO rv = new ReplyVO();
-			rv.setB_seq(boardlist.get(i).getB_seq());
-			int reply_cnt = 0;
-			reply_cnt = rs.ReplyCnt(rv.getB_seq());
-			boardlist.get(i).setReplyCnt(reply_cnt);
+			boardlist.get(i).setReplyCnt(rs.ReplyCnt(b_seq));
 			
 //			부스러기 보이기
 			String vssName = null;

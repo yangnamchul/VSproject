@@ -158,7 +158,7 @@ $( document ).ready( function() {
                 $('.progress-bar_item-3').addClass('active').css('background-color','green');
             }); 
             changeText(pbText, '안정적이군요');
-            pwReturn = 1 ;
+            pwReturn = 2 ;
           } 
      });
      $('.ch-re-pw').keyup(function(){
@@ -182,7 +182,7 @@ $( document ).ready( function() {
                    $(this).addClass('active').css('background-color','green');
                  });
                  changeText(pbText, '비밀번호가 같습니다');
-                 pwReturn = 1 ;
+                 pwReturn = 2 ;
                }
    });
 
@@ -226,7 +226,7 @@ var changeText = function (el, text, color) {
 	    					$('.nick-check-text').removeClass('chk-val-error');
 	    					$('.nick-check-text').addClass('chk-val-ok');  	
 	    					changeText(nickChkText, '사용가능한 별명 입니다.');
-	    					nickReturn = 1 ;
+	    					nickReturn = 2 ;
 	    				}
 	    			},
 	    			error : function(req, status, error) {
@@ -250,6 +250,11 @@ var changeText = function (el, text, color) {
          };        
          
          if (pwReturn == 0) {
+  			alertify.error("비밀번호 검사를 제대로해주세요.");			
+  			return;
+  		};
+  		
+  		if (pwReturn == 1) {
   			alertify.error("비밀번호 검사를 제대로해주세요.");			
   			return;
   		};

@@ -37,5 +37,11 @@ public class VSSServiceImpl implements VSSService{
 		// TODO Auto-generated method stub
 		return vssdao.maxVSS();
 	}
+
+	@Override
+	public List<VSSVO> newVSS() {
+		// TODO Auto-generated method stub
+		return vssdao.newVSS();
+	}
 	
 }

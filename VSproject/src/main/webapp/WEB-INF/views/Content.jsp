@@ -462,10 +462,10 @@ $("#re_plus").click(function() {
          	 }; */
              date = new Date(data[i]['re_date']);
              var objRow = $("#comment_li").clone();  //li 복사
-          	 objRow.html('<li id="comment_li" class="comment_li">'
-						+'<div class="reply-grid">'
+          	 /* objRow.html('<li id="comment_li" class="comment_li">' */
+          	 objRow.html('<div class="reply-grid">'
 						+'<div class="reply-info">'
-						+'<span class="reply-writer"> <span id="vss_u_id" class="'+ data[i]['u_id'] +'">' +data[i]['u_id']+'</span></span>'
+						+'<span class="reply-writer"> <span id="vss_u_id" class="'+ data[i]['u_id'] +'">' +data[i]['u_id']+'</span> </span>'
 						+'<span class="reply-date">'+date.format('MM-dd HH:mm')+'</span> '
 								+'	<button type="button" id="reply_del" class="' + data[i]['re_seq'] + '" onclick="delReply(this.className)">'
 								+'		<span> 삭제 </span>'

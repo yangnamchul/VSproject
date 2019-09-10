@@ -23,7 +23,7 @@
 
 
 				<div class="col-12 col-sm-12 col-lg-12 col-xl-12" id="board-inner">
-					<a id="vss" href="VSSBoard.do?vss_seq=${vss_seq}">${vssOne}</a>(전체
+					<a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vss_seq}">${vssOne}</a>(전체
 					글 : <strong>${ListCount}</strong> )
 				</div>
 
@@ -57,12 +57,12 @@
 									<td class="board-no">${vo1.b_seq}</td>
 <!-- 									<td class="board-info"></td> -->
 									<td class="board-title">
-									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vssOne}</a>
-									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									
+									<a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
 									<a
 										href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
 									<td class="board-re">${vo1.replyCnt }</td>	
-									<td class="board-writer"><a href="#"><span
+									<td class="board-writer"><a href="H"><span
 											id="vss_u_id">${vo1.u_id}</span> </a></td>								
 
 									<td class="board-date"><fmt:formatDate
@@ -72,16 +72,17 @@
 								</tr>
 							</c:forEach>
 
+<%-- <a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vo1.vss_seq}">${vssOne}</a> --%>
+
 							<c:forEach var="vo1" items="${bvlist}">
 								<tr id="board-mb">
-									<td class="board-title col-12"><a
-										href="Content.do?b_seq=${vo1.b_seq}">
-											<div class=col-12 id="board-mb-title">${vo1.b_title}</div>
+									<td class="board-title col-12"><a id="vss" href="VSSBoard.do?pg=1&vss_seq=${vo1.vss_seq}">${vo1.vssName}</a>
+									<a	href="Content.do?b_seq=${vo1.b_seq}"> <div class=col-12 id="board-mb-title">${vo1.b_title}</div>
 									</a>
 										<div class=col-12 id="board-mb-info">
 											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
 											| <span> <fmt:formatDate value="${vo1.b_date}"
-													pattern="MM-dd" /> | 추천_<span id="vss_like">7</span> | <span>댓글_0</span>
+													pattern="MM-dd" /> | 추천_<span id="vss_like">${vo1.lv.l_like }</span> | <span>댓글_${vo1.replyCnt }</span>
 										</div></td>
 
 								</tr>
