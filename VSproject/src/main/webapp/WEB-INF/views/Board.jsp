@@ -59,8 +59,8 @@
 									<a
 										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
 									<td class="board-re">${vo1.replyCnt }</td>	
-									<td class="board-writer"><a href="History.do?u_id=${vo1.u_id }"><span
-											id="vss_u_id">${vo1.u_id}</span> </a></td>								
+									<td class="board-writer"><a href="History.do?pg=1&u_id=${vo1.u_id }"><span
+											id="vss_u_id">${vo1.u_name}</span> </a></td>								
 
 									<td class="board-date"><fmt:formatDate
 											value="${vo1.b_date}" pattern="MM-dd" /></td>

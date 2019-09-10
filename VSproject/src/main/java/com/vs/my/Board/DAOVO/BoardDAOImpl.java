@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.vs.my.User.DAOVO.UserVO;
+
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	private static final String namespace="mapper.board-mapper";
@@ -38,9 +40,9 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> UserBoard(String u_id) {
+	public List<BoardVO> UserBoard(BoardVO bv) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".UserBoard", u_id);
+		return sqlSession.selectList(namespace+".UserBoard", bv);
 	}
 
 	@Override
@@ -77,6 +79,12 @@ public class BoardDAOImpl implements BoardDAO {
 	public int VSSBoardListCount(BoardVO bv) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".VSSBoardListCount", bv);
+	}
+
+	@Override
+	public int UserBoardList(String u_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".UserBoardList", u_id);
 	}
 
 

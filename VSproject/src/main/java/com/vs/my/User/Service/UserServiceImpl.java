@@ -52,17 +52,10 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int FindPW(UserVO uv, HttpSession hs) {
+	public UserVO FindPW(UserVO uv, HttpSession hs) {
 		// TODO Auto-generated method stub
 		UserVO vo =dao.FindPW(uv);
-		
-		try {
-			vo.getU_id();
-		} catch(Exception e) {
-			return 0;
-		}
-		hs.setAttribute("changPW", vo.getU_id());
-		return 1;
+		return vo;
 	}
 
 	@Override

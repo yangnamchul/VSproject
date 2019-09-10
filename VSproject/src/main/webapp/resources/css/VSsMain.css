@@ -17,7 +17,7 @@
 	background-color: #ff4d00;
 	color: #fff;
 	text-shadow: 1px 1px 1px #000;
-/* 	margin-right: 10px; */
+	/* 	margin-right: 10px; */
 	font-size: 1rem !important;
 	border-radius: 0.25rem;
 	padding: 0.1rem;
@@ -131,7 +131,8 @@ header .right-row {
 }
 
 header .right-col {
-	text-align: center; display : table-cell;
+	text-align: center;
+	display: table-cell;
 	cursor: pointer;
 	padding: 2px 5px;
 	display: table-cell;
@@ -195,16 +196,39 @@ header #right-search-form>input[type=text] {
 	background-color: #555555;
 }
 
+/* 모바일 환경 */
+@media ( max-width :576px) {
+	#header-bar .header-col {
+		display: table-cell;
+		border: 1px solid #3f3b3bfa;
+		box-shadow: 1px 1px 2px 0 black;
+		cursor: pointer;
+	}
+	#header-bar>div>div>div  img {
+		display: none;
+	}
+	#dropdown a, #dropdown2 a, #dropdown3 a, #dropdown4 a {
+		padding: 0.5rem;
+		white-space: pre-wrap;
+		font-size: 0.75rem;
+	}
+}
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : Dropdown 
 작성자 : 기영
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+#dropdown a, #dropdown2 a, #dropdown3 a, #dropdown4 a {
+	padding: 0.5rem;
+	white-space: pre-wrap;
+}
+
 .header-col {
 	position: relative;
 	display: inline-block;
 }
 
-.dropdown-content, .dropdown-content2, .dropdown-content3, .dropdown-content4   {
+.dropdown-content, .dropdown-content2, .dropdown-content3,
+	.dropdown-content4 {
 	border: 1px solid black;
 	display: none;
 	position: absolute;
@@ -214,7 +238,8 @@ header #right-search-form>input[type=text] {
 	z-index: 1;
 }
 
-.dropdown-content a ,.dropdown-content2 a ,.dropdown-content3 a, .dropdown-content4 a{
+.dropdown-content a, .dropdown-content2 a, .dropdown-content3 a,
+	.dropdown-content4 a {
 	border: 1px solid black;
 	color: black;
 	padding: 12px 16px;
@@ -229,8 +254,6 @@ header #right-search-form>input[type=text] {
 .show {
 	display: block;
 }
-
-
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : content-area > container 본문  
@@ -251,6 +274,15 @@ header #right-search-form>input[type=text] {
 	} */
 }
 
+#main_img {
+	margin-bottom: 0.5rem;
+	text-align: center;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background-color: #bbb;
+	color: white;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+}
 /* 부스러기 인기글  */
 ul.vss-hot {
 	list-style: none;
@@ -458,21 +490,21 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 .chk-val {
 	color: rgb(255, 255, 0);
 	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
-	white-space: nowrap;
+/* 	white-space: nowrap; */
 }
 
 /* 사용가능시 */
 .chk-val-ok {
 	color: rgb(7, 255, 6);
 	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
-	white-space: nowrap;
+/* 	white-space: nowrap; */
 }
 
 /* 중복 */
 .chk-val-error {
 	color: rgb(255, 0, 0);
 	text-shadow: rgb(255, 77, 0) 1px 1px 1px;
-	white-space: nowrap;
+/* 	white-space: nowrap; */
 }
 
 .progress-bar_wrap {
@@ -1179,13 +1211,10 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 내 용 : 아이디 비번찾기 modal (미영)  
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
-
-#findId_btn, #findPw_btn
-{
+#findId_btn, #findPw_btn {
 	text-align: center;
 	margin: 0.5rem auto;
 }
-
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 내 용 : MyPage.jsp > 내정보 
@@ -1198,28 +1227,33 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 		font-size: 1.1rem !important;
 	}
 	/* 이메일은 길어야해서 */
-	#user_email { 
-	    width: 15rem !important;
+	#user_email {
+		width: 15rem !important;
 	}
 	#btn-changeNick {
 		float: right;
 	}
 }
-@media ( min-width :576px) {}
+
+@media ( min-width :576px) {
+}
+
 @media ( min-width :768px) {
-	#user_email { 
-    	width: 20rem !important;
+	#user_email {
+		width: 20rem !important;
 	}
-	.vss-myinfo>li{
+	.vss-myinfo>li {
 		margin-top: 1rem !important;
-    	margin-bottom: 1rem !important;
+		margin-bottom: 1rem !important;
 	}
 }
+
 @media ( min-width :1024px) {
 	.vss-myinfo>li {
 		padding-left: 6rem !important;
 	}
 }
+
 @media ( min-width :1200px) {
 	.vss-myinfo>li {
 		padding-left: 10rem !important;
@@ -1247,7 +1281,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	color: white;
 	list-style: none;
 	margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 	padding: 0 0.5rem;
 }
 
@@ -1262,7 +1296,7 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 	background: #bbbbbb;
 }
 
-.vss-myinfo>li>button{
+.vss-myinfo>li>button {
 	color: white;
 	background-color: #ff4d00;
 	font-size: 1.2rem;
@@ -1273,12 +1307,15 @@ ul.vss-a-menu>li a, ul.vss-a-menu.row li a {
 작성자 : 미영 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 #historyDiv {
-    background-color: #00008b !important;
-    padding:1rem;
-    color: white;
-    box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
+	background-color: #00008b !important;
+	padding: 1rem;
+	color: white;
+	box-shadow: 2px 2px 0 #ff4d00, -2px -2px 0 #ff4d00;
 }
-#my-board-list, #my-reply-list, #my-like-list { margin: 0.25rem auto; }
+
+#my-board-list, #my-reply-list, #my-like-list {
+	margin: 0.25rem auto;
+}
 
 /*-----------my작성글-------------*/
 #my-board-list>table>tbody>tr {

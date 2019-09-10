@@ -90,6 +90,13 @@ public class BoardController {
 			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
 			boardlist.get(i).setVssName(vssName);
+			
+//			유저 이름
+			UserVO uv = new UserVO();
+			UserVO uv1 = new UserVO();
+			uv1.setU_id(boardlist.get(i).getU_id());
+			uv = us.MyPage(uv1);
+			boardlist.get(i).setU_name(uv.getU_name());
 		}
 		
 		mv.addObject("ListCount", listcount);
@@ -236,7 +243,7 @@ public class BoardController {
 			bs.BoardInsertData(bv);
 			
 //			게시물에 포함된 부스러기 찾고 tag 생성
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 4000; i++) {
 				
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
@@ -258,7 +265,7 @@ public class BoardController {
 			bv.setB_right(vsright);
 			bs.BoardInsertData(bv);
 			
-			for (int i = 0; i < 200; i++) {
+			for (int i = 0; i < 4000; i++) {
 				try {
 					int vss_seq1 = Integer.parseInt(request.getParameter("vss_seq_"+i));
 					System.out.println(vss_seq1 + "asdfasdf");
@@ -368,6 +375,14 @@ public class BoardController {
 			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
 			boardlist.get(i).setVssName(vssName);
+			
+//			유저 이름
+			UserVO uv = new UserVO();
+			UserVO uv1 = new UserVO();
+			uv1.setU_id(boardlist.get(i).getU_id());
+			uv = us.MyPage(uv1);
+			boardlist.get(i).setU_name(uv.getU_name());
+			
 			} catch(Exception e) {
 				
 			}

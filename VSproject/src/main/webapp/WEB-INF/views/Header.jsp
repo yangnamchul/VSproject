@@ -175,7 +175,7 @@
 										name="u_email" id="re_u_email" class="fd-id-pw"></li>
 									<div id="findPw_btn">
 										<button type="button" id="btn-findPw" onclick="FindPW()">
-											암호재설정</button>
+											암호찾기</button>
 									</div>
 								</div>
 							</form>
@@ -230,27 +230,25 @@
 		<div class="row" align="center">
 			<div class="header-row">
 				<div class="header-col" onclick="dropdown()">
-					부스러기 <img
+					홈페이지 <img
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 					<!-- Dropdown -->
 					<div id="dropdown" class="dropdown-content">
-						<a href="Board.do?pg=1" style="padding: inherit;">최신글보기</a> 
-						<a href="#" style="padding: inherit;">들어간페이지(1)</a>
-						<a href="#" style="padding: inherit;">들어간페이지(2)</a>
-						<a href="#" style="padding: inherit;">들어간페이지(3)</a>
+						<a href="" > 메인</a> 
+<!-- 						<a href="#" >들어간페이지(1)</a> -->
+<!-- 						<a href="#" >들어간페이지(2)</a> -->
+<!-- 						<a href="#" >들어간페이지(3)</a> -->
 					</div>
 				</div>
 
 				<div class="header-col" onclick="dropdown2()">
-					즐겨찾기 <img
+					부스러기 <img
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown2" class="dropdown-content2">
-						<a href="#" style="padding: inherit;">즐찾1</a>
-						<a href="#" style="padding: inherit;">즐찾2</a>
-						<a href="#" style="padding: inherit;">즐찾3</a>
-						<a href="#" style="padding: inherit;">즐찾4</a>
+						<a href="Board.do?pg=1" >모든글보기</a> 
+						<a href="AllVss.do" >모든부스러기</a> 
 						</div>
 				</div>
 
@@ -259,17 +257,17 @@
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown3" class="dropdown-content3">
-						<a href="MyPage.do" style="padding: inherit;" id="btn_mypage">마이페이지</a>
-						<a href="History.do?u_id=<%= u_id %>" style="padding: inherit;" id="btn_history">히스토리</a>
+						<a href="MyPage.do" id="btn_mypage">마이페이지</a>
+						<a href="History.do?u_id=<%= u_id %>&pg=1" id="btn_history">히스토리</a>
 						</div>
 				</div>
 
 				<div class="header-col" onclick="dropdown4()">
-					알림 <img
+					기타기능 <img
 						src="https://www.materialui.co/materialIcons/navigation/arrow_drop_down_black_192x192.png"
 						alt="" width="32px" />
 						<div id="dropdown4" class="dropdown-content4">
-						<a href="#" style="padding: inherit;">게시물(댓글)</a>
+						<a href="#">일단비워놓음</a>
 						</div>
 				</div>
 
@@ -327,12 +325,13 @@
 						data : $("#findPwForm").serialize(),
 						async : false,
 						success : function(data) {
-							if (data == 0) {
+							if (data == 'no') {
 								alertify.error("아이디 정보가 없습니다.");
 // 								$("#re_u_id").val("");
 // 								$("#re_u_email").val("");
 							} else {
-								alertify.success("암호 재설정페이지로 이동합니다.")
+								alertify.success(data);
+// 								alertify.success("암호 재설정페이지로 이동합니다.")
 // 								$("#changePWModal").modal();
 							}
 						},
@@ -365,12 +364,12 @@
 	<script>
 		function login() {
 			if ($("#u_id").val() == "") {
-				alertify.error("아이디를 입력해주세요");
+				alertify.warning("아이디를 입력해주세요");
 				return;
 			}
 			;
 			if ($("#u_pw").val() == "") {
-				alertify.error("비밀번호를 입력해주세요");
+				alertify.warning("비밀번호를 입력해주세요");
 				return;
 			}
 			;
@@ -430,15 +429,18 @@
 	<script>
 		function makeVSS() {
 			if ($("#VSS_name").val() == "") {
-				alertify.error("부스러기 이름을 입력해주세요");
+				alertify.warning("부스러기 이름을 입력해주세요");
 				return;
 			}
 			;
 			if ($("#VSS_content").val() == "") {
-				alertify.error("부스러기 내용을 입력해주세요");
+				alertify.warning("부스러기 내용을 입력해주세요");
 				return;
 			}
 			;
+			
+			
+			
 			if (confirm('부스러기를 만드시겠습니까?')) {
 				jQuery.ajax({
 					type : "POST",
@@ -447,10 +449,10 @@
 					async : false,
 					success : function(data) {
 						if (data == 0) {
-							alertify.alert("이미 존재하는 부스러기 입니다");
+							alertify.error("이미 존재하는 부스러기 입니다");
 						} else {
 							alertify.success("부스러기 만들기 성공");
-							location.href = "VSSBoard.do?pg=1&vss_seq=" + data;
+							location.href = "VSSBoard.do?pg=1&vss_seq=" + data ;
 						}
 					},
 					error : function(req, status, error) {
@@ -459,7 +461,7 @@
 					}
 				});
 			} else {
-				alertify.error("부스러기 취소");
+				alertify.error("부스러기 만들기 취소");
 			}
 		}
 	</script>
@@ -505,6 +507,12 @@ $( document ).ready( function() {
 			});
 
 			$("[id='btn-search']").click(function() {
+				var isLogin = "<%=session.getAttribute("uv")%>";
+				if (isLogin == "null") {
+					alertify.error("먼저 로그인 해주세요.");
+					return false;
+				}
+				else
 				$('#vssModal').modal('show');
 			});
 			
@@ -616,7 +624,7 @@ window.onclick = function(event){
 
 <script type="text/javascript">
 
-
+// ,[id='pop_vss_btn']
 $("[id='btn_mypage'],[id='btn_history']").click(function () {
 	var isLogin = "<%=session.getAttribute("uv")%>";
 	if (isLogin == "null") {
@@ -624,6 +632,7 @@ $("[id='btn_mypage'],[id='btn_history']").click(function () {
 		return false;
 	}
 });
+
 </script>
 
 </body>

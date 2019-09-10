@@ -21,7 +21,16 @@ public class BoardVO {
 	private int replyCnt;
 	private String vssName;
 	private int page;
+	private String u_name;
 	
+	public String getU_name() {
+		return u_name;
+	}
+
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
+	}
+
 	public int getPage() {
 		return page;
 	}
