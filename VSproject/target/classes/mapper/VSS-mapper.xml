@@ -27,9 +27,10 @@
 	
 	<select id="newVSS" resultType="VSS">
 		SELECT *
-		FROM VSS
+		FROM (SELECT *
+			FROM VSS
+			ORDER BY vss_seq desc)
 		WHERE ROWNUM <![CDATA[ < ]]>= 5
-		ORDER BY vss_seq desc
 	</select>
 	
 </mapper>

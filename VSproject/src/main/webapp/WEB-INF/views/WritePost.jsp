@@ -182,8 +182,7 @@
 																	'video' ] ], ],
 											callbacks : {
 													onImageUpload : function(file,editor, welEditable) {
-													sendfile(file[0], this);
-													
+														sendfile(file[0], this);
 												}
 											}
 										});
