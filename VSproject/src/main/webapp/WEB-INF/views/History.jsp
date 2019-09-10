@@ -183,7 +183,7 @@
  <%
    }else{
  %>
-  [<a href="History.do?pg=<%=i %>&u_id=${u_id1 }">-<%=i%>-</a>]
+  [<a href="History.do?pg=<%=i %>&u_id=${u_id1 }"><%=i%></a>]
  <%
    }
   }

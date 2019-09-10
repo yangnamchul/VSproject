@@ -278,7 +278,7 @@
 				placeholder : ' 댓글 쓰기.. ',
 				lang : 'ko-KR',
 				hint: {
-					    match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)$/,
+						match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3|~!@\#$%^&*\()\-=+_]*)$/,
 					    search: function (keyword, callback) {
 					      callback($.grep(vss, function (item) {
 					        return item.indexOf(keyword)  === 0;

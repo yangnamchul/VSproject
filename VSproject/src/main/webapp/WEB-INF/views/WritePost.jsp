@@ -132,8 +132,9 @@
 													sendfile(file[0], this);
 												}
 											},
+											
 											hint: {
-											    match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3]*)$/,
+											    match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3|~!@\#$%^&*\()\-=+_]*)$/,
 											    search: function (keyword, callback) {
 											      callback($.grep(vss, function (item) {
 											        return item.indexOf(keyword)  === 0;
@@ -155,7 +156,7 @@
 											      		$('#b_content1').append('<a id="vss" href="VSSBoard.do?pg=1&vss_seq=' + seq + '">' + item + '</a>');
 											      		$('#inputTag').append('<input type="hidden" name="vss_seq_'+ seq + '" value="' + seq + '" />');
 											    	}
-// 											    	return $('.note-editable').focus().val("") ;
+// 											    	return $('#b_content1').focus().val("") ;
 											    	return '' ;
 											    }
 											    
