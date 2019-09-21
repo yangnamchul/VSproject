@@ -175,7 +175,7 @@
 										name="u_email" id="re_u_email" class="fd-id-pw"></li>
 									<div id="findPw_btn">
 										<button type="button" id="btn-findPw" onclick="FindPW()">
-											암호재설정</button>
+											암호찾기</button>
 									</div>
 								</div>
 							</form>
@@ -258,7 +258,7 @@
 						alt="" width="32px" />
 						<div id="dropdown3" class="dropdown-content3">
 						<a href="MyPage.do" id="btn_mypage">마이페이지</a>
-						<a href="History.do?u_id=<%= u_id %>" id="btn_history">히스토리</a>
+						<a href="History.do?u_id=<%= u_id %>&pg=1" id="btn_history">히스토리</a>
 						</div>
 				</div>
 
@@ -325,12 +325,13 @@
 						data : $("#findPwForm").serialize(),
 						async : false,
 						success : function(data) {
-							if (data == 0) {
+							if (data == 'no') {
 								alertify.error("아이디 정보가 없습니다.");
 // 								$("#re_u_id").val("");
 // 								$("#re_u_email").val("");
 							} else {
-								alertify.success("암호 재설정페이지로 이동합니다.")
+								alertify.success(data);
+// 								alertify.success("암호 재설정페이지로 이동합니다.")
 // 								$("#changePWModal").modal();
 							}
 						},

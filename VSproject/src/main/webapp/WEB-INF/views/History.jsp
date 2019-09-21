@@ -32,25 +32,50 @@
                     <table class="table table-striped table-bordered table-hover" id="board-table">
                      <thead class="board-thead">
                         <tr>
-                           <th class="board-no">번호</th>
-                           <th class="board-title">제목</th>
-                           <th class="board-writer">작성자</th>
-                           <th class="board-date">작성일</th>
-                           <th class="board-cnt">조회</th>
+                           <th class="board-no" width="5%">번호</th>
+<!-- 								<th class="board-info" width="5%">종류</th> -->
+								<th class="board-title" >제목</th>
+								<th class="board-re" width="5%">댓글</th> 
+								<th class="board-writer" width="10%">작성자</th>
+								<th class="board-date" width="5%">작성일</th>
+								<th class="board-cnt" width="5%">조회</th>
+								<th class="board-like" width="5%">추천</th>		
                         </tr>
                      </thead>
                      <tbody class="board-tbody">
-                     <c:forEach var="vo1" items="${bvlist}">
-                        <tr id="board-pc">
-                           <td class="board-no">${vo1.b_seq}</td>
-                           <td class="board-title" id="title"><a href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}
-                           </a></td>
-                           <td class="board-writer">${vo1.u_id}</td>
-                           <td class="board-date"><fmt:formatDate value="${vo1.b_date}" pattern="MM-dd" />
-                           </td>
-                           <td class="board-cnt">${vo1.b_cnt}</td>
-                        </tr>
-                     </c:forEach>
+                    <c:forEach var="vo1" items="${bvlist}">
+								<tr id="board-pc">
+									<td class="board-no">${vo1.b_seq}</td>
+<!-- 									<td class="board-info"></td> -->
+									<td class="board-title">
+									<a id="vss" href="VSSBoard.do?vss_seq=${vo1.vss_seq}&pg=1">${vo1.vssName}</a>
+									<a
+										href="Content.do?b_seq=${vo1.b_seq}"> ${vo1.b_title} </a></td>
+									<td class="board-re">${vo1.replyCnt }</td>	
+									<td class="board-writer"><a href="History.do?pg=1&u_id=${vo1.u_id }"><span
+											id="vss_u_id">${vo1.u_name}</span> </a></td>								
+
+									<td class="board-date"><fmt:formatDate
+											value="${vo1.b_date}" pattern="MM-dd" /></td>
+									<td class="board-cnt">${vo1.b_cnt}</td>
+									<td class="board-like" id="vss_like">${vo1.lv.l_like }</td>
+								</tr>
+							</c:forEach>
+
+							<c:forEach var="vo1" items="${bvlist}">
+								<tr id="board-mb">
+									<td class="board-title col-12">
+										<a href="Content.do?b_seq=${vo1.b_seq}">
+											<div class=col-12 id="board-mb-title"><span id=vss>${vo1.vssName }</span> ${vo1.b_title}</div>
+										</a>
+										<div class=col-12 id="board-mb-info">
+											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
+											| <span> <fmt:formatDate value="${vo1.b_date}"
+													pattern="MM-dd" /> | 추천_<span id="vss_like">${vo1.lv.l_like }</span> | <span>댓글_${vo1.replyCnt }</span>
+										</div></td>
+
+								</tr>
+							</c:forEach>
                      </tbody>
                   </table>
                </div>
@@ -98,14 +123,81 @@
                               <td class="board-date"><fmt:formatDate value="${vo3.v_date}" pattern="MM-dd" /></td>
                            </tr>
                         </c:forEach>
-                     </tbody>
+                        
                   </table>
                </div>
             </div>
       </div>
-      <div class="col-lg-1 col-xl-1"></div>
-   </div>
+      <!-- Paging 처리 -->
+	<div class="col-lg-1 col-xl-1" id="numbering"></div>
+	
+					<%
+			
+					 final int ROWSIZE = 5; //한페이지에 보일 게시물 수
+					 final int BLOCK = 5;   //아래에 보일 페이지 최대 개수
+					 
+					 int pg = 1; //기본 페이지 값
+					 if(request.getParameter("pg")!= null){
+						 pg = Integer.parseInt(request.getParameter("pg"));
+					 }
+					 /* int total=Integer.valueOf((String)request.getAttribute("ListCount")); */	%>
+					
+					 <%  
+					 	int total = Integer.parseInt((request.getAttribute("BoardListCount")).toString()); 
+					 %>
+					 <% 
+					 int allPage = 0; //전체 페이지 수
+					 
+					 int start = (pg*ROWSIZE)-(ROWSIZE-1); //해당 페이지에서 시작번호
+					 int end = (pg*ROWSIZE); //해당 페이지에서 끝 번호
+					 
+					 int startPage = ((pg-1)/BLOCK*BLOCK)+1; //시작 블럭 숫자
+					 int endPage = ((pg-1)/BLOCK*BLOCK)+BLOCK; //끝 블럭 숫자
+					
 
+					 allPage = (int)Math.ceil(total/(double)ROWSIZE);
+					  
+					  if(endPage > allPage){
+					   endPage = allPage;
+					  }
+					  out.print("총 게시물 :" +total +"개");
+	
+				
+					%>
+					
+					<div class="col-xs-12" id="paging board-page">
+					<%
+  if(pg>BLOCK){
+ %>
+  [<a href="History.do?pg=1&u_id=${u_id1 }">◀◀</a>]
+  [<a href="History.do?pg=<%=startPage-1%>&u_id=${u_id1 }">◀</a>]
+ <%
+  }
+ %>
+ <%
+  for(int i=startPage; i<=endPage; i++){
+   if(i==pg){
+ %>
+  
+  <U><B> [<%=i %>]</B></U>
+ <%
+   }else{
+ %>
+  [<a href="History.do?pg=<%=i %>&u_id=${u_id1 }"><%=i%></a>]
+ <%
+   }
+  }
+ %>
+ <%
+  if(endPage<allPage){
+ %>
+  [<a href="History.do?pg=<%=endPage+1 %>&u_id=${u_id1 }">▶</a>]
+  [<a href="History.do?pg=<%=allPage %>&u_id=${u_id1 }">▶▶</a>]
+ <%
+  }
+ %>
+	   </div>
+   </div>
 </div>
 </div>
 </body>

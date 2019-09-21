@@ -83,7 +83,7 @@
 							<form class="modal-change" id="ChangePWForm">
 								<div>
 									<li class="mx-auto">암&nbsp;&nbsp;&nbsp;&nbsp;호 
-										<input type="text" name="u_pw" class="ch-pw" /><br>
+										<input type="password" name="u_pw" class="ch-pw" /><br>
 						               <div class="progress-bar_wrap">
 						               <div class="progress-bar_item progress-bar_item-1"></div>
 						               <div class="progress-bar_item progress-bar_item-2"></div>
@@ -92,7 +92,7 @@
 						               <span class="progress-bar_text">칸이 비어있습니다</span>
 						               </li>               
 						               <li class="mx-auto">암호확인 
-						               	<input type="text" name="u_pw_rep" class="ch-re-pw" /><br>
+						               	<input type="password" name="u_pw_rep" class="ch-re-pw" /><br>
 						               <div class="progress-bar_wrap">
 						               <div class="progress-bar_re_item progress-bar_re_item-1"></div>
 						               <div class="progress-bar_re_item progress-bar_re_item-2"></div>
@@ -127,7 +127,7 @@ $(document).ready(function() {
 <!-- 비밀번호 변경 유효성 검사 -->
 <script type="text/javascript">
 window.pwReturn = 0;
-
+window.pwReturn1 = 0;
 $( document ).ready( function() {
      const changeText = function (el, text, color) {
        el.text(text).css('color', color);
@@ -170,19 +170,19 @@ $( document ).ready( function() {
                    $(this).removeClass('active').css('background-color','white');
                  });
                  changeText(pbText, '비밀번호 입력해주세요');
-                 pwReturn = 0 ;
+                 pwReturn1 = 0 ;
                } else if ($('.ch-pw').val() != $('.ch-re-pw').val()) {
                 $(' .progress-bar_re_item-1').addClass('active').css('background-color','red');
                 $(' .progress-bar_re_item-2').removeClass('active').css('background-color','red');
                 $(' .progress-bar_re_item-3').removeClass('active').css('background-color','red');
                  changeText(pbText, '비밀번호가 다릅니다.');
-                 pwReturn = 0 ;
+                 pwReturn1 = 1 ;
                } else {
                  $('.progress-bar_re_item').each(function() {
                    $(this).addClass('active').css('background-color','green');
                  });
                  changeText(pbText, '비밀번호가 같습니다');
-                 pwReturn = 2 ;
+                 pwReturn1 = 2 ;
                }
    });
 
@@ -254,10 +254,15 @@ var changeText = function (el, text, color) {
   			return;
   		};
   		
-  		if (pwReturn == 1) {
-  			alertify.error("비밀번호 검사를 제대로해주세요.");			
-  			return;
-  		};
+  		 if (pwReturn1 == 0) {
+   			alertify.error("비밀번호 확인을 제대로해주세요.");			
+   			return;
+   		};
+   		
+   		if (pwReturn1 == 1) {
+   			alertify.error("비밀번호 다릅니다.");			
+   			return;
+   		};
          
          if (confirm('정말 변경 하시겠습니까?')) {
 		jQuery.ajax({

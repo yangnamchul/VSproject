@@ -90,6 +90,13 @@ public class BoardController {
 			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
 			boardlist.get(i).setVssName(vssName);
+			
+//			유저 이름
+			UserVO uv = new UserVO();
+			UserVO uv1 = new UserVO();
+			uv1.setU_id(boardlist.get(i).getU_id());
+			uv = us.MyPage(uv1);
+			boardlist.get(i).setU_name(uv.getU_name());
 		}
 		
 		mv.addObject("ListCount", listcount);
@@ -331,25 +338,23 @@ public class BoardController {
 		bv3.setVss_seq(vss_seq);
 		
 		List<BoardVO> boardlist = bs.VSSBoardAllData(bv3);
-		int listcount=bs.VSSBoardListCount(bv3);
-		
+		int listcount=bs.VSSBoardListCount(bv3);		
 		
 		TagVO tv = new TagVO();
 		tv.setVss_seq(vss_seq);
-		tv.setPage(page);
-		
+		tv.setPage(page);		
 		List<TagVO> tvlist = ts.getVSSBoard(tv);
 		
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < 4000 ; i++) {
 			try {
 			int b_seq = tvlist.get(i).getB_seq();
+			System.out.println(b_seq + "해당 vss b_seq찍어보기");
 			BoardVO bv = new BoardVO();
 			bv.setB_seq(b_seq);
 			
 			
-			BoardVO bv1 = bs.Content(bv);
-			boardlist.set(i, bv1);
-//			bvlist.add(bv1);
+//			BoardVO bv1 = bs.Content(bv);			
+//			boardlist.set(i, bv1);			
 			
 //			추천 수
 			LikeVO lv = new LikeVO();
@@ -368,6 +373,16 @@ public class BoardController {
 			vssvo = vss.getOneVSS(boardlist.get(i).getVss_seq());
 			vssName = vssvo.getVSS_name();
 			boardlist.get(i).setVssName(vssName);
+			
+//			유저 이름
+			UserVO uv = new UserVO();
+			UserVO uv1 = new UserVO();
+			uv1.setU_id(boardlist.get(i).getU_id());
+			uv = us.MyPage(uv1);
+			boardlist.get(i).setU_name(uv.getU_name());
+			
+//			boardlist.add(e)
+			
 			} catch(Exception e) {
 				
 			}

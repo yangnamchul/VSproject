@@ -235,8 +235,7 @@
 								} else if (data == 1) {
 									alertify.error("이미 추천하셨습니다.");
 								} else {
-									alertify.success('추천 하셨습니다.');
-									location.reload();
+									alertify.success('추천 하셨습니다.');									
 								}
 							},
 							error : function(req, status, error) {
@@ -252,7 +251,21 @@
 작성자 : 남철
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
 	<script>
-		$(document).ready(function() {
+	
+// 	$('.note-editable').eq(0).attr('id', 're_content');
+		$(document).ready(function() {		
+			
+			$.ajax({
+				  url: 'getAllVSS.do',
+				  async: false ,
+				  dataType : 'json'
+				}).then(function(data) {
+					window.vss1 = data[0];
+					window.vss = Object.keys(vss1);
+					window.vss2 = data[1]; 
+					console.log(vss);
+			});
+			
 			$('#r_reply').summernote({
 				height : 100,
 				minHeight : 100,
@@ -263,25 +276,38 @@
 				shortcuts : false,
 
 				placeholder : ' 댓글 쓰기.. ',
-				lang : 'ko-KR'
+				lang : 'ko-KR',
+				hint: {
+						match: /:([a-z|A-Z|\u3131-\u314e|\u314f-\u3163|\uac00-\ud7a3|~!@\#$%^&*\()\-=+_]*)$/,
+					    search: function (keyword, callback) {
+					      callback($.grep(vss, function (item) {
+					        return item.indexOf(keyword)  === 0;
+					      }));
+					    },
+					    template: function (item) {
+					    	var name1 = vss1[item];
+					    	var content1 = vss2[item];
+//						     	return item + " : " + content1;
+					     	return "<span id=vss>" + item + "</span>" + ": " + content1;
+					     											     	
+					    },
+					    content: function (item) {
+					    	
+					    	var seq = vss1[item];
+					    	if (seq) {
+//						    		document.getElementsByClassName('note-editable')[2].innerHTML += '<a id="vss" href="VSSBoard.do?vss_seq=' + seq + '">' + item + '</a>';
+					      		$('.note-editable').append('<a id="vss" href="VSSBoard.do?pg=1&vss_seq=' + seq + '">' + item + '</a>');
+					      		
+					    	}
+//						    	return $('.note-editable').focus().val("") ;
+					    	return '' ;
+					    }
+					    
+					    
+					  }
 
 			});
 		});
-
-		var edit = function() {
-			$('#reply_content_1').summernote({
-				height : 100,
-				minHeight : 100,
-				maxHeight : 100,				
-				focus : true,
-				airmode : false,
-				toolbar : false,
-				disableDragAndDrop : true,
-				shortcuts : false,
-				lang : 'ko-KR'
-
-			});
-		};
 
 		function reply() {
 			if ($("#r_reply").val() == "") {

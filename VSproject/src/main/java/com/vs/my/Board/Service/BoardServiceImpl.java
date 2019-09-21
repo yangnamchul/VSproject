@@ -86,9 +86,9 @@ public class BoardServiceImpl implements BoardService
 	}
 
 	@Override
-	public List<BoardVO> UserBoard(String u_id) {
+	public List<BoardVO> UserBoard(BoardVO bv) {
 		// TODO Auto-generated method stub
-		return bdao.UserBoard(u_id);
+		return bdao.UserBoard(bv);
 	}
 
 	@Override
@@ -125,6 +125,12 @@ public class BoardServiceImpl implements BoardService
 	public int VSSBoardListCount(BoardVO bv) {
 		// TODO Auto-generated method stub
 		return bdao.VSSBoardListCount(bv);
+	}
+
+	@Override
+	public int UserBoardList(String u_id) {
+		// TODO Auto-generated method stub
+		return bdao.UserBoardList(u_id);
 	}
 
 }

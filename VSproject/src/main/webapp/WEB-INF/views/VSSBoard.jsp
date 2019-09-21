@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
 										href="Content.do?b_seq=${vo1.b_seq}">${vo1.b_title}</a></td>
 									<td class="board-re">${vo1.replyCnt }</td>	
 									<td class="board-writer"><a href="H"><span
-											id="vss_u_id">${vo1.u_id}</span> </a></td>								
+											id="vss_u_id">${vo1.u_name}</span> </a></td>								
 
 									<td class="board-date"><fmt:formatDate
 											value="${vo1.b_date}" pattern="MM-dd" /></td>
@@ -80,7 +80,7 @@
 									<a	href="Content.do?b_seq=${vo1.b_seq}"> <div class=col-12 id="board-mb-title">${vo1.b_title}</div>
 									</a>
 										<div class=col-12 id="board-mb-info">
-											<a href="#"><span id="vss_u_id">${vo1.u_id}</span></a> | <span>조회_${vo1.b_cnt}</span>
+											<a href="#"><span id="vss_u_id">${vo1.u_name}</span></a> | <span>조회_${vo1.b_cnt}</span>
 											| <span> <fmt:formatDate value="${vo1.b_date}"
 													pattern="MM-dd" /> | 추천_<span id="vss_like">${vo1.lv.l_like }</span> | <span>댓글_${vo1.replyCnt }</span>
 										</div></td>
